@@ -1,22 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/header";
-import Footer from "@/components/layout/footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Providers } from "./providers";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Coffee4partners",
-  description: "",
+  description:
+    "Coffee4partners erbjuder högkvalitativa kaffe-, vatten- och varuautomater. Vi säljer påfyllnadsprodukter som kaffe och snacks samt erbjuder service och underhåll av maskinerna.",
 };
 
 export default function RootLayout({
@@ -25,15 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Header />
-        <main className="max-w-[1500px] mx-auto">
+    <html lang="sv">
+      <body className={`antialiased relative`}>
+        <Providers>
           {children}
-        </main>
-        <Footer />
+          <Toaster />
+        </Providers>
       </body>
     </html>
   );

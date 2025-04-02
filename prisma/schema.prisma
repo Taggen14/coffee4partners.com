@@ -1,0 +1,181 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id              String   @id @default(cuid())
+  name            String
+  description     String
+  longDescription String?  @db.Text
+  price           Decimal  @db.Decimal(10, 2)
+  images          String[]
+  stock           Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Dynamic categorization and features
+  categoryId String
+  category   Category  @relation(fields: [categoryId], references: [id])
+  features   Feature[] @relation("ProductFeatures")
+
+  // Relations
+  orderItems OrderItem[]
+  cartItems  CartItem[]
+  returnItem ReturnItem[]
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  description String?
+  products    Product[]
+}
+
+model Feature {
+  id       String    @id @default(cuid())
+  name     String
+  value    String
+  products Product[] @relation("ProductFeatures")
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  status          OrderStatus
+  customerEmail   String
+  customerName    String
+  shippingAddress String
+  totalAmount     Decimal     @db.Decimal(10, 2)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  orderItems OrderItem[]
+  returns    Return[]
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  quantity  Int
+  unitPrice Decimal @db.Decimal(10, 2)
+
+  order     Order   @relation(fields: [orderId], references: [id])
+  orderId   String
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  RETURNED
+  REFUNDED
+}
+
+enum ReturnStatus {
+  REQUESTED
+  APPROVED
+  REJECTED
+  RECEIVED
+  REFUNDED
+}
+
+model Return {
+  id          String       @id @default(cuid())
+  orderId     String
+  order       Order        @relation(fields: [orderId], references: [id])
+  status      ReturnStatus
+  reason      String
+  description String?
+  items       ReturnItem[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model ReturnItem {
+  id        String  @id @default(cuid())
+  returnId  String
+  return    Return  @relation(fields: [returnId], references: [id])
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  reason    String?
+}
+
+model Cart {
+  id        String     @id @default(cuid())
+  sessionId String     @unique
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  items     CartItem[]
+}
+
+model CartItem {
+  id        String  @id @default(cuid())
+  quantity  Int
+  cart      Cart    @relation(fields: [cartId], references: [id])
+  cartId    String
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  @@unique([cartId, productId])
+}
+
+enum InquiryType {
+  AI
+  HUMAN
+}
+
+enum InquiryStatus {
+  ACTIVE
+  RESOLVED
+  ARCHIVED
+}
+
+model Inquiry {
+  id               String            @id @default(cuid())
+  customerName     String
+  customerEmail    String
+  type             InquiryType
+  status           InquiryStatus
+  subject          String
+  lastMessage      String            @db.Text
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  messages         Message[]
+  typingIndicators TypingIndicator[]
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+  SYSTEM
+}
+
+model Message {
+  id        String      @id @default(cuid())
+  content   String      @db.Text
+  role      MessageRole
+  createdAt DateTime    @default(now())
+  readAt    DateTime?
+  inquiry   Inquiry     @relation(fields: [inquiryId], references: [id])
+  inquiryId String
+}
+
+model TypingIndicator {
+  id        String   @id @default(cuid())
+  inquiryId String
+  role      String // "USER" or "ASSISTANT"
+  isTyping  Boolean  @default(false)
+  updatedAt DateTime @updatedAt
+  inquiry   Inquiry  @relation(fields: [inquiryId], references: [id])
+
+  @@unique([inquiryId, role])
+}

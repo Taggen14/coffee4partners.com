@@ -141,12 +141,12 @@ green             oklch(70.74% 0.1751 149.82)     RING
   .corner-border {
     @apply relative px-4 py-1;
   }
-  
+
   .corner-border::before {
-    content: '';
+    content: "";
     @apply absolute top-0 left-0 pointer-events-none;
   }
-  
+
   .corner-border::before {
     @apply w-8 h-4;
     border-top: 1px solid white;
@@ -154,9 +154,9 @@ green             oklch(70.74% 0.1751 149.82)     RING
     border-bottom: none;
     border-right: none;
   }
-  
+
   .corner-border::after {
-    content: '';
+    content: "";
     @apply absolute bottom-0 right-0 pointer-events-none;
     @apply w-8 h-4;
     border-bottom: 1px solid white;

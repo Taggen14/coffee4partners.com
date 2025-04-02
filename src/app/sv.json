@@ -1,305 +1,301 @@
 {
-    "layout": {
-        "header": {
-            "usps": [
-                "SMAKGARANTI",
-                "DRIFTGARANTI",
-                "FOKUS PÅ HÅLLBARHET"
-            ],
-            "links": [
-                {
-                    "title": "Hem",
-                    "route": "/",
-                    "slug": "/"
-                },
-                {
-                    "title": "Shop",
-                    "route": "/shop",
-                    "slug": "shop"
-                },
-                {
-                    "title": "Service",
-                    "route": "/service",
-                    "slug": "service"
-                },
-                {
-                    "title": "Om oss",
-                    "route": "/about",
-                    "slug": "about"
-                },
-                {
-                    "title": "Kontakt",
-                    "route": "/contact",
-                    "slug": "contact"
-                },
-                {
-                    "title": "Karriär",
-                    "route": "/career",
-                    "slug": "career"
-                }
-            ],
-            "landingPage": {
-                "title": "Din obemannade cafélösning",
-                "tagLine": "BRANSCHVINNARE 2024",
-                "cta": "BOKA MÖTE"
-            }
+  "layout": {
+    "header": {
+      "usps": ["SMAKGARANTI", "DRIFTGARANTI", "FOKUS PÅ HÅLLBARHET"],
+      "links": [
+        {
+          "title": "Hem",
+          "route": "/",
+          "slug": "/"
         },
-        "footer": {
-            "newsLetterTitle": "PRENUMERERA PÅ VÅRT NYHETSBREV",
-            "newsLetterInputPlaceholder": "Skriv din email",
-            "newsLetterSubscribButton": "Prenumerera",
-            "contact": {
-                "tele": "Växel",
-                "mail": "Mejl"
-            },
-            "usps": [
-                {
-                    "title": "Smakgaranti",
-                    "description": "Våra smakexperter hjälper er att få till just den perfekta smaken som ni önskar oavsett om det är vid installation eller om ni vill byta kaffesort med tidens gång. Vi ger oss inte förens ni är 100% nöjda."
-                },
-                {
-                    "title": "Driftgaranti",
-                    "description": "Vi vet vilka bekymmer en kaffelösning som är ur funktion kan ställa till med på en arbetsplats. Vi arbetar därför för att förebygga bekymmer och tillsammans med våra smakexperter, maskiner och kaffebönor ser till att leva upp till det vi lovar."
-                },
-                {
-                    "title": "Hållbarhet",
-                    "description": "Vi är övertygade om att vi som företag måste ta ett större ansvar för livs och arbetsvillkor samt vår miljö. Vi har noga valt ut våra leverantörer så vi säkerställer att vi arbetar mot samma mål och att dem erbjuder produkter med certifieringar som vi ser som en självklarhet."
-                }
-            ]
+        {
+          "title": "Shop",
+          "route": "/shop",
+          "slug": "shop"
+        },
+        {
+          "title": "Service",
+          "route": "/service",
+          "slug": "service"
+        },
+        {
+          "title": "Om oss",
+          "route": "/about",
+          "slug": "about"
+        },
+        {
+          "title": "Kontakt",
+          "route": "/contact",
+          "slug": "contact"
+        },
+        {
+          "title": "Karriär",
+          "route": "/career",
+          "slug": "career"
         }
+      ],
+      "landingPage": {
+        "title": "Din obemannade cafélösning",
+        "tagLine": "BRANSCHVINNARE 2024",
+        "cta": "BOKA MÖTE"
+      }
     },
-    "landingPage": {
-        "machines": [
-            {
-                "title": "Kaffelösningar",
-                "description": "Med kvalité och flexibiltet i fokus. Vi hjälper er att få en helt egen barista på arbetsplatsen som alltid är redo.",
-                "cta": {
-                    "text": "SE MER",
-                    "href": "/shop/FINNS INTE ÄNNU"
-                },
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743062927/7E4A6472_lUgupplist-19_300x_syge3u.jpg",
-                    "alt": "kaffe automat"
-                }
-            },
-            {
-                "title": "Vattenautomater",
-                "description": "Med hög kvalité och stort fokus på design för att enkelt kunna vara en accessoar på företaget.",
-                "cta": {
-                    "text": "SE MER",
-                    "href": "/shop/FINNS INTE ÄNNU"
-                },
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743409051/vatten-automat_kqjbmn.webp",
-                    "alt": "vatten automat"
-                }
-            },
-            {
-                "title": "Varuautomater",
-                "description": "Vi leverar varuautomatslösningar med syftet enkelt, gott och tillgängligt för ett godare arbetsliv",
-                "cta": {
-                    "text": "SE MER",
-                    "href": "/shop/FINNS INTE ÄNNU"
-                },
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743409051/varuautomat_st6qgs.webp",
-                    "alt": "varuautomat"
-                }
-            }
-        ],
-        "descriptions": [
-            "Kaffe är något som formats till en självklarhet på våra arbetsplatser. Vi ser dock att allt för många lägger ned för mycket tid på att få just det att fungera. Vi vill låta er fokusera på era uppgifter och ta för givet att den perfekta koppen alltid är redo. Det är över en kopp kaffe som de viktiga besluten tas.",
-            "Samarbeta med Coffee4partners för en hållbar kaffe och fikalösning!"
-        ],
-        "partnersLogos": [
-            {
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064848/zprof-logotyp_180x_mboz5s.avif",
-                    "alt": "zoegas logo"
-                }
-            },
-            {
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064847/2_180x_qbwkwt.avif",
-                    "alt": "lavazza logo"
-                }
-            },
-            {
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064846/arvid-nordquist_nio7kp.avif",
-                    "alt": "arvid nordquist logo"
-                }
-            },
-            {
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064846/l%C3%B6fbergs_zunugm.avif",
-                    "alt": "löfbergs logo"
-                }
-            },
-            {
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064845/BKI_kaffe_sverige_180x_efyjub.avif",
-                    "alt": "bki kaffe logo"
-                }
-            }
-        ],
-        "shopLinksTitle": "Tillbehör och övrigt",
-        "shopProductLinks": [
-            {
-                "title": "Kyld dryck",
-                "href": "",
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064845/ramlosa_flader_lime_33cl_360x_k8prcc.webp",
-                    "alt": "ramlösa 33cl burk"
-                }
-            },
-            {
-                "title": "Snacks och mellanmål",
-                "href": "",
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064844/twix_pqhzdo.webp",
-                    "alt": "twix snacks bar"
-                }
-            },
-            {
-                "title": "Te",
-                "href": "",
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064843/lipton_forest_fruits_p_sar_360x_mij2df.webp",
-                    "alt": "lipon te"
-                }
-            },
-            {
-                "title": "Filterbryggare",
-                "href": "",
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064843/kaffebryggare_z9rre9.webp",
-                    "alt": "filterbryggare"
-                }
-            },
-            {
-                "title": "Tillbehör",
-                "href": "",
-                "image": {
-                    "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064843/tillbeh%C3%B6r_eihiep.webp",
-                    "alt": "hushållspapper"
-                }
-            }
-        ],
-        "serviceLink": {
-            "title": "SERVICE",
-            "tagline": "Välj service light eller totalservice",
-            "description": "Låt oss utbilda er att ta hand om den dagliga rengöringen och lägga beställningar, eller lämna över ansvaret till oss. Vi ser såklart alltid till att sköta den regelbundna servicen som behövs, oavsett vilket serviceavtal ni väljer.",
-            "cta": {
-                "text": "LÄS MER",
-                "href": "/service"
-            },
-            "image": {
-                "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064843/pour-over-coffee-competition_1800x_ymvwir.webp",
-                "alt": "servitris förbereder kaffe"
-            }
+    "footer": {
+      "newsLetterTitle": "PRENUMERERA PÅ VÅRT NYHETSBREV",
+      "newsLetterInputPlaceholder": "Skriv din email",
+      "newsLetterSubscribButton": "Prenumerera",
+      "contact": {
+        "tele": "Växel",
+        "mail": "Mejl"
+      },
+      "usps": [
+        {
+          "title": "Smakgaranti",
+          "description": "Våra smakexperter hjälper er att få till just den perfekta smaken som ni önskar oavsett om det är vid installation eller om ni vill byta kaffesort med tidens gång. Vi ger oss inte förens ni är 100% nöjda."
+        },
+        {
+          "title": "Driftgaranti",
+          "description": "Vi vet vilka bekymmer en kaffelösning som är ur funktion kan ställa till med på en arbetsplats. Vi arbetar därför för att förebygga bekymmer och tillsammans med våra smakexperter, maskiner och kaffebönor ser till att leva upp till det vi lovar."
+        },
+        {
+          "title": "Hållbarhet",
+          "description": "Vi är övertygade om att vi som företag måste ta ett större ansvar för livs och arbetsvillkor samt vår miljö. Vi har noga valt ut våra leverantörer så vi säkerställer att vi arbetar mot samma mål och att dem erbjuder produkter med certifieringar som vi ser som en självklarhet."
         }
-    },
-    "shop": {},
-    "service": {
-        "title": "Service",
-        "services": [
-            {
-                "title": "Service light",
-                "tagLine": "Tillsammans delar vi på ansvaret!",
-                "description": "Här kommer vi utbilda er hur ni sköter den dagliga rengöringen. Vi kommer även visa er hur ni ska gå tillväga när det är dags för beställning av varor för påfyllnad men självklart är det vi som står för den regelbundna servicen för att hålla bästa kvalitén på smaken."
-            },
-            {
-                "title": "Totalservice",
-                "tagLine": "Det är vi som gör jobbet!",
-                "description": "Väljer ni Totalservice behöver ni varken tänka på påfyllnad eller skötsel - vi på Coffee4partners tar hand om precis allt! Kort och gott är detta det mest bekväma sättet att enbart lägga fokus på sitt arbete och alltid ha den perfekta fika stunden nära till hands."
-            }
-        ],
-        "image": {
-            "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743062928/7E4A6575_lUgupplist-25_480x480_wxz2no.jpg",
-            "alt": "Coffee4partners servar en kaffemaskin"
-        }
-    },
-    "about": {
-        "title": "Om Coffee4partners",
-        "descriptions": [
-            "Vi på Coffee4partners brinner för att ge våra kunder en smakupplevelse och professionell service genom att erbjuda kaffe, snacks och dryck till främst arbetsplatser.",
-            "Vi ser att allt för många lägger ned för mycket tid på att få just det att fungera. Det är något vi vill ändra på och låta företagen fokusera på sina uppgifter och ta för givet att den perfekta koppen och fikat alltid är redo. Det är över en kopp kaffe som de viktiga besluten tas.",
-            "Vi arbetar rikstäckande eftersom vi ser behovet på samtliga arbetsplatser oavsett bransch och vart geografiskt sätt man befinner sig. Vi arbetar ständigt för att utvecklas och stärka våra befintliga positioner samtidigt som vår ambition är att fortsätta växa och inta nya områden.",
-            "Samarbeta med Coffee4partners för en hållbar kaffe och fikalösning!"
-        ],
-        "image": {
-            "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743062928/7E4A6284_lUgupplist-6_480x480_rbgequ.jpg",
-            "alt": "Coffee4partners möter kund"
-        }
-    },
-    "contact": {
-        "title": "Kontakt",
-        "description": "Vi finns här för att hjälpa dig. Vi har den kompetens och erfarenhet som krävs för att anpassa den bästa lösningen efter era önskemål och behov. Skicka oss gärna ett meddelande alternativt ring så kommer vi hjälpa er oavsett vad ni har för fråga. ",
-        "contact": {
-            "phone": "Växel:",
-            "mail": "Mejl:",
-            "staffheader": "Personal",
-            "staffs": [
-                {
-                    "worktitle": "VD",
-                    "name": "Sebastian Elovsson Halling",
-                    "mail": {
-                        "address": "sebastian@coffee4partners.com",
-                        "href": "mailto:sebastian@coffee4partners.com"
-                    },
-                    "phone": {
-                        "nr": "0706-91 71 63",
-                        "href": "tel:0706917163"
-                    },
-                    "image": {
-                        "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743062928/Sebastian_webb_480x480_uxhfi1.jpg",
-                        "alt": "bild på personal"
-                    }
-                }
-            ]
-        }
-    },
-    "career": {
-        "title": "Jobba hos oss",
-        "subTitle": "Är du vår nästa stjärna?",
-        "descriptions": [
-            "Här kan du enkelt skicka in en ansökan till oss. Det gör du genom att skicka ett mejl till info@coffee4partners.com alternativt direkt i fältet nedan.",
-            "Varmt välkommen med din ansökan!"
-        ]
-    },
-    "components": {
-        "form": {
-            "fields": [
-                {
-                    "name": "name",
-                    "label": "Förnamn",
-                    "type": "text",
-                    "required": true
-                },
-                {
-                    "name": "email",
-                    "label": "E-post",
-                    "type": "email",
-                    "required": true
-                },
-                {
-                    "name": "phone",
-                    "label": "Telefon",
-                    "type": "tel",
-                    "required": true
-                },
-                {
-                    "name": "message",
-                    "label": "Meddelande",
-                    "type": "textarea",
-                    "required": true
-                }
-            ],
-            "submitButton": {
-                "send": "Skicka",
-                "sent": "Skickat"
-            }
-        }
+      ]
     }
+  },
+  "landingPage": {
+    "machines": [
+      {
+        "title": "Kaffelösningar",
+        "description": "Med kvalité och flexibiltet i fokus. Vi hjälper er att få en helt egen barista på arbetsplatsen som alltid är redo.",
+        "cta": {
+          "text": "SE MER",
+          "href": "/shop/FINNS INTE ÄNNU"
+        },
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743062927/7E4A6472_lUgupplist-19_300x_syge3u.jpg",
+          "alt": "kaffe automat"
+        }
+      },
+      {
+        "title": "Vattenautomater",
+        "description": "Med hög kvalité och stort fokus på design för att enkelt kunna vara en accessoar på företaget.",
+        "cta": {
+          "text": "SE MER",
+          "href": "/shop/FINNS INTE ÄNNU"
+        },
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743409051/vatten-automat_kqjbmn.webp",
+          "alt": "vatten automat"
+        }
+      },
+      {
+        "title": "Varuautomater",
+        "description": "Vi leverar varuautomatslösningar med syftet enkelt, gott och tillgängligt för ett godare arbetsliv",
+        "cta": {
+          "text": "SE MER",
+          "href": "/shop/FINNS INTE ÄNNU"
+        },
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743409051/varuautomat_st6qgs.webp",
+          "alt": "varuautomat"
+        }
+      }
+    ],
+    "descriptions": [
+      "Kaffe är något som formats till en självklarhet på våra arbetsplatser. Vi ser dock att allt för många lägger ned för mycket tid på att få just det att fungera. Vi vill låta er fokusera på era uppgifter och ta för givet att den perfekta koppen alltid är redo. Det är över en kopp kaffe som de viktiga besluten tas.",
+      "Samarbeta med Coffee4partners för en hållbar kaffe och fikalösning!"
+    ],
+    "partnersLogos": [
+      {
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064848/zprof-logotyp_180x_mboz5s.avif",
+          "alt": "zoegas logo"
+        }
+      },
+      {
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064847/2_180x_qbwkwt.avif",
+          "alt": "lavazza logo"
+        }
+      },
+      {
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064846/arvid-nordquist_nio7kp.avif",
+          "alt": "arvid nordquist logo"
+        }
+      },
+      {
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064846/l%C3%B6fbergs_zunugm.avif",
+          "alt": "löfbergs logo"
+        }
+      },
+      {
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064845/BKI_kaffe_sverige_180x_efyjub.avif",
+          "alt": "bki kaffe logo"
+        }
+      }
+    ],
+    "shopLinksTitle": "Tillbehör och övrigt",
+    "shopProductLinks": [
+      {
+        "title": "Kyld dryck",
+        "href": "",
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064845/ramlosa_flader_lime_33cl_360x_k8prcc.webp",
+          "alt": "ramlösa 33cl burk"
+        }
+      },
+      {
+        "title": "Snacks och mellanmål",
+        "href": "",
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064844/twix_pqhzdo.webp",
+          "alt": "twix snacks bar"
+        }
+      },
+      {
+        "title": "Te",
+        "href": "",
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064843/lipton_forest_fruits_p_sar_360x_mij2df.webp",
+          "alt": "lipon te"
+        }
+      },
+      {
+        "title": "Filterbryggare",
+        "href": "",
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064843/kaffebryggare_z9rre9.webp",
+          "alt": "filterbryggare"
+        }
+      },
+      {
+        "title": "Tillbehör",
+        "href": "",
+        "image": {
+          "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064843/tillbeh%C3%B6r_eihiep.webp",
+          "alt": "hushållspapper"
+        }
+      }
+    ],
+    "serviceLink": {
+      "title": "SERVICE",
+      "tagline": "Välj service light eller totalservice",
+      "description": "Låt oss utbilda er att ta hand om den dagliga rengöringen och lägga beställningar, eller lämna över ansvaret till oss. Vi ser såklart alltid till att sköta den regelbundna servicen som behövs, oavsett vilket serviceavtal ni väljer.",
+      "cta": {
+        "text": "LÄS MER",
+        "href": "/service"
+      },
+      "image": {
+        "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064843/pour-over-coffee-competition_1800x_ymvwir.webp",
+        "alt": "servitris förbereder kaffe"
+      }
+    }
+  },
+  "shop": {},
+  "service": {
+    "title": "Service",
+    "services": [
+      {
+        "title": "Service light",
+        "tagLine": "Tillsammans delar vi på ansvaret!",
+        "description": "Här kommer vi utbilda er hur ni sköter den dagliga rengöringen. Vi kommer även visa er hur ni ska gå tillväga när det är dags för beställning av varor för påfyllnad men självklart är det vi som står för den regelbundna servicen för att hålla bästa kvalitén på smaken."
+      },
+      {
+        "title": "Totalservice",
+        "tagLine": "Det är vi som gör jobbet!",
+        "description": "Väljer ni Totalservice behöver ni varken tänka på påfyllnad eller skötsel - vi på Coffee4partners tar hand om precis allt! Kort och gott är detta det mest bekväma sättet att enbart lägga fokus på sitt arbete och alltid ha den perfekta fika stunden nära till hands."
+      }
+    ],
+    "image": {
+      "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743062928/7E4A6575_lUgupplist-25_480x480_wxz2no.jpg",
+      "alt": "Coffee4partners servar en kaffemaskin"
+    }
+  },
+  "about": {
+    "title": "Om Coffee4partners",
+    "descriptions": [
+      "Vi på Coffee4partners brinner för att ge våra kunder en smakupplevelse och professionell service genom att erbjuda kaffe, snacks och dryck till främst arbetsplatser.",
+      "Vi ser att allt för många lägger ned för mycket tid på att få just det att fungera. Det är något vi vill ändra på och låta företagen fokusera på sina uppgifter och ta för givet att den perfekta koppen och fikat alltid är redo. Det är över en kopp kaffe som de viktiga besluten tas.",
+      "Vi arbetar rikstäckande eftersom vi ser behovet på samtliga arbetsplatser oavsett bransch och vart geografiskt sätt man befinner sig. Vi arbetar ständigt för att utvecklas och stärka våra befintliga positioner samtidigt som vår ambition är att fortsätta växa och inta nya områden.",
+      "Samarbeta med Coffee4partners för en hållbar kaffe och fikalösning!"
+    ],
+    "image": {
+      "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743062928/7E4A6284_lUgupplist-6_480x480_rbgequ.jpg",
+      "alt": "Coffee4partners möter kund"
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "description": "Vi finns här för att hjälpa dig. Vi har den kompetens och erfarenhet som krävs för att anpassa den bästa lösningen efter era önskemål och behov. Skicka oss gärna ett meddelande alternativt ring så kommer vi hjälpa er oavsett vad ni har för fråga. ",
+    "contact": {
+      "phone": "Växel:",
+      "mail": "Mejl:",
+      "staffheader": "Personal",
+      "staffs": [
+        {
+          "worktitle": "VD",
+          "name": "Sebastian Elovsson Halling",
+          "mail": {
+            "address": "sebastian@coffee4partners.com",
+            "href": "mailto:sebastian@coffee4partners.com"
+          },
+          "phone": {
+            "nr": "0706-91 71 63",
+            "href": "tel:0706917163"
+          },
+          "image": {
+            "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743062928/Sebastian_webb_480x480_uxhfi1.jpg",
+            "alt": "bild på personal"
+          }
+        }
+      ]
+    }
+  },
+  "career": {
+    "title": "Jobba hos oss",
+    "subTitle": "Är du vår nästa stjärna?",
+    "descriptions": [
+      "Här kan du enkelt skicka in en ansökan till oss. Det gör du genom att skicka ett mejl till info@coffee4partners.com alternativt direkt i fältet nedan.",
+      "Varmt välkommen med din ansökan!"
+    ]
+  },
+  "components": {
+    "form": {
+      "fields": [
+        {
+          "name": "name",
+          "label": "Förnamn",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "email",
+          "label": "E-post",
+          "type": "email",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "label": "Telefon",
+          "type": "tel",
+          "required": true
+        },
+        {
+          "name": "message",
+          "label": "Meddelande",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "submitButton": {
+        "send": "Skicka",
+        "sent": "Skickat"
+      }
+    }
+  }
 }
