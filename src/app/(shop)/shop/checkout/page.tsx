@@ -157,8 +157,8 @@ export default function CheckoutPage() {
           zone: shippingZone,
         },
         company: {
-          name: "Torup Service AB",
-          address: "Torupvägen 1",
+          name: "Coffee4partners",
+          address: "adress???",
           postalCode: "123 45",
           city: "Stockholm",
           country: "Sweden",
@@ -211,13 +211,13 @@ export default function CheckoutPage() {
             "Det saknas information för att skapa din beställning. Vänligen kontrollera dina uppgifter.";
         } else if (error.message.includes("e-postservern")) {
           errorMessage =
-            "Vi har problem med att skicka din faktura. Kontakta vår kundtjänst på support@torupservice.se eller ring 0123-456789 så hjälper vi dig med din order.";
+            "Vi har problem med att skicka din faktura. Kontakta vår kundtjänst på support@coffee4partners.se eller ring 0123-456789 så hjälper vi dig med din order.";
         } else if (error.message.includes("ansluta")) {
           errorMessage =
-            "Vi har problem med att skicka din faktura. Kontakta vår kundtjänst på support@torupservice.se eller ring 0123-456789 så hjälper vi dig med din order.";
+            "Vi har problem med att skicka din faktura. Kontakta vår kundtjänst på support@coffee4partners.se eller ring 0123-456789 så hjälper vi dig med din order.";
         } else {
           errorMessage =
-            "Ett oväntat fel uppstod. Vänligen försök igen eller kontakta vår kundtjänst på support@torupservice.se om problemet kvarstår.";
+            "Ett oväntat fel uppstod. Vänligen försök igen eller kontakta vår kundtjänst på support@coffee4partners.se om problemet kvarstår.";
         }
 
         // Add technical details for developers in development mode
@@ -235,7 +235,7 @@ export default function CheckoutPage() {
         toast.error("Det uppstod ett problem med din beställning");
       } else {
         errorMessage =
-          "Ett oväntat fel uppstod. Vänligen försök igen eller kontakta vår kundtjänst på support@torupservice.se om problemet kvarstår.";
+          "Ett oväntat fel uppstod. Vänligen försök igen eller kontakta vår kundtjänst på support@coffee4partners.se om problemet kvarstår.";
         toast.error("Det uppstod ett problem med din beställning");
       }
 
@@ -564,12 +564,12 @@ export default function CheckoutPage() {
                     <span className="text-lg sm:text-xl font-bold text-primary">
                       {shippingCost
                         ? formatPrice(
-                            items.reduce(
-                              (acc, item) => acc + item.price * item.quantity,
-                              0,
-                            ) +
-                              shippingCost / 100,
-                          )
+                          items.reduce(
+                            (acc, item) => acc + item.price * item.quantity,
+                            0,
+                          ) +
+                          shippingCost / 100,
+                        )
                         : "-"}
                     </span>
                   </div>

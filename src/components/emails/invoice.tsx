@@ -98,7 +98,7 @@ export const InvoiceEmail = ({
 
           <Section style={ctaSection}>
             <Text style={textCenter}>Har du frågor om din beställning?</Text>
-            <Button style={button} href="mailto:support@torupservice.se">
+            <Button style={button} href="mailto:support@coffee4partners.se">
               Kontakta kundtjänst
             </Button>
           </Section>

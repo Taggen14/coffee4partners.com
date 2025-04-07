@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import content from "@/app/sv.json";
 import { Check, Search, ShoppingCart, User } from "lucide-react";
 import { CldImage } from "next-cloudinary";
@@ -8,11 +8,13 @@ import Navbar from "./navbar";
 import NavbarMobile from "./navbar-mobile";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { SearchBar } from "../search-test/search-bar";
 
 const Header = () => {
   const { usps, landingPage } = content.layout.header;
   const pathname = usePathname();
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   return (
     <header
@@ -44,7 +46,13 @@ const Header = () => {
         </div>
         <div className="flex gap-5">
           <span>
-            <Search />
+            {/* TEST SEARCH */}
+            <Search
+              className="hover:cursor-pointer hover:text-secondary-foreground/70"
+              onClick={() => setIsSearchOpen((prev) => !prev)} />
+            {
+              isSearchOpen && <SearchBar isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />
+            }
           </span>
           <span>
             <User />

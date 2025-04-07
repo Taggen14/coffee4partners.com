@@ -239,7 +239,7 @@ export const InvoicePdf = ({ invoiceData, orderNumber }: InvoicePdfProps) => {
               Tack för att du handlar hos {company.name}!
             </Text>
             <Text style={text}>
-              Vid frågor, kontakta oss på support@torupservice.se
+              Vid frågor, kontakta oss på support@coffee4partners.se
             </Text>
           </Section>
         </Container>

@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Path, useForm } from "react-hook-form";
@@ -15,7 +17,8 @@ import {
 import { Input } from "@/components/ui/input";
 import content from "@/app/sv.json";
 import { Textarea } from "./ui/textarea";
-import { Check } from "lucide-react";
+import { Check, LoaderCircle } from "lucide-react";
+import { toast } from "sonner";
 
 interface FormTemplateProps {
   subject: string;
@@ -23,7 +26,8 @@ interface FormTemplateProps {
 
 const FormTemplate = ({ subject }: FormTemplateProps) => {
   const { fields, submitButton } = content.components.form;
-  const [isSent, SetIsSent] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -35,13 +39,36 @@ const FormTemplate = ({ subject }: FormTemplateProps) => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log({ ...values, subject: subject });
+    try {
+      setIsLoading(true);
+      const response = await fetch("/api/email/contact-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
-    // SKICKA TILL MAIL
+      const data = await response.json();
 
-    form.reset();
-    SetIsSent(true);
+      if (!response.ok) {
+        throw new Error(data.error || "Något gick fel");
+      }
+      setIsLoading(false);
+      toast("Ditt meddelande har skickats!")
+      setIsSent(true);
+      setTimeout(() => {
+        form.reset();
+        setIsSent(false);
+      }, 5000)
+    } catch (error) {
+      console.error("Error:", error);
+      toast("Något gick fel ditt meddelande har inte skickats, kontakta oss gärna via telefon istället!")
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -81,7 +108,8 @@ const FormTemplate = ({ subject }: FormTemplateProps) => {
           </div>
         ))}
         {!isSent ? (
-          <Button variant={"default"} type="submit">
+          <Button variant={"default"} type="submit" className="flex gap-1">
+            {isLoading && <LoaderCircle className="h-6 w-6 animate-spin text-muted-foreground" />}
             {submitButton.send}
           </Button>
         ) : (
