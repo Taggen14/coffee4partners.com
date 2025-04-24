@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Products",
+  title: "Barnvagnsslotet Admin",
   description: "Manage your products",
 };
 

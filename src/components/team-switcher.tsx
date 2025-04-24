@@ -14,9 +14,9 @@ import {
 } from "@/components/ui/sidebar";
 
 const activeTeam = {
-  name: "Coffee4partners",
+  name: "Barnvagnsslottet",
   logo: GalleryVerticalEnd,
-  plan: "Enterprise",
+  plan: "",
 };
 
 export function TeamSwitcher() {

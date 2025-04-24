@@ -8,9 +8,9 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { useChat } from "@/hooks/use-chat";
 import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { useChat } from "@/hooks/use-chat";
 
 export default function InquiryPage() {
   const router = useRouter();

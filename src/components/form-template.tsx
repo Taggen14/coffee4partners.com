@@ -1,10 +1,9 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Path, useForm } from "react-hook-form";
 import { z } from "zod";
-import { formSchema } from "@/formSchema/form-schema";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -19,6 +18,7 @@ import content from "@/app/sv.json";
 import { Textarea } from "./ui/textarea";
 import { Check, LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
+import { contactFormSchema } from "@/formSchema/contact-form-schema";
 
 interface FormTemplateProps {
   subject: string;
@@ -29,8 +29,8 @@ const FormTemplate = ({ subject }: FormTemplateProps) => {
   const [isSent, setIsSent] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof contactFormSchema>>({
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -39,7 +39,7 @@ const FormTemplate = ({ subject }: FormTemplateProps) => {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof contactFormSchema>) {
     console.log({ ...values, subject: subject });
     try {
       setIsLoading(true);
@@ -57,15 +57,17 @@ const FormTemplate = ({ subject }: FormTemplateProps) => {
         throw new Error(data.error || "Något gick fel");
       }
       setIsLoading(false);
-      toast("Ditt meddelande har skickats!")
+      toast("Ditt meddelande har skickats!");
       setIsSent(true);
       setTimeout(() => {
         form.reset();
         setIsSent(false);
-      }, 5000)
+      }, 5000);
     } catch (error) {
       console.error("Error:", error);
-      toast("Något gick fel ditt meddelande har inte skickats, kontakta oss gärna via telefon istället!")
+      toast(
+        "Något gick fel ditt meddelande har inte skickats, kontakta oss gärna via telefon istället!",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -79,7 +81,7 @@ const FormTemplate = ({ subject }: FormTemplateProps) => {
             {fieldData.type === "textarea" ? (
               <FormField
                 control={form.control}
-                name={fieldData.name as Path<z.infer<typeof formSchema>>}
+                name={fieldData.name as Path<z.infer<typeof contactFormSchema>>}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{fieldData.label}</FormLabel>
@@ -93,7 +95,7 @@ const FormTemplate = ({ subject }: FormTemplateProps) => {
             ) : (
               <FormField
                 control={form.control}
-                name={fieldData.name as Path<z.infer<typeof formSchema>>}
+                name={fieldData.name as Path<z.infer<typeof contactFormSchema>>}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{fieldData.label}</FormLabel>
@@ -109,7 +111,9 @@ const FormTemplate = ({ subject }: FormTemplateProps) => {
         ))}
         {!isSent ? (
           <Button variant={"default"} type="submit" className="flex gap-1">
-            {isLoading && <LoaderCircle className="h-6 w-6 animate-spin text-muted-foreground" />}
+            {isLoading && (
+              <LoaderCircle className="h-6 w-6 animate-spin text-muted-foreground" />
+            )}
             {submitButton.send}
           </Button>
         ) : (

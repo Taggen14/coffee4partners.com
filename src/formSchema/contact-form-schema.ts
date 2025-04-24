@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const formSchema = z.object({
+export const contactFormSchema = z.object({
   name: z
     .string()
     .min(2, "Förnamn är obligatoriskt och måste innehålla minst 2 tecken"),

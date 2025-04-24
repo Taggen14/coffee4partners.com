@@ -61,7 +61,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { cn } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 import {
   Sheet,
   SheetContent,
@@ -194,10 +194,10 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
         const productIds = selectedRows.map((row) => row.original.id);
         await deleteProducts.mutateAsync(productIds);
         table.resetRowSelection();
-        toast.success(`${selectedRows.length} product(s) deleted successfully`);
+        toast.success(`${selectedRows.length} produkt(er) raderades`);
       } catch (error) {
         console.error("Delete error:", error);
-        toast.error("Failed to delete products");
+        toast.error("Misslyckade att radera produkt(er)");
       }
     },
     [deleteProducts],
@@ -206,7 +206,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
   const handleBulkDelete = async () => {
     const selectedRows = table.getSelectedRowModel().rows;
     if (selectedRows.length === 0) {
-      toast.error("No products selected");
+      toast.error("Inga produkter valda");
       return;
     }
 
@@ -283,7 +283,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
               }
               className="whitespace-nowrap"
             >
-              Product Name
+              Produkt Namn
               <ArrowUpDown className="ml-2 h-4 w-4" />
             </Button>
           );
@@ -312,7 +312,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
       {
         id: "category",
         accessorFn: (row) => row.category.name,
-        header: "Category",
+        header: "Kategori",
         cell: ({ row }) => {
           return (
             <Badge variant="secondary" className="whitespace-nowrap">
@@ -331,17 +331,14 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                 column.toggleSorting(column.getIsSorted() === "asc")
               }
             >
-              Price
+              Pris
               <ArrowUpDown className="ml-2 h-4 w-4" />
             </Button>
           );
         },
         cell: ({ row }) => {
           const price = parseFloat(row.getValue("price"));
-          const formatted = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "EUR",
-          }).format(price);
+          const formatted = formatPrice(price);
           return <span className="font-medium tabular-nums">{formatted}</span>;
         },
         filterFn: (row, id, value: { min: number; max: number }) => {
@@ -362,10 +359,10 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
               className="whitespace-nowrap"
             >
               {stock === 0
-                ? "Out of stock"
+                ? "Slut i Lager"
                 : stock <= 10
-                  ? "Low stock"
-                  : "In stock"}
+                  ? "Få i Lager"
+                  : "I Lager"}
               <span className="ml-1 opacity-70">({stock})</span>
             </Badge>
           );
@@ -380,7 +377,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
       },
       {
         accessorKey: "createdAt",
-        header: "Created",
+        header: "Skapad",
         cell: ({ row }) => {
           return (
             <span className="text-muted-foreground whitespace-nowrap">
@@ -430,7 +427,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                       <Pencil className="h-4 w-4" />
                     </Button>
                   </TooltipTrigger>
-                  <TooltipContent>Quick edit</TooltipContent>
+                  <TooltipContent>Redigera</TooltipContent>
                 </Tooltip>
               </TooltipProvider>
             </div>
@@ -451,29 +448,29 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="h-8 w-8 p-0">
-                  <span className="sr-only">Open menu</span>
+                  <span className="sr-only">Öppna Meny</span>
                   <MoreHorizontal className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-[160px]">
-                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                <DropdownMenuLabel>Åtgärd</DropdownMenuLabel>
                 <DropdownMenuItem
                   onClick={() => handleCopy(product.id, "Product ID")}
                 >
                   <Copy className="mr-2 h-4 w-4" />
-                  Copy ID
+                  Kopiera ID
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={() => setQuickEditProduct(product)}>
                   <Pencil className="mr-2 h-4 w-4" />
-                  Edit
+                  Redigera
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => handleDelete([row])}
                   className="text-red-600 focus:text-red-600"
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
-                  Delete
+                  Radera
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -524,7 +521,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
         )}
         onClick={() => setColumnFilters([])}
       >
-        All
+        Alla
       </Button>
       <Button
         variant="outline"
@@ -536,7 +533,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
         )}
         onClick={() => setColumnFilters([{ id: "stock", value: 0 }])}
       >
-        Out of Stock
+        Slut i Lager
       </Button>
       <Button
         variant="outline"
@@ -563,7 +560,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
           ])
         }
       >
-        Low Stock
+        Få i Lager
       </Button>
     </div>
   );
@@ -574,13 +571,13 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
         <div className="p-3 sm:p-4 border rounded-lg bg-card">
           <div className="text-xs sm:text-sm font-medium text-muted-foreground">
-            Total Products
+            Totalt antal Produkter
           </div>
           <div className="text-lg sm:text-2xl font-bold">{stats.total}</div>
         </div>
         <div className="p-3 sm:p-4 border rounded-lg bg-card">
           <div className="text-xs sm:text-sm font-medium text-muted-foreground">
-            Out of Stock
+            Slut i Lager
           </div>
           <div className="text-lg sm:text-2xl font-bold text-destructive">
             {stats.outOfStock}
@@ -588,7 +585,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
         </div>
         <div className="p-3 sm:p-4 border rounded-lg bg-card">
           <div className="text-xs sm:text-sm font-medium text-muted-foreground">
-            Low Stock
+            Få i Lager
           </div>
           <div className="text-lg sm:text-2xl font-bold text-orange-500">
             {stats.lowStock}
@@ -596,13 +593,10 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
         </div>
         <div className="p-3 sm:p-4 border rounded-lg bg-card">
           <div className="text-xs sm:text-sm font-medium text-muted-foreground">
-            Total Value
+            Totala Antalet
           </div>
           <div className="text-lg sm:text-2xl font-bold text-green-600">
-            {new Intl.NumberFormat("en-US", {
-              style: "currency",
-              currency: "EUR",
-            }).format(stats.totalValue)}
+            {formatPrice(stats.totalValue)}
           </div>
         </div>
       </div>
@@ -611,7 +605,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
         {/* Header Row - Made responsive */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-4">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
-            Products
+            Produkter
           </h2>
           <div className="flex-1 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-end">
             {/* Mobile action buttons */}
@@ -623,7 +617,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                 onClick={() => setOpen(true)}
               >
                 <Plus className="h-4 w-4 mr-2" />
-                Add
+                Lägg Till
               </Button>
               <Button
                 variant="outline"
@@ -634,7 +628,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                 <RefreshCw
                   className={cn("h-4 w-4 mr-2", isRefreshing && "animate-spin")}
                 />
-                Refresh
+                Updatera
               </Button>
               <Sheet>
                 <SheetTrigger asChild>
@@ -644,13 +638,15 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                 </SheetTrigger>
                 <SheetContent>
                   <SheetHeader>
-                    <SheetTitle>Filters & Settings</SheetTitle>
+                    <SheetTitle>Filter & Intällningar</SheetTitle>
                   </SheetHeader>
                   <div className="py-4">
                     <div className="space-y-4">
                       {/* Category filter */}
                       <div>
-                        <label className="text-sm font-medium">Category</label>
+                        <label className="text-sm font-medium">
+                          Kategorier
+                        </label>
                         <Select
                           value={
                             (columnFilters.find((f) => f.id === "category")
@@ -670,7 +666,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                             <SelectValue placeholder="All categories" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="all">All categories</SelectItem>
+                            <SelectItem value="all">Alla Kategorier</SelectItem>
                             {categories.map((category) => (
                               <SelectItem
                                 key={category.id}
@@ -684,9 +680,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                       </div>
                       {/* Price Range */}
                       <div>
-                        <label className="text-sm font-medium">
-                          Price Range
-                        </label>
+                        <label className="text-sm font-medium">Prisspann</label>
                         <div className="flex items-center gap-2 mt-1.5">
                           <Input
                             type="number"
@@ -722,7 +716,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                       {/* Stock Range */}
                       <div>
                         <label className="text-sm font-medium">
-                          Stock Range
+                          Lagerspann
                         </label>
                         <div className="flex items-center gap-2 mt-1.5">
                           <Input
@@ -762,7 +756,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                         className="w-full"
                         onClick={handleAdvancedFilters}
                       >
-                        Apply Filters
+                        Filtrera
                       </Button>
                     </div>
                   </div>
@@ -776,28 +770,26 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                 <RefreshCw
                   className={cn("h-4 w-4 mr-2", isRefreshing && "animate-spin")}
                 />
-                Refresh
+                Updatera
               </Button>
               <Sheet>
                 <SheetTrigger asChild>
                   <Button variant="outline" size="sm">
                     <Settings2 className="h-4 w-4 mr-2" />
-                    Settings
+                    Inställningar
                   </Button>
                 </SheetTrigger>
                 <SheetContent>
                   <SheetHeader>
-                    <SheetTitle>Table Settings</SheetTitle>
+                    <SheetTitle>Tabellinställningar</SheetTitle>
                     <SheetDescription>
-                      Customize how the table looks and behaves
+                      Anpassa hur tabellen ser ut och beter sig
                     </SheetDescription>
                   </SheetHeader>
                   <div className="py-4">
                     <div className="space-y-4">
                       <div>
-                        <h4 className="text-sm font-medium mb-2">
-                          Quick Filters
-                        </h4>
+                        <h4 className="text-sm font-medium mb-2">Filtrera</h4>
                         <div className="flex items-center space-x-2">
                           <Checkbox
                             checked={showQuickFilters}
@@ -806,7 +798,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                             }
                           />
                           <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                            Show quick filters
+                            Visa Filter
                           </label>
                         </div>
                       </div>
@@ -816,15 +808,15 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
               </Sheet>
               <Button variant="outline" size="sm" onClick={handleExport}>
                 <Download className="h-4 w-4 mr-2" />
-                Export
+                Exportera
               </Button>
               <Button variant="outline" size="sm" onClick={handlePrint}>
                 <Printer className="h-4 w-4 mr-2" />
-                Print
+                Skriv Ut
               </Button>
               <Button onClick={() => setOpen(true)}>
                 <Plus className="mr-2 h-4 w-4" />
-                Add Product
+                Lägg Till Produkt
               </Button>
             </div>
           </div>
@@ -838,7 +830,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
           <div className="flex-1 relative">
             <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Search products..."
+              placeholder="Sök efter produkter..."
               value={globalFilter}
               onChange={(e) => setGlobalFilter(e.target.value)}
               className="pl-8"
@@ -865,15 +857,15 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
               </SheetTrigger>
               <SheetContent>
                 <SheetHeader>
-                  <SheetTitle>Advanced Filters</SheetTitle>
+                  <SheetTitle>Avancerad Filtrering</SheetTitle>
                   <SheetDescription>
-                    Set up complex filters for your products
+                    Ställ in avancerade filter för dina produkter
                   </SheetDescription>
                 </SheetHeader>
                 <div className="py-4">
                   <div className="space-y-4">
                     <div>
-                      <label className="text-sm font-medium">Price Range</label>
+                      <label className="text-sm font-medium">Prisspann</label>
                       <div className="flex items-center gap-2 mt-1.5">
                         <Input
                           type="number"
@@ -907,7 +899,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                       </div>
                     </div>
                     <div>
-                      <label className="text-sm font-medium">Stock Range</label>
+                      <label className="text-sm font-medium">Lagerspann</label>
                       <div className="flex items-center gap-2 mt-1.5">
                         <Input
                           type="number"
@@ -943,7 +935,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                   </div>
                   <div className="mt-6">
                     <Button className="w-full" onClick={handleAdvancedFilters}>
-                      Apply Filters
+                      Filtrera
                     </Button>
                   </div>
                 </div>
@@ -969,7 +961,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                 <SelectValue placeholder="All categories" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All categories</SelectItem>
+                <SelectItem value="all">Alla Kategorier</SelectItem>
                 {categories.map((category) => (
                   <SelectItem key={category.id} value={category.name}>
                     {category.name}
@@ -982,11 +974,11 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm">
                   <SlidersHorizontal className="mr-2 h-4 w-4" />
-                  View
+                  Visa
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-[150px]">
-                <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+                <DropdownMenuLabel>Växla Kolumner</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {columns.map((column) => {
                   if (column.id === "select" || column.id === "actions")
@@ -1029,7 +1021,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
         {Object.keys(rowSelection).length > 0 && (
           <div className="flex items-center gap-2 p-4 border rounded-lg bg-muted/50">
             <span className="text-sm font-medium">
-              {Object.keys(rowSelection).length} items selected
+              {Object.keys(rowSelection).length} Valda Produkter
             </span>
             <div className="ml-auto flex items-center gap-2">
               <Button
@@ -1039,7 +1031,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                 className="hidden sm:flex"
               >
                 <ArrowUpFromLine className="h-4 w-4 mr-2" />
-                Export Selected
+                Expotera Valda
               </Button>
               <Button
                 variant="outline"
@@ -1048,7 +1040,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                 className="text-destructive hover:text-destructive"
               >
                 <Trash2 className="h-4 w-4 mr-2" />
-                Delete Selected
+                Radera Valda
               </Button>
             </div>
           </div>
@@ -1113,17 +1105,14 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                   className="text-xs"
                 >
                   {product.stock === 0
-                    ? "Out of stock"
+                    ? "Slut i Lager"
                     : product.stock <= 10
-                      ? "Low stock"
-                      : "In stock"}
+                      ? "Få i Lager"
+                      : "I Lager"}
                 </Badge>
               </div>
               <div className="text-base font-bold mb-3">
-                {new Intl.NumberFormat("en-US", {
-                  style: "currency",
-                  currency: "EUR",
-                }).format(product.price)}
+                {formatPrice(product.price)}
               </div>
               <div className="flex items-center justify-end gap-2">
                 <Button
@@ -1133,7 +1122,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                   onClick={() => setQuickViewProduct(product)}
                 >
                   <Eye className="h-3 w-3 mr-1" />
-                  View
+                  Visa
                 </Button>
                 <Button
                   variant="outline"
@@ -1142,7 +1131,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                   onClick={() => setQuickEditProduct(product)}
                 >
                   <Pencil className="h-3 w-3 mr-1" />
-                  Edit
+                  Redigera
                 </Button>
               </div>
             </div>

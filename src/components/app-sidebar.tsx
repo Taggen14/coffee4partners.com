@@ -3,10 +3,10 @@
 import type * as React from "react";
 import {
   GalleryVerticalEnd,
-  Inbox,
-  LayoutDashboard,
+  // Inbox,
+  // LayoutDashboard,s
   Package,
-  Settings2,
+  // Settings2,
   ShoppingCart,
 } from "lucide-react";
 
@@ -32,97 +32,97 @@ const data = {
     },
   ],
   navMain: [
+    // {
+    //   title: "Dashboard",
+    //   url: "/admin",
+    //   icon: LayoutDashboard,
+    //   items: [
+    //     {
+    //       title: "Overview",
+    //       url: "/admin",
+    //     },
+    //     {
+    //       title: "Analytics",
+    //       url: "/admin/analytics",
+    //     },
+    //   ],
+    // },
     {
-      title: "Dashboard",
-      url: "/admin",
-      icon: LayoutDashboard,
-      items: [
-        {
-          title: "Overview",
-          url: "/admin",
-        },
-        {
-          title: "Analytics",
-          url: "/admin/analytics",
-        },
-      ],
-    },
-    {
-      title: "Products",
+      title: "Produkter",
       url: "/admin/products",
       icon: Package,
       items: [
         {
-          title: "All Products",
+          title: "Alla Produkter",
           url: "/admin/products",
         },
-        {
-          title: "Categories",
-          url: "/admin/products/categories",
-        },
-        {
-          title: "Features",
-          url: "/admin/products/features",
-        },
+        // {
+        //   title: "Categories",
+        //   url: "/admin/products/categories",
+        // },
+        // {
+        //   title: "Features",
+        //   url: "/admin/products/features",
+        // },
       ],
     },
     {
-      title: "Orders",
+      title: "Ordrar",
       url: "/admin/orders",
       icon: ShoppingCart,
       items: [
         {
-          title: "All Orders",
+          title: "Alla Ordrar",
           url: "/admin/orders",
         },
         {
-          title: "Pending",
+          title: "Pågående",
           url: "/admin/orders/pending",
         },
         {
-          title: "Shipped",
+          title: "Levererade",
           url: "/admin/orders/shipped",
         },
       ],
     },
-    {
-      title: "Inquiries",
-      url: "/admin/inquiries",
-      icon: Inbox,
-      items: [
-        {
-          title: "All Inquiries",
-          url: "/admin/inquiries",
-        },
-        {
-          title: "Unread",
-          url: "/admin/inquiries/unread",
-        },
-        {
-          title: "Archived",
-          url: "/admin/inquiries/archived",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "/admin/settings",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "/admin/settings",
-        },
-        {
-          title: "Store",
-          url: "/admin/settings/store",
-        },
-        {
-          title: "Shipping",
-          url: "/admin/settings/shipping",
-        },
-      ],
-    },
+    // {
+    //   title: "Förfrågningar",
+    //   url: "/admin/inquiries",
+    //   icon: Inbox,
+    //   items: [
+    //     {
+    //       title: "Alla Förfrågningar",
+    //       url: "/admin/inquiries",
+    //     },
+    //     {
+    //       title: "Olästa",
+    //       url: "/admin/inquiries/unread",
+    //     },
+    //     {
+    //       title: "Arkiverade",
+    //       url: "/admin/inquiries/archived",
+    //     },
+    //   ],
+    // },
+    // {
+    //   title: "Settings",
+    //   url: "/admin/settings",
+    //   icon: Settings2,
+    //   items: [
+    //     {
+    //       title: "General",
+    //       url: "/admin/settings",
+    //     },
+    //     {
+    //       title: "Store",
+    //       url: "/admin/settings/store",
+    //     },
+    //     {
+    //       title: "Shipping",
+    //       url: "/admin/settings/shipping",
+    //     },
+    //   ],
+    // },
   ],
 };
 
@@ -140,7 +140,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarFooter>
         <NavUser
           user={{
-            name: user?.fullName || "Admin User",
+            name: user?.fullName || "Admin Användare",
             email: user?.emailAddresses[0]?.emailAddress || "",
             avatar: user?.imageUrl || "",
           }}

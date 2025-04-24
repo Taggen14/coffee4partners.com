@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Image as ImageIcon } from "lucide-react";
+import { formatPrice } from "@/lib/utils";
 
 interface ExtendedProduct extends Omit<Product, "price"> {
   price: number;
@@ -36,7 +37,7 @@ export function QuickViewDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[600px] p-0">
         <DialogHeader className="px-6 pt-6">
-          <DialogTitle>Product Details</DialogTitle>
+          <DialogTitle>Produkt Detaljer</DialogTitle>
         </DialogHeader>
         <ScrollArea className="max-h-[80vh]">
           <div className="p-6 space-y-6">
@@ -91,26 +92,23 @@ export function QuickViewDialog({
                     }
                   >
                     {product.stock === 0
-                      ? "Out of stock"
+                      ? "Slut i Lager"
                       : product.stock <= 10
-                        ? "Low stock"
-                        : "In stock"}
+                        ? "Få i Lager"
+                        : "I Lager"}
                     <span className="ml-1 opacity-70">({product.stock})</span>
                   </Badge>
                 </div>
               </div>
 
               <div className="text-3xl font-bold">
-                {new Intl.NumberFormat("en-US", {
-                  style: "currency",
-                  currency: "EUR",
-                }).format(product.price)}
+                {formatPrice(product.price)}
               </div>
 
               <Separator />
 
               <div>
-                <h4 className="font-medium mb-2">Description</h4>
+                <h4 className="font-medium mb-2">Beskrivning</h4>
                 <p className="text-muted-foreground whitespace-pre-wrap">
                   {product.description}
                 </p>
@@ -120,7 +118,7 @@ export function QuickViewDialog({
 
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Created</span>
+                  <span className="text-muted-foreground">Skapad</span>
                   <span>
                     {new Date(product.createdAt).toLocaleDateString(undefined, {
                       year: "numeric",
@@ -130,7 +128,9 @@ export function QuickViewDialog({
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Last Updated</span>
+                  <span className="text-muted-foreground">
+                    Senast Uppdaterad
+                  </span>
                   <span>
                     {new Date(product.updatedAt).toLocaleDateString(undefined, {
                       year: "numeric",
@@ -140,7 +140,7 @@ export function QuickViewDialog({
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Product ID</span>
+                  <span className="text-muted-foreground">Produkt ID</span>
                   <span className="font-mono">{product.id}</span>
                 </div>
               </div>

@@ -29,6 +29,7 @@ import { ImageUpload } from "@/components/ui/image-upload";
 import { CategoryCombobox } from "@/components/ui/category-combobox";
 import { useProducts } from "@/hooks/use-products";
 import { Loader2 } from "lucide-react";
+import { ScrollArea } from "./ui/scroll-area";
 
 const productFormSchema = z.object({
   name: z.string().min(1, "Namn krävs"),
@@ -76,7 +77,7 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
       onOpenChange(false);
     } catch (error) {
       console.error(error);
-      toast.error("Failed to create product");
+      toast.error("Misslyckades att skapa produkt");
     } finally {
       setLoading(false);
     }
@@ -84,7 +85,7 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="sm:max-w-[600px] overflow-y-auto">
         <DialogHeader className="space-y-1">
           <DialogTitle className="text-2xl font-bold">Ny produkt</DialogTitle>
           <DialogDescription className="text-base">
@@ -92,76 +93,23 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
             nedan.
           </DialogDescription>
         </DialogHeader>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <div className="grid gap-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-base">Produktnamn</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Ange produktens namn"
-                        className="h-11 text-base"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="description"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-base">Beskrivning</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Beskriv produkten"
-                        className="min-h-[120px] text-base resize-none"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className="grid grid-cols-2 gap-6">
+        <ScrollArea className="h-[calc(70dvh-32px)] pr-4">
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              id="create-product-form"
+              className="space-y-6"
+            >
+              <div className="grid gap-6">
                 <FormField
                   control={form.control}
-                  name="price"
+                  name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-base">Pris</FormLabel>
-                      <FormControl>
-                        <div className="relative">
-                          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
-                            kr
-                          </span>
-                          <Input
-                            type="number"
-                            step="0.01"
-                            className="h-11 pl-12 text-base"
-                            {...field}
-                          />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="stock"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-base">Lager</FormLabel>
+                      <FormLabel className="text-base">Produktnamn</FormLabel>
                       <FormControl>
                         <Input
-                          type="number"
+                          placeholder="Ange produktens namn"
                           className="h-11 text-base"
                           {...field}
                         />
@@ -170,64 +118,124 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
                     </FormItem>
                   )}
                 />
+                <FormField
+                  control={form.control}
+                  name="description"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-base">Beskrivning</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Beskriv produkten"
+                          className="min-h-[120px] text-base resize-none"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <div className="grid grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="price"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-base">Pris</FormLabel>
+                        <FormControl>
+                          <div className="relative">
+                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+                              kr
+                            </span>
+                            <Input
+                              type="number"
+                              step="0.01"
+                              className="h-11 pl-12 text-base"
+                              {...field}
+                            />
+                          </div>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="stock"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-base">Lager</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="number"
+                            className="h-11 text-base"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <FormField
+                  control={form.control}
+                  name="categoryId"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-base">Kategori</FormLabel>
+                      <FormControl>
+                        <CategoryCombobox
+                          value={field.value}
+                          onChange={field.onChange}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="images"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-base">Produktbilder</FormLabel>
+                      <FormControl>
+                        <ImageUpload
+                          value={field.value || []}
+                          disabled={loading}
+                          onChange={(urls) => field.onChange(urls)}
+                          onRemove={(url) =>
+                            field.onChange(
+                              field.value?.filter((current) => current !== url),
+                            )
+                          }
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </div>
-              <FormField
-                control={form.control}
-                name="categoryId"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-base">Kategori</FormLabel>
-                    <FormControl>
-                      <CategoryCombobox
-                        value={field.value}
-                        onChange={field.onChange}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="images"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-base">Produktbilder</FormLabel>
-                    <FormControl>
-                      <ImageUpload
-                        value={field.value || []}
-                        disabled={loading}
-                        onChange={(urls) => field.onChange(urls)}
-                        onRemove={(url) =>
-                          field.onChange(
-                            field.value?.filter((current) => current !== url),
-                          )
-                        }
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <DialogFooter className="pt-4">
-              <Button
-                type="submit"
-                disabled={loading}
-                className="h-11 px-8 text-base"
-              >
-                {loading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Skapar produkt...
-                  </>
-                ) : (
-                  "Skapa produkt"
-                )}
-              </Button>
-            </DialogFooter>
-          </form>
-        </Form>
+            </form>
+          </Form>
+        </ScrollArea>
+        <DialogFooter className="pt-4">
+          <Button
+            type="submit"
+            form="create-product-form"
+            disabled={loading}
+            className="h-11 px-8 text-base"
+          >
+            {loading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Skapar produkt...
+              </>
+            ) : (
+              "Skapa produkt"
+            )}
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
