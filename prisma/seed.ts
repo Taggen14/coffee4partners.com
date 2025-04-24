@@ -33,8 +33,7 @@ const categories = [
 const products = [
   {
     name: "Esprecious 11L",
-    description: "",
-    longDescription: `
+    description: `
       <div class="product-description">
         <h2>Om Esprecious 11L</h2>
         <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
@@ -74,8 +73,7 @@ const products = [
   },
   {
     name: "Esprecious 221L",
-    description: "",
-    longDescription: `
+    description: `
       <div class="product-description">
         <h2>Om Esprecious 11L</h2>
         <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
@@ -115,8 +113,7 @@ const products = [
   },
   {
     name: "Esprecious 33L",
-    description: "",
-    longDescription: `
+    description: `
       <div class="product-description">
         <h2>Om Esprecious 11L</h2>
         <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
@@ -156,8 +153,7 @@ const products = [
   },
   {
     name: "Esprecious 44L",
-    description: "",
-    longDescription: `
+    description: `
       <div class="product-description">
         <h2>Om Esprecious 11L</h2>
         <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
@@ -197,8 +193,7 @@ const products = [
   },
   {
     name: "Esprecious 33L",
-    description: "",
-    longDescription: `
+    description: `
       <div class="product-description">
         <h2>Om Esprecious 11L</h2>
         <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
@@ -238,8 +233,7 @@ const products = [
   },
   {
     name: "Esprecious 44L",
-    description: "",
-    longDescription: `
+    description: `
       <div class="product-description">
         <h2>Om Esprecious 11L</h2>
         <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
@@ -279,8 +273,7 @@ const products = [
   },
   {
     name: "Esprecious 55L",
-    description: "",
-    longDescription: `
+    description: `
       <div class="product-description">
         <h2>Om Esprecious 11L</h2>
         <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
@@ -320,8 +313,49 @@ const products = [
   },
   {
     name: "Esprecious 66L",
-    description: "",
-    longDescription: `
+    description: `
+      <div class="product-description">
+        <h2>Om Esprecious 11L</h2>
+        <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
+        
+        <h3>Egenskaper Esprecious 11L</h3>
+        <ul>
+          <li>Användarvänlig: intuitiv pekskärm</li>
+          <li>Böna-till-kopp: brygger med färska kaffebönor</li>
+          <li>Kaffespecialiteter som cappuccino bereds med färsk mjölk</li>
+          <li>Dubbelt utlopp: serverar två drycker samtidigt</li>
+          <li>Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion</li>
+          <li>Separata inställningar av temperatur, vatten/kaffeförhållande, etc.</li>
+          <li>Service- och underhållsvänlig</li>
+          <li>Hög kvalitet i koppen tack vare automatiskt sköljprogram</li>
+          <li>Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll</li>
+          <li>Separat utlopp för hetvatten för bl.a. te</li>
+        </ul>
+
+        <h3>Specifikationer</h3>
+        <ul>
+          <li>Vattentrycket: 2 Bar</li>
+          <li>Vattenanslutning: Ja</li>
+          <li>Färg: Stainless dark</li>
+          <li>Anslutning: 230V~ 50/60Hz 1650W</li>
+          <li>Mått (B × D × H): 240 × 460 × 630 mm</li>
+        </ul>
+      </div>
+    `,
+    price: 12345,
+    stock: 50,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-540x_rmlqhk.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-sideview-540x_frtpqv.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-open-540x_utt3rl.webp",
+    ],
+    category: "Varm dryck",
+  },
+
+
+  {
+    name: "Esprecious 66L",
+    description: `
       <div class="product-description">
         <h2>Om Esprecious 11L</h2>
         <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
@@ -399,7 +433,7 @@ async function main() {
         data: {
           name: product.name,
           description: product.description,
-          longDescription: product.longDescription,
+          // longDescription: product.longDescription,
           price: product.price,
           stock: product.stock,
           images: product.images,

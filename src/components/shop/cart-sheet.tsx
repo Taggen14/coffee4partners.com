@@ -269,7 +269,7 @@ export function CartSheet() {
                 </div>
               </div>
 
-              <div className="w-full flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <div className="w-full flex flex-col gap-2 sm:gap-3">
                 <Button
                   variant="outline"
                   asChild

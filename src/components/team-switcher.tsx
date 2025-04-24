@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/sidebar";
 
 const activeTeam = {
-  name: "Barnvagnsslottet",
+  name: "Coffee4partners",
   logo: GalleryVerticalEnd,
   plan: "",
 };

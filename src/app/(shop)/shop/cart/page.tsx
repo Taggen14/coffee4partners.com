@@ -350,12 +350,12 @@ export default function CartPage() {
                       Snabb leverans
                     </span>
                   </div>
-                  <div className="flex items-center gap-1.5 sm:gap-2">
+                  {/* <div className="flex items-center gap-1.5 sm:gap-2">
                     <Package className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary" />
                     <span className="text-[10px] sm:text-xs text-muted-foreground">
                       Leverans inom 1-3 arbetsdagar
                     </span>
-                  </div>
+                  </div> */}
                   <div className="flex items-center gap-1.5 sm:gap-2">
                     <ShieldCheck className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary" />
                     <span className="text-[10px] sm:text-xs text-muted-foreground">

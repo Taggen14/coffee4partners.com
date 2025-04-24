@@ -144,8 +144,7 @@ export default function ProductPage() {
                   product.stock > 0
                     ? "bg-primary/10 text-primary hover:bg-primary/20"
                     : "",
-                )}
-              >
+                )}>
                 <span
                   className={cn(
                     "h-1.5 sm:h-2 w-1.5 sm:w-2 rounded-full mr-1.5 sm:mr-2",
@@ -155,7 +154,7 @@ export default function ProductPage() {
                   )}
                 />
                 {product.stock > 0
-                  ? `${product.stock} i lager`
+                  ? `i lager` // ${product.stock}
                   : "Slut i lager"}
               </Badge>
             </div>
@@ -174,10 +173,10 @@ export default function ProductPage() {
               />
 
               {/* Fast delivery notice */}
-              <div className="flex items-center justify-center mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground gap-1.5">
+              {/* <div className="flex items-center justify-center mt-3 sm:mt-4 text-xs sm:text-sm text-muted-foreground gap-1.5">
                 <Truck className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span>Leverans inom 1-3 arbetsdagar</span>
-              </div>
+              </div> */}
             </div>
 
             <Separator className="my-6 sm:my-8" />
@@ -246,7 +245,7 @@ export default function ProductPage() {
                       Lagerstatus
                     </span>
                     <span className="text-sm sm:text-base font-medium">
-                      {product.stock} st tillgängliga
+                      {/* {product.stock} st */} tillgänglig(a)
                     </span>
                   </li>
                 </ul>

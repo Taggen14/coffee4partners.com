@@ -77,7 +77,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
                 {product.description}
               </CardDescription>
             </div>
-            <div className="flex items-center justify-between">
+            {/* <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <span className="text-lg font-semibold text-foreground">
                   {formatPrice(product.price)}
@@ -93,7 +93,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
                   Out of stock
                 </span>
               )}
-            </div>
+            </div> */}
           </CardContent>
           <CardFooter className="p-4 pt-0">
             <AddToCartButton
