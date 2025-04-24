@@ -1,9 +1,9 @@
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/shop/theme-provider";
 import { ShopHeader } from "@/components/shop/header";
 import { ShopFooter } from "@/components/shop/footer";
-import { CartProvider } from "@/components/cart-provider";
+import { CartProvider } from "@/components/shop/cart-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 

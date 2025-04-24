@@ -48,7 +48,7 @@ import {
   DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu";
 import { DataTable } from "@/components/ui/data-table";
-import { ProductDialog } from "@/components/product-dialog";
+import { ProductDialog } from "@/components/admin/product-dialog";
 import { Product } from "@prisma/client";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
@@ -76,8 +76,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { QuickEditDialog } from "@/components/quick-edit-dialog";
-import { QuickViewDialog } from "@/components/quick-view-dialog";
+import { QuickEditDialog } from "@/components/admin/quick-edit-dialog";
+import { QuickViewDialog } from "@/components/admin/quick-view-dialog";
 import { useProducts } from "@/hooks/use-products";
 
 interface TableMeta {
@@ -529,7 +529,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
         className={cn(
           "hover:bg-primary hover:text-primary-foreground",
           columnFilters.some((f) => f.id === "stock" && f.value === 0) &&
-            "bg-primary text-primary-foreground",
+          "bg-primary text-primary-foreground",
         )}
         onClick={() => setColumnFilters([{ id: "stock", value: 0 }])}
       >
@@ -994,7 +994,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                     columnKey === "category"
                       ? "Category"
                       : columnKey.charAt(0).toUpperCase() +
-                        columnKey.slice(1).replace(/([A-Z])/g, " $1");
+                      columnKey.slice(1).replace(/([A-Z])/g, " $1");
 
                   return (
                     <DropdownMenuCheckboxItem

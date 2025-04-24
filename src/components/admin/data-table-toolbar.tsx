@@ -1,15 +1,15 @@
 "use client";
 
 import { Table } from "@tanstack/react-table";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
+} from "../ui/select";
 import { X } from "lucide-react";
 
 interface DataTableToolbarProps<TData> {

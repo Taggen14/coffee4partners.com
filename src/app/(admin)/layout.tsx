@@ -1,7 +1,7 @@
-import { AppSidebar } from "@/components/app-sidebar";
-import { PageContainer } from "@/components/page-container";
-import { SidebarBreadcrumbs } from "@/components/sidebar-breadcrumbs";
-import { SidebarHeader } from "@/components/sidebar-header";
+import { AppSidebar } from "@/components/admin/app-sidebar";
+import { PageContainer } from "@/components/admin/page-container";
+import { SidebarBreadcrumbs } from "@/components/admin/sidebar-breadcrumbs";
+import { SidebarHeader } from "@/components/admin/sidebar-header";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,

@@ -1,4 +1,4 @@
-import { Inquiry } from "@/components/inquiries-data-table";
+import { Inquiry } from "@/components/admin/inquiries-data-table";
 import { useQuery } from "@tanstack/react-query";
 
 async function getInquiries() {

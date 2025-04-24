@@ -1,6 +1,6 @@
 "use client";
 
-import { ProductsDataTable } from "@/components/products-data-table";
+import { ProductsDataTable } from "@/components/admin/products-data-table";
 import { useProducts } from "@/hooks/use-products";
 import { Loader2 } from "lucide-react";
 

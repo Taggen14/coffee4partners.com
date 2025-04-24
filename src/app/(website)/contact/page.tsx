@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import FormTemplate from "@/components/form-template";
+import FormTemplate from "@/components/website/form-template";
 import { usePathname } from "next/navigation";
 import content from "@/app/sv.json";
 import { CldImage } from "next-cloudinary";

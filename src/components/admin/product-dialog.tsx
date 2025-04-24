@@ -29,7 +29,7 @@ import { ImageUpload } from "@/components/ui/image-upload";
 import { CategoryCombobox } from "@/components/ui/category-combobox";
 import { useProducts } from "@/hooks/use-products";
 import { Loader2 } from "lucide-react";
-import { ScrollArea } from "./ui/scroll-area";
+import { ScrollArea } from "../ui/scroll-area";
 
 const productFormSchema = z.object({
   name: z.string().min(1, "Namn krävs"),

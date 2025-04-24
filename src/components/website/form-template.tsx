@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import content from "@/app/sv.json";
-import { Textarea } from "./ui/textarea";
+import { Textarea } from "../ui/textarea";
 import { Check, LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 import { contactFormSchema } from "@/formSchema/contact-form-schema";

@@ -1,14 +1,14 @@
 "use client";
 
 import { Table } from "@tanstack/react-table";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
+} from "../ui/select";
 import { ArrowRight, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
 

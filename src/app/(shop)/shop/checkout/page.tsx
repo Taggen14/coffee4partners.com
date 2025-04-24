@@ -511,8 +511,8 @@ export default function CheckoutPage() {
                     </div>
                   ))}
 
+                  {/*        
                   <div className="w-full h-[1px] bg-gradient-to-r from-border/0 via-border/60 to-border/0 my-3 sm:my-4"></div>
-
                   <div className="flex items-center justify-between">
                     <span className="text-sm sm:text-base text-muted-foreground">
                       Delsumma
@@ -525,8 +525,8 @@ export default function CheckoutPage() {
                         ),
                       )}
                     </span>
-                  </div>
-                  <div className="flex items-center justify-between">
+                  </div> */}
+                  {/* <div className="flex items-center justify-between">
                     <span className="text-sm sm:text-base text-muted-foreground">
                       Frakt
                     </span>
@@ -553,7 +553,7 @@ export default function CheckoutPage() {
                         </span>
                       )}
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="w-full h-[1px] bg-gradient-to-r from-border/0 via-border/60 to-border/0 my-3 sm:my-4"></div>
 
@@ -562,15 +562,15 @@ export default function CheckoutPage() {
                       Totalt
                     </span>
                     <span className="text-lg sm:text-xl font-bold text-primary">
-                      {shippingCost
-                        ? formatPrice(
+                      {/* shippingCost ? */
+                        formatPrice(
                           items.reduce(
                             (acc, item) => acc + item.price * item.quantity,
                             0,
-                          ) +
-                          shippingCost / 100,
+                          )/*  +
+                          shippingCost / 100 */,
                         )
-                        : "-"}
+                        /* : "-" */}
                     </span>
                   </div>
 

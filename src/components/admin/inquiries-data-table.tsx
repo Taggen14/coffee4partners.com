@@ -33,7 +33,7 @@ import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 import * as React from "react";
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
-import { Badge } from "./ui/badge";
+import { Badge } from "../ui/badge";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -258,9 +258,9 @@ export function InquiriesDataTable({ data }: InquiriesDataTableProps) {
                           {header.isPlaceholder
                             ? null
                             : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext(),
-                              )}
+                              header.column.columnDef.header,
+                              header.getContext(),
+                            )}
                         </TableHead>
                       );
                     })}

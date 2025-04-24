@@ -2,7 +2,7 @@
 
 import React from "react";
 import content from "@/app/sv.json";
-import FormTemplate from "@/components/form-template";
+import FormTemplate from "@/components/website/form-template";
 import { usePathname } from "next/navigation";
 
 const Career = () => {

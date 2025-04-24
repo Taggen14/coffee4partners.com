@@ -1,6 +1,6 @@
 "use client";
 
-import { InquiriesDataTable } from "@/components/inquiries-data-table";
+import { InquiriesDataTable } from "@/components/admin/inquiries-data-table";
 import { useInquiries } from "@/hooks/use-inquiries";
 import { Loader2 } from "lucide-react";
 

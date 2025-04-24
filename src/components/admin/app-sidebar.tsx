@@ -8,10 +8,11 @@ import {
   Package,
   // Settings2,
   ShoppingCart,
+  UserRoundPlus,
 } from "lucide-react";
 
-import { NavMain } from "@/components/nav-main";
-import { NavUser } from "@/components/nav-user";
+import { NavMain } from "@/components/admin/nav-main";
+import { NavUser } from "@/components/admin/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -82,6 +83,21 @@ const data = {
         {
           title: "Levererade",
           url: "/admin/orders/shipped",
+        },
+      ],
+    },
+    {
+      title: "Lägg till Kund/Admin",
+      url: "/admin/add-user",
+      icon: UserRoundPlus,
+      items: [
+        {
+          title: "Ny Kund",
+          url: "/admin/add-user/customer",
+        },
+        {
+          title: "Ny Admin",
+          url: "/admin/add-user/admin",
         },
       ],
     },
