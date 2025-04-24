@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ShopHeader } from "@/components/shop/header";
 import { ShopFooter } from "@/components/shop/footer";
+import { CartProvider } from "@/components/cart-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +20,13 @@ export default function ShopLayout({
       )}
     >
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <ShopHeader />
-        <main className="flex p-8 items-center justify-center">{children}</main>
-        <ShopFooter />
+        <CartProvider>
+          {/* CartProvider reads from localstorage */}
+          {" "}
+          <ShopHeader />
+          <main className="flex p-8 items-center justify-center">{children}</main>
+          <ShopFooter />
+        </CartProvider>
       </ThemeProvider>
     </div>
   );

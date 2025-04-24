@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { useCart } from "@/store/use-cart";
+import { useCart, useCartHydration } from "@/store/use-cart";
 import { formatPrice } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import {
@@ -31,13 +31,11 @@ import {
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity } = useCart();
+  const { isHydrated } = useCartHydration();
   const router = useRouter();
-  const [mounted, setMounted] = useState(false);
   const [pageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-
     // Add a slight delay to make the page transition smoother
     const timer = setTimeout(() => {
       setPageLoaded(true);
@@ -56,8 +54,17 @@ export default function CartPage() {
     router.push("/shop/checkout");
   };
 
-  // If not client-side yet, don't show anything to prevent hydration errors
-  if (!mounted) return null;
+  if (!isHydrated) {
+    return (
+      <div className="min-h-[calc(100vh-4rem)] bg-gradient-to-b from-background via-background/98 to-background/95 flex items-center justify-center">
+        <div className="animate-pulse flex flex-col items-center">
+          <ShoppingBag className="h-12 w-12 text-muted-foreground/40 mb-4" />
+          <div className="h-6 w-32 bg-muted-foreground/20 rounded-md mb-2"></div>
+          <div className="h-4 w-48 bg-muted-foreground/10 rounded-md"></div>
+        </div>
+      </div>
+    );
+  }
 
   // If cart is empty, show empty state
   if (items.length === 0) {
@@ -350,12 +357,12 @@ export default function CartPage() {
                       Snabb leverans
                     </span>
                   </div>
-                  {/* <div className="flex items-center gap-1.5 sm:gap-2">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
                     <Package className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary" />
                     <span className="text-[10px] sm:text-xs text-muted-foreground">
                       Leverans inom 1-3 arbetsdagar
                     </span>
-                  </div> */}
+                  </div>
                   <div className="flex items-center gap-1.5 sm:gap-2">
                     <ShieldCheck className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary" />
                     <span className="text-[10px] sm:text-xs text-muted-foreground">
