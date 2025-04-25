@@ -21,7 +21,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { useUser } from "@clerk/nextjs";
-import { TeamSwitcher } from "./team-switcher";
+import { TeamSwitcher } from "@/components/admin/team-switcher";
 
 // This is sample data.
 const data = {

@@ -9,403 +9,314 @@ const prisma = new PrismaClient();
 
 const categories = [
   {
-    name: "Varumärken",
+    name: "Automater",
     description: "Någon beskrivning för dem.",
   },
   {
-    name: "Varm dryck",
+    name: "Förbrukningsvaror",
     description: "Någon beskrivning för dem.",
   },
   {
     name: "Övrigt",
     description: "Någon beskrivning för dem.",
   },
+] as const;
+
+const subCategories = [
   {
-    name: "Kafferosterier",
+    name: "Kaffeautomater",
     description: "Någon beskrivning för dem.",
+    category: "Automater",
   },
   {
-    name: "Fikalösningar",
+    name: "Kaffe",
     description: "Någon beskrivning för dem.",
+    category: "Förbrukningsvaror",
+  },
+  {
+    name: "Snacks",
+    description: "Någon beskrivning för dem.",
+    category: "Övrigt",
   },
 ] as const;
 
 const products = [
+  /* Kaffe */
+  {
+    name: "Arvid Nordquist Green Forest , Hela bönor",
+    vendor: "Arvid Nordquist",
+    description: "MELLANMÖRK - BALANSERAD & FRUKTIG Doft av karamell och mandel. Balanserad smak med ton av fikon. En fruktigt syrlig eftersmak. . Green Forest är dubbelcertifierat med UTZ och  EU Ekologiskt.",
+    productSpecifications: [
+      "LEVERANTÖR Arvid Nordquist AB",
+      "VARUMÄRKE Arvid Nordquist",
+      "FÖRSÄLJNINGSENHET 6x1kg",
+      "ART. NR.4121",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 36 st",
+    ],
+    productAttributes: [],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745563176/GreenForest_720x_crx2fq.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "Arvid Nordquist Ethic Harvest , Hela bönor",
+    vendor: "Arvid Nordquist",
+    description: "MÖRKROST - KRAFTFULL & KRYDDIG Ren doft av nöt. Smaken är fyllig med livlig syrlighet. Kryddig eftersmak med ton av lakrits. Ethic Harvest är trippelcertifierat med Fairtrade, EU Ekologiskt och KRAV",
+    productSpecifications: [
+      "LEVERANTÖR Arvid Nordquist AB",
+      "VARUMÄRKE Arvid Nordquist",
+      "FÖRSÄLJNINGSENHET 6x1kg",
+      "ART. NR.4049",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 36 st",
+    ],
+    productAttributes: [],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745564379/EthicHarvest_720x_tuwydy.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "Arvid Nordquist Highland Nature , Hela bönor",
+    vendor: "Arvid Nordquist",
+    description: "MELLANROST - FRUKTIG & NÖTIG Generös doft av hasselnöt. Rund smak med viss pepprighet. En balanserad och fruktig eftersmak. Highland Nature är trippelcertifierat med Fairtrade, EU Ekologiskt och KRAV",
+    productSpecifications: [
+      "LEVERANTÖR Arvid Nordquist AB",
+      "VARUMÄRKE Arvid Nordquist",
+      "FÖRSÄLJNINGSENHET 6x1kg",
+      "ART. NR.4079",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 36 st",
+    ],
+    productAttributes: [],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745564470/HighlandNature_720x_ik84dw.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "Arvid Nordquist Midnight Grown , Hela bönor",
+    vendor: "Arvid Nordquist",
+    description: "EXTRA MÖRKROST - INTENSIV & KRAFTFULL Intensiv doft. Kraftfull och fyllig smak med inslag av mörk choklad. Lång och generös eftersmak.Midnight Grown är UTZ certifierat.",
+    productSpecifications: [
+      "LEVERANTÖR Arvid Nordquist AB",
+      "VARUMÄRKE Arvid Nordquist",
+      "FÖRSÄLJNINGSENHET 6x1kg",
+      "ART. NR.4034",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 36 st",
+    ],
+    productAttributes: [],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745564542/MidnightGrown_720x_rtrzac.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "Arvid Nordquist Dark Mountain , Hela bönor",
+    vendor: "Arvid Nordquist",
+    description: "MÖRKROST - BÄRIG & FYLLIG Fyllig smak med inslag av björnbär och orientaliska kryddor. Elegant syra och lång eftersmak. Dark Mountain är UTZ certifierat.",
+    productSpecifications: [
+      "LEVERANTÖR Arvid Nordquist AB",
+      "VARUMÄRKE Arvid Nordquist",
+      "FÖRSÄLJNINGSENHET 6x1kg",
+      "ART. NR.4029",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 36 st",
+    ],
+    productAttributes: [],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745564626/dark-mountain_sccsaf.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "Gran Riserva Filter, hela bönor",
+    vendor: "Lavazza",
+    description: "Gran Riserva Filter, hela bönor, från Lavazza för café, hotell, restaurang och kaffebarer. 100 % Arabica-bönor och ljuvliga toner av karamell och kakao som balanseras med det intesiva kaffet. Rökiga toner från den torkade kakon och en sötare profil från karamelliserat socker. Gran Riserva Filter är optimalt för gott bryggkaffe. ",
+    productSpecifications: [
+      "LEVERANTÖR Lavazza Nordic AB",
+      "VARUMÄRKE Lavazza",
+      "FÖRSÄLJNINGSENHET 6x1kg",
+      "ART. NR.3454",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 66 st",
+    ],
+    productAttributes: [
+      "Gran Riserva Filter från Lavazza för café, hotell, restaurang",
+      "Hela bönor för bryggkaffe",
+      "Aromatiska toner av kakao och karamell",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745564825/3454_gran-riserva_720x_aaongi.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "Alteco Espresso, hela bönor",
+    vendor: "Lavazza",
+    description: "Ekologiskt kaffe med hela bönor, Alteco, från Lavazza. En söt och elegant espresso, med aromer av honung och torkad frukt. Kaffet har en rund kakaofinish och bönorna är rostade under en lång tid under låg värme, för en ultimat balans mellan arom och smak. Bönorna härstammar ifrån de finaste sluttningarna i Centralamerika och vackra berg i Afrika. Alteco är ett 100% ekologisk kaffe gjort på både Arabica och Robusta. Kaffet har både EU:s ekologiska certifiering och UTZ, för bättre villkor i landbruket. Ett hållbart och säkert val för din kaffeservering på café, restaurang, hotell, förening eller hotell!",
+    productSpecifications: [
+      "LEVERANTÖR Lavazza Nordic AB",
+      "VARUMÄRKE Lavazza",
+      "FÖRSÄLJNINGSENHET 6x1kg",
+      "ART. NR.2221",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 66 st",
+    ],
+    productAttributes: [
+      "Espresso, hela bönor",
+      "Rostning: Mellan",
+      "Arabica och Robusta (Ekologiska bönor)",
+      "Elegant espresso",
+      "Arom av honung och torkad frukt",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745565029/lavazza-alteco-image_720x_ffurxu.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "Super Gusto Espresso, hela bönor",
+    vendor: "Lavazza",
+    description: "Ett välbalanserat mellanrostat kaffe med en fyllig och omfamnande smak av kryddor och torkad frukt från Lavazza. Fylligheten kommer huvudsakligen från Arabicabönor med inslag av Robustabönor. Kaffet är en UTZ certifierad blandning från odlingar i Västra Sydamerika och Sydöstra Brasilien som framkallar aromer av torkade frukter såsom dadlar samt en kryddig avslutning med en hint av kanel.",
+    productSpecifications: [
+      "LEVERANTÖR Lavazza Nordic AB",
+      "VARUMÄRKE Lavazza",
+      "FÖRSÄLJNINGSENHET 6x1kg",
+      "ART. NR.4517",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 66 st",
+    ],
+    productAttributes: [
+      "Espresso, hela bönor",
+      "Rostning: Mellan",
+      "Smak av kryddor och torkad frukt",
+      "60% Arabica, 40% Robusta",
+      "UTZ certifierat kaffe",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745565157/4517_super-gusto_720x_yizt8b.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  /* Automater */
   {
     name: "Esprecious 11L",
-    description: `
-      <div class="product-description">
-        <h2>Om Esprecious 11L</h2>
-        <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
-        
-        <h3>Egenskaper Esprecious 11L</h3>
-        <ul>
-          <li>Användarvänlig: intuitiv pekskärm</li>
-          <li>Böna-till-kopp: brygger med färska kaffebönor</li>
-          <li>Kaffespecialiteter som cappuccino bereds med färsk mjölk</li>
-          <li>Dubbelt utlopp: serverar två drycker samtidigt</li>
-          <li>Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion</li>
-          <li>Separata inställningar av temperatur, vatten/kaffeförhållande, etc.</li>
-          <li>Service- och underhållsvänlig</li>
-          <li>Hög kvalitet i koppen tack vare automatiskt sköljprogram</li>
-          <li>Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll</li>
-          <li>Separat utlopp för hetvatten för bl.a. te</li>
-        </ul>
-
-        <h3>Specifikationer</h3>
-        <ul>
-          <li>Vattentrycket: 2 Bar</li>
-          <li>Vattenanslutning: Ja</li>
-          <li>Färg: Stainless dark</li>
-          <li>Anslutning: 230V~ 50/60Hz 1650W</li>
-          <li>Mått (B × D × H): 240 × 460 × 630 mm</li>
-        </ul>
-      </div>
-    `,
-    price: 12345,
-    stock: 50,
-    images: [
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-540x_rmlqhk.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-sideview-540x_frtpqv.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-open-540x_utt3rl.webp",
+    vendor: "Bravilor Bonamat",
+    description: "Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.",
+    productSpecifications: [
+      "Vattentrycket 2 Bar",
+      "Vatten anslutning Ja",
+      "Färg Stainless dark",
+      "Anslutning 230V~ 50/60Hz 1650W",
+      "Mått (bxdxh) 240x460x630 mm",
     ],
-    category: "Varumärken",
+    productAttributes: [
+      "Användarvänlig: intuitiv pekskärm",
+      "Böna-till-kopp: brygger med färska kaffebönor",
+      "Kaffespecialiteter som cappuccino bereds med färsk mjölk",
+      "Dubbelt utlopp: serverar två drycker samtidigt",
+      "Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion",
+      "Separata inställningar av temperatur, vatten/kaffeförhållande, etc.",
+      "Service- och underhållsvänlig",
+      "Hög kvalitet i koppen tack vare automatiskt sköljprogram",
+      "Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll",
+      "Separat utlopp för hetvatten för bl.a. te",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745565667/23648087-origpic-600303_720x_zimbiy.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745565667/23648087-origpic-b6498b_720x_zyrc8s.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745565666/23648087-origpic-a99f7e_da2dcb29-4a2a-42f4-a2af-a3ca07efc31e_720x_kw5r2o.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
   },
+  /* Övrigt */
   {
-    name: "Esprecious 221L",
-    description: `
-      <div class="product-description">
-        <h2>Om Esprecious 11L</h2>
-        <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
-        
-        <h3>Egenskaper Esprecious 11L</h3>
-        <ul>
-          <li>Användarvänlig: intuitiv pekskärm</li>
-          <li>Böna-till-kopp: brygger med färska kaffebönor</li>
-          <li>Kaffespecialiteter som cappuccino bereds med färsk mjölk</li>
-          <li>Dubbelt utlopp: serverar två drycker samtidigt</li>
-          <li>Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion</li>
-          <li>Separata inställningar av temperatur, vatten/kaffeförhållande, etc.</li>
-          <li>Service- och underhållsvänlig</li>
-          <li>Hög kvalitet i koppen tack vare automatiskt sköljprogram</li>
-          <li>Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll</li>
-          <li>Separat utlopp för hetvatten för bl.a. te</li>
-        </ul>
-
-        <h3>Specifikationer</h3>
-        <ul>
-          <li>Vattentrycket: 2 Bar</li>
-          <li>Vattenanslutning: Ja</li>
-          <li>Färg: Stainless dark</li>
-          <li>Anslutning: 230V~ 50/60Hz 1650W</li>
-          <li>Mått (B × D × H): 240 × 460 × 630 mm</li>
-        </ul>
-      </div>
-    `,
-    price: 12345,
-    stock: 50,
-    images: [
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-540x_rmlqhk.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-sideview-540x_frtpqv.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-open-540x_utt3rl.webp",
+    name: "TWIX White chokladbit",
+    vendor: "Mars",
+    description: "Kex med ett tjockt lager av krämig karamell och ett täckte av len vit choklad, hör du vilken magisk kombination för munnen det är, och det är just vad TWIX White är. Och självklart är bitarna tvådelade, så dela med dig av denna godbit.",
+    longDescription: "Psst... Twix började säljas i USA år 1969 och TWIX White har tidigare bara varit Limited Edition men nu är favoriten här för att stanna.",
+    productAttributes: [
+      "Användarvänlig: intuitiv pekskärm",
+      "Böna-till-kopp: brygger med färska kaffebönor",
+      "Kaffespecialiteter som cappuccino bereds med färsk mjölk",
+      "Dubbelt utlopp: serverar två drycker samtidigt",
+      "Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion",
+      "Separata inställningar av temperatur, vatten/kaffeförhållande, etc.",
+      "Service- och underhållsvänlig",
+      "Hög kvalitet i koppen tack vare automatiskt sköljprogram",
+      "Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll",
+      "Separat utlopp för hetvatten för bl.a. te",
     ],
-    category: "Varumärken",
-  },
-  {
-    name: "Esprecious 33L",
-    description: `
-      <div class="product-description">
-        <h2>Om Esprecious 11L</h2>
-        <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
-        
-        <h3>Egenskaper Esprecious 11L</h3>
-        <ul>
-          <li>Användarvänlig: intuitiv pekskärm</li>
-          <li>Böna-till-kopp: brygger med färska kaffebönor</li>
-          <li>Kaffespecialiteter som cappuccino bereds med färsk mjölk</li>
-          <li>Dubbelt utlopp: serverar två drycker samtidigt</li>
-          <li>Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion</li>
-          <li>Separata inställningar av temperatur, vatten/kaffeförhållande, etc.</li>
-          <li>Service- och underhållsvänlig</li>
-          <li>Hög kvalitet i koppen tack vare automatiskt sköljprogram</li>
-          <li>Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll</li>
-          <li>Separat utlopp för hetvatten för bl.a. te</li>
-        </ul>
-
-        <h3>Specifikationer</h3>
-        <ul>
-          <li>Vattentrycket: 2 Bar</li>
-          <li>Vattenanslutning: Ja</li>
-          <li>Färg: Stainless dark</li>
-          <li>Anslutning: 230V~ 50/60Hz 1650W</li>
-          <li>Mått (B × D × H): 240 × 460 × 630 mm</li>
-        </ul>
-      </div>
-    `,
-    price: 12345,
-    stock: 50,
-    images: [
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-540x_rmlqhk.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-sideview-540x_frtpqv.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-open-540x_utt3rl.webp",
+    productSpecifications: [
+      "LEVERANTÖR Mars Sverige AB",
+      "VARUMÄRKE Mars",
+      "FÖRSÄLJNINGSENHET 32x46g",
+      "VÅRT ART. NR.53809",
+      "LEV. ART. NR.319792",
+      "ANTAL ST PER KRT 32 st",
+      "ANTAL KRT PER PALL 300 st",
     ],
-    category: "Varumärken",
-  },
-  {
-    name: "Esprecious 44L",
-    description: `
-      <div class="product-description">
-        <h2>Om Esprecious 11L</h2>
-        <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
-        
-        <h3>Egenskaper Esprecious 11L</h3>
-        <ul>
-          <li>Användarvänlig: intuitiv pekskärm</li>
-          <li>Böna-till-kopp: brygger med färska kaffebönor</li>
-          <li>Kaffespecialiteter som cappuccino bereds med färsk mjölk</li>
-          <li>Dubbelt utlopp: serverar två drycker samtidigt</li>
-          <li>Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion</li>
-          <li>Separata inställningar av temperatur, vatten/kaffeförhållande, etc.</li>
-          <li>Service- och underhållsvänlig</li>
-          <li>Hög kvalitet i koppen tack vare automatiskt sköljprogram</li>
-          <li>Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll</li>
-          <li>Separat utlopp för hetvatten för bl.a. te</li>
-        </ul>
-
-        <h3>Specifikationer</h3>
-        <ul>
-          <li>Vattentrycket: 2 Bar</li>
-          <li>Vattenanslutning: Ja</li>
-          <li>Färg: Stainless dark</li>
-          <li>Anslutning: 230V~ 50/60Hz 1650W</li>
-          <li>Mått (B × D × H): 240 × 460 × 630 mm</li>
-        </ul>
-      </div>
-    `,
-    price: 12345,
-    stock: 50,
+    price: 0,
     images: [
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-540x_rmlqhk.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-sideview-540x_frtpqv.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-open-540x_utt3rl.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745566191/twix_720x_f0eiox.webp",
     ],
-    category: "Varumärken",
-  },
-  {
-    name: "Esprecious 33L",
-    description: `
-      <div class="product-description">
-        <h2>Om Esprecious 11L</h2>
-        <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
-        
-        <h3>Egenskaper Esprecious 11L</h3>
-        <ul>
-          <li>Användarvänlig: intuitiv pekskärm</li>
-          <li>Böna-till-kopp: brygger med färska kaffebönor</li>
-          <li>Kaffespecialiteter som cappuccino bereds med färsk mjölk</li>
-          <li>Dubbelt utlopp: serverar två drycker samtidigt</li>
-          <li>Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion</li>
-          <li>Separata inställningar av temperatur, vatten/kaffeförhållande, etc.</li>
-          <li>Service- och underhållsvänlig</li>
-          <li>Hög kvalitet i koppen tack vare automatiskt sköljprogram</li>
-          <li>Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll</li>
-          <li>Separat utlopp för hetvatten för bl.a. te</li>
-        </ul>
-
-        <h3>Specifikationer</h3>
-        <ul>
-          <li>Vattentrycket: 2 Bar</li>
-          <li>Vattenanslutning: Ja</li>
-          <li>Färg: Stainless dark</li>
-          <li>Anslutning: 230V~ 50/60Hz 1650W</li>
-          <li>Mått (B × D × H): 240 × 460 × 630 mm</li>
-        </ul>
-      </div>
-    `,
-    price: 12345,
-    stock: 50,
-    images: [
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-540x_rmlqhk.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-sideview-540x_frtpqv.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-open-540x_utt3rl.webp",
-    ],
-    category: "Kafferosterier",
-  },
-  {
-    name: "Esprecious 44L",
-    description: `
-      <div class="product-description">
-        <h2>Om Esprecious 11L</h2>
-        <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
-        
-        <h3>Egenskaper Esprecious 11L</h3>
-        <ul>
-          <li>Användarvänlig: intuitiv pekskärm</li>
-          <li>Böna-till-kopp: brygger med färska kaffebönor</li>
-          <li>Kaffespecialiteter som cappuccino bereds med färsk mjölk</li>
-          <li>Dubbelt utlopp: serverar två drycker samtidigt</li>
-          <li>Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion</li>
-          <li>Separata inställningar av temperatur, vatten/kaffeförhållande, etc.</li>
-          <li>Service- och underhållsvänlig</li>
-          <li>Hög kvalitet i koppen tack vare automatiskt sköljprogram</li>
-          <li>Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll</li>
-          <li>Separat utlopp för hetvatten för bl.a. te</li>
-        </ul>
-
-        <h3>Specifikationer</h3>
-        <ul>
-          <li>Vattentrycket: 2 Bar</li>
-          <li>Vattenanslutning: Ja</li>
-          <li>Färg: Stainless dark</li>
-          <li>Anslutning: 230V~ 50/60Hz 1650W</li>
-          <li>Mått (B × D × H): 240 × 460 × 630 mm</li>
-        </ul>
-      </div>
-    `,
-    price: 12345,
-    stock: 50,
-    images: [
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-540x_rmlqhk.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-sideview-540x_frtpqv.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-open-540x_utt3rl.webp",
-    ],
-    category: "Kafferosterier",
-  },
-  {
-    name: "Esprecious 55L",
-    description: `
-      <div class="product-description">
-        <h2>Om Esprecious 11L</h2>
-        <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
-        
-        <h3>Egenskaper Esprecious 11L</h3>
-        <ul>
-          <li>Användarvänlig: intuitiv pekskärm</li>
-          <li>Böna-till-kopp: brygger med färska kaffebönor</li>
-          <li>Kaffespecialiteter som cappuccino bereds med färsk mjölk</li>
-          <li>Dubbelt utlopp: serverar två drycker samtidigt</li>
-          <li>Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion</li>
-          <li>Separata inställningar av temperatur, vatten/kaffeförhållande, etc.</li>
-          <li>Service- och underhållsvänlig</li>
-          <li>Hög kvalitet i koppen tack vare automatiskt sköljprogram</li>
-          <li>Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll</li>
-          <li>Separat utlopp för hetvatten för bl.a. te</li>
-        </ul>
-
-        <h3>Specifikationer</h3>
-        <ul>
-          <li>Vattentrycket: 2 Bar</li>
-          <li>Vattenanslutning: Ja</li>
-          <li>Färg: Stainless dark</li>
-          <li>Anslutning: 230V~ 50/60Hz 1650W</li>
-          <li>Mått (B × D × H): 240 × 460 × 630 mm</li>
-        </ul>
-      </div>
-    `,
-    price: 12345,
-    stock: 50,
-    images: [
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-540x_rmlqhk.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-sideview-540x_frtpqv.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-open-540x_utt3rl.webp",
-    ],
-    category: "Varm dryck",
-  },
-  {
-    name: "Esprecious 66L",
-    description: `
-      <div class="product-description">
-        <h2>Om Esprecious 11L</h2>
-        <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
-        
-        <h3>Egenskaper Esprecious 11L</h3>
-        <ul>
-          <li>Användarvänlig: intuitiv pekskärm</li>
-          <li>Böna-till-kopp: brygger med färska kaffebönor</li>
-          <li>Kaffespecialiteter som cappuccino bereds med färsk mjölk</li>
-          <li>Dubbelt utlopp: serverar två drycker samtidigt</li>
-          <li>Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion</li>
-          <li>Separata inställningar av temperatur, vatten/kaffeförhållande, etc.</li>
-          <li>Service- och underhållsvänlig</li>
-          <li>Hög kvalitet i koppen tack vare automatiskt sköljprogram</li>
-          <li>Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll</li>
-          <li>Separat utlopp för hetvatten för bl.a. te</li>
-        </ul>
-
-        <h3>Specifikationer</h3>
-        <ul>
-          <li>Vattentrycket: 2 Bar</li>
-          <li>Vattenanslutning: Ja</li>
-          <li>Färg: Stainless dark</li>
-          <li>Anslutning: 230V~ 50/60Hz 1650W</li>
-          <li>Mått (B × D × H): 240 × 460 × 630 mm</li>
-        </ul>
-      </div>
-    `,
-    price: 12345,
-    stock: 50,
-    images: [
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-540x_rmlqhk.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-sideview-540x_frtpqv.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-open-540x_utt3rl.webp",
-    ],
-    category: "Varm dryck",
-  },
-
-
-  {
-    name: "Esprecious 66L",
-    description: `
-      <div class="product-description">
-        <h2>Om Esprecious 11L</h2>
-        <p>Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.</p>
-        
-        <h3>Egenskaper Esprecious 11L</h3>
-        <ul>
-          <li>Användarvänlig: intuitiv pekskärm</li>
-          <li>Böna-till-kopp: brygger med färska kaffebönor</li>
-          <li>Kaffespecialiteter som cappuccino bereds med färsk mjölk</li>
-          <li>Dubbelt utlopp: serverar två drycker samtidigt</li>
-          <li>Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion</li>
-          <li>Separata inställningar av temperatur, vatten/kaffeförhållande, etc.</li>
-          <li>Service- och underhållsvänlig</li>
-          <li>Hög kvalitet i koppen tack vare automatiskt sköljprogram</li>
-          <li>Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll</li>
-          <li>Separat utlopp för hetvatten för bl.a. te</li>
-        </ul>
-
-        <h3>Specifikationer</h3>
-        <ul>
-          <li>Vattentrycket: 2 Bar</li>
-          <li>Vattenanslutning: Ja</li>
-          <li>Färg: Stainless dark</li>
-          <li>Anslutning: 230V~ 50/60Hz 1650W</li>
-          <li>Mått (B × D × H): 240 × 460 × 630 mm</li>
-        </ul>
-      </div>
-    `,
-    price: 12345,
-    stock: 50,
-    images: [
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-540x_rmlqhk.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-sideview-540x_frtpqv.webp",
-      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1743426661/Esprecious-11L-open-540x_utt3rl.webp",
-    ],
-    category: "Varm dryck",
+    stock: 10,
+    category: "Övrigt",
+    subCategory: "Snacks",
   },
 ];
 
 async function main() {
   // Clean up existing data
   await prisma.cartItem.deleteMany();
+  // console.log("🗑️ cartItem");
   await prisma.cart.deleteMany();
+  // console.log("🗑️ cart");
   await prisma.orderItem.deleteMany();
+  // console.log("🗑️ orderItem");
   await prisma.order.deleteMany();
+  // console.log("🗑️ order");
   await prisma.product.deleteMany();
+  // console.log("🗑️ product");
   await prisma.category.deleteMany();
+  // console.log("🗑️ category");
+  await prisma.subCategory.deleteMany();
+  // console.log("🗑️ subCategory");
   await prisma.feature.deleteMany();
+  // console.log("🗑️ feature");
 
-  console.log("🗑️ Cleaned up existing data");
+  console.log("🗑️ Cleaned up ALL existing data");
 
   // Create categories
   const createdCategories = await Promise.all(
@@ -421,6 +332,27 @@ async function main() {
 
   console.log("📦 Created categories");
 
+  // Create subCategories
+  const createdSubCategories = await Promise.all(
+    subCategories.map((subCategory) => {
+      const category = createdCategories.find(
+        (c) => c.name === subCategory.category,
+      );
+      if (!category) throw new Error(`Category ${subCategory.category} not found`);
+
+      return prisma.subCategory.create({
+        data: {
+          name: subCategory.name,
+          description: subCategory.description,
+          categoryId: category.id,
+        },
+      })
+    }
+    ),
+  );
+
+  console.log("📦 Created subCategories");
+
   // Create products
   const createdProducts = await Promise.all(
     products.map((product) => {
@@ -429,15 +361,25 @@ async function main() {
       );
       if (!category) throw new Error(`Category ${product.category} not found`);
 
+      const subCategory = product.subCategory
+        ? createdSubCategories.find((sc) => sc.name === product.subCategory)
+        : null;
+
+      const subCategoryId = subCategory ? subCategory.id : null;
+
       return prisma.product.create({
         data: {
           name: product.name,
+          vendor: product.vendor,
           description: product.description,
-          // longDescription: product.longDescription,
+          longDescription: product.longDescription,
+          productAttributes: product.productAttributes,
+          productSpecifications: product.productSpecifications,
           price: product.price,
           stock: product.stock,
           images: product.images,
           categoryId: category.id,
+          subCategoryId: subCategoryId,
         },
       });
     }),

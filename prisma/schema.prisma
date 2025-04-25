@@ -8,20 +8,25 @@ datasource db {
 }
 
 model Product {
-  id              String   @id @default(cuid())
-  name            String
-  description     String
-  longDescription String?  @db.Text
-  price           Decimal  @db.Decimal(10, 2)
-  images          String[]
-  stock           Int
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id                    String   @id @default(cuid())
+  name                  String
+  vendor                String
+  description           String
+  longDescription       String?  @db.Text
+  productAttributes     String[]
+  productSpecifications String[]
+  price                 Decimal  @db.Decimal(10, 2)
+  images                String[]
+  stock                 Int
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
 
   // Dynamic categorization and features
-  categoryId String
-  category   Category  @relation(fields: [categoryId], references: [id])
-  features   Feature[] @relation("ProductFeatures")
+  categoryId    String
+  category      Category     @relation(fields: [categoryId], references: [id])
+  subCategoryId String?
+  subCategory   SubCategory? @relation(fields: [subCategoryId, categoryId], references: [id, categoryId])
+  features      Feature[]    @relation("ProductFeatures")
 
   // Relations
   orderItems OrderItem[]
@@ -30,10 +35,23 @@ model Product {
 }
 
 model Category {
+  id            String        @id @default(cuid())
+  name          String        @unique
+  description   String?
+  subCategories SubCategory[]
+  products      Product[]
+}
+
+model SubCategory {
   id          String    @id @default(cuid())
   name        String    @unique
   description String?
   products    Product[]
+  categoryId  String
+  category    Category  @relation(fields: [categoryId], references: [id])
+
+  @@unique([id, categoryId])
+  @@unique([name, categoryId])
 }
 
 model Feature {
