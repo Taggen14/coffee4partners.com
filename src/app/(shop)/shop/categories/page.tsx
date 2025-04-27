@@ -12,7 +12,7 @@ export default function CategoriesPage() {
 
   if (categoriesLoading || productsLoading) {
     return (
-      <div className="container py-8 md:py-12">
+      <div className="container py-8">
         <div className="flex h-96 items-center justify-center">
           <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
         </div>
@@ -21,7 +21,7 @@ export default function CategoriesPage() {
   }
 
   return (
-    <div className="container py-8 md:py-12">
+    <div className="container py-8">
       <div className="space-y-8">
         <div className="space-y-4">
           <h1 className="text-3xl font-bold">Produktkategorier</h1>
@@ -33,7 +33,7 @@ export default function CategoriesPage() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories?.map((category) => {
             const categoryProducts = products?.filter(
-              (product) => product.categoryId === category.id,
+              (product) => product.categoryId === category.categorySlug,
             );
             const productCount = categoryProducts?.length || 0;
             const firstProduct = categoryProducts?.[0];
@@ -43,9 +43,8 @@ export default function CategoriesPage() {
             return (
               <Link
                 key={category.id}
-                href={`/shop/categories/${category.id}`}
-                className="group relative overflow-hidden rounded-lg border bg-card transition-colors hover:bg-accent"
-              >
+                href={`/shop/categories/${category.categorySlug}`}
+                className="group relative overflow-hidden rounded-lg border bg-card transition-colors hover:bg-accent">
                 <div className="aspect-[4/3] relative overflow-hidden">
                   <Image
                     src={coverImage}

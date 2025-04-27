@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -28,6 +28,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
+  DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import {
   Sheet,
@@ -38,17 +39,22 @@ import {
 import { useHotkeys } from "react-hotkeys-hook";
 import Link from "next/link";
 import { CldImage } from "next-cloudinary";
+import { useSubCategories } from "@/hooks/use-subCategories";
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "../ui/navigation-menu";
 
 export function ShopHeader() {
   const { setTheme } = useTheme();
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const { categories, isLoading } = useCategories();
+  const { subCategories, isSubCatLoading } = useSubCategories();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [commandOpen, setCommandOpen] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
 
   useEffect(() => {
     const path = window.location.pathname;
@@ -81,11 +87,11 @@ export function ShopHeader() {
     }
   };
 
-  const handleCategorySelect = (categoryId: string | null) => {
-    setSelectedCategory(categoryId);
+  const handleCategorySelect = (categorySlug: string | null) => {
+    setSelectedCategory(categorySlug);
     setIsMobileMenuOpen(false);
-    if (categoryId) {
-      router.push(`/shop/categories/${categoryId}`);
+    if (categorySlug) {
+      router.push(`/shop/categories/${categorySlug}`);
     } else {
       router.push("/shop");
     }
@@ -100,15 +106,32 @@ export function ShopHeader() {
           isScrolled
             ? "bg-background shadow-xl"
             : "bg-gradient-to-r from-primary/5 via-background to-primary/5",
-        )}
-      >
+        )} >
         {/* Premium accent line at top */}
         <div className="h-0.5 w-full bg-gradient-to-r from-primary/40 via-primary/70 to-primary/40"></div>
 
         <div className="container mx-auto px-3 sm:px-4">
           <div className="flex h-14 sm:h-16 items-center justify-between">
             {/* Left section: Logo and Categories */}
-            <div className="flex items-center gap-2 sm:gap-6">
+            <div className="flex items-center gap-2">
+              {/* Back to main site link */}
+              <Link
+                href="/"
+                className="hidden md:flex items-center text-muted-foreground hover:text-foreground transition-colors">
+                <Home className="mr-1 h-4 w-4" />
+                <span className="text-sm">Webbplatsen</span>
+              </Link>
+
+              {/* Mobile Categories Button */}
+              <Button
+                variant="ghost"
+                size="sm"
+                className="md:hidden flex items-center gap-1 px-2 h-8"
+                onClick={() => setIsMobileMenuOpen(true)}>
+                <Menu className="h-[1.4rem] w-[1.4rem]" />
+                <span className="text-sm hidden sm:block">Meny</span>
+              </Button>
+
               {/* Logo */}
               <Link href="/shop" className="relative flex items-center">
                 <div className="relative overflow-hidden group">
@@ -125,119 +148,58 @@ export function ShopHeader() {
               </Link>
 
               {/* Desktop Categories Dropdown */}
-              <div className="hidden md:block">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      className="text-base font-medium px-3 group"
-                    >
-                      <span className="mr-1">Kategorier</span>
-                      <ChevronDown className="h-4 w-4 opacity-70 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent
-                    align="start"
-                    className="w-56 rounded-md bg-background border border-primary/10 shadow-lg shadow-primary/5"
-                  >
-                    <DropdownMenuItem
-                      className={cn(
-                        "text-base py-2.5",
-                        !selectedCategory && "text-primary font-medium",
-                      )}
-                      onClick={() => handleCategorySelect(null)}
-                    >
-                      <ShoppingBag className="mr-2 h-4 w-4" />
-                      Alla produkter
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    {isLoading ? (
-                      <>
-                        <Skeleton className="h-8 w-full my-1" />
-                        <Skeleton className="h-8 w-full my-1" />
-                        <Skeleton className="h-8 w-full my-1" />
-                      </>
-                    ) : (
-                      categories?.map((category) => (
-                        <DropdownMenuItem
-                          key={category.id}
-                          className={cn(
-                            "text-base py-2.5",
-                            selectedCategory === category.id &&
-                              "text-primary font-medium",
-                          )}
-                          onClick={() => handleCategorySelect(category.id)}
-                        >
-                          <ShoppingBag className="mr-2 h-4 w-4" />
-                          {category.name}
-                        </DropdownMenuItem>
-                      ))
-                    )}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-
-              {/* Mobile Categories Button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                className="md:hidden flex items-center gap-1 px-2 h-8"
-                onClick={() => setIsMobileMenuOpen(true)}
-              >
-                <Menu className="h-[1.1rem] w-[1.1rem]" />
-                <span className="text-sm">Kategorier</span>
-              </Button>
-
-              {/* Back to main site link */}
-              <Link
-                href="/"
-                className="hidden md:flex items-center text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Home className="mr-1 h-4 w-4" />
-                <span className="text-sm">Tillbaka</span>
-              </Link>
-            </div>
-
-            {/* Center: Search */}
-            <form
-              onSubmit={handleSearch}
-              className="hidden md:flex max-w-md w-full mx-6"
-            >
-              <div className="relative flex-1">
-                <Search
-                  className={cn(
-                    "absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 transition-colors",
-                    isSearchFocused ? "text-primary" : "text-muted-foreground",
-                  )}
-                />
-                <Input
-                  placeholder="Sök produkter... (⌘K)"
-                  className={cn(
-                    "w-full h-9 pl-9 pr-4 bg-muted/50",
-                    "border-muted-foreground/20",
-                    "focus:bg-background focus:border-primary/30 focus:ring-1 focus:ring-primary/20",
-                    "transition-all duration-200",
-                  )}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onClick={() => setCommandOpen(true)}
-                  onFocus={() => setIsSearchFocused(true)}
-                  onBlur={() => setIsSearchFocused(false)}
-                />
-                {searchQuery && (
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7 rounded-full opacity-70 hover:opacity-100"
-                    onClick={() => setSearchQuery("")}
-                  >
-                    <X className="h-3 w-3" />
-                    <span className="sr-only">Rensa sökning</span>
-                  </Button>
+              <div className="hidden md:block space-x-3">
+                {isLoading ? (
+                  <>
+                    <Skeleton className="h-8 w-full my-1" />
+                    <Skeleton className="h-8 w-full my-1" />
+                    <Skeleton className="h-8 w-full my-1" />
+                  </>
+                ) : (
+                  <NavigationMenu className="items-start">
+                    <NavigationMenuList className="flex flex-col md:flex-row items-start px-5 md:px-0 gap-0">
+                      {
+                        categories?.map((category) => (
+                          subCategories?.some((subCategory) => subCategory.categoryId === category.id)
+                            ?
+                            <NavigationMenuItem key={category.id}>
+                              <NavigationMenuLink
+                                className={`relative text-xl whitespace-nowrap transition-colors duration-300 inline-block 
+                                                  after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-secondary-foreground 
+                                                  after:transition-width after:duration-300 hover:after:w-full ${category.name === "/"
+                                    ? pathname === "/"
+                                      ? "text-secondary-foreground"
+                                      : "text-primary"
+                                    : pathname.includes(category.name)
+                                      ? "text-secondary-foreground"
+                                      : "text-primary"
+                                  }`}
+                                href={`/shop/categories/${category.categorySlug}`}>
+                                <div className="flex items-center">
+                                  {category.name}
+                                  <ChevronDown style={{ width: '25px', height: '25px' }} className="text-primary" />
+                                </div>
+                              </NavigationMenuLink>
+                            </NavigationMenuItem>
+                            :
+                            <button
+                              key={category.id}
+                              className={cn(
+                                "text-base",
+                                selectedCategory === category.id &&
+                                "text-primary font-medium",
+                              )}
+                              onClick={() => handleCategorySelect(category.categorySlug)}>
+                              {category.categorySlug}
+                            </button>
+                        )
+                        )
+                      }
+                    </NavigationMenuList>
+                  </NavigationMenu>
                 )}
               </div>
-            </form>
+            </div>
 
             {/* Right: Actions */}
             <div className="flex items-center gap-1 sm:gap-1.5">
@@ -245,7 +207,7 @@ export function ShopHeader() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden h-8 w-8"
+                className="h-8 w-8"
                 onClick={() => setCommandOpen(true)}
               >
                 <Search className="h-[1.1rem] w-[1.1rem]" />
@@ -326,7 +288,7 @@ export function ShopHeader() {
                     selectedCategory === category.id ? "default" : "ghost"
                   }
                   className="w-full justify-start text-sm sm:text-base h-10 sm:h-11"
-                  onClick={() => handleCategorySelect(category.id)}
+                  onClick={() => handleCategorySelect(category.categorySlug)}
                 >
                   <ShoppingBag className="mr-2 h-4 w-4" />
                   {category.name}
@@ -340,7 +302,7 @@ export function ShopHeader() {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <Home className="h-4 w-4" />
-                <span className="text-sm">Tillbaka till webbplatsen</span>
+                <span className="text-sm">Webbplatsen</span>
               </Link>
             </div>
           </div>
@@ -350,5 +312,31 @@ export function ShopHeader() {
       {/* Search Sheet */}
       <SearchSheet open={commandOpen} onOpenChange={setCommandOpen} />
     </>
-  );
+
+  )
 }
+
+
+{/* <DropdownMenu key={category.id}>
+                          <DropdownMenuTrigger
+                          className={cn("text-base",
+                          selectedCategory === category.id &&
+                          "text-primary font-medium",
+                          )}
+                          onClick={() => handleCategorySelect(category.categorySlug)}>
+                          <div className="flex">
+                          {category.name.toLocaleUpperCase()}
+                          <ChevronDown />
+                          </div>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent>
+                          {
+                            subCategories.map((subcat) => (
+                              subcat.categoryId === category.id &&
+                              <DropdownMenuItem key={subcat.id}>
+                              {subcat.name}
+                                </DropdownMenuItem>
+                                ))
+                                }
+                                </DropdownMenuContent>
+                                </DropdownMenu> */}

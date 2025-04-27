@@ -15,6 +15,8 @@ import { cn } from "@/lib/utils";
 import { useCart } from "@/store/use-cart";
 import { ExtendedProduct } from "@/types";
 import { ProductCard } from "@/components/shop/product-card";
+import CategoriesPage from "./categories/page";
+import { Separator } from "@/components/ui/separator";
 
 export default function ShopPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -41,7 +43,7 @@ export default function ShopPage() {
 
   if (productsLoading || categoriesLoading) {
     return (
-      <div className="container py-8 md:py-12">
+      <div className="container">
         <div className="flex h-96 items-center justify-center">
           <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
         </div>
@@ -50,7 +52,10 @@ export default function ShopPage() {
   }
 
   return (
-    <div className="container space-y-8 py-8 md:py-12">
+    <div className="container space-y-8">
+
+      <CategoriesPage />
+      <Separator />
       {/* Mobile Category Selector */}
       <div className="md:hidden">
         <DropdownMenu>
@@ -87,9 +92,8 @@ export default function ShopPage() {
               "text-muted-foreground",
               !selectedCategory && "bg-muted text-foreground",
             )}
-            onClick={() => setSelectedCategory(null)}
-          >
-            All Categories
+            onClick={() => setSelectedCategory(null)}>
+            Alla kategorier
           </Button>
           {categories?.map((category) => (
             <Button
@@ -122,9 +126,9 @@ export default function ShopPage() {
       {filteredProducts?.length === 0 && (
         <div className="flex h-96 items-center justify-center text-center">
           <div className="space-y-2">
-            <p className="text-lg font-medium">No products found</p>
+            <p className="text-lg font-medium">Inga produkter hittades</p>
             <p className="text-sm text-muted-foreground">
-              Try changing your category selection or check back later.
+              Prova välj en annan kategori.
             </p>
           </div>
         </div>

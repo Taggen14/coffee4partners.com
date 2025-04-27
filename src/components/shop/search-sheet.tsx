@@ -101,7 +101,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
               <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground/70" />
               <Input
                 ref={inputRef}
-                placeholder="Search products..."
+                placeholder="Sök produkter..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
@@ -116,7 +116,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                   onClick={() => setSearchQuery("")}
                 >
                   <X className="h-4 w-4" />
-                  <span className="sr-only">Clear search</span>
+                  <span className="sr-only">Rensa sök</span>
                 </Button>
               )}
             </div>
@@ -129,7 +129,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                   <Loader2 className="h-12 w-12 animate-spin text-primary" />
                 </div>
                 <p className="text-sm text-muted-foreground font-medium">
-                  Searching products...
+                  Söker efter produkter...
                 </p>
               </div>
             ) : allProducts.length > 0 ? (
@@ -137,7 +137,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                 <div className="py-5">
                   <div className="flex items-center gap-2 py-2 text-sm font-medium text-foreground">
                     <Package className="h-4 w-4 text-primary" />
-                    <span>Quick Actions</span>
+                    <span>Snabbåtgärd</span>
                   </div>
                   <div className="mt-2 grid grid-cols-2 sm:grid-cols-4 gap-2">
                     <Button
@@ -147,7 +147,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                       onClick={handleViewAllProducts}
                     >
                       <ShoppingBag className="h-3.5 w-3.5 text-primary" />
-                      <span>All products</span>
+                      <span>Alla produkter</span>
                     </Button>
                     <Button
                       variant="outline"
@@ -159,7 +159,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                       }}
                     >
                       <List className="h-3.5 w-3.5 text-primary" />
-                      <span>Categories</span>
+                      <span>Kategorier</span>
                     </Button>
                   </div>
                 </div>
@@ -168,7 +168,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 py-2 text-sm font-medium text-foreground">
                       <Tag className="h-4 w-4 text-primary" />
-                      <span>Products</span>
+                      <span>Produkter</span>
                       <span className="ml-1 rounded-full bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
                         {allProducts.length}
                       </span>
@@ -176,7 +176,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
 
                     {hasNextPage && !isFetchingNextPage && (
                       <span className="text-xs text-muted-foreground">
-                        Scroll for more
+                        Skrolla för att se mer
                       </span>
                     )}
                   </div>
@@ -244,7 +244,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                         <div className="flex items-center gap-2">
                           <Loader2 className="h-4 w-4 animate-spin text-primary" />
                           <span className="text-xs text-muted-foreground">
-                            Loading more products...
+                            Laddar mer produkter...
                           </span>
                         </div>
                       )}
@@ -257,7 +257,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                 <div className="bg-muted/50 p-5 rounded-full mb-5">
                   <SearchX className="h-10 w-10 text-muted-foreground/60" />
                 </div>
-                <h3 className="text-lg font-medium mb-1">No products found</h3>
+                <h3 className="text-lg font-medium mb-1">Inga produkter hittades</h3>
                 <p className="text-sm text-muted-foreground mb-6 text-center max-w-xs">
                   {searchQuery.trim()
                     ? `We couldn't find any products matching "${searchQuery}"`
@@ -271,7 +271,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                     className="h-9"
                   >
                     <ShoppingBag className="h-3.5 w-3.5 mr-1.5" />
-                    View all products
+                    Visa alla produkter
                   </Button>
                   {searchQuery.trim() && (
                     <Button
@@ -281,7 +281,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                       className="h-9"
                     >
                       <X className="h-3.5 w-3.5 mr-1.5" />
-                      Clear search
+                      Rensa sök
                     </Button>
                   )}
                 </div>

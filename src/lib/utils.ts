@@ -19,3 +19,13 @@ export function capitalize(str: string): string {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 }
+
+export const slugify = (text: string) => {
+  return text
+    .toLowerCase()
+    .normalize("NFD") // Normalisera accenter och specialtecken
+    .replace(/[\u0300-\u036f]/g, "") // Ta bort diakritiska tecken
+    .replace(/[^a-z0-9 ]/g, "") // Ta bort allt som inte är bokstäver, siffror eller mellanslag
+    .trim()
+    .replace(/\s+/g, "-"); // Ersätt mellanslag med bindestreck
+};

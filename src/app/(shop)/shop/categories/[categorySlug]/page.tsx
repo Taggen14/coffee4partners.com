@@ -13,18 +13,18 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function CategoryPage() {
-  const params = useParams<{ categoryId: string }>();
+  const params = useParams<{ categorySlug: string }>();
   const { products, isLoading: productsLoading } = useProducts();
   const { categories, isLoading: categoriesLoading } = useCategories();
   const { addItem } = useCart();
 
+  // Get current category
+  const currentCategory = categories?.find((c) => c.categorySlug === params.categorySlug);
+
   // Filter products by category
   const categoryProducts = products?.filter(
-    (product) => product.categoryId === params.categoryId,
+    (product) => product.categoryId === currentCategory?.id,
   );
-
-  // Get current category
-  const currentCategory = categories?.find((c) => c.id === params.categoryId);
 
   const handleAddToCart = async (product: ExtendedProduct) => {
     // Simulate a small delay to show loading state
@@ -37,13 +37,16 @@ export default function CategoryPage() {
       image: product.images[0] || "/product-placeholder.png",
     });
 
+    console.log('Current category slug:', params.categorySlug);
+    console.log('Categories:', categories);
+
+
     toast.custom((t) => (
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
-        className="pointer-events-auto flex w-full max-w-md rounded-lg bg-white shadow-lg ring-1 ring-black/5 dark:bg-zinc-900"
-      >
+        className="pointer-events-auto flex w-full max-w-md rounded-lg bg-white shadow-lg ring-1 ring-black/5 dark:bg-zinc-900">
         <div className="w-0 flex-1 p-4">
           <div className="flex items-start">
             <div className="flex-shrink-0 pt-0.5">
@@ -67,8 +70,7 @@ export default function CategoryPage() {
         <div className="flex border-l border-gray-200 dark:border-gray-800">
           <button
             onClick={() => toast.dismiss(t)}
-            className="flex w-full items-center justify-center rounded-none rounded-r-lg border border-transparent p-4 text-sm font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
-          >
+            className="flex w-full items-center justify-center rounded-none rounded-r-lg border border-transparent p-4 text-sm font-medium text-blue-600 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
             Stäng
           </button>
         </div>
@@ -104,8 +106,7 @@ export default function CategoryPage() {
       {/* Back Button */}
       <Link
         href="/shop/categories"
-        className="inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
-      >
+        className="inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground">
         <ArrowLeft className="mr-2 h-4 w-4" />
         Tillbaka till kategorier
       </Link>
