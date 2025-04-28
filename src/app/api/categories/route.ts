@@ -4,6 +4,9 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const categories = await prisma.category.findMany({
+      include: {
+        subCategories: true,
+      },
       orderBy: {
         name: "asc",
       },

@@ -10,32 +10,37 @@ const prisma = new PrismaClient();
 const categories = [
   {
     name: "Automater",
-    description: "Någon beskrivning för dem.",
+    description: "Någon beskrivning för Automater.",
   },
   {
     name: "Förbrukningsvaror",
-    description: "Någon beskrivning för dem.",
+    description: "Någon beskrivning för Förbrukningsvaror.",
   },
   {
     name: "Övrigt",
-    description: "Någon beskrivning för dem.",
+    description: "Någon beskrivning för Övrigt.",
   },
 ] as const;
 
 const subCategories = [
   {
     name: "Kaffeautomater",
-    description: "Någon beskrivning för dem.",
+    description: "Någon beskrivning för kaffeautomater.",
     category: "Automater",
   },
   {
     name: "Kaffe",
-    description: "Någon beskrivning för dem.",
+    description: "Någon beskrivning för kaffe.",
     category: "Förbrukningsvaror",
   },
   {
     name: "Snacks",
-    description: "Någon beskrivning för dem.",
+    description: "Någon beskrivning för snacks.",
+    category: "Övrigt",
+  },
+  {
+    name: "Kyld Dryck",
+    description: "Någon beskrivning för kyld dryck.",
     category: "Övrigt",
   },
 ] as const;
@@ -261,6 +266,7 @@ const products = [
     subCategory: "Kaffeautomater",
   },
   /* Övrigt */
+  /* Övrigt/Snacks */
   {
     name: "TWIX White chokladbit",
     vendor: "Mars",
@@ -295,6 +301,34 @@ const products = [
     category: "Övrigt",
     subCategory: "Snacks",
   },
+  /* Övrigt/Kyld Dryck */
+  {
+    name: "Ramlösa Fläder/Lime",
+    vendor: "Ramlösa",
+    description: "Ramlösa Fläder/Lime i 33 cl-burk för café, restaurang och kiosk. Vad är egentligen godare än dryck med smak av fläder? Ramlösa har skapat en fantastisk törstsläckare bestående av lätt kolsyrat mineralvatten med naturliga mineraler och salter, smaksatt med frisk lime och somrig fläder. Vattnet från Ramlösa Hälsobrunn får sin balanserade smak på naturlig väg från dess vandring genom berggrunden och de skånska ängarna. ",
+    longDescription: "",
+    productAttributes: [
+      "Ramlösa Fläder/Lime i 33 cl-burk för café, restaurang och kiosk",
+      "Naturliga mineraler, salter och aromer",
+      "Frisk smak av somrig fläderblom",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Carlsberg Sverige AB",
+      "VARUMÄRKE Ramlösa",
+      "FÖRSÄLJNINGSENHET 24x33cl",
+      "VÅRT ART. NR.53982",
+      "LEV. ART. NR.15893",
+      "ANTAL ST PER KRT 24 st",
+      "ANTAL KRT PER PALL 81 st",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745824665/ramlosa_flader_lime_33cl_540x_wfdq3q.webp",
+    ],
+    stock: 10,
+    category: "Övrigt",
+    subCategory: "Kyld Dryck",
+  },
 ];
 
 async function main() {
@@ -309,10 +343,10 @@ async function main() {
   // console.log("🗑️ order");
   await prisma.product.deleteMany();
   // console.log("🗑️ product");
-  await prisma.category.deleteMany();
-  // console.log("🗑️ category");
   await prisma.subCategory.deleteMany();
   // console.log("🗑️ subCategory");
+  await prisma.category.deleteMany();
+  // console.log("🗑️ category");
   await prisma.feature.deleteMany();
   // console.log("🗑️ feature");
 

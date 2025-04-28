@@ -17,7 +17,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { AddToCartButton } from "@/components/shop/add-to-cart-button";
 import { QuickView } from "@/components/shop/quick-view";
-import { formatPrice } from "@/lib/utils";
 import { ExtendedProduct } from "@/types";
 
 interface ProductCardProps {

@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Sun,
   Moon,
@@ -27,8 +26,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
-  DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import {
   Sheet,

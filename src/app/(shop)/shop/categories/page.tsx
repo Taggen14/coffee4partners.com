@@ -32,13 +32,10 @@ export default function CategoriesPage() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories?.map((category) => {
-            const categoryProducts = products?.filter(
-              (product) => product.categoryId === category.categorySlug,
-            );
+            const categoryProducts = products?.filter((product) => product.categoryId === category.id);
             const productCount = categoryProducts?.length || 0;
             const firstProduct = categoryProducts?.[0];
-            const coverImage =
-              firstProduct?.images?.[0] || "/product-placeholder.png";
+            const coverImage = firstProduct?.images?.[0] || "/product-placeholder.png";
 
             return (
               <Link
