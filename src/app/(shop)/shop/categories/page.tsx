@@ -30,7 +30,7 @@ export default function CategoriesPage() {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {categories?.map((category) => {
             const categoryProducts = products?.filter((product) => product.categoryId === category.id);
             const productCount = categoryProducts?.length || 0;
@@ -41,7 +41,7 @@ export default function CategoriesPage() {
               <Link
                 key={category.id}
                 href={`/shop/categories/${category.categorySlug}`}
-                className="group relative overflow-hidden rounded-lg border bg-card transition-colors hover:bg-accent">
+                className="group relative overflow-hidden rounded-lg border bg-card transition-colors hover:bg-accent py-4">
                 <div className="aspect-[4/3] relative overflow-hidden">
                   <Image
                     src={coverImage}

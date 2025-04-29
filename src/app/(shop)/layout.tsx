@@ -24,7 +24,7 @@ export default function ShopLayout({
           {/* CartProvider reads from localstorage */}
           {" "}
           <ShopHeader />
-          <main className="flex px-8 items-center justify-center">{children}</main>
+          <main className="flex px-4 sm:px-8 py-2 items-center justify-center">{children}</main>
           <ShopFooter />
         </CartProvider>
       </ThemeProvider>

@@ -111,7 +111,7 @@ export default function CategoryPage() {
       <FilteringProducts selectedCategory={selectedSubCategory} setSelectedCategory={setSelectedSubCategory} categories={currentCategory.subCategories} categoryTextType={"underkategorier"} />
 
       {/* Products Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="gap-2 sm:gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {filteredProducts?.map((product, i) => (
           <ProductCard
             key={i}
