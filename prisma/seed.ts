@@ -29,6 +29,11 @@ const subCategories = [
     category: "Automater",
   },
   {
+    name: "Vattemautomater",
+    description: "Någon beskrivning för Vattemautomater.",
+    category: "Automater",
+  },
+  {
     name: "Kaffe",
     description: "Någon beskrivning för kaffe.",
     category: "Förbrukningsvaror",
@@ -43,14 +48,20 @@ const subCategories = [
     description: "Någon beskrivning för kyld dryck.",
     category: "Övrigt",
   },
+  {
+    name: "Tillbehör",
+    description: "Någon beskrivning för Tillbehör.",
+    category: "Övrigt",
+  },
 ] as const;
 
 const products = [
   /* Kaffe */
+  /* Kaffe Arvid Nordquist */
   {
     name: "Arvid Nordquist Green Forest , Hela bönor",
     vendor: "Arvid Nordquist",
-    description: "MELLANMÖRK - BALANSERAD & FRUKTIG Doft av karamell och mandel. Balanserad smak med ton av fikon. En fruktigt syrlig eftersmak. . Green Forest är dubbelcertifierat med UTZ och  EU Ekologiskt.",
+    description: ["MELLANMÖRK - BALANSERAD & FRUKTIG Doft av karamell och mandel. Balanserad smak med ton av fikon. En fruktigt syrlig eftersmak. . Green Forest är dubbelcertifierat med UTZ och  EU Ekologiskt."],
     productSpecifications: [
       "LEVERANTÖR Arvid Nordquist AB",
       "VARUMÄRKE Arvid Nordquist",
@@ -71,7 +82,7 @@ const products = [
   {
     name: "Arvid Nordquist Ethic Harvest , Hela bönor",
     vendor: "Arvid Nordquist",
-    description: "MÖRKROST - KRAFTFULL & KRYDDIG Ren doft av nöt. Smaken är fyllig med livlig syrlighet. Kryddig eftersmak med ton av lakrits. Ethic Harvest är trippelcertifierat med Fairtrade, EU Ekologiskt och KRAV",
+    description: ["MÖRKROST - KRAFTFULL & KRYDDIG Ren doft av nöt. Smaken är fyllig med livlig syrlighet. Kryddig eftersmak med ton av lakrits. Ethic Harvest är trippelcertifierat med Fairtrade, EU Ekologiskt och KRAV"],
     productSpecifications: [
       "LEVERANTÖR Arvid Nordquist AB",
       "VARUMÄRKE Arvid Nordquist",
@@ -92,7 +103,7 @@ const products = [
   {
     name: "Arvid Nordquist Highland Nature , Hela bönor",
     vendor: "Arvid Nordquist",
-    description: "MELLANROST - FRUKTIG & NÖTIG Generös doft av hasselnöt. Rund smak med viss pepprighet. En balanserad och fruktig eftersmak. Highland Nature är trippelcertifierat med Fairtrade, EU Ekologiskt och KRAV",
+    description: ["MELLANROST - FRUKTIG & NÖTIG Generös doft av hasselnöt. Rund smak med viss pepprighet. En balanserad och fruktig eftersmak. Highland Nature är trippelcertifierat med Fairtrade, EU Ekologiskt och KRAV"],
     productSpecifications: [
       "LEVERANTÖR Arvid Nordquist AB",
       "VARUMÄRKE Arvid Nordquist",
@@ -113,7 +124,7 @@ const products = [
   {
     name: "Arvid Nordquist Midnight Grown , Hela bönor",
     vendor: "Arvid Nordquist",
-    description: "EXTRA MÖRKROST - INTENSIV & KRAFTFULL Intensiv doft. Kraftfull och fyllig smak med inslag av mörk choklad. Lång och generös eftersmak.Midnight Grown är UTZ certifierat.",
+    description: ["EXTRA MÖRKROST - INTENSIV & KRAFTFULL Intensiv doft. Kraftfull och fyllig smak med inslag av mörk choklad. Lång och generös eftersmak.Midnight Grown är UTZ certifierat."],
     productSpecifications: [
       "LEVERANTÖR Arvid Nordquist AB",
       "VARUMÄRKE Arvid Nordquist",
@@ -134,7 +145,7 @@ const products = [
   {
     name: "Arvid Nordquist Dark Mountain , Hela bönor",
     vendor: "Arvid Nordquist",
-    description: "MÖRKROST - BÄRIG & FYLLIG Fyllig smak med inslag av björnbär och orientaliska kryddor. Elegant syra och lång eftersmak. Dark Mountain är UTZ certifierat.",
+    description: ["MÖRKROST - BÄRIG & FYLLIG Fyllig smak med inslag av björnbär och orientaliska kryddor. Elegant syra och lång eftersmak. Dark Mountain är UTZ certifierat."],
     productSpecifications: [
       "LEVERANTÖR Arvid Nordquist AB",
       "VARUMÄRKE Arvid Nordquist",
@@ -152,10 +163,11 @@ const products = [
     category: "Förbrukningsvaror",
     subCategory: "Kaffe",
   },
+  /* Kaffe Lavazza */
   {
     name: "Gran Riserva Filter, hela bönor",
     vendor: "Lavazza",
-    description: "Gran Riserva Filter, hela bönor, från Lavazza för café, hotell, restaurang och kaffebarer. 100 % Arabica-bönor och ljuvliga toner av karamell och kakao som balanseras med det intesiva kaffet. Rökiga toner från den torkade kakon och en sötare profil från karamelliserat socker. Gran Riserva Filter är optimalt för gott bryggkaffe. ",
+    description: ["Gran Riserva Filter, hela bönor, från Lavazza för café, hotell, restaurang och kaffebarer. 100 % Arabica-bönor och ljuvliga toner av karamell och kakao som balanseras med det intesiva kaffet. Rökiga toner från den torkade kakon och en sötare profil från karamelliserat socker. Gran Riserva Filter är optimalt för gott bryggkaffe."],
     productSpecifications: [
       "LEVERANTÖR Lavazza Nordic AB",
       "VARUMÄRKE Lavazza",
@@ -180,7 +192,7 @@ const products = [
   {
     name: "Alteco Espresso, hela bönor",
     vendor: "Lavazza",
-    description: "Ekologiskt kaffe med hela bönor, Alteco, från Lavazza. En söt och elegant espresso, med aromer av honung och torkad frukt. Kaffet har en rund kakaofinish och bönorna är rostade under en lång tid under låg värme, för en ultimat balans mellan arom och smak. Bönorna härstammar ifrån de finaste sluttningarna i Centralamerika och vackra berg i Afrika. Alteco är ett 100% ekologisk kaffe gjort på både Arabica och Robusta. Kaffet har både EU:s ekologiska certifiering och UTZ, för bättre villkor i landbruket. Ett hållbart och säkert val för din kaffeservering på café, restaurang, hotell, förening eller hotell!",
+    description: ["Ekologiskt kaffe med hela bönor, Alteco, från Lavazza. En söt och elegant espresso, med aromer av honung och torkad frukt. Kaffet har en rund kakaofinish och bönorna är rostade under en lång tid under låg värme, för en ultimat balans mellan arom och smak. Bönorna härstammar ifrån de finaste sluttningarna i Centralamerika och vackra berg i Afrika. Alteco är ett 100% ekologisk kaffe gjort på både Arabica och Robusta. Kaffet har både EU:s ekologiska certifiering och UTZ, för bättre villkor i landbruket. Ett hållbart och säkert val för din kaffeservering på café, restaurang, hotell, förening eller hotell!"],
     productSpecifications: [
       "LEVERANTÖR Lavazza Nordic AB",
       "VARUMÄRKE Lavazza",
@@ -207,7 +219,7 @@ const products = [
   {
     name: "Super Gusto Espresso, hela bönor",
     vendor: "Lavazza",
-    description: "Ett välbalanserat mellanrostat kaffe med en fyllig och omfamnande smak av kryddor och torkad frukt från Lavazza. Fylligheten kommer huvudsakligen från Arabicabönor med inslag av Robustabönor. Kaffet är en UTZ certifierad blandning från odlingar i Västra Sydamerika och Sydöstra Brasilien som framkallar aromer av torkade frukter såsom dadlar samt en kryddig avslutning med en hint av kanel.",
+    description: ["Ett välbalanserat mellanrostat kaffe med en fyllig och omfamnande smak av kryddor och torkad frukt från Lavazza. Fylligheten kommer huvudsakligen från Arabicabönor med inslag av Robustabönor. Kaffet är en UTZ certifierad blandning från odlingar i Västra Sydamerika och Sydöstra Brasilien som framkallar aromer av torkade frukter såsom dadlar samt en kryddig avslutning med en hint av kanel."],
     productSpecifications: [
       "LEVERANTÖR Lavazza Nordic AB",
       "VARUMÄRKE Lavazza",
@@ -231,11 +243,338 @@ const products = [
     category: "Förbrukningsvaror",
     subCategory: "Kaffe",
   },
+  /* Kaffe Löfbergs */
+  {
+    name: "DARK 0,5 1000g",
+    vendor: "Löfbergs",
+    description: [
+      "Smakbeskrivning: Ett välbalanserat automatkaffe med smak av kakao och mogna plommon som ger en aromatisk eftersmak. Innehåller 100 % utvalda arabicakaffe där basen är kaffebönor från Brasilien, Colombia och Etiopien – som blandas med kaffebönor från Syd- och Centralamerika och Östafrika beroende på säsong. Kaffet är Rainforest-Alliance certifierat.",
+      "Med malningsgrad 0,5 är Mörk 20218 anpassat för kaffeautomat.",
+      "Löfbergs Dark hette tidigare Löfbergs Mörk. Namnet ändrades 2017 då det professionella sortimentet uppdaterades.",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Löfbergs Lila AB ",
+      "VARUMÄRKE Löfbergs",
+      "FÖRSÄLJNINGSENHET 6x1000g",
+      "ART. NR.20218",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 36 st",
+    ],
+    productAttributes: [
+      "",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745915065/dark_11_360x_oetmlz.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "EXCLUSIVE, hela bönor, 6 kg, FT/EKO",
+    vendor: "Löfbergs",
+    description: [
+      "Det mest kraftfulla kaffet i portföljen är Exclusive från Löfbergs med styrka 5 på en 5-gradig skala. Ett rejält mörkrostat kaffe med fruktig syrlighet samt toner av mörka bär tillsammans med en eftersmak av kakao. De ekologiska och Fairtrade-märkta bönorna kommer från Peru, Nicaragua och övriga Syd- och Centralamerika.",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Löfbergs Lila AB ",
+      "VARUMÄRKE Löfbergs",
+      "FÖRSÄLJNINGSENHET 6x1000g",
+      "ART. NR.20415",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 36 st",
+    ],
+    productAttributes: [
+      "",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745915965/exclusive_360x_qxxtjj.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "FAZENDA, hela bönor, 6 kg",
+    vendor: "Löfbergs",
+    description: [
+      "Ett mörkrostat, smakrikt kaffe med toner av torkad frukt och en lång angenäm eftersmak av mörk choklad. Hela kaffebönor packade i 1000 gram per påse. Observera att du behöver en kaffekvarn eller automat för hela bönor för att brygga kaffet.",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Löfbergs Lila AB ",
+      "VARUMÄRKE Löfbergs",
+      "FÖRSÄLJNINGSENHET 6x1000g",
+      "ART. NR.20540",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 36 st",
+    ],
+    productAttributes: [
+      "Ursprung: Brasilien, Colombia, Centralamerika och Östafrika.",
+      "Certifiering: Rainforest Alliance.",
+      "Kaffeböna: 100% arabica",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745916094/fazenda_4_360x_gaxyby.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "DARK, hela bönor, 6kg",
+    vendor: "Löfbergs",
+    description: [
+      "Ett distinkt mörkrostat kaffe med stor fyllighet och finstämda markerade aromer. Stor, frisk och fruktig syrlighet, milda toner av kakao och aprikos samt en lång utsökt eftersmak. Bönor från Sydamerika och Kenya. Observera att kaffet är hela kaffebönor så du behöver en kaffekvarn eller kaffemaskin som maler bönorna före bryggning.",
+      "Denna produkt hette tidigare Löfbergs Black Symphony. Namnet ändrades 2017 då det professionella sortimentet uppdaterades.",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Löfbergs Lila AB ",
+      "VARUMÄRKE Löfbergs",
+      "FÖRSÄLJNINGSENHET 6x1000g",
+      "ART. NR.20413",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 36 st",
+    ],
+    productAttributes: [
+      "",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745916184/dark_12_360x_xqfgpx.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "MAFIOSO ESPRESSO",
+    vendor: "Löfbergs",
+    description: [
+      "Härliga och smakrika espresso-bönor från Brasilien och Östafrika. Kaffe av högsta kvalité och ett av Löfbergs spännande specialkaffen. Tack vare att espresson bryggs under ett högt tryck så framhävs dess smaker och aromer extra tydligt. Mafioso har toner av torkad frukt och är oerhört fylligt och krämigt. Den är dessutom toppad med trivsam eftersmak av mörk choklad. Ett kaffe ni kommer att älska som också är certifierat med Rainforest Alliance.",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Löfbergs Lila AB ",
+      "VARUMÄRKE Löfbergs",
+      "FÖRSÄLJNINGSENHET 8x500g",
+      "ART. NR.20505",
+      "ANTAL ST PER KRT 8 st",
+      "ANTAL KRT PER PALL 48 st",
+    ],
+    productAttributes: [
+      "Mafioso Espresso",
+      "Hela bönor",
+      "Specialkaffe från Löfbergs",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745917573/20505_mafioso_espresso_500g_360x_nw9car.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "PRIMO frystorkat 250g",
+    vendor: "Löfbergs",
+    description: [
+      "Smakbeskrivning: Ett kraftfullt, fylligt och frystorkat instantkaffe som även passar som espresso. Har en lägre syrlighet och kraftig rostning.",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Löfbergs Lila AB ",
+      "VARUMÄRKE Löfbergs",
+      "FÖRSÄLJNINGSENHET 10x250g",
+      "ART. NR.20703",
+      "ANTAL ST PER KRT 10 st",
+      "ANTAL KRT PER PALL 60 st",
+    ],
+    productAttributes: [
+      "",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745917691/20703_primo-instant_360x_drpepb.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  /* Kaffe Zoegas */
+  {
+    name: "Cultivo, hela bönor 8x750g",
+    vendor: "Zoegas",
+    tagline: "KRYDDIG & DUBBELT SÅ GOD MÖRKROST",
+    description: [
+      "Tvättade högvuxna bönor från Etiopien tillsammans med bönor från Centralamerika ger ett friskt kaffe med välbalanserad fyllighet och smak av örter, mogna bär och nöt. Zoegas Cultivo kaffe är ekologisk och märkt med både KRAV & Faitrade.",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Nestlé Professional",
+      "VARUMÄRKE Zoégas Professional",
+      "FÖRSÄLJNINGSENHET 8x750g",
+      "ART. NR.12213978",
+      "ANTAL ST PER KRT 8 st",
+      "ANTAL KRT PER PALL 32 st",
+    ],
+    productAttributes: [
+      "Zoégas Cultivo Kaffe 100% Arabica bönor",
+      "Mörkrostat, Kryddigt med smak av mogna bär nöt och örter",
+      "Säljes i påsar med HELA BÖNOR 8x750g",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745916719/zoegas-cultivo-750g_360x_fifihu.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "Skånerost, Hela bönor",
+    vendor: "Zoegas",
+    tagline: "KRAFTIG & SMAKRIK MÖRKROST",
+    description: [
+      "Klassisk mörkrost med kraftfull smak och nyanserad friskhet med toner av lakritsrot, kakao och nöt. Lång eftersmak av mogna bär. Kaffet får sin unika karaktär från bland annat brasilianska pärlbönor, högvuxna bönor från Centralamerika kompletterat med bönor från Kenya. Originalet från 1918 togs fram till dåvarande Hotell Horns i Malmö, senare döptes blandningen om till Skånerost.",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Nestlé Professional",
+      "VARUMÄRKE Zoegas",
+      "FÖRSÄLJNINGSENHET 8x750g",
+      "ART. NR.12130892",
+      "ANTAL ST PER KRT 8 st",
+      "ANTAL KRT PER PALL 32 st",
+    ],
+    productAttributes: [
+      "ZOÉGAS Skånerost med mörkrostade 100% Arabica bönor",
+      "Mörkrostad med kraftfull smak och toner av nöt, kakao och lakritsrot",
+      "HELA BÖNOR 8x750g",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745916889/zoegas-skanerost-750g_360x_rrfy4c.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "Dark Zenith, hela bönor 750g",
+    vendor: "Zoegas",
+    tagline: "FRUKTIG & RUND MÖRKROST",
+    description: [
+      "Mörkrost som till stor del består av högvuxet tvättat kaffe från de soliga bergssluttningarna i Centralamerika. Blandningen balanseras med pärlbönor från Brasilien och kaffe från Östafrika tillför fyllighet. Det ger ett uppfriskande kaffe med rund smak som påminner om nougat och honung där sötma och syra kompletterar varandra.",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Nestlé Professional",
+      "VARUMÄRKE Zoegas",
+      "FÖRSÄLJNINGSENHET 8x750g",
+      "ART. NR.12217089",
+      "ANTAL ST PER KRT 8 st",
+      "ANTAL KRT PER PALL 32 st",
+    ],
+    productAttributes: [
+      "ZOÉGAS Dark Zenith- fruktig och rund mörkrost",
+      "Certifierad med rainforest alliance.",
+      "Säljes i påse med HELA BÖNOR á 750g",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745916991/zoegas-dark-zenith-750g_54bebdfb-487f-4779-b9ce-54aad776e6ef_360x_gtuuzz.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "Zoégas Cultivo - malet kaffe",
+    vendor: "Zoegas",
+    tagline: "KRYDDIG & DUBBELT SÅ GOD MÖRKROST",
+    description: [
+      "Tvättade högvuxna bönor från Etiopien tillsammans med bönor från Centralamerika ger ett friskt kaffe med välbalanserad fyllighet och smak av örter, mogna bär och nöt. Zoegas Cultivo kaffe är ekologisk och märkt med både KRAV & Faitrade.",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Nestlé Professional",
+      "VARUMÄRKE Zoegas",
+      "FÖRSÄLJNINGSENHET 6x1000g",
+      "ART. NR.12217130",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 32 st",
+    ],
+    productAttributes: [
+      "Zoégas Cultivo Kaffe 100% Arabica bönor",
+      "Mörkrostat, Kryddigt med smak av mogna bär nöt och örter",
+      "Säljes i påsar med HELA BÖNOR 6x1000g",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745917094/zoegas-cultivo-750g-2_360x_xcl17l.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "Espresso Bellezza, Hela bönor",
+    vendor: "Zoegas",
+    description: [
+      "Söt och fylliga hela Espressobönor med fruktig karaktär från Zoega.Espresso Bellezza är en ljuvlig och mjuk espresso med smakrika aromer och len crema. Den är gjord på 100% Arabicabönor från Brasilien och Östafrika, där blandningen ger en ljuvlig mix av fruktiga toner som påminner om körsbär. Men förutom dessa två länder, finns även en tredje part... det är nämligen så att espresson ger en lång och fyllig eftersmak av mörk choklad där smaken kommer från Indiska bönor.",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Nestlé Professional",
+      "VARUMÄRKE Zoegas",
+      "FÖRSÄLJNINGSENHET 8x500g",
+      "ART. NR.12355936",
+      "ANTAL ST PER KRT 8 st",
+      "ANTAL KRT PER PALL 40 st",
+    ],
+    productAttributes: [
+      "Espresso Bellezza från Zoégas med fruktig karakär.",
+      "Förpackning på 8x500g",
+      "Hela bönor som för bästa smak mals vid bryggning.",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745917227/zoegas-bellezza-500g_360x_oxim84.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
+  {
+    name: "Eco Coffee, hela bönor 750g",
+    vendor: "Zoegas",
+    description: [
+      "ZOÉGAS Eco Coffee är ett ekologiskt och Rainforest Alliance certifierat mörkrostat kaffe. Kaffet är smakfullt med medel fyllighet och balanserad syra,med en eftersmak av fruktiga toner och doftar ljuvligt! De är gjort på 100% HELA Arabica bönor och är rostat på Svensk mark i Helsingborg med miiljömedvetenhet, då all el kommer från vindkraftverk.",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Nestlé Professional",
+      "VARUMÄRKE Zoegas",
+      "FÖRSÄLJNINGSENHET 8x750g",
+      "ART. NR.12241930",
+      "ANTAL ST PER KRT 8 st",
+      "ANTAL KRT PER PALL 32 st",
+    ],
+    productAttributes: [
+      "ZOÉGAS Eco Coffee HELA BÖNOR á 750g",
+      "Ekologiskt och Rainforest alliance certifierat",
+      "Mörkrostat med balanserad syrlighet med eftersmak av fruktiga toner",
+      "100% Arabica bönor",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745917322/zoegas-eco-750g_360x_ki4vak.webp",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Kaffe",
+  },
   /* Automater */
+  /* Automater Kaffeautomater*/
   {
     name: "Esprecious 11L",
     vendor: "Bravilor Bonamat",
-    description: "Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.",
+    description: ["Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad."],
     productSpecifications: [
       "Vattentrycket 2 Bar",
       "Vatten anslutning Ja",
@@ -265,12 +604,444 @@ const products = [
     category: "Automater",
     subCategory: "Kaffeautomater",
   },
+  {
+    name: "Bolero 21",
+    vendor: "Bravilor Bonamat",
+    description: [" Om du väljer Bolero 21 med två behållare kan du till exempel fylla en behållare med instantkaffe och den andra med topping (mjölkpulver). På så sätt kan du servera kaffespecialiteter som cappuccino, caffè latte och latte macchiato. Du kan erbjuda upp till 3 varma drycker. Den manuella kranen ger hett vatten till te eller soppa."],
+    productSpecifications: [
+      "Snabb och användarvänlig",
+      "Tillverkad av robusta högkvalitativa material som rostfritt stål och BPA-fri plast",
+      "Hett vatten från separat utlopp",
+      " Kaffestyrka och dryckesstorlek (S / M / L) kan väljas på skärmen",
+      "Eko läge och isolering av kokaren för minskad energiförbrukning",
+      "Okomplicerade program för sköljning och avkalkning",
+      "Patenterade mixarsystem som kraftigt minskar beläggning av ingredienser",
+      "Genomskinliga behållare gör det enkelt att fylla på",
+      "Dag och totalräknare",
+      "Olika programmerbara inställningar för att optimera valda drycker",
+    ],
+    productAttributes: [
+      "",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918233/10280-17711369_360x_o3pg2h.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918234/21245300-origpic-cf2bae_360x_yf1nhn.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
+  },
+  {
+    name: "Bolero 32",
+    vendor: "Bravilor Bonamat",
+    description: ["Bolero 32 erbjuder ett brett utbud av drycker, upp till 36 totalt. Pekskärmen erbjuder totalt fyra sidor där du kan ha upp till nio drycker per sida. Du kan till exempel kombinera instantkaffe, topping (mjölkpulver) och kakao."],
+    productSpecifications: [
+      "",
+    ],
+    productAttributes: [
+      "Snabb och användarvänlig",
+      "Tillverkad av robusta högkvalitativa material som rostfritt stål och BPA-fri plast",
+      "Hett vatten från separat utlopp",
+      "Kaffestyrka och dryckesstorlek (S / M / L) kan väljas på skärmen",
+      "Eko läge och isolering av kokaren för minskad energiförbrukning",
+      "Okomplicerade program för sköljning och avkalkning",
+      "Patenterade mixarsystem som kraftigt minskar beläggning av ingredienser",
+      "Genomskinliga behållare gör det enkelt att fylla på",
+      "Dag och totalräknare",
+      "Olika programmerbara inställningar för att optimera valda drycker",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918440/21652125-origpic-3ef921_360x_f2kt0z.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918441/21652125-origpic-bdccba_360x_zg1tqz.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
+  },
+  {
+    name: "THa Pumptermosbryggare med vattenanslutning",
+    vendor: "Bravilor Bonamat",
+    description: ["Filterbryggare för utrymmen med vattenanslutning. Brygger kaffe direkt i en termos eller en pumptermos. Levereras med filterhållare av rostfritt stål. Levereras inklusive Furento pumptermos med stålkärna."],
+    productSpecifications: [
+      "",
+    ],
+    productAttributes: [
+      "Välsmakande färskt bryggkaffe",
+      "Rostfritt stål av hög kvalitet kombinerat med svarta detaljer ger maskinen ett modernt utseende.",
+      "Kaffet brygger direkt i en pumptermos eller en termos",
+      "Signal anger när kaffet är klart och när maskinen behöver avkalkas",
+      "Digital styrning",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918601/20994247-origpic-42b203_fc904cba-b1b4-4ef1-962b-b146d383fba3_360x_yp1vhe.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918604/20994247-origpic-9c82b5_24390cf3-ad72-417b-8228-108978b101a7_360x_qxxlf2.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918602/20994247-origpic-808ca8_3580d625-e7cf-414b-9d37-1a71456d6355_360x_x8sc0r.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
+  },
+  {
+    name: "Freshground 310",
+    vendor: "Bravilor Bonamat",
+    description: [""],
+    productSpecifications: [
+      "",
+    ],
+    productAttributes: [
+      "",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918798/21652272-origpic-56739e_360x_qttuxn.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918797/21652272-origpic-5188fd_360x_gcypbe.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
+  },
+  {
+    name: "Freshground 310 Touch",
+    vendor: "Bravilor Bonamat",
+    description: [
+      "FreshGround 310 Touch är en helautomatisk kaffebryggare med tre behållare. En behållare för kaffebönor och två för instantprodukter såsom topping (pulvermjölk) och kakao. Med hjälp av dessa instantprodukter kan du servera olika drycker såsom kaffe, Mocka, Cappuccino, Café au lait, Moccachino, Latte macchiato, och varm choklad.",
+      "FreshGround 310 Touch har ett separat utlopp för hett vatten, till te eller soppa. Kunderna kan dessutom välja om de vill använda en kopp, mugg eller kanna med kaffe/hett vatten.",
+    ],
+    productSpecifications: [
+      "",
+    ],
+    productAttributes: [
+      "Val mellan 8 varma drycker",
+      "Bean-to-cup!",
+      "Separat utlopp för hett vatten",
+      "Välj mellan kopp, mugg eller kanna",
+      "Programmerbara inställningar: storlek (ml), styrka m.m.",
+      "Iögonenfallande pekskärm",
+      "Energisparläge",
+      "För platser med vattenanslutning",
+      "Med ECBC-certifikat (European Coffee Brewing Centre)",
+      "Smarta räknare - varnar när sumphinken är full eller avkalkning behövs, samt visar daglig/kumulativ användning",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918969/21116456-origpic-4cd3d3_360x_hccv1y.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918971/21116456-origpic-5f8169_360x_xwktg5.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918968/21116456-origpic-1a08e7_360x_nuquow.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
+  },
+  {
+    name: "Freshmore 310",
+    vendor: "Bravilor Bonamat",
+    description: [
+      "",
+    ],
+    productSpecifications: [
+      "",
+    ],
+    productAttributes: [
+      "",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919057/23609795-origpic-9712c1_360x_so1m9b.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919055/23609795-origpic-6e8f90_360x_ht3slg.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
+  },
+  {
+    name: "Freshmore 310 touch",
+    vendor: "Bravilor Bonamat",
+    description: [
+      "FreshMore 310 Touch är en helautomatisk kaffebryggare med tre behållare. En behållare för malet (Fresh Brew) kaffe och två för instantprodukter såsom topping (pulvermjölk) och kakao. Med hjälp av dessa instantprodukter kan du servera olika drycker såsom kaffe, Mocka, Cappuccino, Café au lait, Moccachino, Latte macchiato, och varm choklad. FreshMore 310 Touch har ett separat utlopp för hett vatten, till te eller soppa. Kunderna kan dessutom välja om de vill använda en kopp, mugg eller kanna med kaffe/hett vatten.",
+    ],
+    productSpecifications: [
+      "",
+    ],
+    productAttributes: [
+      "Val mellan 8 varma drycker",
+      "Separat utlopp för hett vatten",
+      "Välj mellan kopp, mugg eller kanna",
+      "Programmerbara inställningar: storlek (ml), styrka m.m. Iögonenfallande pekskärm",
+      "Energisparläge",
+      "För platser med vattenanslutning",
+      "Med ECBC-certifikat (European Coffee Brewing Centre)",
+      "Smarta räknare - varnar när sumphinken är full eller avkalkning behövs, samt visar daglig/kumulativ användning",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919183/21138842-origpic-b13359_360x_a27ruh.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919185/21138842-origpic-cb4dc4_360x_qw4ch5.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919181/21138842-origpic-0378d8_360x_znsnxa.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
+  },
+  {
+    name: "Esprecious 12",
+    vendor: "Bravilor Bonamat",
+    description: [
+      " Esprecious 21L har en delad bönbehållare för två olika sorters kaffebönor. Du kan till exempel välja espresso, koffeinfritt eller vanliga kaffebönor. Esprecious 21L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.",
+    ],
+    productSpecifications: [
+      "",
+    ],
+    productAttributes: [
+      "Användarvänlig: intuitiv pekskärm",
+      "Böna-till-kopp: brygger med färska kaffebönor",
+      "Kaffespecialiteter som cappuccino bereds med färsk mjölk",
+      "Dubbelt utlopp: serverar två drycker samtidigt",
+      "Professionell kvarn och bryggare: för perfekt malning och kaffeextraktion",
+      "Separata inställningar av temperatur, vatten/kaffeförhållande, etc.",
+      "Service- och underhållsvänlig",
+      "Hög kvalitet i koppen tack vare automatiskt sköljprogram",
+      "Unikt hetvattensystem som minimerar kalkbeläggning vilket resulterar i mindre underhåll",
+      "Separat utlopp för hetvatten för bl.a. te",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919375/134052548-origpic-eec7ae_360x_ikfhdc.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919373/134052548-origpic-376293_360x_yeo2xh.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919371/134052548-origpic-03c56c_360x_qzp8pt.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
+  },
+  {
+    name: "Iso",
+    vendor: "Bravilor Bonamat",
+    description: [
+      "Standard filterbryggare utan vattenanslutning. Brygger kaffet direkt i en 2-liters termos. Levereras med termos av rostfritt stål (2 liter) och filterhållare av plast.",
+    ],
+    productSpecifications: [
+      "Drycker: Kaffe",
+      "Buffertlager: 2 liter",
+      "Timme kapacitet: 18 liter",
+      "Bryggtid: 6 minuter",
+      "Vatten anslutning: Nej",
+      "Anslutning: 230V~ 50/60Hz 2000W",
+      "Mått (bxdxh): 214x391x465 mm",
+      "Artikelnr: 8.010.090.31002 Iso",
+    ],
+    productAttributes: [
+      "Välsmakande färskt bryggkaffe",
+      "Maskinen fylls med vatten manuellt och kan därför placeras var som helst",
+      "Lättanvänd och enkel att underhålla",
+      "Termos för att behålla rätt temperatur på kaffet",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919527/23557790-origpic-29a7b1_360x_gicuhw.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919529/23557790-origpic-cab263_360x_frekto.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919525/23557790-origpic-16b387_360x_guhdzi.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
+  },
+  {
+    name: "Mondo Twin",
+    vendor: "Bravilor Bonamat",
+    description: [
+      "Filterbryggare utan anslutning till vatten. Levereras med 4 kannor och 2 rostfria filterhållare. Modell med 2 bryggcentraler och 4 värmeplattor.",
+    ],
+    productSpecifications: [
+      "Drycker: Kaffe",
+      "Timme kapacitet: 36 liter",
+      "Timme kapacitet: 28 liter",
+      "Vatten anslutning: Nej",
+      "Anslutning: 400V 3N~ 50/60Hz 4280W",
+      "Anslutning: 230V~ 50/60Hz 3460W",
+      "Mått (bxdxh): 404x406x446 mm",
+      "Artikelnr: 8.010.030.11002 Mondo Twin",
+      "Artikelnr: 8.010.030.31002 Mondo Twin",
+    ],
+    productAttributes: [
+      "Välsmakande färskt bryggkaffe",
+      "Rostfritt stål av hög kvalitet kombinerat med svarta detaljer ger maskinen ett modernt utseende.",
+      "Maskinen fylls på med vatten manuellt och kan därför placeras var som helst",
+      "Vattenindikatorn anger om maskinen har fyllts",
+      "Självreglerande värmeplattor bevarar kaffets kvalitet så bra som det är möjligt",
+      "Signal anger när kaffet är klart och när maskinen behöver avkalkas.",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919824/23556050-origpic-07c11b_360x_hwkqub.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919826/23556050-origpic-d38860_360x_wreny7.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
+  },
+  {
+    name: "TH Pumptermosbryggare",
+    vendor: "Bravilor Bonamat",
+    description: [
+      "Filterbryggare för utrymmen utan vattenanslutning. Brygger kaffe direkt i en termos eller en pumptermos. Levereras med filterhållare av rostfritt stål. Levereras inklusive Furento pumptermos med stålkärna.",
+    ],
+    productSpecifications: [
+      "Drycker: Kaffe",
+      "Buffertlager: 2,2 liter",
+      "Timme kapacitet: 19 liter",
+      "Bryggtid: 7 minuter",
+      "Vatten anslutning: Nej",
+      "Anslutning: 230V~ 50/60Hz 2310W",
+      "Mått (bxdxh): 235x406x545 mm",
+      "Artikelnr: 4.010.040.31012 TH",
+    ],
+    productAttributes: [
+      "Välsmakande färskt bryggkaffe",
+      "Rostfritt stål av hög kvalitet kombinerat med svarta detaljer ger maskinen ett modernt utseende.",
+      "Kaffet bryggs direkt i en pumptermos eller en termos",
+      "Signal anger när kaffet är klart och när maskinen behöver avkalkas",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919993/20994247-origpic-42b203_360x_sgmrjc.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919999/20994247-origpic-9c82b5_360x_o4njai.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919996/20994247-origpic-808ca8_360x_rojzov.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
+  },
+  {
+    name: "Sego 12",
+    vendor: "Bravilor Bonamat",
+    description: [
+      "Sego 12 är en helautomatisk espressobryggare. Tack vare det smala formatet och den tydliga och intuitiva pekskärmen, passar Sego överallt. Bravilor Bonamat har noggrant valt ut, sammanställt och förprogrammerat de vanligaste kaffespecialiteterna åt dig. Du kan alltså snabbt och enkelt ansluta maskinen och ta den i bruk. Kaffekvaliteteten i varje kopp har högsta prioritet. Därför designar och utvecklar vi själva de huvudkomponenter som kräver underhåll. Bravilor Bonamat ser till att rengöringsarbetet begränsas till ett minimum och utförs (om möjligt) automatiskt.",
+    ],
+    productSpecifications: [
+      "",
+    ],
+    productAttributes: [
+      "Tre behållare: en för kaffebönor och två för instantprodukter såsom topping och choklad.",
+      "Enkel hantering tack vare intuitiv pekskärm.",
+      "Menyn erbjuder upp till 30 dryckesalternativ.",
+      "Om så önskas kan vattentemperatur, kontakttid, malningsgrad och koppstorlek justeras.",
+      "Sego passar perfekt på kontor, i väntrum och butiker.",
+      "Energisparläget minskar energiförbrukningen när maskinen inte används.",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745920162/bonamat-sego-12_1_360x_sbvped.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745920165/bonamat-sego-12_2_360x_jw2nez.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745920167/bonamat-sego-12_3_360x_hbkej7.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Kaffeautomater",
+  },
+  /* Automater vattenautomater*/
+  {
+    name: "Albatross hög",
+    vendor: "Escowa",
+    description: [
+      "Albatross är vår absolut storsäljare och är en smäcker kranpelare i modern och utmanande design. Albatross kan fås med en eller två tappkranar och kranen serverar kylt kolsyrat och/eller kylt naturellt vatten.",
+      "Den passar utmärkt som inbyggnadskran till bänk eller våra fristående skåp Titan, Orion eller Halia. Albatross kan levereras i sju olika utföranden i en mix av hög/låg, en eller två kranar samt tre olika färger och kan kopplas till Escowas alla kylare.",
+      "Albatross kommer i standardutförande med höga handtag med märkning för vattenval, men kan extrautrustas med andra typer av handtag. Observera att bilderna på hemsidan kan visa kranar som extrautrustats med andra handtag.",
+    ],
+    productSpecifications: [
+      "",
+    ],
+    productAttributes: [
+      "Kromat utförande med 1 kran",
+      "Kromat utförande med 2 kranar",
+      "Svart utförande med 2 kranar",
+      "Koppar utförande med 2 kranar",
+      "Mässing utförande med 2 kranar",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745920679/placeholder-image_o2sfbh.jpg",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Vattemautomater",
+  },
+  {
+    name: "Escowa Pro Juice",
+    vendor: "Escowa",
+    description: [
+      "Pro Juice är utvecklad utifrån kravet på minsta möjliga mått och har plats för 3 x Bag in Box-förpackningar a 3 liter. Koncentraten ger vanligtvis 15-18 liter färdig dryck/förpackning. Pro Juice har också ett knappval för kylt, stilla vatten.",
+      "Maskinen manövreras med beröringsfria knappar och har en justerbar hylla för anpassning till glas och karaffer.",
+      "Vidare har Pro Juice en patenterad blandningsteknik som blandar drycken direkt innan utloppet. Detta medför minsta möjliga underhåll och bästa möjliga smak.",
+    ],
+    productSpecifications: [
+      "",
+    ],
+    productAttributes: [
+      "",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745920872/Untitled_design_-_2021-12-28T142337.212-removebg-preview_360x_ataj7w.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Vattemautomater",
+  },
+  {
+    name: "Lom Evo",
+    vendor: "Escowa",
+    description: [
+      "Med Lom EVO har vi tagit det bästa vi har från vår samlade erfarenhet om kranpelare. Resultatet är en evolution av stil och funktion.",
+      "Lom EVO har en hög tapphöjd för att kunna användas med de allra flesta vanligen förekommande flaskor och karaffer på marknaden. Den använder våra fjädrande kranar, självklart gjorda helt i rostfritt stål.",
+      "Designmässigt har vi använt Loms enkla uttryck i kombination med den uppskattade svarta glanslacken från Lom LED, även här med inslag av LED-belysning i form av ett vridbart toppstycke. Lom EVO finns också i ett utförande med elegant silverlack.",
+      "Välj om den vinklade bakbelysta ytan ska synas framåt eller bakåt. Allt för att förenkla kommunikationen av ditt varumärke. Vidare är Lom EVO utrustat med greppvänliga höga handtag i med tydlig text för stilla respektive kolsyrat vatten.",
+      "Lom EVO är lätt att serva och installera. Tack vare ett genomgående monteringsstag kan den monteras på tjockare bänkskivor än standard. Kranen går också att dela i tre delar för att förenkla service.",
+    ],
+    productSpecifications: [
+      "",
+    ],
+    productAttributes: [
+      "",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745923141/4214000_2_360x_hn0pjf.webp",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745923143/Lom-Evo_360x_sv7pps.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Vattemautomater",
+  },
+  {
+    name: "Piccola Fizz",
+    vendor: "Escowa",
+    description: [
+      "Piccola Fizz är en vattenkylare som passar utmärkt på det något mindre företaget där man är ute efter ett iskallt glas med kolsyrat eller kylt vatten. Trots sin ringa storlek bjuder Piccola Fizz på flera olika vattenval. Vad sägs tex om rejält kolsyrat, lätt kolsyrat, kylt stilla eller till och med ”vanligt”, okylt vatten.",
+    ],
+    productSpecifications: [
+      "",
+    ],
+    productAttributes: [
+      "",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745923244/piccola-front_360x_c0phbh.avif",
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745923247/piccola-3_1_360x_fcjf5s.webp",
+    ],
+    stock: 10,
+    category: "Automater",
+    subCategory: "Vattemautomater",
+  },
   /* Övrigt */
   /* Övrigt/Snacks */
   {
     name: "TWIX White chokladbit",
     vendor: "Mars",
-    description: "Kex med ett tjockt lager av krämig karamell och ett täckte av len vit choklad, hör du vilken magisk kombination för munnen det är, och det är just vad TWIX White är. Och självklart är bitarna tvådelade, så dela med dig av denna godbit.",
+    description: ["Kex med ett tjockt lager av krämig karamell och ett täckte av len vit choklad, hör du vilken magisk kombination för munnen det är, och det är just vad TWIX White är. Och självklart är bitarna tvådelade, så dela med dig av denna godbit."],
     longDescription: "Psst... Twix började säljas i USA år 1969 och TWIX White har tidigare bara varit Limited Edition men nu är favoriten här för att stanna.",
     productAttributes: [
       "Användarvänlig: intuitiv pekskärm",
@@ -305,7 +1076,7 @@ const products = [
   {
     name: "Ramlösa Fläder/Lime",
     vendor: "Ramlösa",
-    description: "Ramlösa Fläder/Lime i 33 cl-burk för café, restaurang och kiosk. Vad är egentligen godare än dryck med smak av fläder? Ramlösa har skapat en fantastisk törstsläckare bestående av lätt kolsyrat mineralvatten med naturliga mineraler och salter, smaksatt med frisk lime och somrig fläder. Vattnet från Ramlösa Hälsobrunn får sin balanserade smak på naturlig väg från dess vandring genom berggrunden och de skånska ängarna. ",
+    description: ["Ramlösa Fläder/Lime i 33 cl-burk för café, restaurang och kiosk. Vad är egentligen godare än dryck med smak av fläder? Ramlösa har skapat en fantastisk törstsläckare bestående av lätt kolsyrat mineralvatten med naturliga mineraler och salter, smaksatt med frisk lime och somrig fläder. Vattnet från Ramlösa Hälsobrunn får sin balanserade smak på naturlig väg från dess vandring genom berggrunden och de skånska ängarna. "],
     longDescription: "",
     productAttributes: [
       "Ramlösa Fläder/Lime i 33 cl-burk för café, restaurang och kiosk",
@@ -329,6 +1100,58 @@ const products = [
     category: "Övrigt",
     subCategory: "Kyld Dryck",
   },
+  /* Övrigt tillbehör */
+  {
+    name: "Filterrullar",
+    vendor: "",
+    description: [
+      "",
+    ],
+    productSpecifications: [
+      "Artikelnr: 4.011.114.101 1 kartong (5 filter rullar) 89 mm bred för färskbryggt-serien",
+    ],
+    productAttributes: [
+      "Dessa filterrullar ger en optimal fördelning av kaffet och en utsökt arom.",
+      "Filterrullarna är förpackade i lådor om 5 stycken.",
+      "Cirka 2 000 koppar kan bryggas med en rulle.",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745923487/PHO-ACCfilterrollLW_360x_ue8cwq.webp",
+    ],
+    stock: 10,
+    category: "Övrigt",
+    subCategory: "Tillbehör",
+  },
+
+  /* Template */
+  /*   {
+      name: "",
+      vendor: "",
+      description: [
+        "",
+      ],
+      productSpecifications: [
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
+      productAttributes: [
+        "",
+        "",
+        "",
+        "",
+      ],
+      price: 0,
+      images: [
+        "",
+      ],
+      stock: 10,
+      category: "",
+      subCategory: "",
+    }, */
 ];
 
 async function main() {
@@ -405,6 +1228,7 @@ async function main() {
         data: {
           name: product.name,
           vendor: product.vendor,
+          tagline: product.tagline,
           description: product.description,
           longDescription: product.longDescription,
           productAttributes: product.productAttributes,

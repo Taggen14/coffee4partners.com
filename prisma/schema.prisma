@@ -11,7 +11,8 @@ model Product {
   id                    String   @id @default(cuid())
   name                  String
   vendor                String
-  description           String
+  tagline               String?
+  description           String[]
   longDescription       String?  @db.Text
   productAttributes     String[]
   productSpecifications String[]
