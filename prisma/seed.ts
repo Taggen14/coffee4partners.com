@@ -39,6 +39,11 @@ const subCategories = [
     category: "Förbrukningsvaror",
   },
   {
+    name: "Te",
+    description: "Någon beskrivning för Te.",
+    category: "Förbrukningsvaror",
+  },
+  {
     name: "Snacks",
     description: "Någon beskrivning för snacks.",
     category: "Övrigt",
@@ -56,8 +61,8 @@ const subCategories = [
 ] as const;
 
 const products = [
-  /* Kaffe */
-  /* Kaffe Arvid Nordquist */
+  /* Förbrukningsvaror */
+  /* Förbrukningsvaror Kaffe Arvid Nordquist */
   {
     name: "Arvid Nordquist Green Forest , Hela bönor",
     vendor: "Arvid Nordquist",
@@ -163,7 +168,7 @@ const products = [
     category: "Förbrukningsvaror",
     subCategory: "Kaffe",
   },
-  /* Kaffe Lavazza */
+  /* Förbrukningsvaror Kaffe Lavazza */
   {
     name: "Gran Riserva Filter, hela bönor",
     vendor: "Lavazza",
@@ -243,7 +248,7 @@ const products = [
     category: "Förbrukningsvaror",
     subCategory: "Kaffe",
   },
-  /* Kaffe Löfbergs */
+  /* Förbrukningsvaror Kaffe Löfbergs */
   {
     name: "DARK 0,5 1000g",
     vendor: "Löfbergs",
@@ -261,7 +266,6 @@ const products = [
       "ANTAL KRT PER PALL 36 st",
     ],
     productAttributes: [
-      "",
     ],
     price: 0,
     images: [
@@ -286,7 +290,6 @@ const products = [
       "ANTAL KRT PER PALL 36 st",
     ],
     productAttributes: [
-      "",
     ],
     price: 0,
     images: [
@@ -339,7 +342,6 @@ const products = [
       "ANTAL KRT PER PALL 36 st",
     ],
     productAttributes: [
-      "",
     ],
     price: 0,
     images: [
@@ -391,7 +393,6 @@ const products = [
       "ANTAL KRT PER PALL 60 st",
     ],
     productAttributes: [
-      "",
     ],
     price: 0,
     images: [
@@ -401,7 +402,7 @@ const products = [
     category: "Förbrukningsvaror",
     subCategory: "Kaffe",
   },
-  /* Kaffe Zoegas */
+  /* Förbrukningsvaror Kaffe Zoegas */
   {
     name: "Cultivo, hela bönor 8x750g",
     vendor: "Zoegas",
@@ -569,6 +570,35 @@ const products = [
     category: "Förbrukningsvaror",
     subCategory: "Kaffe",
   },
+  /* Förbrukningsvaror te */
+  {
+    name: "Forest Fruits Tea",
+    vendor: "Lipton",
+    description: [
+      "Forest Fruits Tea från Lipton. Ett te fullproppat med många av skogens alla härligheter. Eller vad sägs om riktiga fruktbitar från bland annat hallon, jordgubb, röda vinbär, björnbär och körsbär. Med Liptons 120 åriga erfarenhet är det inte konstigt att resultatet blir såhär bra!",
+    ],
+    productSpecifications: [
+      "LEVERANTÖR Unilever Sverige AB",
+      "VARUMÄRKE Lipton",
+      "FÖRSÄLJNINGSENHET 6x25st",
+      "VÅRT ART. NR.60338",
+      "LEV. ART. NR.23848001",
+      "ANTAL ST PER KRT 6 st",
+      "ANTAL KRT PER PALL 162 st",
+    ],
+    productAttributes: [
+      "Skogs-te",
+      "Pyramidform",
+      "RA-certifierad",
+    ],
+    price: 0,
+    images: [
+      "",
+    ],
+    stock: 10,
+    category: "Förbrukningsvaror",
+    subCategory: "Te",
+  },
   /* Automater */
   /* Automater Kaffeautomater*/
   {
@@ -621,7 +651,6 @@ const products = [
       "Olika programmerbara inställningar för att optimera valda drycker",
     ],
     productAttributes: [
-      "",
     ],
     price: 0,
     images: [
@@ -637,7 +666,6 @@ const products = [
     vendor: "Bravilor Bonamat",
     description: ["Bolero 32 erbjuder ett brett utbud av drycker, upp till 36 totalt. Pekskärmen erbjuder totalt fyra sidor där du kan ha upp till nio drycker per sida. Du kan till exempel kombinera instantkaffe, topping (mjölkpulver) och kakao."],
     productSpecifications: [
-      "",
     ],
     productAttributes: [
       "Snabb och användarvänlig",
@@ -665,7 +693,6 @@ const products = [
     vendor: "Bravilor Bonamat",
     description: ["Filterbryggare för utrymmen med vattenanslutning. Brygger kaffe direkt i en termos eller en pumptermos. Levereras med filterhållare av rostfritt stål. Levereras inklusive Furento pumptermos med stålkärna."],
     productSpecifications: [
-      "",
     ],
     productAttributes: [
       "Välsmakande färskt bryggkaffe",
@@ -687,12 +714,10 @@ const products = [
   {
     name: "Freshground 310",
     vendor: "Bravilor Bonamat",
-    description: [""],
+    description: ["Saknar beskrivning"],
     productSpecifications: [
-      "",
     ],
     productAttributes: [
-      "",
     ],
     price: 0,
     images: [
@@ -711,7 +736,6 @@ const products = [
       "FreshGround 310 Touch har ett separat utlopp för hett vatten, till te eller soppa. Kunderna kan dessutom välja om de vill använda en kopp, mugg eller kanna med kaffe/hett vatten.",
     ],
     productSpecifications: [
-      "",
     ],
     productAttributes: [
       "Val mellan 8 varma drycker",
@@ -739,13 +763,11 @@ const products = [
     name: "Freshmore 310",
     vendor: "Bravilor Bonamat",
     description: [
-      "",
+      "Saknar beskrivning",
     ],
     productSpecifications: [
-      "",
     ],
     productAttributes: [
-      "",
     ],
     price: 0,
     images: [
@@ -763,7 +785,6 @@ const products = [
       "FreshMore 310 Touch är en helautomatisk kaffebryggare med tre behållare. En behållare för malet (Fresh Brew) kaffe och två för instantprodukter såsom topping (pulvermjölk) och kakao. Med hjälp av dessa instantprodukter kan du servera olika drycker såsom kaffe, Mocka, Cappuccino, Café au lait, Moccachino, Latte macchiato, och varm choklad. FreshMore 310 Touch har ett separat utlopp för hett vatten, till te eller soppa. Kunderna kan dessutom välja om de vill använda en kopp, mugg eller kanna med kaffe/hett vatten.",
     ],
     productSpecifications: [
-      "",
     ],
     productAttributes: [
       "Val mellan 8 varma drycker",
@@ -792,7 +813,6 @@ const products = [
       " Esprecious 21L har en delad bönbehållare för två olika sorters kaffebönor. Du kan till exempel välja espresso, koffeinfritt eller vanliga kaffebönor. Esprecious 21L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.",
     ],
     productSpecifications: [
-      "",
     ],
     productAttributes: [
       "Användarvänlig: intuitiv pekskärm",
@@ -921,7 +941,6 @@ const products = [
       "Sego 12 är en helautomatisk espressobryggare. Tack vare det smala formatet och den tydliga och intuitiva pekskärmen, passar Sego överallt. Bravilor Bonamat har noggrant valt ut, sammanställt och förprogrammerat de vanligaste kaffespecialiteterna åt dig. Du kan alltså snabbt och enkelt ansluta maskinen och ta den i bruk. Kaffekvaliteteten i varje kopp har högsta prioritet. Därför designar och utvecklar vi själva de huvudkomponenter som kräver underhåll. Bravilor Bonamat ser till att rengöringsarbetet begränsas till ett minimum och utförs (om möjligt) automatiskt.",
     ],
     productSpecifications: [
-      "",
     ],
     productAttributes: [
       "Tre behållare: en för kaffebönor och två för instantprodukter såsom topping och choklad.",
@@ -951,7 +970,6 @@ const products = [
       "Albatross kommer i standardutförande med höga handtag med märkning för vattenval, men kan extrautrustas med andra typer av handtag. Observera att bilderna på hemsidan kan visa kranar som extrautrustats med andra handtag.",
     ],
     productSpecifications: [
-      "",
     ],
     productAttributes: [
       "Kromat utförande med 1 kran",
@@ -977,10 +995,8 @@ const products = [
       "Vidare har Pro Juice en patenterad blandningsteknik som blandar drycken direkt innan utloppet. Detta medför minsta möjliga underhåll och bästa möjliga smak.",
     ],
     productSpecifications: [
-      "",
     ],
     productAttributes: [
-      "",
     ],
     price: 0,
     images: [
@@ -1001,10 +1017,8 @@ const products = [
       "Lom EVO är lätt att serva och installera. Tack vare ett genomgående monteringsstag kan den monteras på tjockare bänkskivor än standard. Kranen går också att dela i tre delar för att förenkla service.",
     ],
     productSpecifications: [
-      "",
     ],
     productAttributes: [
-      "",
     ],
     price: 0,
     images: [
@@ -1022,10 +1036,8 @@ const products = [
       "Piccola Fizz är en vattenkylare som passar utmärkt på det något mindre företaget där man är ute efter ett iskallt glas med kolsyrat eller kylt vatten. Trots sin ringa storlek bjuder Piccola Fizz på flera olika vattenval. Vad sägs tex om rejält kolsyrat, lätt kolsyrat, kylt stilla eller till och med ”vanligt”, okylt vatten.",
     ],
     productSpecifications: [
-      "",
     ],
     productAttributes: [
-      "",
     ],
     price: 0,
     images: [
@@ -1105,7 +1117,7 @@ const products = [
     name: "Filterrullar",
     vendor: "",
     description: [
-      "",
+      "Saknar beskrivning",
     ],
     productSpecifications: [
       "Artikelnr: 4.011.114.101 1 kartong (5 filter rullar) 89 mm bred för färskbryggt-serien",
@@ -1123,9 +1135,178 @@ const products = [
     category: "Övrigt",
     subCategory: "Tillbehör",
   },
+  {
+    name: "Platta filter",
+    vendor: "",
+    description: [
+      "Detta filter ger en optimal fördelning av kaffet och en utsökt arom. Tack vare dess form och volym så är detta det bästa alternativet för grovmalet kaffe. De plana filtren är förpackade i lådor om 250 stycken.",
+    ],
+    productSpecifications: [
+      "Storlek diameter filter: 172 mm, Artikelnr: 7.150.503.301 B5 (HW)",
+      "Storlek diameter filter: 244 mm, Artikelnr: 7.150.507.301 B10 (HW)",
+      "Storlek diameter filter: 330 mm, Artikelnr: 7.150.505.301 B20 (HW)",
+      "Storlek diameter filter: 400 mm, Artikelnr: 7.150.508.301 B40",
+    ],
+    productAttributes: [
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745991482/FilterpaperB10_frontside_jpg_720x_hgip1p.webp",
+    ],
+    stock: 10,
+    category: "Övrigt",
+    subCategory: "Tillbehör",
+  },
+  {
+    name: "Korgfilter",
+    vendor: "",
+    description: [
+      "Korgfilter för urnbryggare.",
+    ],
+    productSpecifications: [
+      "Storlek diameter filter: 110/360 mm, Artikelnr: 7.150.102.301 B5 (HW) och termosbryggare Aurora",
+      "Storlek diameter filter: 152/437 mm, Artikelnr: 7.150.103.301 B10 (HW)",
+      "Storlek diameter filter: 203/535 mm, Artikelnr: 7.150.104.301 B20 (HW)",
+      "Storlek diameter filter: 280/635 mm, Artikelnr: 7.150.105.301 B40",
+    ],
+    productAttributes: [
+      "Korgfilter för urnbryggare.",
+      "B5 (HW) och Aurora-serien - 110/360 mm.",
+      "B10 (HW) - 152/437 mm.",
+      "B20 (HW) - 203/535 mm.",
+      "B40 - 280/635 mm.",
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745991690/7_150_102_301-KORFFILTERPAP-B5-LOS_jpg_720x_efuil5.webp",
+    ],
+    stock: 10,
+    category: "Övrigt",
+    subCategory: "Tillbehör",
+  },
+  {
+    name: "Rengörings-tabletter",
+    vendor: "",
+    description: [
+      "FreshMilk behöver daglig rengöring. Pekskärmen leder dig genom rengöringsprogrammet steg för steg. Du behöver 2 tabletter per dag. Tabletter säljs per burk (120 tabletter) och per kartong (12 burkar).",
+    ],
+    productSpecifications: [
+      "Artikelnr: 7.193.401.101 1 burk om 120 rengörings-tabletter för FreshMilk",
+      "Artikelnr: 7.193.401.102 12 burkar à 120 rengörings-tabletter för FreshMilk",
+    ],
+    productAttributes: [
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745991845/PHO-ACCFreshMilkcleaningtablets_720x_egggt0.webp",
+    ],
+    stock: 10,
+    category: "Övrigt",
+    subCategory: "Tillbehör",
+  },
+  {
+    name: "Cleaner",
+    vendor: "",
+    description: [
+      "Cleaner för att rester av kaffe och te försvinner, vilket gör att den rena smaken bevaras och att stopp undviks.",
+    ],
+    productSpecifications: [
+      "Artikelnr: 7.191.101.212 1 kartong 4x15 påsar, 15 gram per påse",
+      "Artikelnr: 7.191.102.201 1 kartong, 10 burkar 1 kilo/st",
+    ],
+    productAttributes: [
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745991945/PHO-ACCCleanersachetRV_720x_fxxdxo.webp",
+    ],
+    stock: 10,
+    category: "Övrigt",
+    subCategory: "Tillbehör",
+  },
+  {
+    name: "Renegite",
+    vendor: "",
+    description: [
+      "För avkalkning av din maskin och för att minska risken för fel och för att bevara en ren smak.",
+    ],
+    productSpecifications: [
+      "Artikelnr: 7.190.101.212 1 kartong 4 x 15 påsar, 50 gram per påse",
+      "Artikelnr: 7.190.102.201 1 kartong, 10 burkar 1 kilo/st",
+    ],
+    productAttributes: [
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745992008/PHO-ACCRenegitesachetRV_720x_ihhb4v.webp",
+    ],
+    stock: 10,
+    category: "Övrigt",
+    subCategory: "Tillbehör",
+  },
+  {
+    name: "Rostfri kanna",
+    vendor: "",
+    description: [
+      "Vackert designad flaska av rostfritt stål som rymmer 1,7 eller 2,2 liter. Kannan har ett lock med gångjärn, som är lätt att använda, och plasthandtag.",
+    ],
+    productSpecifications: [
+      "Artikelnr: 7.170.901.401 Rostfri kanna 1,7 liter",
+      "Artikelnr: 7.170.902.301 Rostfri kanna 2,2 liter",
+    ],
+    productAttributes: [
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745992134/PHO-ACCstainlesssteeldecanterRV_720x_khromr.webp",
+    ],
+    stock: 10,
+    category: "Övrigt",
+    subCategory: "Tillbehör",
+  },
+  {
+    name: "Filter",
+    vendor: "",
+    description: [
+      "Detta filter ger en optimal fördelning av kaffet och en utsökt arom. Tack vare dess form och volym så är detta det bästa alternativet för malet kaffe. Filtren är förpackade i lådor om 1000 stycken. Extra kvantitetsrabatt vid köp av 5 kartonger eller fler.",
+    ],
+    productSpecifications: [
+      "Storlek diameter filter: 85/245 mm",
+      "Artikelnr: 7.150.101.101 Filter - 1000 filter/kartong",
+    ],
+    productAttributes: [
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745992234/PHO-ACCfilterpaperquickfilterRV_720x_j1wgms.webp",
+    ],
+    stock: 10,
+    category: "Övrigt",
+    subCategory: "Tillbehör",
+  },
+  {
+    name: "Glaskanna",
+    vendor: "",
+    description: [
+      "Ergonomisk och rymmelig. Vackert designad kanna som rymmer 1,7 liter. Kannan har ett lock med gångjärn, som är lätt att använda, och plasthandtag",
+    ],
+    productSpecifications: [
+      "Artikelnr:  7.170.602.101 1 glaskanna i en kartong",
+    ],
+    productAttributes: [
+    ],
+    price: 0,
+    images: [
+      "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745992346/PHO-ACCglassdecanterRV_720x_piodvp.webp",
+    ],
+    stock: 10,
+    category: "Övrigt",
+    subCategory: "Tillbehör",
+  },
 
   /* Template */
-  /*   {
+  /*   
+  {
       name: "",
       vendor: "",
       description: [
@@ -1151,7 +1332,8 @@ const products = [
       stock: 10,
       category: "",
       subCategory: "",
-    }, */
+    }, 
+    */
 ];
 
 async function main() {

@@ -40,7 +40,7 @@ export default function CategoriesPage() {
             return (
               <Link
                 key={category.id}
-                href={`/shop/categories/${category.categorySlug}`}
+                href={`/shop/${category.categorySlug}`}
                 className="group relative overflow-hidden rounded-lg border bg-card transition-colors hover:bg-accent py-4">
                 <div className="aspect-[4/3] relative overflow-hidden">
                   <Image

@@ -21,9 +21,9 @@ const MobileNavbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileNavbarPro
 
     const isActive = (categorySlug: string, subCategorySlug?: string) => {
         if (subCategorySlug) {
-            return pathname.includes(`/shop/categories/${categorySlug}/${subCategorySlug}`);
+            return pathname.includes(`/shop/${categorySlug}/${subCategorySlug}`);
         }
-        return pathname.includes(`/shop/categories/${categorySlug}`);
+        return pathname.includes(`/shop/${categorySlug}`);
     };
 
     const toggleDropdown = (e: React.MouseEvent, categoryId: string) => {
@@ -76,7 +76,7 @@ const MobileNavbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileNavbarPro
                                                 className={cn(
                                                     "relative text-lg whitespace-nowrap transition-colors duration-300 hover:text-secondary-foreground py-0 block text-left",
                                                     isCategoryActive && "text-secondary-foreground")}
-                                                href={`/shop/categories/${category.categorySlug}`}
+                                                href={`/shop/${category.categorySlug}`}
                                                 onClick={() => setIsMobileMenuOpen(false)}>
                                                 {category.name}
                                             </NavigationMenuLink>
@@ -113,7 +113,7 @@ const MobileNavbar = ({ isMobileMenuOpen, setIsMobileMenuOpen }: MobileNavbarPro
                                                         return (
                                                             <li key={subCategory.id}>
                                                                 <Link
-                                                                    href={`/shop/categories/${category.categorySlug}/${slugify(subCategory.name)}`}
+                                                                    href={`/shop/${category.categorySlug}/${slugify(subCategory.name)}`}
                                                                     className={cn(
                                                                         "block text-primary hover:text-secondary-foreground transition-colors",
                                                                         isSubCategoryActive && "text-secondary-foreground"

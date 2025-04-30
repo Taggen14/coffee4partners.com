@@ -17,6 +17,8 @@ import { Button } from "@/components/ui/button";
 import { AddToCartButton } from "@/components/shop/add-to-cart-button";
 import { QuickView } from "@/components/shop/quick-view";
 import { ExtendedProduct } from "@/types";
+import { useCategories } from "@/hooks/use-categories";
+import { slugify } from "@/lib/utils";
 
 interface ProductCardProps {
   product: ExtendedProduct;
@@ -25,13 +27,17 @@ interface ProductCardProps {
 
 export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const [quickViewOpen, setQuickViewOpen] = useState(false);
+  const { categories } = useCategories()
+  const productCategory = categories?.find((category) => category.id === product.categoryId)
+  const productSubCategory = productCategory?.subCategories.find((sub) => sub.id === product.subCategoryId);
+  const subCategorySlug = productSubCategory && slugify(productSubCategory.name)
 
   return (
     <div className="container">
       <Card className="group flex h-full gap-0 flex-col border-border/50 bg-card transition-colors hover:border-border">
         <CardHeader className="p-0">
           <div className="relative">
-            <Link href={`/shop/products/${product.id}`} className="block">
+            <Link href={`/shop/${productCategory?.categorySlug}/${subCategorySlug}/${product.id}`} className="block">
               <div className="relative aspect-square overflow-hidden">
                 <Image
                   src={product.images[0] || "/product-placeholder.png"}
@@ -58,9 +64,8 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         <CardContent className="flex-1 space-y-4 p-4">
           <div className="space-y-2">
             <Link
-              href={`/shop/products/${product.id}`}
-              className="block transition-colors hover:text-primary"
-            >
+              href={`/shop/${productCategory?.categorySlug}/${subCategorySlug}/${product.id}`}
+              className="block transition-colors hover:text-primary">
               <CardTitle className="text-xs sm:text-lg">
                 {product.name}
               </CardTitle>

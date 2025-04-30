@@ -155,7 +155,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                       className="justify-start gap-2 h-9 text-xs hover:bg-accent/50"
                       onClick={() => {
                         onOpenChange(false);
-                        router.push("/shop/categories");
+                        router.push("/shop");
                       }}
                     >
                       <List className="h-3.5 w-3.5 text-primary" />

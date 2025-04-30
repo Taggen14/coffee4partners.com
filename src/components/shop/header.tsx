@@ -79,7 +79,7 @@ export function ShopHeader() {
     setSelectedCategory(categorySlug);
     setIsMobileMenuOpen(false);
     if (categorySlug) {
-      router.push(`/shop/categories/${categorySlug}`);
+      router.push(`/shop/${categorySlug}`);
     } else {
       router.push("/shop");
     }
@@ -168,7 +168,7 @@ export function ShopHeader() {
                                     ? "text-secondary-foreground"
                                     : "text-primary"
                                 }`}
-                              href={`/shop/categories/${category.categorySlug}`}
+                              href={`/shop/${category.categorySlug}`}
                               aria-haspopup="true"
                               aria-expanded={hoveredCategoryId === category.id ? 'true' : 'false'}>
                               <div className="flex items-center">
@@ -186,7 +186,7 @@ export function ShopHeader() {
                               {category.subCategories?.map((subCategory) => (
                                 <a
                                   key={subCategory.id}
-                                  href={`/shop/categories/${category.categorySlug}/${slugify(subCategory.name)}`}
+                                  href={`/shop/${category.categorySlug}/${slugify(subCategory.name)}`}
                                   className="block px-4 py-2 text-sm text-primary hover:text-secondary-foreground whitespace-nowrap transition-colors duration-300"
                                   role="menuitem"
                                   aria-label={subCategory.name}>

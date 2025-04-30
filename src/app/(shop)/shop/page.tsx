@@ -7,7 +7,7 @@ import { useCategories } from "@/hooks/use-categories";
 import { useCart } from "@/store/use-cart";
 import { ExtendedProduct } from "@/types";
 import { ProductCard } from "@/components/shop/product-card";
-import CategoriesPage from "./categories/page";
+import CategoriesPage from "@/components/shop/categories-page";
 import FilteringProducts from "@/components/shop/filtering-products";
 
 export default function ShopPage() {

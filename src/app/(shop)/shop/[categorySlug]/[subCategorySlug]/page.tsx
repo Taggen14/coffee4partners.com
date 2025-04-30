@@ -9,29 +9,26 @@ import { useCart } from "@/store/use-cart";
 import { ExtendedProduct } from "@/types";
 import Link from "next/link";
 import { slugify } from "@/lib/utils";
-import FilteringProducts from "@/components/shop/filtering-products";
-import { useState } from "react";
 
 export default function CategoryPage() {
-  const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null);
-  const params = useParams<{ categorySlug: string }>();
+  const params = useParams<{ categorySlug: string, subCategorySlug: string }>();
   const { products, isLoading: productsLoading } = useProducts();
   const { categories, isLoading: categoriesLoading } = useCategories();
   const { addItem } = useCart();
 
   // Get current category
   const currentCategory = categories?.find((c) => c.categorySlug === params.categorySlug);
-
+  const currentSubCategory = currentCategory?.subCategories.find((subC) => slugify(subC.name) === params.subCategorySlug);
+  console.log('currentSubCategory: ', currentSubCategory)
+  console.log('params: ', params)
   const subCategoryProducts = currentCategory?.subCategories
     .map((subCategory) => (products?.filter((product) => product.subCategoryId === subCategory.id)))
     .flat()
     .filter((product): product is ExtendedProduct => product !== undefined);
 
   // Filter products by category
-  const filteredProducts = selectedSubCategory ? products?.filter((product) => product.subCategoryId === selectedSubCategory)
-    : subCategoryProducts;
+  const filteredSubCategoryProducts = products?.filter((product) => product.subCategoryId === currentSubCategory?.id);
 
-  console.log('subCategoryProducts: ', subCategoryProducts)
   const handleAddToCart = async (product: ExtendedProduct) => {
     // Simulate a small delay to show loading state
     await new Promise((resolve) => setTimeout(resolve, 500));
@@ -71,48 +68,21 @@ export default function CategoryPage() {
     <div className="container space-y-8 py-8 relative">
       {/* Back Button */}
       <Link
-        href="/shop/categories"
+        href={`/shop/${currentCategory.categorySlug}`}
         className="absolute top-5 left-0 inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground">
         <ArrowLeft className="mr-2 h-4 w-4" />
-        Tillbaka till kategorier
+        Tillbaka till {currentCategory.name}
       </Link>
 
       {/* Category Header */}
       <div className="space-y-4">
-        <h1 className="text-3xl font-bold">{currentCategory.name}</h1>
-        {currentCategory.description && (
-          <p className="text-muted-foreground">{currentCategory.description}</p>
-        )}
+        <h1 className="text-3xl font-bold">{currentSubCategory?.name}</h1>
+        <p className="text-muted-foreground">{currentSubCategory?.description}</p>
       </div>
-
-      <h2 className="mb-0">Underkategorier</h2>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {currentCategory?.subCategories.map((subCategory) => {
-          const subCategoryProducts = products?.filter((product) => product.subCategoryId === subCategory.id);
-          const productCount = subCategoryProducts?.length || 0;
-
-          return (
-            <Link
-              key={subCategory.id}
-              href={`/shop/categories/${currentCategory.categorySlug}/${slugify(subCategory.name)}`}
-              className="group relative overflow-hidden rounded-lg border bg-card transition-colors hover:bg-accent">
-              <div className="p-2">
-                <h2 className="text-xl font-semibold">{subCategory.name}</h2>
-                <p className="text-sm font-medium text-primary">
-                  {productCount}{" "}
-                  {productCount === 1 ? "produkt" : "produkter"}
-                </p>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-
-      <FilteringProducts selectedCategory={selectedSubCategory} setSelectedCategory={setSelectedSubCategory} categories={currentCategory.subCategories} categoryTextType={"underkategorier"} />
 
       {/* Products Grid */}
       <div className="gap-2 sm:gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {filteredProducts?.map((product, i) => (
+        {filteredSubCategoryProducts?.map((product, i) => (
           <ProductCard
             key={i}
             product={product}

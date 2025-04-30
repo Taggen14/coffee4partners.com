@@ -47,8 +47,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
             variant="secondary"
             size="icon"
             className="absolute right-3 top-3 h-9 w-9 rounded-full opacity-0 transition-all duration-200 hover:scale-110 group-hover:opacity-100 sm:opacity-100"
-            onClick={() => setFullscreenOpen(true)}
-          >
+            onClick={() => setFullscreenOpen(true)}>
             <ZoomIn className="h-5 w-5" />
           </Button>
 
@@ -59,16 +58,14 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
                 variant="secondary"
                 size="icon"
                 className="absolute left-3 top-1/2 h-9 w-9 -translate-y-1/2 rounded-full opacity-0 transition-all duration-200 hover:scale-110 group-hover:opacity-100 sm:opacity-100"
-                onClick={previous}
-              >
+                onClick={previous}>
                 <ChevronLeft className="h-5 w-5" />
               </Button>
               <Button
                 variant="secondary"
                 size="icon"
                 className="absolute right-3 top-1/2 h-9 w-9 -translate-y-1/2 rounded-full opacity-0 transition-all duration-200 hover:scale-110 group-hover:opacity-100 sm:opacity-100"
-                onClick={next}
-              >
+                onClick={next}>
                 <ChevronRight className="h-5 w-5" />
               </Button>
             </>
@@ -86,7 +83,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
 
         {/* Thumbnails */}
         {images.length > 1 && (
-          <div className="mt-4 grid grid-cols-4 gap-3">
+          <div className="p-1 pt-2 grid grid-cols-4 gap-3">
             {images.map((image, i) => (
               <button
                 key={i}
@@ -94,8 +91,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
                   "relative aspect-square overflow-hidden rounded-lg bg-muted transition-all duration-200 hover:scale-105",
                   selectedImage === i && "ring-2 ring-primary ring-offset-2",
                 )}
-                onClick={() => setSelectedImage(i)}
-              >
+                onClick={() => setSelectedImage(i)}>
                 <Image
                   src={image}
                   alt={`${productName} miniatyr ${i + 1}`}
@@ -175,7 +171,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
                     className={cn(
                       "relative h-20 w-20 overflow-hidden rounded-lg transition-all duration-200 hover:scale-105",
                       selectedImage === i &&
-                        "ring-2 ring-primary ring-offset-2",
+                      "ring-2 ring-primary ring-offset-2",
                     )}
                     onClick={() => setSelectedImage(i)}
                   >

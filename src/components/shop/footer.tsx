@@ -12,7 +12,7 @@ export function ShopFooter() {
             <h3 className="text-lg font-semibold tracking-wide">Butik</h3>
             <div className="flex flex-col space-y-3 text-sm">
               <Link
-                href="/shop/categories"
+                href="/shop"
                 className="text-muted-foreground transition-colors hover:text-foreground"
               >
                 Alla kategorier
