@@ -219,10 +219,10 @@ export default function ProductPage() {
                   className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-600 ${!open['description'] ? "rotate-90" : ""}`} />
               </div>
               <div className={`overflow-hidden transition-all duration-500 flex flex-col gap-4 ${!open['description'] ? 'max-h-[600px]' : 'max-h-0'}`}>
-                <div className="px-4">
-                  <p className="text-sm sm:text-base leading-relaxed">
-                    {product.description}
-                  </p>
+                <div className="px-4 flex flex-col gap-6">
+                  {product.description.map((description) => (
+                    <p className="text-sm sm:text-base leading-relaxed">{description}</p>
+                  ))}
                 </div>
                 {/* ProductAttributes */}
                 {product.productAttributes && product.productAttributes.length !== 0 && (

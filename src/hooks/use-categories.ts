@@ -8,7 +8,7 @@ type CategorySlugSubCategory = Category & {
 };
 
 export const useCategories = () => {
-  const { data: categories, isLoading } = useQuery<CategorySlugSubCategory[]>({
+  const { data: categories, isLoading, refetch } = useQuery<CategorySlugSubCategory[]>({
     queryKey: ["categories"],
     queryFn: async () => {
       const response = await fetch("/api/categories");
@@ -27,5 +27,6 @@ export const useCategories = () => {
   return {
     categories,
     isLoading,
+    refetch,
   };
 };

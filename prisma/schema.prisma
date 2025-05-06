@@ -13,7 +13,6 @@ model Product {
   vendor                String
   tagline               String?
   description           String[]
-  longDescription       String?  @db.Text
   productAttributes     String[]
   productSpecifications String[]
   price                 Decimal  @db.Decimal(10, 2)
@@ -39,6 +38,7 @@ model Category {
   id            String        @id @default(cuid())
   name          String        @unique
   description   String?
+  image         String?
   subCategories SubCategory[]
   products      Product[]
 }
@@ -47,6 +47,7 @@ model SubCategory {
   id          String    @id @default(cuid())
   name        String    @unique
   description String?
+  image       String?
   products    Product[]
   categoryId  String
   category    Category  @relation(fields: [categoryId], references: [id])

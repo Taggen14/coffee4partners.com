@@ -2,6 +2,7 @@ import { queryClient } from "@/lib/react-query";
 import { ExtendedProduct } from "@/types";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
+import { Product } from "@prisma/client";
 import { toast } from "sonner";
 
 export const useProducts = (searchQuery?: string) => {
@@ -42,7 +43,8 @@ export const useProducts = (searchQuery?: string) => {
   }, [products, searchQuery]);
 
   const createProduct = useMutation({
-    mutationFn: async (data: Partial<ExtendedProduct>) => {
+    mutationFn: async (data: Partial<Omit<Product, "price">> & { price: string }) => {
+      console.log('use-products.ts creatProduct data: ', data)
       const response = await fetch("/api/admin/products", {
         method: "POST",
         headers: {

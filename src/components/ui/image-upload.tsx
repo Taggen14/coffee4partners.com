@@ -41,6 +41,7 @@ export function ImageUpload({
   );
 
   const handleImageChange = (url: string) => {
+    console.log('handleImageChange clicked!')
     // If we have a new image, load it
     if (url) {
       const img = new Image();
@@ -59,6 +60,7 @@ export function ImageUpload({
     }
   };
 
+  /* IMPORT IMAGE WITH DRAG AND DROP */
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       const remainingSlots = maxFiles - value.length;
@@ -139,8 +141,7 @@ export function ImageUpload({
             : "border-muted-foreground/25",
           disabled && "opacity-50 cursor-not-allowed",
           "hover:border-primary/50 hover:bg-primary/5",
-        )}
-      >
+        )}>
         <input {...getInputProps()} />
         <div className="flex flex-col items-center justify-center p-6 text-center">
           <UploadCloud className="h-10 w-10 text-muted-foreground/50 mb-4" />
@@ -192,11 +193,8 @@ export function ImageUpload({
           {value.map((url, index) => (
             <div
               key={url}
-              onClick={() => {
-                handleImageChange(url);
-              }}
-              className="group/item relative aspect-[4/3] rounded-lg overflow-hidden bg-muted cursor-pointer transition-all hover:ring-2 hover:ring-primary hover:ring-offset-2 ring-offset-background"
-            >
+              // onClick={() => handleImageChange(url)}
+              className="group/item relative aspect-[4/3] rounded-lg overflow-hidden bg-muted cursor-pointer transition-all hover:ring-2 hover:ring-primary hover:ring-offset-2 ring-offset-background">
               <NextImage
                 fill
                 src={url}
@@ -208,12 +206,11 @@ export function ImageUpload({
                 type="button"
                 variant="destructive"
                 size="icon"
-                className="absolute top-2 right-2 h-7 w-7 opacity-0 group-hover/item:opacity-100 transition-all duration-200 shadow-md"
+                className="absolute top-2 right-2 z-20 h-7 w-7 opacity-0 group-hover/item:opacity-100 transition-all duration-200 shadow-md"
                 onClick={(e) => {
                   e.stopPropagation();
                   onRemove(url);
-                }}
-              >
+                }}>
                 <X className="h-4 w-4" />
               </Button>
               <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover/item:opacity-100 transition-opacity duration-200" />

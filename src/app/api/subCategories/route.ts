@@ -19,43 +19,50 @@ export async function GET() {
   }
 }
 
-// export async function POST(request: Request) {
-//   try {
-//     const body = await request.json();
-//     const { name } = body;
+export async function POST(request: Request) {
+  console.log('subCategories POST start')
+  try {
+    const body = await request.json();
+    console.log('body in POST subCategory: ', body)
+    const { name, categoryId } = body;
 
-//     if (!name) {
-//       return NextResponse.json({ error: "Name is required" }, { status: 400 });
-//     }
+    if (!name) {
+      return NextResponse.json({ error: "Name is required" }, { status: 400 });
+    }
 
-//     const existingCategory = await prisma.category.findFirst({
-//       where: {
-//         name: {
-//           equals: name,
-//           mode: "insensitive",
-//         },
-//       },
-//     });
+    if (!categoryId) {
+      return NextResponse.json({ error: "CategoryId is required" }, { status: 400 });
+    }
 
-//     if (existingCategory) {
-//       return NextResponse.json(
-//         { error: "Category already exists" },
-//         { status: 400 },
-//       );
-//     }
+    const existingSubCategory = await prisma.subCategory.findFirst({
+      where: {
+        name: {
+          equals: name,
+          mode: "insensitive",
+        },
+      },
+    });
 
-//     const category = await prisma.category.create({
-//       data: {
-//         name,
-//       },
-//     });
+    if (existingSubCategory) {
+      return NextResponse.json(
+        { error: "SubCategory already exists" },
+        { status: 400 },
+      );
+    }
 
-//     return NextResponse.json(category);
-//   } catch (error) {
-//     console.error("Error creating category:", error);
-//     return NextResponse.json(
-//       { error: "Error creating category" },
-//       { status: 500 },
-//     );
-//   }
-// }
+    const category = await prisma.subCategory.create({
+      data: {
+        name,
+        categoryId,
+      },
+    });
+
+    return NextResponse.json(category);
+  } catch (error) {
+    console.error("Error creating subCategory:", error);
+    return NextResponse.json(
+      { error: "Error creating subCategory" },
+      { status: 500 },
+    );
+  }
+}

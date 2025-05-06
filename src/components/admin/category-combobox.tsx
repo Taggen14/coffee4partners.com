@@ -112,8 +112,7 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
             "w-full justify-between",
             !value && "text-muted-foreground",
           )}
-          disabled={loading}
-        >
+          disabled={loading}>
           {isInitialLoading ? (
             <div className="flex items-center gap-2">
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -129,9 +128,8 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
       </PopoverTrigger>
       <PopoverContent
         className="w-[--radix-popover-trigger-width] p-0"
-        align="start"
-      >
-        <Command className="w-full">
+        align="start">
+        <Command className="w-full bg-background text-foreground">
           <CommandInput
             placeholder="Search or create category..."
             value={search}
@@ -148,8 +146,7 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
                     size="sm"
                     className="w-full"
                     onClick={() => createCategory(search)}
-                    disabled={!search.trim() || loading}
-                  >
+                    disabled={!search.trim() || loading}>
                     {loading ? (
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     ) : (
@@ -174,11 +171,10 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
                       onChange(category.id);
                       setOpen(false);
                     }}
-                    className="flex items-center justify-between"
-                  >
+                    className="flex items-center justify-between hover:font-bold cursor-pointer transition-all ease-in-out duration-200">
                     {category.name}
                     {value === category.id && (
-                      <Check className="h-4 w-4 text-primary" />
+                      <Check className="h-4 w-4 text-green-500" />
                     )}
                   </CommandItem>
                 ))}
