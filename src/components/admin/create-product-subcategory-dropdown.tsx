@@ -21,6 +21,8 @@ import {
 } from "@/components/ui/popover";
 import { toast } from "sonner";
 import { useCategories } from "@/hooks/use-categories";
+import { useProducts } from "@/hooks/use-products";
+import { Product } from "@prisma/client";
 
 interface SubCategoryDrowpdownProps {
     value?: string;
@@ -32,37 +34,7 @@ export function CreateProductSubCategoryDrowpdown({ value, onChange, selectedCat
     const [open, setOpen] = React.useState(false);
     const [search, setSearch] = React.useState("");
     const { categories, isLoading, refetch } = useCategories()
-    const createSubCategory = React.useCallback(
-        async (name: string, categoryId: string) => {
-            try {
-                const response = await fetch("/api/subCategories", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ name, categoryId }),
-                });
-
-                if (!response.ok) {
-                    const error = await response.json();
-                    throw new Error(error.error || "Failed to create subCategory");
-                }
-
-                const newSubCategory = await response.json();
-                await refetch()
-                onChange(newSubCategory.id);
-                setOpen(false);
-                toast.success("subCategory created successfully");
-            } catch (error) {
-                console.error("Error creating subCategory:", error);
-                toast.error(
-                    error instanceof Error ? error.message : "Failed to create subCategory",
-                );
-            } finally {
-            }
-        },
-        [onChange],
-    );
+    const { products } = useProducts()
 
     const selectedCategory = React.useMemo(
         () => categories?.find((category) => category.id === selectedCategoryId),
@@ -81,6 +53,64 @@ export function CreateProductSubCategoryDrowpdown({ value, onChange, selectedCat
         );
     }, [selectedCategory, search]);
 
+    const createSubCategory = React.useCallback(
+        async (name: string, categoryId: string) => {
+            try {
+                if (!categoryId) {
+                    toast.error("Ingen kategori vald, du måste välja kategori för att kunna skapa en underkategori");
+                    return;
+                }
+
+                const response = await fetch("/api/subCategories", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ name, categoryId }),
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    throw new Error(error.error || "Misslyckades att skapa underkategori");
+                }
+                const newSubCategory = await response.json();
+
+                const categoryProducts = products?.filter((product) => (product.categoryId === categoryId && product.subCategoryId === null))
+
+                if (categoryProducts?.length) {
+                    await Promise.all(
+                        categoryProducts?.map(async (product) => {
+                            const productResponse = await fetch(`/api/admin/products/${product.id}`, {
+                                method: "PATCH",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify({ subCategoryId: newSubCategory.id }),
+                            })
+                            if (!productResponse) {
+                                const error = await response.json();
+                                throw new Error(error.error || "Misslyckades att flytta produkter till ny underkategori");
+                            }
+                        })
+                    )
+                }
+
+
+                await refetch()
+                onChange(newSubCategory.id);
+                setOpen(false);
+                toast.success("Underkategori skapades");
+            } catch (error) {
+                console.error("Error creating subCategory:", error);
+                toast.error(
+                    error instanceof Error ? error.message : "Misslyckades att skapa underkategori",
+                );
+            } finally {
+            }
+        },
+        [onChange],
+    );
+
     return (
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
@@ -96,7 +126,7 @@ export function CreateProductSubCategoryDrowpdown({ value, onChange, selectedCat
                     {isLoading ? (
                         <div className="flex items-center gap-2">
                             <Loader2 className="h-4 w-4 animate-spin" />
-                            <span>Loading categories...</span>
+                            <span>Laddar kategorier...</span>
                         </div>
                     ) : (
                         <>
@@ -107,7 +137,7 @@ export function CreateProductSubCategoryDrowpdown({ value, onChange, selectedCat
                 </Button>
             </PopoverTrigger>
             <PopoverContent
-                className="w-[--radix-popover-trigger-width] p-0"
+                className="w-[--radix-popover-trigger-width] p-0 popover-content-width-full"
                 align="start">
                 <Command className="w-full bg-background text-foreground">
                     <CommandInput
@@ -116,29 +146,19 @@ export function CreateProductSubCategoryDrowpdown({ value, onChange, selectedCat
                         onValueChange={setSearch}
                         className="border-none focus:ring-0"
                     />
-                    <CommandList>
-                        <CommandEmpty className="p-4 text-sm">
+                    <CommandList className="p-1">
+                        <CommandEmpty className="p-4 text-sm w-full">
                             {search.trim() ? (
-                                <div className="space-y-3 text-center">
-                                    <p className="text-muted-foreground">No category found.</p>
-                                    <Button
-                                        variant="outline"
-                                        size="sm"
-                                        className="w-full"
-                                        onClick={() => createSubCategory(search, selectedCategoryId)}
-                                        disabled={!search.trim() || isLoading}
-                                    >
-                                        {isLoading ? (
-                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                        ) : (
-                                            <Plus className="mr-2 h-4 w-4" />
-                                        )}
-                                        Create &quot;{search}&quot;
-                                    </Button>
+                                <div className="space-y-3 text-center w-full">
+                                    <p className="text-muted-foreground">Ingen underkategori hittades.</p>
+                                    {
+                                        !selectedCategory?.subCategories.length && (
+                                            <p className="text-muted-foreground">Eftersom "{search}" är den första underkategorin för "{selectedCategory?.name}" som innehåller {selectedCategory?._count.products || 0} antal produkter, kommer dessa produkter att hamna under din nya "{search}" underkategori</p>)
+                                    }
                                 </div>
                             ) : (
                                 <p className="text-foreground">
-                                    Type to search or create...
+                                    Skriv för att söka eller skapa...
                                 </p>
                             )}
                         </CommandEmpty>
@@ -161,6 +181,20 @@ export function CreateProductSubCategoryDrowpdown({ value, onChange, selectedCat
                                 ))}
                             </CommandGroup>
                         )}
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            className="w-full hover:bg-foreground/10 cursor-pointer transition-all ease-in-out duration-200"
+                            onClick={() => createSubCategory(search, selectedCategoryId)}
+                            disabled={!search.trim() || isLoading}
+                        >
+                            {isLoading ? (
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            ) : (
+                                <Plus className="mr-2 h-4 w-4" />
+                            )}
+                            Skapa &quot;{search}&quot;
+                        </Button>
                     </CommandList>
                 </Command>
             </PopoverContent>

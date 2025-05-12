@@ -69,18 +69,18 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
 
         if (!response.ok) {
           const error = await response.json();
-          throw new Error(error.error || "Failed to create category");
+          throw new Error(error.error || "Misslyckade att skapa kategori");
         }
 
         const newCategory = await response.json();
         setCategories((prev) => [...prev, newCategory]);
         onChange(newCategory.id);
         setOpen(false);
-        toast.success("Category created successfully");
+        toast.success("Kategori skapades");
       } catch (error) {
-        console.error("Error creating category:", error);
+        console.error("Misslyckade att skapa kategori:", error);
         toast.error(
-          error instanceof Error ? error.message : "Failed to create category",
+          error instanceof Error ? error.message : "Misslyckade att skapa kategori",
         );
       } finally {
         setLoading(false);
@@ -116,22 +116,22 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
           {isInitialLoading ? (
             <div className="flex items-center gap-2">
               <Loader2 className="h-4 w-4 animate-spin" />
-              <span>Loading categories...</span>
+              <span>Laddar kategorier...</span>
             </div>
           ) : (
             <>
-              {selectedCategory?.name || "Select category..."}
+              {selectedCategory?.name || "Välj kategori..."}
               <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </>
           )}
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className="w-[--radix-popover-trigger-width] p-0"
+        className="w-[--radix-popover-trigger-width] p-0 popover-content-width-full"
         align="start">
         <Command className="w-full bg-background text-foreground">
           <CommandInput
-            placeholder="Search or create category..."
+            placeholder="Sök eller skapa kategori..."
             value={search}
             onValueChange={setSearch}
             className="border-none focus:ring-0"
@@ -139,47 +139,50 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
           <CommandList>
             <CommandEmpty className="p-4 text-sm">
               {search.trim() ? (
-                <div className="space-y-3 text-center">
-                  <p className="text-muted-foreground">No category found.</p>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full"
-                    onClick={() => createCategory(search)}
-                    disabled={!search.trim() || loading}>
-                    {loading ? (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    ) : (
-                      <Plus className="mr-2 h-4 w-4" />
-                    )}
-                    Create &quot;{search}&quot;
-                  </Button>
-                </div>
+                <p className="text-muted-foreground">Ingen kategori hittades.</p>
               ) : (
                 <p className="text-muted-foreground">
-                  Type to search or create...
+                  Skriv för att söka eller skapa...
                 </p>
               )}
             </CommandEmpty>
             {filteredCategories.length > 0 && (
-              <CommandGroup className="max-h-[200px] overflow-auto">
-                {filteredCategories.map((category) => (
-                  <CommandItem
-                    key={category.id}
-                    value={category.name}
-                    onSelect={() => {
-                      onChange(category.id);
-                      setOpen(false);
-                    }}
-                    className="flex items-center justify-between hover:font-bold cursor-pointer transition-all ease-in-out duration-200">
-                    {category.name}
-                    {value === category.id && (
-                      <Check className="h-4 w-4 text-green-500" />
-                    )}
-                  </CommandItem>
-                ))}
-              </CommandGroup>
+              <>
+                <CommandGroup className="max-h-[200px] overflow-auto">
+                  {filteredCategories.map((category) => (
+                    <CommandItem
+                      key={category.id}
+                      value={category.name}
+                      onSelect={() => {
+                        onChange(category.id);
+                        setOpen(false);
+                      }}
+                      className="flex items-center justify-between hover:font-bold cursor-pointer transition-all ease-in-out duration-200">
+                      {category.name}
+                      {value === category.id && (
+                        <Check className="h-4 w-4 text-green-500" />
+                      )}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </>
             )}
+            <div className="space-y-3 text-center m-1">
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full hover:bg-foreground/10 cursor-pointer transition-all ease-in-out duration-200"
+                onClick={() => createCategory(search)}
+                disabled={!search.trim() || loading}
+              >
+                {loading ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  <Plus className="mr-2 h-4 w-4" />
+                )}
+                Skapa &quot;{search}&quot;
+              </Button>
+            </div>
           </CommandList>
         </Command>
       </PopoverContent>

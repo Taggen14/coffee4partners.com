@@ -1054,7 +1054,6 @@ const products = [
     name: "TWIX White chokladbit",
     vendor: "Mars",
     description: ["Kex med ett tjockt lager av krämig karamell och ett täckte av len vit choklad, hör du vilken magisk kombination för munnen det är, och det är just vad TWIX White är. Och självklart är bitarna tvådelade, så dela med dig av denna godbit."],
-    longDescription: "Psst... Twix började säljas i USA år 1969 och TWIX White har tidigare bara varit Limited Edition men nu är favoriten här för att stanna.",
     productAttributes: [
       "Användarvänlig: intuitiv pekskärm",
       "Böna-till-kopp: brygger med färska kaffebönor",
@@ -1089,7 +1088,6 @@ const products = [
     name: "Ramlösa Fläder/Lime",
     vendor: "Ramlösa",
     description: ["Ramlösa Fläder/Lime i 33 cl-burk för café, restaurang och kiosk. Vad är egentligen godare än dryck med smak av fläder? Ramlösa har skapat en fantastisk törstsläckare bestående av lätt kolsyrat mineralvatten med naturliga mineraler och salter, smaksatt med frisk lime och somrig fläder. Vattnet från Ramlösa Hälsobrunn får sin balanserade smak på naturlig väg från dess vandring genom berggrunden och de skånska ängarna. "],
-    longDescription: "",
     productAttributes: [
       "Ramlösa Fläder/Lime i 33 cl-burk för café, restaurang och kiosk",
       "Naturliga mineraler, salter och aromer",
@@ -1412,7 +1410,6 @@ async function main() {
           vendor: product.vendor,
           tagline: product.tagline,
           description: product.description,
-          longDescription: product.longDescription,
           productAttributes: product.productAttributes,
           productSpecifications: product.productSpecifications,
           price: product.price,

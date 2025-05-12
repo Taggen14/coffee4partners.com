@@ -312,37 +312,6 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
-
-      {/* Product long description */}
-      {product.longDescription && (
-        <div className="mt-16 sm:mt-24 mb-8 sm:mb-12">
-          <div className="w-full h-[1px] bg-gradient-to-r from-border/0 via-border to-border/0 mb-8 sm:mb-12" />
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight mb-6 sm:mb-8 flex items-center gap-2">
-              <ShoppingBag className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
-              Produktinformation
-            </h2>
-            <div
-              className={cn(
-                "prose prose-sm sm:prose-base lg:prose-lg max-w-none dark:prose-invert",
-                "prose-headings:font-semibold prose-headings:tracking-tight",
-                "prose-p:text-foreground/90 prose-p:leading-relaxed",
-                "prose-ul:list-disc prose-ul:pl-6",
-                "prose-table:border-collapse prose-table:w-full",
-                "prose-td:border prose-td:border-border/50 prose-td:p-3",
-                "prose-tr:border-b prose-tr:border-border/50",
-                "prose-h2:text-xl sm:prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-8",
-                "prose-h3:text-lg sm:prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-6",
-                "prose-strong:text-foreground prose-strong:font-semibold",
-                "prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline",
-              )}
-              dangerouslySetInnerHTML={{
-                __html: product.longDescription,
-              }}
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 }

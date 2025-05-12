@@ -28,11 +28,12 @@ import { toast } from "sonner";
 import { ImageUpload } from "@/components/ui/image-upload";
 import { CategoryCombobox } from "@/components/admin/category-combobox";
 import { useProducts } from "@/hooks/use-products";
-import { Loader2, Plus, Trash2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { ScrollArea } from "../ui/scroll-area";
 import { CreateProductSubCategoryDrowpdown } from "./create-product-subcategory-dropdown";
 import { ProductAttributesList } from "./product-attributes-list ";
 import { ProductSpecificationsList } from "./product-specifications-list";
+import { useCategories } from "@/hooks/use-categories";
 
 const productFormSchema = z.object({
   name: z.string().min(1, "Namn krävs"),
@@ -48,14 +49,12 @@ const productFormSchema = z.object({
   images: z.array(z.string()).min(1, "Minst en bild krävs"),
   stock: z.coerce.number().int().min(0, "Lager måste vara större än eller lika med 0"),
   categoryId: z.string().min(1, "Kategori krävs"),
-  subCategoryId: z.string().min(1, "Underkategori krävs"),
+  subCategoryId: z.string(),
 });
 
 type ProductFormValues = z.infer<typeof productFormSchema>; type StringArrayKeys<T> = {
   [K in keyof T]: T[K] extends string[] ? K : never;
 }[keyof T];
-
-type DynamicFieldName = StringArrayKeys<ProductFormValues>;
 
 interface ProductDialogProps {
   open: boolean;
@@ -65,6 +64,7 @@ interface ProductDialogProps {
 export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
   const [loading, setLoading] = useState(false);
   const { createProduct } = useProducts();
+  const { categories } = useCategories();
 
   const form = useForm<ProductFormValues>({
     resolver: zodResolver(productFormSchema),
@@ -85,7 +85,13 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
 
   async function onSubmit(data: ProductFormValues) {
     setLoading(true);
+    console.log(form.watch('subCategoryId'))
     try {
+      const currentCategory = categories?.find((c) => (c.id === data.categoryId));
+      if (currentCategory?.subCategories.length && data.subCategoryId === '') {
+        toast.error("Denna kategori har redan underkategorier, då behöver du tilldela din nya produkt en underkategori!")
+        return
+      }
       const filteredAttributes = data.productAttributes.filter(attr => attr.trim() !== "");
       const filteredSpecifications = data.productSpecifications.filter(spec => spec.trim() !== "");
 
@@ -95,6 +101,7 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
         productAttributes: filteredAttributes,
         productSpecifications: filteredSpecifications,
         description: data.description.split('\n').filter(line => line.trim() !== ""),
+        subCategoryId: form.watch('subCategoryId'),
       };
       console.log('finalData: ', finalData)
       await createProduct.mutateAsync(finalData);
@@ -266,7 +273,10 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
                       <FormControl>
                         <CategoryCombobox
                           value={field.value}
-                          onChange={field.onChange}
+                          onChange={(newCategoryId) => {
+                            field.onChange(newCategoryId);
+                            form.setValue("subCategoryId", "");
+                          }}
                         />
                       </FormControl>
                       <FormMessage />
@@ -280,7 +290,7 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
                   name="subCategoryId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-base">Underkategori*</FormLabel>
+                      <FormLabel className="text-base">Underkategori</FormLabel>
                       <FormControl>
                         <CreateProductSubCategoryDrowpdown
                           value={field.value}

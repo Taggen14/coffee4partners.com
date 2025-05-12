@@ -5,11 +5,12 @@ import { Prisma } from "@prisma/client";
 
 const updateProductSchema = z.object({
   name: z.string().min(1, "Name is required").optional(),
-  description: z.string().optional(),
+  description: z.array(z.string()).optional(),
   price: z.number().min(0, "Price must be positive").optional(),
   stock: z.number().min(0, "Stock must be positive").optional(),
   images: z.array(z.string()).optional(),
   categoryId: z.string().optional(),
+  subCategoryId: z.string().optional(),
 });
 
 export async function PATCH(

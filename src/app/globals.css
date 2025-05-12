@@ -165,3 +165,10 @@ green             oklch(70.74% 0.1751 149.82)     RING
     border-left: none;
   }
 }
+
+@layer utilities {
+  .popover-content-width-full {
+    width: var(--radix-popover-trigger-width);
+    max-height: var(--radix-popover-content-available-height);
+  }
+}
