@@ -61,6 +61,10 @@ const data = {
           title: "Kategorier",
           url: "/admin/products/categories",
         },
+        {
+          title: "Underkategorier",
+          url: "/admin/products/sub-categories",
+        },
         // {
         //   title: "Features",
         //   url: "/admin/products/features",

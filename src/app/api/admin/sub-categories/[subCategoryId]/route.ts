@@ -12,13 +12,13 @@ const updateCategorySchema = z.object({
 // UPDATE
 export async function PATCH(
     request: Request,
-    { params }: { params: Promise<{ categoryId: string }> },
+    { params }: { params: Promise<{ subCategoryId: string }> },
 ) {
     try {
         const body = await request.json();
-        const { categoryId } = await params;
+        const { subCategoryId } = await params;
 
-        if (!categoryId) {
+        if (!subCategoryId) {
             return new NextResponse(
                 JSON.stringify({ error: "Category ID is required" }),
                 { status: 400, headers: { "Content-Type": "application/json" } },
@@ -27,9 +27,9 @@ export async function PATCH(
 
         const validatedData = updateCategorySchema.parse(body);
 
-        const category = await prisma.category.update({
+        const category = await prisma.subCategory.update({
             where: {
-                id: categoryId,
+                id: subCategoryId,
             },
             data: validatedData,
         });
@@ -67,12 +67,12 @@ export async function PATCH(
 // DELETE
 export async function DELETE(
     request: Request,
-    { params }: { params: Promise<{ categoryId: string }> },
+    { params }: { params: Promise<{ subCategoryId: string }> },
 ) {
     try {
-        const { categoryId } = await params;
+        const { subCategoryId } = await params;
 
-        if (!categoryId) {
+        if (!subCategoryId) {
             return NextResponse.json(
                 { error: "Category ID is required" },
                 { status: 400 },
@@ -94,9 +94,9 @@ export async function DELETE(
         // });
 
         // Now we can safely delete the category
-        await prisma.category.delete({
+        await prisma.subCategory.delete({
             where: {
-                id: categoryId,
+                id: subCategoryId,
             },
         });
 

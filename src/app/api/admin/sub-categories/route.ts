@@ -3,10 +3,17 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
+    console.log('api/admin/sub-categories')
     const subCategories = await prisma.subCategory.findMany({
       orderBy: {
         name: "asc",
       },
+      include: {
+        _count: {
+          select: { products: true },
+        },
+      }
+
     });
 
     return NextResponse.json(subCategories);
@@ -22,7 +29,6 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    console.log('body in POST subCategory: ', body)
     const { name, categoryId } = body;
 
     if (!name) {
