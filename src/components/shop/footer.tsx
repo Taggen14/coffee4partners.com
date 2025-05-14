@@ -60,7 +60,7 @@ export function ShopFooter() {
               </Link>
             </div>
           </div>
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             <h3 className="text-lg font-semibold tracking-wide">Nyhetsbrev</h3>
             <div className="flex flex-col space-y-4">
               <p className="text-sm text-muted-foreground">
@@ -75,7 +75,7 @@ export function ShopFooter() {
                 <Button className="h-10 px-6 text-base">Prenumerera</Button>
               </form>
             </div>
-          </div>
+          </div> */}
         </div>
         <Separator className="my-8" />
         <div className="flex flex-col items-center justify-between gap-4 text-center text-sm text-muted-foreground md:flex-row">
