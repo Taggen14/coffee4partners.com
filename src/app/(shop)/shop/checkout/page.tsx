@@ -142,7 +142,7 @@ export default function CheckoutPage() {
           address: data.shipping.street,
           postalCode: data.shipping.postalCode,
           city: data.shipping.city,
-          country: "Sweden",
+          country: "Sverige",
         },
         items: itemsWithTotals.map(
           (item: CartItem & { total: number; taxAmount: number }) => ({
@@ -153,17 +153,22 @@ export default function CheckoutPage() {
           }),
         ),
         shipping: {
-          cost: shippingCost,
-          zone: shippingZone,
+          // cost: shippingCost,
+          // zone: shippingZone,
         },
         company: {
           name: "Coffee4partners",
           address: "adress???",
           postalCode: "123 45",
           city: "Stockholm",
-          country: "Sweden",
-          vatNumber: "SE123456789",
+          country: "Sverige",
+          vatNumber: "",
+          phone: "010-440 63 45",
+          email: "info@coffee4partner.se",
         },
+        date: {
+          createdAt: new Date().toLocaleDateString("sv-SE")
+        }
       };
 
       // Generate and send invoice

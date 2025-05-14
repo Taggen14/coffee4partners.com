@@ -89,7 +89,13 @@ export interface InvoiceDataType {
     city: string;
     country: string;
     vatNumber: string;
+    orgNumber: string;
+    phone: string;
+    email: string;
   };
+  date: {
+    createdAt: string;
+  }
 }
 
 export type useCategoriesTypes = Category & {
