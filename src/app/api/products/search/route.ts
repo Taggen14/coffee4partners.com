@@ -41,9 +41,10 @@ export async function GET(request: Request) {
     const whereClause = {
       OR: [
         { name: { contains: query, mode: Prisma.QueryMode.insensitive } },
-        {
-          description: { contains: query, mode: Prisma.QueryMode.insensitive },
-        },
+        // FUNGERAR INTE FÖR ATT JAG HAR description  string[] I MIN PRISMA MODEL
+        // {
+        //   description: { contains: query, mode: Prisma.QueryMode.insensitive },
+        // },
         {
           category: {
             name: { contains: query, mode: Prisma.QueryMode.insensitive },
