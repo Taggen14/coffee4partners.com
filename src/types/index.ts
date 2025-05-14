@@ -1,4 +1,4 @@
-import { Product } from "@prisma/client";
+import { Category, Product, SubCategory } from "@prisma/client";
 
 export interface ExtendedProduct extends Omit<Product, "price"> {
   price: number;
@@ -91,3 +91,11 @@ export interface InvoiceDataType {
     vatNumber: string;
   };
 }
+
+export type useCategoriesTypes = Category & {
+  categorySlug: string,
+  subCategories: SubCategory[],
+  _count: {
+    products: number;
+  };
+};

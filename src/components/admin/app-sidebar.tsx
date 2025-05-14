@@ -57,10 +57,10 @@ const data = {
           title: "Alla Produkter",
           url: "/admin/products",
         },
-        // {
-        //   title: "Categories",
-        //   url: "/admin/products/categories",
-        // },
+        {
+          title: "Kategorier",
+          url: "/admin/products/categories",
+        },
         // {
         //   title: "Features",
         //   url: "/admin/products/features",

@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Check, ChevronsUpDown, Plus, Loader2 } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { capitalizeFirstLetter, cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Command,
@@ -172,7 +172,7 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
                 variant="outline"
                 size="sm"
                 className="w-full hover:bg-foreground/10 cursor-pointer transition-all ease-in-out duration-200"
-                onClick={() => createCategory(search)}
+                onClick={() => createCategory(capitalizeFirstLetter(search))}
                 disabled={!search.trim() || loading}
               >
                 {loading ? (

@@ -60,6 +60,12 @@ export async function GET() {
             name: true,
           },
         },
+        subCategory: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
       },
       orderBy: {
         createdAt: "desc",

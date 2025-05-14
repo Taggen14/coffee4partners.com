@@ -123,9 +123,9 @@ export function DataTable<TData, TValue>({
                     {header.isPlaceholder
                       ? null
                       : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext(),
-                        )}
+                        header.column.columnDef.header,
+                        header.getContext(),
+                      )}
                   </TableHead>
                 ))}
               </TableRow>
@@ -154,7 +154,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Inga resultat.
                 </TableCell>
               </TableRow>
             )}
@@ -165,7 +165,7 @@ export function DataTable<TData, TValue>({
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between px-4 py-4 border-t">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <div className="flex items-center space-x-2">
-            <span>Show</span>
+            <span>Visa</span>
             <Select
               value={`${pageSize}`}
               onValueChange={(value) => {
@@ -183,18 +183,18 @@ export function DataTable<TData, TValue>({
                 ))}
               </SelectContent>
             </Select>
-            <span>per page</span>
+            <span>per sida</span>
           </div>
           <div className="hidden sm:block mx-2">•</div>
           <div className="text-sm">
-            {table.getFilteredSelectedRowModel().rows.length} of{" "}
-            {table.getFilteredRowModel().rows.length} row(s) selected
+            {table.getFilteredSelectedRowModel().rows.length} av{" "}
+            {table.getFilteredRowModel().rows.length} rad(er) valda
           </div>
         </div>
 
         <div className="flex items-center justify-between sm:justify-end gap-4">
           <div className="text-sm text-muted-foreground">
-            Page {currentPage} of {totalPages}
+            Sida {currentPage} av {totalPages}
           </div>
 
           <div className="flex items-center space-x-6">
@@ -206,7 +206,7 @@ export function DataTable<TData, TValue>({
                 !table.getCanPreviousPage() && "opacity-50 cursor-not-allowed",
               )}
             >
-              Previous
+              Föregående
             </button>
 
             <div className="flex items-center gap-2">
@@ -298,7 +298,7 @@ export function DataTable<TData, TValue>({
                 !table.getCanNextPage() && "opacity-50 cursor-not-allowed",
               )}
             >
-              Next
+              Nästa
             </button>
           </div>
         </div>

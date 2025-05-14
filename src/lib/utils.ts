@@ -29,3 +29,8 @@ export const slugify = (text: string) => {
     .trim()
     .replace(/\s+/g, "-"); // Ersätt mellanslag med bindestreck
 };
+
+export function capitalizeFirstLetter(str: string | undefined) {
+  if (!str) return "";
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}

@@ -34,6 +34,7 @@ import { CreateProductSubCategoryDrowpdown } from "./create-product-subcategory-
 import { ProductAttributesList } from "./product-attributes-list ";
 import { ProductSpecificationsList } from "./product-specifications-list";
 import { useCategories } from "@/hooks/use-categories";
+import { capitalizeFirstLetter } from "@/lib/utils";
 
 const productFormSchema = z.object({
   name: z.string().min(1, "Namn krävs"),
@@ -85,22 +86,25 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
 
   async function onSubmit(data: ProductFormValues) {
     setLoading(true);
-    console.log(form.watch('subCategoryId'))
     try {
       const currentCategory = categories?.find((c) => (c.id === data.categoryId));
       if (currentCategory?.subCategories.length && data.subCategoryId === '') {
         toast.error("Denna kategori har redan underkategorier, då behöver du tilldela din nya produkt en underkategori!")
         return
       }
-      const filteredAttributes = data.productAttributes.filter(attr => attr.trim() !== "");
-      const filteredSpecifications = data.productSpecifications.filter(spec => spec.trim() !== "");
+      const filteredAttributes = data.productAttributes.filter(attr => attr.trim() !== "").map(capitalizeFirstLetter);
+      const filteredSpecifications = data.productSpecifications.filter(spec => spec.trim() !== "").map(capitalizeFirstLetter);
+      const descriptions = data.description.split('\n').filter(line => line.trim() !== "").map(capitalizeFirstLetter)
 
       const finalData = {
         ...data,
-        price: data.price.toFixed(2),
+        name: capitalizeFirstLetter(data.name),
+        vendor: capitalizeFirstLetter(data.vendor),
+        tagline: capitalizeFirstLetter(data.tagline),
+        description: descriptions,
         productAttributes: filteredAttributes,
         productSpecifications: filteredSpecifications,
-        description: data.description.split('\n').filter(line => line.trim() !== ""),
+        price: data.price.toFixed(2),
         subCategoryId: form.watch('subCategoryId'),
       };
       console.log('finalData: ', finalData)

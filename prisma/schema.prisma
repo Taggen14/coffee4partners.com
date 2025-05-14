@@ -38,7 +38,7 @@ model Category {
   id            String        @id @default(cuid())
   name          String        @unique
   description   String?
-  image         String?
+  images        String[]
   subCategories SubCategory[]
   products      Product[]
 }

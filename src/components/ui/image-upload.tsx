@@ -158,7 +158,7 @@ export function ImageUpload({
             </p>
             <p className="text-xs text-muted-foreground/75">
               Format som stöds: PNG, JPG, JPEG, GIF, WebP
-              {maxFiles > 1 && ` • ${value.length}/${maxFiles} bilder`}
+              {` • ${value.length}/${maxFiles} ${maxFiles > 1 ? "bilder" : "bild"}`}
             </p>
           </div>
         </div>

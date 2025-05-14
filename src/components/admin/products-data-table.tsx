@@ -91,6 +91,10 @@ interface ExtendedProduct extends Omit<Product, "price"> {
     id: string;
     name: string;
   };
+  subCategory?: {
+    id: string;
+    name: string;
+  }
 }
 
 interface ProductsDataTableProps {
@@ -99,10 +103,8 @@ interface ProductsDataTableProps {
 
 export function ProductsDataTable({ data }: ProductsDataTableProps) {
   const [open, setOpen] = useState(false);
-  const [quickEditProduct, setQuickEditProduct] =
-    useState<ExtendedProduct | null>(null);
-  const [quickViewProduct, setQuickViewProduct] =
-    useState<ExtendedProduct | null>(null);
+  const [quickEditProduct, setQuickEditProduct] = useState<ExtendedProduct | null>(null);
+  const [quickViewProduct, setQuickViewProduct] = useState<ExtendedProduct | null>(null);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -312,11 +314,12 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
       {
         id: "category",
         accessorFn: (row) => row.category.name,
-        header: "Kategori",
+        header: "Kategori/Underkategori",
         cell: ({ row }) => {
           return (
             <Badge variant="secondary" className="whitespace-nowrap">
               {row.original.category.name}
+              {row.original.subCategory?.name && `/${row.original.subCategory.name}`}
             </Badge>
           );
         },
