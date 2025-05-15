@@ -97,11 +97,11 @@ const data = {
       items: [
         {
           title: "Ny Kund",
-          url: "/admin/add-user/customer",
+          url: "/admin/invite-new-customer",
         },
         {
           title: "Ny Admin",
-          url: "/admin/add-user/admin",
+          url: "/admin/invite-new-admin",
         },
       ],
     },
