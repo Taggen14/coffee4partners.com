@@ -9,6 +9,7 @@ import NavbarMobile from "./navbar-mobile";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { SearchBar } from "../search-test/search-bar";
+import { CartSheet } from "../shop/cart-sheet";
 
 const Header = () => {
   const { usps, landingPage } = content.layout.header;
@@ -58,7 +59,7 @@ const Header = () => {
             <User />
           </span>
           <span>
-            <ShoppingCart />
+            <CartSheet />
           </span>
           <div className="md:hidden">
             <NavbarMobile />

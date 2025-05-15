@@ -70,7 +70,7 @@ export function CartSheet() {
         <Button
           variant="outline"
           size="icon"
-          className="relative rounded-full border-border/40 bg-background hover:bg-muted/50 hover:border-primary/30 transition-all duration-200 h-8 w-8 sm:h-9 sm:w-9"
+          className="relative border-none bg-transparent hover:bg-muted/50 hover:border-primary/30 transition-all duration-200 h-8 w-8 sm:h-9 sm:w-9"
         >
           <ShoppingCart className="h-[1.1rem] sm:h-[1.2rem] w-[1.1rem] sm:w-[1.2rem]" />
           <AnimatePresence>

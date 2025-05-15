@@ -119,7 +119,7 @@ const Footer = () => {
               className="hover:text-secondary-foreground/80 transition-colors duration-300"
               href="mailto:sebastian@coffee4partners.com"
             >
-              {contact.mail}: info@coffee4partners.com???
+              {contact.mail}: info@coffee4partners.com
             </a>
             <a
               className="hover:text-secondary-foreground/80 transition-colors duration-300 mt-2"
