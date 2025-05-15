@@ -59,7 +59,7 @@ export function CreateProductSubCategoryDrowpdown({ value, onChange, selectedCat
                     return;
                 }
 
-                const response = await fetch("/api/subCategories", {
+                const response = await fetch("/api/admin/sub-categories", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -151,7 +151,9 @@ export function CreateProductSubCategoryDrowpdown({ value, onChange, selectedCat
                                     <p className="text-muted-foreground">Ingen underkategori hittades.</p>
                                     {
                                         !selectedCategory?.subCategories.length && (
-                                            <p className="text-muted-foreground">{`Eftersom "${search}" är den första underkategorin för "{selectedCategory?.name}" som innehåller ${selectedCategory?._count.products || 0} antal produkter, kommer dessa produkter att hamna under din nya "${search}" underkategori`}</p>)
+                                            <p className="text-muted-foreground">
+                                                {`Eftersom "${search}" är den första underkategorin för "${selectedCategory?.name}" som innehåller ${selectedCategory?._count.products || 0} antal produkter, kommer dessa produkter att hamna under din nya "${search}" underkategori`}
+                                            </p>)
                                     }
                                 </div>
                             ) : (
