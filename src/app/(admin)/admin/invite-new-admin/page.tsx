@@ -49,6 +49,7 @@ export default function InviteNewAdmin() {
       toast.success("Inbjudan skickad!")
       form.reset()
     } catch (error) {
+      console.error(error)
       toast.error("Något gick fel vid inbjudan")
     } finally {
       setIsLoading(false)
