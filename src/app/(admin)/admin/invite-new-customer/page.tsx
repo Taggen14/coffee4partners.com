@@ -58,8 +58,8 @@ export default function InviteNewCustomer() {
     <div className="flex flex-col gap-4">
       <h2>Bjud in ny Kund</h2>
       <div className="text-sm">
-        <p >Fyll i fältet nedan och klicka på "skicka inbjudan" så skickas en länk till angiven epost för att skapa ett admin login. Den inbjudna får skapa lösenord och är sedan inloggad.</p>
-        <p>En admin kommer få full åtkomst till att skapa och ändra produkter i webbshoppen samt hantera ordrar</p>
+        <p >{`Fyll i fältet nedan och klicka på "skicka inbjudan" så skickas en länk till angiven epost för att skapa ett kund login. Den inbjudna får skapa lösenord och är sedan inloggad.`}</p>
+        <p>En kund kommer få åtkomst till att se priser och lägga en beställning. När en kund gör en beställning skickas en orderbekräftelse till kund och en till admin.</p>
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 max-w-sm">
