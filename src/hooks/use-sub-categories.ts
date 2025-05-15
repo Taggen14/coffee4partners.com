@@ -1,7 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Category, SubCategory } from "@prisma/client";
-import { slugify } from "@/lib/utils";
-import { useCategoriesTypes } from "@/types";
+import { SubCategory } from "@prisma/client";
 
 export const useSubCategories = () => {
     const queryClient = useQueryClient();

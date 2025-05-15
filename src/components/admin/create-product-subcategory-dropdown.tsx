@@ -22,7 +22,6 @@ import {
 import { toast } from "sonner";
 import { useCategories } from "@/hooks/use-categories";
 import { useProducts } from "@/hooks/use-products";
-import { Product } from "@prisma/client";
 
 interface SubCategoryDrowpdownProps {
     value?: string;

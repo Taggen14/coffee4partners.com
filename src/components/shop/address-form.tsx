@@ -49,8 +49,8 @@ type AddressFormData = z.infer<typeof addressFormSchema>;
 interface AddressFormProps {
   onSubmit: (data: AddressFormData) => Promise<void>;
   cartTotal: number;
-  onPostalCodeChange: (postalCode: string) => void;
-  isCalculatingShipping: boolean;
+  onPostalCodeChange?: (postalCode: string) => void;
+  isCalculatingShipping?: boolean;
   shippingCost: number | null;
   isSubmitting?: boolean;
   submitButtonText?: string;
@@ -59,8 +59,8 @@ interface AddressFormProps {
 
 export function AddressForm({
   onSubmit,
-  onPostalCodeChange,
-  isCalculatingShipping,
+  // onPostalCodeChange,
+  // isCalculatingShipping,
   shippingCost,
   isSubmitting: externalIsSubmitting,
   submitButtonText = "Skicka beställning & faktura",
@@ -208,9 +208,9 @@ export function AddressForm({
                         {...field}
                         onChange={(e) => {
                           field.onChange(e);
-                          if (e.target.value.length === 5) {
-                            onPostalCodeChange(e.target.value);
-                          }
+                          // if (e.target.value.length === 5) {
+                          //   onPostalCodeChange(e.target.value);
+                          // }
                         }}
                       />
                     </FormControl>
@@ -366,7 +366,7 @@ export function AddressForm({
         <Button
           type="submit"
           className="w-full"
-          disabled={isCalculatingShipping || !shippingCost || isSubmitting}
+        // disabled={isCalculatingShipping || !shippingCost || isSubmitting}
         >
           {isSubmitting ? (
             <>

@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import { formatPrice } from "@/lib/utils";
-import { calculateShippingCost } from "@/lib/shipping";
+// import { calculateShippingCost } from "@/lib/shipping";
 import { toast } from "sonner";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { cn } from "@/lib/utils";
@@ -70,10 +70,10 @@ export default function CheckoutPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
   const [orderNumber, setOrderNumber] = useState<string | null>(null);
-  const [isCalculatingShipping, setIsCalculatingShipping] = useState(false);
-  const [shippingCost, setShippingCost] = useState<number | null>(null);
-  const [shippingZone, setShippingZone] = useState<string | null>(null);
-  const [shippingError, setShippingError] = useState<string | null>(null);
+  // const [isCalculatingShipping, setIsCalculatingShipping] = useState(false);
+  const [shippingCost/* , setShippingCost */] = useState<number | null>(null);
+  // const [shippingZone, setShippingZone] = useState<string | null>(null);
+  // const [shippingError, setShippingError] = useState<string | null>(null);
   const [orderError, setOrderError] = useState<string | null>(null);
   const [isDownloading, setIsDownloading] = useState(false);
   const [pdfBuffer, setPdfBuffer] = useState<string | null>(null);
@@ -87,37 +87,37 @@ export default function CheckoutPage() {
     }
   }, [items, router, orderComplete]);
 
-  const handleShippingCalculation = async (postalCode: string) => {
-    if (postalCode.length === 5) {
-      setIsCalculatingShipping(true);
-      setShippingError(null);
-      try {
-        // Simulate network delay for better UX
-        await new Promise((resolve) => setTimeout(resolve, 300));
-        const result = calculateShippingCost(postalCode);
+  // const handleShippingCalculation = async (postalCode: string) => {
+  //   if (postalCode.length === 5) {
+  //     setIsCalculatingShipping(true);
+  //     setShippingError(null);
+  //     try {
+  //       // Simulate network delay for better UX
+  //       await new Promise((resolve) => setTimeout(resolve, 300));
+  //       const result = calculateShippingCost(postalCode);
 
-        if (result.error) {
-          setShippingError(result.error);
-          setShippingCost(null);
-          setShippingZone(null);
-        } else {
-          setShippingCost(result.cost);
-          setShippingZone(result.zoneName);
-        }
-      } catch (error: unknown) {
-        console.error((error as Error).message);
-        setShippingError("Could not calculate shipping cost");
-        setShippingCost(null);
-        setShippingZone(null);
-      } finally {
-        setIsCalculatingShipping(false);
-      }
-    } else {
-      setShippingCost(null);
-      setShippingZone(null);
-      setShippingError(null);
-    }
-  };
+  //       if (result.error) {
+  //         setShippingError(result.error);
+  //         setShippingCost(null);
+  //         setShippingZone(null);
+  //       } else {
+  //         setShippingCost(result.cost);
+  //         setShippingZone(result.zoneName);
+  //       }
+  //     } catch (error: unknown) {
+  //       console.error((error as Error).message);
+  //       setShippingError("Could not calculate shipping cost");
+  //       setShippingCost(null);
+  //       setShippingZone(null);
+  //     } finally {
+  //       setIsCalculatingShipping(false);
+  //     }
+  //   } else {
+  //     setShippingCost(null);
+  //     setShippingZone(null);
+  //     setShippingError(null);
+  //   }
+  // };
 
   const handleAddressSubmit = async (data: AddressFormData) => {
     try {
@@ -451,12 +451,9 @@ export default function CheckoutPage() {
               <CardContent className="p-4 sm:p-6">
                 <AddressForm
                   onSubmit={handleAddressSubmit}
-                  cartTotal={items.reduce(
-                    (acc, item) => acc + item.price * item.quantity,
-                    0,
-                  )}
-                  onPostalCodeChange={handleShippingCalculation}
-                  isCalculatingShipping={isCalculatingShipping}
+                  cartTotal={items.reduce((acc, item) => acc + item.price * item.quantity, 0,)}
+                  // onPostalCodeChange={handleShippingCalculation}
+                  // isCalculatingShipping={isCalculatingShipping}
                   shippingCost={shippingCost}
                   isSubmitting={isSubmitting}
                   submitButtonText="Lägg beställning"

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { CldImage } from 'next-cloudinary';
 import { Skeleton } from '../ui/skeleton';
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from '../ui/navigation-menu';
-import { ChevronDown, ChevronRight, Home } from 'lucide-react';
+import { ChevronRight, Home } from 'lucide-react';
 import { useCategories } from '@/hooks/use-categories';
 import { usePathname } from 'next/navigation';
 import { cn, slugify } from '@/lib/utils';

@@ -53,9 +53,7 @@ const productFormSchema = z.object({
   subCategoryId: z.string(),
 });
 
-type ProductFormValues = z.infer<typeof productFormSchema>; type StringArrayKeys<T> = {
-  [K in keyof T]: T[K] extends string[] ? K : never;
-}[keyof T];
+type ProductFormValues = z.infer<typeof productFormSchema>;
 
 interface ProductDialogProps {
   open: boolean;
