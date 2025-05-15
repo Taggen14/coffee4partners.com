@@ -31,7 +31,6 @@ import { ScrollArea } from "../ui/scroll-area";
 import { capitalizeFirstLetter } from "@/lib/utils";
 import { useCategoriesTypes } from "@/types";
 import { useCategories } from "@/hooks/use-categories";
-import { Category } from "@prisma/client";
 
 const categoryFormSchema = z.object({
   name: z.string().min(1, "Namn är obligatoriskt"),

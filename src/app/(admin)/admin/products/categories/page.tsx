@@ -9,11 +9,6 @@ import {
   ColumnFiltersState,
   SortingState,
   VisibilityState,
-  useReactTable,
-  getCoreRowModel,
-  getSortedRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
 } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -144,24 +139,24 @@ export default function CategoriesPage() {
     },
   ], []);
 
-  const table = useReactTable({
-    data: categories || [],
-    columns,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      globalFilter,
-    },
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    onColumnVisibilityChange: setColumnVisibility,
-    onGlobalFilterChange: setGlobalFilter,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-  });
+  /*   const table = useReactTable({
+      data: categories || [],
+      columns,
+      state: {
+        sorting,
+        columnFilters,
+        columnVisibility,
+        globalFilter,
+      },
+      onSortingChange: setSorting,
+      onColumnFiltersChange: setColumnFilters,
+      onColumnVisibilityChange: setColumnVisibility,
+      onGlobalFilterChange: setGlobalFilter,
+      getCoreRowModel: getCoreRowModel(),
+      getSortedRowModel: getSortedRowModel(),
+      getFilteredRowModel: getFilteredRowModel(),
+      getPaginationRowModel: getPaginationRowModel(),
+    }); */
 
   if (isLoading) {
     return (

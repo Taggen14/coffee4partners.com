@@ -37,12 +37,10 @@ export function ShopHeader() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const { categories, isLoading } = useCategories();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [commandOpen, setCommandOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredCategoryId, setHoveredCategoryId] = useState<string | null>(null);
   const pathname = usePathname();
-
 
   useEffect(() => {
     const path = window.location.pathname;
@@ -66,14 +64,6 @@ export function ShopHeader() {
     e.preventDefault();
     setCommandOpen(true);
   });
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      setCommandOpen(false);
-      router.push(`/shop/search?q=${encodeURIComponent(searchQuery.trim())}`);
-    }
-  };
 
   const handleCategorySelect = (categorySlug: string | null) => {
     setSelectedCategory(categorySlug);

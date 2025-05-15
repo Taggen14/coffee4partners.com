@@ -1,6 +1,5 @@
 "use client";
 
-import { useCategories } from "@/hooks/use-categories";
 import { Loader2, ArrowUpDown, Plus, RefreshCw, Search, X, Pencil } from "lucide-react";
 import { useState, useMemo } from "react";
 import { toast } from "sonner";
@@ -9,19 +8,12 @@ import {
   ColumnFiltersState,
   SortingState,
   VisibilityState,
-  useReactTable,
-  getCoreRowModel,
-  getSortedRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
 } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { DataTable } from "@/components/ui/data-table";
 import { cn } from "@/lib/utils";
 import { CldImage } from "next-cloudinary";
-import { useCategoriesTypes } from "@/types";
-import { CategoryDialog } from "@/components/admin/category-dialog";
 import Link from "next/link";
 import { useSubCategories } from "@/hooks/use-sub-categories";
 import { SubCategory } from "@prisma/client";
@@ -130,24 +122,24 @@ export default function SubCategoriesPage() {
     },
   ], []);
 
-  const table = useReactTable({
-    data: subCategories || [],
-    columns,
-    state: {
-      sorting,
-      columnFilters,
-      columnVisibility,
-      globalFilter,
-    },
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
-    onColumnVisibilityChange: setColumnVisibility,
-    onGlobalFilterChange: setGlobalFilter,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-  });
+  /*   const table = useReactTable({
+      data: subCategories || [],
+      columns,
+      state: {
+        sorting,
+        columnFilters,
+        columnVisibility,
+        globalFilter,
+      },
+      onSortingChange: setSorting,
+      onColumnFiltersChange: setColumnFilters,
+      onColumnVisibilityChange: setColumnVisibility,
+      onGlobalFilterChange: setGlobalFilter,
+      getCoreRowModel: getCoreRowModel(),
+      getSortedRowModel: getSortedRowModel(),
+      getFilteredRowModel: getFilteredRowModel(),
+      getPaginationRowModel: getPaginationRowModel(),
+    }); */
 
   if (isLoading) {
     return (

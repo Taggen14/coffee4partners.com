@@ -40,25 +40,25 @@ export function ImageUpload({
     {},
   );
 
-  const handleImageChange = (url: string) => {
-    console.log('handleImageChange clicked!')
-    // If we have a new image, load it
-    if (url) {
-      const img = new Image();
-      img.src = url;
-      img.onload = () => {
-        if (selectChange)
-          selectChange({
-            dimensions: {
-              height: img.height,
-              width: img.width,
-            },
-            htmlElement: img,
-            url: url,
-          });
-      };
-    }
-  };
+  // const handleImageChange = (url: string) => {
+  //   console.log('handleImageChange clicked!')
+  //   // If we have a new image, load it
+  //   if (url) {
+  //     const img = new Image();
+  //     img.src = url;
+  //     img.onload = () => {
+  //       if (selectChange)
+  //         selectChange({
+  //           dimensions: {
+  //             height: img.height,
+  //             width: img.width,
+  //           },
+  //           htmlElement: img,
+  //           url: url,
+  //         });
+  //     };
+  //   }
+  // };
 
   /* IMPORT IMAGE WITH DRAG AND DROP */
   const onDrop = useCallback(
