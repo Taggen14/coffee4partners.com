@@ -40,25 +40,25 @@ export function ImageUpload({
     {},
   );
 
-  // const handleImageChange = (url: string) => {
-  //   console.log('handleImageChange clicked!')
-  //   // If we have a new image, load it
-  //   if (url) {
-  //     const img = new Image();
-  //     img.src = url;
-  //     img.onload = () => {
-  //       if (selectChange)
-  //         selectChange({
-  //           dimensions: {
-  //             height: img.height,
-  //             width: img.width,
-  //           },
-  //           htmlElement: img,
-  //           url: url,
-  //         });
-  //     };
-  //   }
-  // };
+  const handleImageChange = (url: string) => {
+    console.log('handleImageChange clicked!')
+    // If we have a new image, load it
+    if (url) {
+      const img = new Image();
+      img.src = url;
+      img.onload = () => {
+        if (selectChange)
+          selectChange({
+            dimensions: {
+              height: img.height,
+              width: img.width,
+            },
+            htmlElement: img,
+            url: url,
+          });
+      };
+    }
+  };
 
   /* IMPORT IMAGE WITH DRAG AND DROP */
   const onDrop = useCallback(
@@ -193,7 +193,7 @@ export function ImageUpload({
           {value.map((url, index) => (
             <div
               key={url}
-              // onClick={() => handleImageChange(url)}
+              onClick={() => handleImageChange(url)}
               className="group/item relative aspect-[4/3] rounded-lg overflow-hidden bg-muted cursor-pointer transition-all hover:ring-2 hover:ring-primary hover:ring-offset-2 ring-offset-background">
               <NextImage
                 fill

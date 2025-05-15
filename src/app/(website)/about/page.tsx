@@ -8,7 +8,7 @@ const About = () => {
   const { title, descriptions, image } = content.about;
 
   return (
-    <div className="">
+    <div>
       <h1>{title}</h1>
       <div className="flex flex-col md:flex-row gap-10 md:gap-5 p-0 md:p-10">
         <div className="flex-1 space-y-5 p-5 md-p-0">

@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from "react";
@@ -107,7 +106,7 @@ export function CreateProductSubCategoryDrowpdown({ value, onChange, selectedCat
             } finally {
             }
         },
-        [onChange],
+        [onChange, products, refetch],
     );
 
     return (
@@ -152,7 +151,7 @@ export function CreateProductSubCategoryDrowpdown({ value, onChange, selectedCat
                                     <p className="text-muted-foreground">Ingen underkategori hittades.</p>
                                     {
                                         !selectedCategory?.subCategories.length && (
-                                            <p className="text-muted-foreground">Eftersom "{search}" är den första underkategorin för "{selectedCategory?.name}" som innehåller {selectedCategory?._count.products || 0} antal produkter, kommer dessa produkter att hamna under din nya "{search}" underkategori</p>)
+                                            <p className="text-muted-foreground">{`Eftersom "${search}" är den första underkategorin för "{selectedCategory?.name}" som innehåller ${selectedCategory?._count.products || 0} antal produkter, kommer dessa produkter att hamna under din nya "${search}" underkategori`}</p>)
                                     }
                                 </div>
                             ) : (
@@ -192,7 +191,7 @@ export function CreateProductSubCategoryDrowpdown({ value, onChange, selectedCat
                             ) : (
                                 <Plus className="mr-2 h-4 w-4" />
                             )}
-                            Skapa &quot;{search}&quot;
+                            {`Skapa "${search}"`}
                         </Button>
                     </CommandList>
                 </Command>
