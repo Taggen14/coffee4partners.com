@@ -15,7 +15,7 @@ import {
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, slugify } from "@/lib/utils";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -46,13 +46,8 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
     fetchNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ["search", searchQuery],
-    queryFn: async ({ pageParam = 1 }) => {
-      const response = await fetch(
-        `/api/products/search?q=${encodeURIComponent(
-          searchQuery,
-        )}&page=${pageParam}&limit=10`,
-      );
+    queryKey: ["search", searchQuery], queryFn: async ({ pageParam = 1 }) => {
+      const response = await fetch(`/api/products/search?q=${encodeURIComponent(searchQuery,)}&page=${pageParam}&limit=10`,);
       if (!response.ok) {
         throw new Error("Failed to fetch search results");
       }
@@ -91,10 +86,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent
-        side="top"
-        className="h-[85vh] p-0 border-none shadow-2xl rounded-b-xl"
-      >
+      <SheetContent side="top" className="h-[85vh] p-0 border-none shadow-2xl rounded-b-xl"  >
         <div className="flex h-full flex-col">
           <div className="flex items-center border-b px-6 py-2 bg-background/95 sticky top-0 z-10">
             <div className="relative flex-1">
@@ -195,7 +187,7 @@ export function SearchSheet({ open, onOpenChange }: SearchSheetProps) {
                             className="h-full border border-border/30 hover:border-border/60 hover:bg-accent/40 group transition-all duration-200 rounded-lg shadow-sm hover:shadow cursor-pointer"
                             onClick={() => {
                               onOpenChange(false);
-                              router.push(`/shop/products/${product.id}`);
+                              router.push(`/shop/${slugify(product.category.name)}/${slugify(product.subCategory.name)}/${product.id}`);
                             }}
                           >
                             <div className="flex items-start p-3 gap-3">

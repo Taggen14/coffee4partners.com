@@ -16,6 +16,7 @@ export async function GET(request: Request) {
         prisma.product.findMany({
           include: {
             category: true,
+            subCategory: true,
           },
           skip,
           take: limit,
@@ -58,6 +59,7 @@ export async function GET(request: Request) {
         where: whereClause,
         include: {
           category: true,
+          subCategory: true,
         },
         skip,
         take: limit,

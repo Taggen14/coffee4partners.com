@@ -68,11 +68,10 @@ export function CartSheet() {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button
-          variant="outline"
+          variant="outlineNavIcons"
           size="icon"
-          className="relative border-none bg-transparent hover:bg-muted/50 hover:border-primary/30 transition-all duration-200 h-8 w-8 sm:h-9 sm:w-9"
         >
-          <ShoppingCart className="h-[1.1rem] sm:h-[1.2rem] w-[1.1rem] sm:w-[1.2rem]" />
+          <ShoppingCart style={{ width: 24, height: 24 }} />
           <AnimatePresence>
             {itemCount > 0 && (
               <motion.span
