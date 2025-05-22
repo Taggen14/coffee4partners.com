@@ -19,8 +19,8 @@ const NavbarMobile = () => {
 
   return (
     <Sheet>
-      <SheetTrigger>
-        <Menu />
+      <SheetTrigger className="p-1 hover:cursor-pointer hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 relative hover:bg-secondary-foreground transition-all duration-400">
+        <Menu style={{ width: 28, height: 28 }} />
       </SheetTrigger>
       <SheetContent side={"left"} className="bg-secondary gap-0">
         <SheetHeader className="px-1 pt-6 gap-0">
