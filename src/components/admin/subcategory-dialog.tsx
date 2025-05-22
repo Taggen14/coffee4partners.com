@@ -59,12 +59,7 @@ export function SubCategoryDialog({ open, onOpenChange, category }: CategoryDial
         categoryId: category.id,
       });
     } else {
-      form.reset({
-        name: "",
-        description: "",
-        images: [],
-        categoryId: "",
-      });
+      form.reset();
     }
   }, [category]);
 

@@ -28,7 +28,6 @@ import {
   Download,
   Printer,
   RefreshCw,
-  Eye,
   ArrowUpFromLine,
   Settings2,
   Image as ImageIcon,
@@ -76,16 +75,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { QuickEditDialog } from "@/components/admin/quick-edit-dialog";
-import { QuickViewDialog } from "@/components/admin/quick-view-dialog";
 import { useProducts } from "@/hooks/use-products";
 
-interface TableMeta {
-  setQuickEditProduct: (product: ExtendedProduct | null) => void;
-  setQuickViewProduct: (product: ExtendedProduct | null) => void;
-}
-
-interface ExtendedProduct extends Omit<Product, "price"> {
+export interface ExtendedProduct extends Omit<Product, "price"> {
   price: number;
   category: {
     id: string;
@@ -103,8 +95,6 @@ interface ProductsDataTableProps {
 
 export function ProductsDataTable({ data }: ProductsDataTableProps) {
   const [open, setOpen] = useState(false);
-  const [quickEditProduct, setQuickEditProduct] = useState<ExtendedProduct | null>(null);
-  const [quickViewProduct, setQuickViewProduct] = useState<ExtendedProduct | null>(null);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -112,6 +102,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
   const [rowSelection, setRowSelection] = useState<Record<string, boolean>>({});
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [showQuickFilters, setShowQuickFilters] = useState(true);
+  const [editProduct, setEditProduct] = useState<ExtendedProduct | null>(null);
   const [filterValues, setFilterValues] = useState({
     priceRange: { min: "", max: "" },
     stockRange: { min: "", to: "" },
@@ -312,6 +303,23 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
         },
       },
       {
+        id: "status",
+        header: "Status",
+        cell: ({ row }) => {
+          return (
+            <Badge
+              variant="default"
+              className={cn("",
+                row.original.status === "DRAFT" && "bg-amber-500",
+                row.original.status === "ACTIVE" && "bg-ring"
+              )}
+            >
+              {row.original.status}
+            </Badge>
+          );
+        },
+      },
+      {
         id: "category",
         accessorFn: (row) => row.category.name,
         header: "Kategori/Underkategori",
@@ -398,9 +406,8 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
       },
       {
         id: "quick-actions",
-        cell: ({ row, table }) => {
+        cell: ({ row }) => {
           const product = row.original;
-          const meta = table.options.meta as TableMeta;
           return (
             <div className="flex items-center gap-2">
               <TooltipProvider>
@@ -410,22 +417,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                       variant="ghost"
                       size="icon"
                       className="h-7 w-7"
-                      onClick={() => meta.setQuickViewProduct(product)}
-                    >
-                      <Eye className="h-4 w-4" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>Quick view</TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-7 w-7"
-                      onClick={() => meta.setQuickEditProduct(product)}
+                      onClick={() => setEditProduct(product)}
                     >
                       <Pencil className="h-4 w-4" />
                     </Button>
@@ -464,7 +456,8 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                   Kopiera ID
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => setQuickEditProduct(product)}>
+                <DropdownMenuItem
+                  onClick={() => setEditProduct(product)}>
                   <Pencil className="mr-2 h-4 w-4" />
                   Redigera
                 </DropdownMenuItem>
@@ -481,7 +474,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
         },
       },
     ],
-    [handleDelete, setQuickEditProduct],
+    [handleDelete],
   );
 
   const table = useReactTable({
@@ -493,10 +486,6 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
       columnVisibility,
       globalFilter,
       rowSelection,
-    },
-    meta: {
-      setQuickEditProduct,
-      setQuickViewProduct,
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
@@ -1063,10 +1052,6 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
           onColumnVisibilityChange={setColumnVisibility}
           globalFilter={globalFilter}
           onGlobalFilterChange={setGlobalFilter}
-          meta={{
-            setQuickEditProduct,
-            setQuickViewProduct,
-          }}
         />
       </div>
 
@@ -1122,16 +1107,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                   variant="outline"
                   size="sm"
                   className="h-8 px-2 text-xs"
-                  onClick={() => setQuickViewProduct(product)}
-                >
-                  <Eye className="h-3 w-3 mr-1" />
-                  Visa
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="h-8 px-2 text-xs"
-                  onClick={() => setQuickEditProduct(product)}
+                  onClick={() => setEditProduct(product)}
                 >
                   <Pencil className="h-3 w-3 mr-1" />
                   Redigera
@@ -1144,29 +1120,18 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
 
       <ProductDialog open={open} onOpenChange={setOpen} />
 
-      {quickEditProduct && (
-        <QuickEditDialog
-          product={quickEditProduct}
-          open={!!quickEditProduct}
+      {editProduct && (
+        <ProductDialog
+          open={!!editProduct}
           onOpenChange={(open) => {
-            if (!open) setQuickEditProduct(null);
+            if (!open) {
+              setEditProduct(null);
+            }
           }}
-          onSuccess={() => {
-            setQuickEditProduct(null);
-            handleRefresh();
-          }}
+          product={editProduct}
         />
       )}
 
-      {quickViewProduct && (
-        <QuickViewDialog
-          product={quickViewProduct}
-          open={!!quickViewProduct}
-          onOpenChange={(open) => {
-            if (!open) setQuickViewProduct(null);
-          }}
-        />
-      )}
     </div>
   );
 }
