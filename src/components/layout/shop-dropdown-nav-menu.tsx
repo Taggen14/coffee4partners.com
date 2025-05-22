@@ -8,7 +8,13 @@ import { cn, slugify } from "@/lib/utils";
 import { Skeleton } from "../ui/skeleton";
 import Link from "next/link";
 
-const ShopDropdownNavMenu = ({ title }: { title: string }) => {
+type Link = {
+    title: string;
+    route: string;
+    slug: string;
+};
+
+const ShopDropdownNavMenu = ({ link }: { link: Link }) => {
     const [mainDropdownOpen, setMainDropdownOpen] = useState(false);
     const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
     const [hoveredCategoryId, setHoveredCategoryId] = useState<string | null>(null);
@@ -40,18 +46,21 @@ const ShopDropdownNavMenu = ({ title }: { title: string }) => {
                 onMouseEnter={() => setMainDropdownOpen(true)}
                 onMouseLeave={() => setMainDropdownOpen(false)}>
                 {/* Title as trigger */}
-                <button className="flex items-center">
-                    <span className="text-xl">{title}</span>
+                <Link href={"/shop"} className={cn("p-2 flex items-center relative text-xl whitespace-nowrap transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-secondary-foreground after:transition-width after:duration-300 hover:after:w-full",
+                    pathname === link.slug ? "text-secondary-foreground" : "text-background",
+                    mainDropdownOpen ? "after:w-full" : "hover:after:w-full after:w-0"
+                )}>
+                    <span className="text-xl">{link.title}</span>
                     <ChevronDown
-                        className={`text-text-secondary-foreground transition-transform duration-200 ${mainDropdownOpen ? 'rotate-180' : ''}`}
+                        className={`transition-transform duration-200 ${mainDropdownOpen ? 'rotate-180' : ''}`}
                         style={{ width: 24, height: 24 }}
                     />
-                </button>
-                <div className="absolute w-full h-3 left-0 z-40 bg-transparant"></div>
+                </Link>
+                <div className="absolute w-full h-6 left-0 z-40 bg-transparant"></div>
 
                 {/* Main dropdown menu */}
                 {mainDropdownOpen && (
-                    <div className="absolute -left-2 bg-background rounded-sm shadow-lg z-50 w-fit border border-gray-200" style={{ top: '100%', marginTop: '0.6rem' }}>
+                    <div className="absolute -left-2 bg-background rounded-sm shadow-lg z-50 w-fit border border-gray-200" style={{ top: '100%', marginTop: '0.2rem' }}>
                         {
                             isLoading ?
                                 <>
@@ -101,7 +110,7 @@ const ShopDropdownNavMenu = ({ title }: { title: string }) => {
             <div className="px-2 md:hidden w-full text-background text-xl">
                 {/* ChevronDown as trigger */}
                 <div className="flex items-center justify-between w-full">
-                    <Link href={`/shop`}>{title}</Link>
+                    <Link href={`/shop`}>{link.title}</Link>
                     <button
                         type="button"
                         onClick={(e) => {

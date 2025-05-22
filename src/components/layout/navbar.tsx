@@ -21,7 +21,7 @@ const Navbar = () => {
         {links.map((link, i) => (
           <NavigationMenuItem key={i}>
             {link.slug === 'shop' ?
-              <ShopDropdownNavMenu title={link.title} />
+              <ShopDropdownNavMenu link={link} />
               :
               <NavigationMenuLink
                 href={link.route}

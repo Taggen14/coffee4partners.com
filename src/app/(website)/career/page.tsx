@@ -8,7 +8,6 @@ import { usePathname } from "next/navigation";
 const Career = () => {
   const { title, subTitle, descriptions } = content.career;
   const pathname = usePathname().slice(1);
-  console.log(pathname);
   return (
     <div>
       <h1>{title}</h1>

@@ -93,7 +93,7 @@ export function CartSheet() {
                     duration: 0.2,
                   },
                 }}
-                className="absolute -right-1.5 -top-1.5 flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-primary text-[9px] sm:text-[10px] font-medium text-primary-foreground shadow-md"
+                className="absolute -right-1.5 -top-1.5 flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-primary text-[9px] sm:text-[10px] font-medium text-primary-foreground shadow-md border border-secondary-foreground"
               >
                 {itemCount}
               </motion.span>

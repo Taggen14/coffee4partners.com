@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/shop/theme-provider";
-import { ShopHeader } from "@/components/shop/header";
-import { ShopFooter } from "@/components/shop/footer";
+import { ShopHeader } from "@/components/shop/header-not-in-use";
+import { ShopFooter } from "@/components/shop/footer-not-in-use.tsx";
 import { CartProvider } from "@/components/shop/cart-provider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,12 +13,7 @@ export default function ShopLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div
-      className={cn(
-        "min-h-screen flex flex-col bg-background",
-        inter.className,
-      )}
-    >
+    <div className={cn("min-h-screen flex flex-col bg-background", inter.className)} >
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <CartProvider>
           {/* CartProvider reads from localstorage */}

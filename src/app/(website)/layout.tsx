@@ -14,10 +14,10 @@ export default function WebsiteLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="max-w-[1500px] mx-auto">{children}</main>
+      <main className="flex-1 max-w-[1500px] mx-auto">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }
