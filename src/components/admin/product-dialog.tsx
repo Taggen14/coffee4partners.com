@@ -38,7 +38,6 @@ import { capitalizeFirstLetter } from "@/lib/utils";
 import { Label } from "../ui/label";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { ExtendedProduct } from "./products-data-table";
-import { queryClient } from "@/lib/react-query";
 
 const productFormSchema = z.object({
   name: z.string().min(1, "Namn krävs"),

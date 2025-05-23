@@ -11,7 +11,6 @@ import Link from "next/link";
 import { CartSheet } from "../shop/cart-sheet";
 import { Button } from "../ui/button";
 import { SearchSheet } from "../shop/search-sheet";
-import MobileNavbar from "../shop/mobile-navbar";
 
 const Header = () => {
   const [commandOpen, setCommandOpen] = useState(false);
