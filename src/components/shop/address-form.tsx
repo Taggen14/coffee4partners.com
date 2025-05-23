@@ -91,10 +91,10 @@ export function AddressForm({
   }, [useSameAddress, form]);
 
   const handleSubmit = async (data: AddressFormData) => {
-    if (!shippingCost) {
-      toast.error("Please wait while we calculate shipping cost");
-      return;
-    }
+    // if (!shippingCost) {
+    //   toast.error("Please wait while we calculate shipping cost");
+    //   return;
+    // }
 
     // If using same address, copy shipping address to billing
     const finalData = {
