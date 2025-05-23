@@ -2,18 +2,14 @@ import { queryClient } from "@/lib/react-query";
 import { ExtendedProduct } from "@/types";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { Product } from "@prisma/client";
 import { toast } from "sonner";
 
-export const useProducts = (searchQuery?: string) => {
-  const {
-    data: products,
-    isLoading,
-    refetch,
-  } = useQuery<ExtendedProduct[]>({
-    queryKey: ["products"],
+export const useProducts = (searchQuery?: string, options?: { admin?: boolean }) => {
+  const endpoint = options?.admin ? "/api/admin/products" : "/api/products";
+  const { data: products, isLoading, refetch, } = useQuery<ExtendedProduct[]>({
+    queryKey: ["products", endpoint],
     queryFn: async () => {
-      const response = await fetch("/api/admin/products");
+      const response = await fetch(endpoint);
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
@@ -43,7 +39,7 @@ export const useProducts = (searchQuery?: string) => {
   }, [products, searchQuery]);
 
   const createProduct = useMutation({
-    mutationFn: async (data: Partial<Omit<Product, "price">> & { price: string }) => {
+    mutationFn: async (data: Partial<ExtendedProduct>) => {
       console.log('use-products.ts creatProduct data: ', data)
       const response = await fetch("/api/admin/products", {
         method: "POST",
@@ -61,8 +57,8 @@ export const useProducts = (searchQuery?: string) => {
     },
     onSuccess: () => {
       // Force an immediate refetch
-      queryClient.invalidateQueries({ queryKey: ["products"] });
-      refetch(); // Explicitly refetch
+      queryClient.invalidateQueries({ queryKey: ["products", endpoint] });
+      refetch();
       toast.success("Product created successfully");
     },
     onError: (error: Error) => {
@@ -71,13 +67,7 @@ export const useProducts = (searchQuery?: string) => {
   });
 
   const updateProduct = useMutation({
-    mutationFn: async ({
-      productId,
-      data,
-    }: {
-      productId: string;
-      data: Partial<ExtendedProduct>;
-    }) => {
+    mutationFn: async ({ productId, data, }: { productId: string, data: Partial<ExtendedProduct> }) => {
       const response = await fetch(`/api/admin/products/${productId}`, {
         method: "PATCH",
         headers: {
@@ -95,7 +85,8 @@ export const useProducts = (searchQuery?: string) => {
       return result.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["products"] });
+      queryClient.invalidateQueries({ queryKey: ["products", endpoint] });
+      refetch();
       toast.success("Product updated successfully");
     },
     onError: (error: Error) => {
@@ -121,7 +112,8 @@ export const useProducts = (searchQuery?: string) => {
       }
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["products"] });
+      queryClient.invalidateQueries({ queryKey: ["products", endpoint] });
+      refetch()
       toast.success("Products deleted successfully");
     },
     onError: (error: Error) => {
@@ -133,6 +125,7 @@ export const useProducts = (searchQuery?: string) => {
   return {
     products: filteredProducts,
     isLoading,
+    refetch,
     createProduct,
     updateProduct,
     deleteProducts,
@@ -140,7 +133,7 @@ export const useProducts = (searchQuery?: string) => {
 };
 
 export const useProduct = (productId: string) => {
-  const { products, isLoading } = useProducts();
+  const { products, isLoading } = useProducts(undefined, { admin: true });
 
   const product = useMemo(
     () => products?.find((p) => p.id === productId),

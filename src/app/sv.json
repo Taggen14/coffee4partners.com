@@ -1,7 +1,11 @@
 {
   "layout": {
     "header": {
-      "usps": ["SMAKGARANTI", "DRIFTGARANTI", "FOKUS PÅ HÅLLBARHET"],
+      "usps": [
+        "SMAKGARANTI",
+        "DRIFTGARANTI",
+        "FOKUS PÅ HÅLLBARHET"
+      ],
       "links": [
         {
           "title": "Hem",
@@ -71,7 +75,7 @@
         "description": "Med kvalité och flexibiltet i fokus. Vi hjälper er att få en helt egen barista på arbetsplatsen som alltid är redo.",
         "cta": {
           "text": "SE MER",
-          "href": "/shop/FINNS INTE ÄNNU"
+          "href": "/shop/automater/kaffeautomater"
         },
         "image": {
           "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743062927/7E4A6472_lUgupplist-19_300x_syge3u.jpg",
@@ -83,7 +87,7 @@
         "description": "Med hög kvalité och stort fokus på design för att enkelt kunna vara en accessoar på företaget.",
         "cta": {
           "text": "SE MER",
-          "href": "/shop/FINNS INTE ÄNNU"
+          "href": "/shop/automater/vattemautomater"
         },
         "image": {
           "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743409051/vatten-automat_kqjbmn.webp",
@@ -95,7 +99,7 @@
         "description": "Vi leverar varuautomatslösningar med syftet enkelt, gott och tillgängligt för ett godare arbetsliv",
         "cta": {
           "text": "SE MER",
-          "href": "/shop/FINNS INTE ÄNNU"
+          "href": "/shop/ovrigt/snacks"
         },
         "image": {
           "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743409051/varuautomat_st6qgs.webp",
@@ -143,7 +147,7 @@
     "shopProductLinks": [
       {
         "title": "Kyld dryck",
-        "href": "",
+        "href": "/shop/ovrigt/kyld-dryck",
         "image": {
           "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064845/ramlosa_flader_lime_33cl_360x_k8prcc.webp",
           "alt": "ramlösa 33cl burk"
@@ -151,7 +155,7 @@
       },
       {
         "title": "Snacks och mellanmål",
-        "href": "",
+        "href": "/shop/ovrigt/snacks",
         "image": {
           "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064844/twix_pqhzdo.webp",
           "alt": "twix snacks bar"
@@ -159,7 +163,7 @@
       },
       {
         "title": "Te",
-        "href": "",
+        "href": "/shop/forbrukningsvaror/te",
         "image": {
           "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064843/lipton_forest_fruits_p_sar_360x_mij2df.webp",
           "alt": "lipon te"
@@ -167,7 +171,7 @@
       },
       {
         "title": "Filterbryggare",
-        "href": "",
+        "href": "/shop/automater/kaffeautomater",
         "image": {
           "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064843/kaffebryggare_z9rre9.webp",
           "alt": "filterbryggare"
@@ -175,7 +179,7 @@
       },
       {
         "title": "Tillbehör",
-        "href": "",
+        "href": "shop/ovrigt/tillbehor",
         "image": {
           "url": "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1743064843/tillbeh%C3%B6r_eihiep.webp",
           "alt": "hushållspapper"

@@ -32,7 +32,7 @@ export function CreateProductSubCategoryDrowpdown({ value, onChange, selectedCat
     const [open, setOpen] = React.useState(false);
     const [search, setSearch] = React.useState("");
     const { categories, isLoading, refetch } = useCategories()
-    const { products } = useProducts()
+    const { products } = useProducts(undefined, { admin: true });
 
     const selectedCategory = React.useMemo(
         () => categories?.find((category) => category.id === selectedCategoryId),

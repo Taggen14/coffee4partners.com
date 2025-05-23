@@ -78,9 +78,7 @@ export function ShopHeader() {
   return (
     <>
       <header
-        className={cn(
-          "sticky top-0 z-50 w-full",
-          "transition-all duration-300 ease-in-out",
+        className={cn("sticky top-0 z-50 w-full transition-all duration-300 ease-in-out",
           isScrolled
             ? "bg-background shadow-xl"
             : "bg-gradient-to-r from-primary/5 via-background to-primary/5",
@@ -148,9 +146,8 @@ export function ShopHeader() {
                               }
                             }}>
                             <NavigationMenuLink
-                              className={`relative text-xl whitespace-nowrap transition-colors duration-300 inline-block 
-                                          after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-secondary-foreground 
-                                          after:transition-width after:duration-300 hover:after:w-full ${category.name === "/"
+                              className={`relative text-xl whitespace-nowrap transition-colors duration-300 inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-secondary-foreground after:transition-width after:duration-300 hover:after:w-full 
+                                ${category.name === "/"
                                   ? pathname === "/"
                                     ? "text-secondary-foreground"
                                     : "text-primary"

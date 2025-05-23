@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { newsletterForm } from "@/formSchema/newsletter-form";
+import Link from "next/link";
 
 const Footer = () => {
   const {
@@ -42,22 +43,22 @@ const Footer = () => {
     form.reset();
   }
   return (
-    <footer>
+    <footer className="text-secondary-foreground">
       <div className="flex items-start justify-center gap-5 p-5 sm:p-10 flex-wrap">
         {usps.map((usp, i) => (
           <div
             key={i}
             className="flex flex-col justify-center items-center gap-2 flex-1 min-w-[300px] max-w-[500px]"
           >
-            <h3 className="text-secondary-foreground flex font-bold gap-1">
+            <h3 className="flex font-bold gap-1">
               <Check />
               {usp.title}
             </h3>
-            <p className="text-center">{usp.description}</p>
+            <p className="text-center text-foreground">{usp.description}</p>
           </div>
         ))}
       </div>
-      <div className="bg-secondary text-secondary-foreground flex flex-col gap-10 py-5">
+      <div className="bg-secondary flex flex-col gap-10 py-5">
         <div className="flex flex-col md:flex-row gap-5 items-center md:items-start justify-evenly">
           <div>
             <CldImage
@@ -92,7 +93,7 @@ const Footer = () => {
                     )}
                   />
                   <Button
-                    className="bg-secondary text-secondary-foreground p-0 cursor-pointer w-24 justify-end hover:bg-secondary hover:text-secondary-foreground/80 transition-colors duration-300"
+                    className="bg-secondary p-0 cursor-pointer w-24 justify-end hover:bg-secondary hover:text-secondary-foreground/80 transition-colors duration-300"
                     type="submit"
                   >
                     {form.watch("email") ? (
@@ -130,8 +131,28 @@ const Footer = () => {
             </a>
           </div>
         </div>
+        <div className="flex items-start justify-evenly">
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold tracking-wide">Kundservice</h3>
+            <div className="flex flex-col space-y-3 text-sm">
+              <Link href="/shop/betalning" className="text-muted-foreground transition-colors hover:text-background">
+                Betalning
+              </Link>
+              <Link href="/shop/leverans" className="text-muted-foreground transition-colors hover:text-background">
+                Leverans
+              </Link>
+              <Link href="/shop/returer" className="text-muted-foreground transition-colors hover:text-background">
+                Returer
+              </Link>
+              <Link href="/shop/integritetspolicy" className="text-muted-foreground transition-colors hover:text-background">
+                Integritetspolicy
+              </Link>
+            </div>
+          </div>
+        </div>
+
         <div className="self-center text-xs">
-          <span>&copy; 2025 Coffee4partners</span>
+          <span>&copy; 2025 Coffee4partners. Alla rättigheter förbehållna.</span>
         </div>
       </div>
     </footer>

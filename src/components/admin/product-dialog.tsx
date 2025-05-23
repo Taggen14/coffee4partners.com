@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -35,12 +35,16 @@ import { ProductAttributesList } from "./product-attributes-list ";
 import { ProductSpecificationsList } from "./product-specifications-list";
 import { useCategories } from "@/hooks/use-categories";
 import { capitalizeFirstLetter } from "@/lib/utils";
+import { Label } from "../ui/label";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
+import { ExtendedProduct } from "./products-data-table";
 
 const productFormSchema = z.object({
   name: z.string().min(1, "Namn krävs"),
   vendor: z.string().min(1, "Varumärke krävs"),
   tagline: z.string(),
   description: z.string().min(1, "Beskrivning krävs"),
+  status: z.enum(["ACTIVE", "DRAFT", "ARCHIVE"]).default("DRAFT"),
   productAttributes: z.array(z.string()),
   productSpecifications: z.array(z.string()),
   price: z.coerce
@@ -58,12 +62,41 @@ type ProductFormValues = z.infer<typeof productFormSchema>;
 interface ProductDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  product?: ExtendedProduct
 }
 
-export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
+export function ProductDialog({ open, onOpenChange, product }: ProductDialogProps) {
   const [loading, setLoading] = useState(false);
-  const { createProduct } = useProducts();
+  const { createProduct, updateProduct } = useProducts(undefined, { admin: true });
   const { categories } = useCategories();
+
+  useEffect(() => {
+    if (product) {
+      form.reset({
+        name: product.name || "",
+        vendor: product.vendor || "",
+        tagline: product.tagline || "",
+        description: Array.isArray(product.description)
+          ? product.description.join("\n")
+          : product.description || "",
+        status: product.status || "DRAFT",
+        productAttributes: product.productAttributes?.length
+          ? product.productAttributes
+          : [""],
+        productSpecifications: product.productSpecifications?.length
+          ? product.productSpecifications
+          : [""],
+        price: Number(product.price) || 0,
+        images: product.images || [],
+        stock: product.stock || 0,
+        categoryId: product.categoryId || "",
+        subCategoryId: product.subCategoryId || "",
+      });
+    } else {
+      form.reset();
+    }
+  }, [product]);
+
 
   const form = useForm<ProductFormValues>({
     resolver: zodResolver(productFormSchema),
@@ -72,6 +105,7 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
       vendor: "",
       tagline: "",
       description: "",
+      status: "DRAFT",
       productAttributes: [""],
       productSpecifications: [""],
       price: 0,
@@ -102,11 +136,16 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
         description: descriptions,
         productAttributes: filteredAttributes,
         productSpecifications: filteredSpecifications,
-        price: data.price.toFixed(2),
+        price: Number(data.price),
         subCategoryId: form.watch('subCategoryId'),
       };
       console.log('finalData: ', finalData)
-      await createProduct.mutateAsync(finalData);
+
+      if (product) {
+        await updateProduct.mutateAsync({ productId: product.id, data: finalData });
+      } else {
+        await createProduct.mutateAsync(finalData);
+      }
       form.reset();
       onOpenChange(false);
     } catch (error) {
@@ -206,6 +245,38 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
                           className="min-h-[120px] text-base resize-none"
                           {...field}
                         />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* status */}
+                <FormField
+                  control={form.control}
+                  name="status"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-base">Status</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                          className="flex space-x-6"
+                        >
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="ACTIVE" id="active" />
+                            <Label htmlFor="active">Active</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="DRAFT" id="draft" />
+                            <Label htmlFor="draft">Draft</Label>
+                          </div>
+                          <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="ARCHIVE" id="archive" />
+                            <Label htmlFor="archive">Archive</Label>
+                          </div>
+                        </RadioGroup>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -339,10 +410,12 @@ export function ProductDialog({ open, onOpenChange }: ProductDialogProps) {
             {loading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Skapar produkt...
+                {product ? "Uppdaterar" : "Skapar"} produkt...
               </>
             ) : (
-              "Skapa produkt"
+              <>
+                {product ? "Uppdaterar" : "Skapar"} produkt
+              </>
             )}
           </Button>
         </DialogFooter>

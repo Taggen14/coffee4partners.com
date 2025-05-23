@@ -2,7 +2,7 @@ import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const { name, vendor, tagline, description, productAttributes, productSpecifications, price, images, stock, categoryId, subCategoryId, features, } =
+  const { name, vendor, tagline, description, status, productAttributes, productSpecifications, price, images, stock, categoryId, subCategoryId, features, } =
     await req.json();
 
   try {
@@ -12,6 +12,7 @@ export async function POST(req: Request) {
         vendor: vendor,
         tagline: tagline || null,
         description: description,
+        status: status,
         productAttributes: productAttributes,
         productSpecifications: productSpecifications,
         price: price,

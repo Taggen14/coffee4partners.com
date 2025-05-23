@@ -8,18 +8,19 @@ datasource db {
 }
 
 model Product {
-  id                    String   @id @default(cuid())
+  id                    String        @id @default(cuid())
   name                  String
   vendor                String
   tagline               String?
   description           String[]
   productAttributes     String[]
   productSpecifications String[]
-  price                 Decimal  @db.Decimal(10, 2)
+  price                 Decimal       @db.Decimal(10, 2)
   images                String[]
   stock                 Int
-  createdAt             DateTime @default(now())
-  updatedAt             DateTime @updatedAt
+  status                ProductStatus @default(ACTIVE)
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
 
   // Dynamic categorization and features
   categoryId    String
@@ -32,6 +33,12 @@ model Product {
   orderItems OrderItem[]
   cartItems  CartItem[]
   returnItem ReturnItem[]
+}
+
+enum ProductStatus {
+  ACTIVE
+  DRAFT
+  ARCHIVE
 }
 
 model Category {

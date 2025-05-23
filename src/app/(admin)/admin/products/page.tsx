@@ -5,7 +5,7 @@ import { useProducts } from "@/hooks/use-products";
 import { Loader2 } from "lucide-react";
 
 export default function ProductsPage() {
-  const { products, isLoading } = useProducts();
+  const { products, isLoading } = useProducts(undefined, { admin: true });
 
   if (isLoading) {
     return (

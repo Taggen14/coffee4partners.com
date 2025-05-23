@@ -2,24 +2,22 @@ import type { Metadata } from "next";
 import "../globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Coffee4partners",
   description: "",
 };
 
-export default function RootLayout({
+export default function WebsiteLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="max-w-[1500px] mx-auto">{children}</main>
-      <Toaster />
+      <main className="flex-1 max-w-[1500px] mx-auto">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }

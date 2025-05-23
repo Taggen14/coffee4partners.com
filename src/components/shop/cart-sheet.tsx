@@ -68,11 +68,10 @@ export function CartSheet() {
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button
-          variant="outline"
+          variant="outlineNavIcons"
           size="icon"
-          className="relative border-none bg-transparent hover:bg-muted/50 hover:border-primary/30 transition-all duration-200 h-8 w-8 sm:h-9 sm:w-9"
         >
-          <ShoppingCart className="h-[1.1rem] sm:h-[1.2rem] w-[1.1rem] sm:w-[1.2rem]" />
+          <ShoppingCart style={{ width: 24, height: 24 }} />
           <AnimatePresence>
             {itemCount > 0 && (
               <motion.span
@@ -94,7 +93,7 @@ export function CartSheet() {
                     duration: 0.2,
                   },
                 }}
-                className="absolute -right-1.5 -top-1.5 flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-primary text-[9px] sm:text-[10px] font-medium text-primary-foreground shadow-md"
+                className="absolute -right-1.5 -top-1.5 flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-primary text-[9px] sm:text-[10px] font-medium text-primary-foreground shadow-md border border-secondary-foreground"
               >
                 {itemCount}
               </motion.span>

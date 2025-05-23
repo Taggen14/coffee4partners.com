@@ -34,7 +34,7 @@ const Contact = () => {
               {contact.mail}
               <span className="text-foreground font-normal hover:text-foreground/80 transition-colors duration-300">
                 {" "}
-                info@coffee4partner.se???
+                info@coffee4partner.se
               </span>
             </a>
           </div>
