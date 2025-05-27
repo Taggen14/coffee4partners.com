@@ -1,5 +1,15 @@
 import { Category, Product, SubCategory } from "@prisma/client";
 
+export type Roles = 'admin' | 'customer'
+
+declare global {
+  interface CustomJwtSessionClaims {
+    metadata: {
+      role?: Roles
+    }
+  }
+}
+
 export interface ExtendedProduct extends Omit<Product, "price"> {
   price: number;
   category: {

@@ -5,6 +5,7 @@ import {
   GetServerSidePropsResult,
 } from "next";
 import { NextResponse } from "next/server";
+import { Roles } from "@/types";
 
 export async function isAdmin() {
   const { userId } = await auth();
@@ -49,4 +50,9 @@ export function withPageAuth<P extends Record<string, unknown>>(
 
     return await gssp(context);
   };
+}
+
+export const checkRole = async (role: Roles) => {
+  const { sessionClaims } = await auth()
+  return sessionClaims?.metadata.role === role
 }

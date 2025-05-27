@@ -2,21 +2,21 @@
 
 import React, { useState } from "react";
 import content from "@/app/sv.json";
-import { Check, Search, User } from "lucide-react";
+import { Check, Search } from "lucide-react";
 import { CldImage } from "next-cloudinary";
 import Navbar from "./navbar";
 import NavbarMobile from "./navbar-mobile";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { CartSheet } from "../shop/cart-sheet";
 import { Button } from "../ui/button";
 import { SearchSheet } from "../shop/search-sheet";
+import ProfilDropdown from "@/components/customer-profile";
 
 const Header = () => {
   const [commandOpen, setCommandOpen] = useState(false);
   const { usps, landingPage } = content.layout.header;
   const pathname = usePathname();
-  const router = useRouter();
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
 
   return (
@@ -49,7 +49,7 @@ const Header = () => {
             <Navbar />
           </div>
 
-          {/* search-, sign-in-, carticons */}
+          {/* search-, sign-in-/create-account, carticons */}
           <div className="flex gap-5">
             <Button
               variant="outlineNavIcons"
@@ -60,15 +60,7 @@ const Header = () => {
 
               <span className="sr-only">Sök</span>
             </Button>
-            <Button
-              variant="outlineNavIcons"
-              size="icon"
-              onClick={() => {
-                router.push("/sign-in");
-              }}
-            >
-              <User style={{ width: 24, height: 24 }} />
-            </Button>
+            <ProfilDropdown />
             <CartSheet />
             <div className="md:hidden">
               <NavbarMobile />
