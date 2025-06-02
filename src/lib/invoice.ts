@@ -31,14 +31,15 @@ export async function generateInvoicePDF(
     doc.setFontSize(12);
     doc.text(`Orderdatum: ${invoiceData.date.createdAt}`, rightMargin, yPos, { align: "right" });
 
+    // add logo
+    yPos -= 10;
+    doc.addImage(logoBase64, "PNG", leftMargin, yPos, 90, 11); // x, y, width, height
+    yPos += 30;
+
     //Header
     doc.setFontSize(25);
     doc.setFont("helvetica", "bold");
     doc.text("Orderbekräftelse", leftMargin, yPos);
-    yPos += 5;
-
-    // add logo
-    doc.addImage(logoBase64, "PNG", leftMargin, yPos, 90, 11); // x, y, width, height
     yPos += 35;
 
 

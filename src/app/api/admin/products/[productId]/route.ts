@@ -5,6 +5,7 @@ import { Prisma } from "@prisma/client";
 
 const updateProductSchema = z.object({
   name: z.string().min(1, "Name is required").optional(),
+  vendor: z.string().min(1, "Name is required").optional(),
   description: z.array(z.string()).optional(),
   status: z.enum(["ACTIVE", "DRAFT", "ARCHIVE"]).optional(),
   price: z.number().min(0, "Price must be positive").optional(),

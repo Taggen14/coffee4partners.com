@@ -18,7 +18,7 @@ const buttonVariants = cva(
         outlineNavIcons:
           "hover:cursor-pointer hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 relative hover:bg-secondary-foreground transition-all duration-400",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80 hover:cursor-pointer transition-all duration-400",
         secondaryInverted:
           "text-secondary bg-secondary-foreground shadow-xs hover:bg-secondary-foreground/80 transition-colours duration-300 cursor-pointer",
         ghost:

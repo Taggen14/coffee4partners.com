@@ -91,17 +91,13 @@ const data = {
       ],
     },
     {
-      title: "Lägg till Kund/Admin",
-      url: "/admin/add-user",
+      title: "Konton",
+      url: "/admin/",
       icon: UserRoundPlus,
       items: [
         {
-          title: "Ny Kund",
-          url: "/admin/invite-new-customer",
-        },
-        {
-          title: "Ny Admin",
-          url: "/admin/invite-new-admin",
+          title: "Hantera konton",
+          url: "/admin/accounts",
         },
       ],
     },
