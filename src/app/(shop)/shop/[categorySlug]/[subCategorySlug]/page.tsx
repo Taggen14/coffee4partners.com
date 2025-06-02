@@ -19,8 +19,6 @@ export default function CategoryPage() {
   // Get current category
   const currentCategory = categories?.find((c) => c.categorySlug === params.categorySlug);
   const currentSubCategory = currentCategory?.subCategories.find((subC) => slugify(subC.name) === params.subCategorySlug);
-  console.log('currentSubCategory: ', currentSubCategory)
-  console.log('params: ', params)
   const subCategoryProducts = currentCategory?.subCategories
     .map((subCategory) => (products?.filter((product) => product.subCategoryId === subCategory.id)))
     .flat()

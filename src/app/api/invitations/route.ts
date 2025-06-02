@@ -3,11 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
     try {
-        console.log('GET /api/invitations/')
         const response = await clerkClient.invitations.getInvitationList()
-
-        const userInvites = await clerkClient.users.getUserList()
-        console.log('userInvites: ', userInvites)
 
         return NextResponse.json({ userInvites: response.data })
     } catch (error) {
@@ -19,7 +15,6 @@ export async function GET() {
 export async function POST(req: NextRequest) {
     try {
         const { userInvite } = await req.json()
-        console.log('userInvite: ', userInvite)
 
         const invitation = await clerkClient.invitations.createInvitation({
             emailAddress: userInvite.emailAddress,

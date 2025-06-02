@@ -13,7 +13,6 @@ export const useUsers = () => {
             }
             const data: { users: User[] } = await response.json();
 
-            console.log('data: ', data.users)
             return data.users
         },
     });
@@ -21,13 +20,11 @@ export const useUsers = () => {
     // POST user
     const createUser = useMutation({
         mutationFn: async ({ email }: { email: string }) => {
-            console.log('useUser POST email: ', email)
             const res = await fetch("/api/admin/users", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email }),
             });
-            console.log('res: ', res)
             if (!res.ok) throw new Error("Failed to create User");
             return res.json();
         },

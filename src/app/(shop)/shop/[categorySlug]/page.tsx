@@ -31,8 +31,6 @@ export default function CategoryPage() {
   const filteredProducts = selectedSubCategory ? products?.filter((product) => product.subCategoryId === selectedSubCategory)
     : subCategoryProducts;
 
-  console.log('subCategoryProducts: ', subCategoryProducts)
-
   const handleAddToCart = async (product: ExtendedProduct) => {
     // Simulate a small delay to show loading state
     await new Promise((resolve) => setTimeout(resolve, 500));

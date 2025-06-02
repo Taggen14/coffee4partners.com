@@ -21,13 +21,11 @@ export const useInvites = () => {
     // POST
     const createUserInvite = useMutation({
         mutationFn: async (userInvite: UserInvite) => {
-            console.log('useUser POST UserInvite: ', userInvite)
             const res = await fetch("/api/invitations", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ userInvite }),
             });
-            console.log('res: ', res)
             if (!res.ok) throw new Error("Failed to create createUserInvite");
             return res.json();
         },
@@ -59,6 +57,7 @@ export const useInvites = () => {
         }
     })
 
+    // DELETE
     const revokeInvitation = useMutation({
         mutationFn: async (userInviteId: string) => {
             const response = await fetch(`/api/invitations/${userInviteId}`, {

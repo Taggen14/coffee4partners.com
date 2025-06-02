@@ -8,7 +8,6 @@ export const useSubCategories = () => {
     const { data: subCategories, isLoading, refetch } = useQuery<(SubCategory & { _count: { products: number } })[]>({
         queryKey: ["subCategories"],
         queryFn: async () => {
-            console.log('use-sub-categories hook')
             const response = await fetch("/api/admin/sub-categories");
             if (!response.ok) {
                 throw new Error("Failed to fetch subCategories");
@@ -42,7 +41,6 @@ export const useSubCategories = () => {
         mutationFn: async ({ categoryId, data }: {
             categoryId: string, data: Partial<SubCategory>
         }) => {
-            console.log('useCategories updateCategory PATCH: ')
             const res = await fetch(`/api/admin/sub-categories/${categoryId}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },

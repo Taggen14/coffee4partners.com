@@ -49,7 +49,6 @@ export const useCategories = () => {
     mutationFn: async ({ categoryId, data }: {
       categoryId: string, data: Partial<useCategoriesTypes>
     }) => {
-      console.log('useCategories updateCategory: ')
       const res = await fetch(`/api/admin/categories/${categoryId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },

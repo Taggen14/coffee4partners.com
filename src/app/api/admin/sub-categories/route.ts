@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    console.log('api/admin/sub-categories')
     const subCategories = await prisma.subCategory.findMany({
       orderBy: {
         name: "asc",

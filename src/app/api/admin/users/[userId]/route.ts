@@ -14,7 +14,6 @@ const updateAccountSchema = z.object({
 
 // UPDATE
 export async function PATCH(request: Request, { params }: { params: Promise<{ userId: string }> },) {
-    console.log('api/invitations/accounts/[userId] UPDATE')
     try {
         const body = await request.json();
         const { userId } = await params;

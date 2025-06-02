@@ -139,7 +139,6 @@ export function ProductDialog({ open, onOpenChange, product }: ProductDialogProp
         price: Number(data.price),
         subCategoryId: form.watch('subCategoryId'),
       };
-      console.log('finalData: ', finalData)
 
       if (product) {
         await updateProduct.mutateAsync({ productId: product.id, data: finalData });

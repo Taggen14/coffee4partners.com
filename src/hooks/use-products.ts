@@ -40,7 +40,6 @@ export const useProducts = (searchQuery?: string, options?: { admin?: boolean })
 
   const createProduct = useMutation({
     mutationFn: async (data: Partial<ExtendedProduct>) => {
-      console.log('use-products.ts creatProduct data: ', data)
       const response = await fetch("/api/admin/products", {
         method: "POST",
         headers: {

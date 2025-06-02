@@ -100,7 +100,6 @@ export function SubCategoryDialog({ open, onOpenChange, category }: CategoryDial
       if (category) {
         await updateSubCategory.mutateAsync({ categoryId: category.id, data: finalData });
       } else {
-        console.log('finalData ', finalData)
         const existingSubCategory = subCategories?.find((c) => c.name === finalData.name);
         if (existingSubCategory) {
           toast.error(`underkategorien "${data.name}" finns redan, en underkategori måste ha en unikt namn`);

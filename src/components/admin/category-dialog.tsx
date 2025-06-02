@@ -104,7 +104,6 @@ export function CategoryDialog({ open, onOpenChange, category }: CategoryDialogP
       if (category) {
         await updateCategory.mutateAsync({ categoryId: category.id, data: finalData });
       } else {
-        console.log('finalData ', finalData)
         await createCategory.mutateAsync(finalData);
       }
       form.reset();
