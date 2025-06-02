@@ -14,30 +14,47 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { Input } from '@/components/ui/input'
+import { useInvites } from '@/hooks/use-invites'
+import { Loader2 } from 'lucide-react'
+import { useState } from 'react'
+import { toast } from 'sonner'
 
 const roleSchema = z.object({
     companyName: z.string().min(1, "Du behöver ange ditt företagsnamn"),
-    name: z.string().min(1, "Du behöver ange ditt namn"),
-    lastName: z.string().optional(),
     email: z.string().email("Måste vara en giltig e-post!"),
 })
 
-type RoleFormValues = z.infer<typeof roleSchema>
-
 export default function CreateAccount() {
-    const form = useForm<RoleFormValues>({
+    const [loading, setLoading] = useState(false)
+    const { createUserInvite } = useInvites()
+
+    const form = useForm<z.infer<typeof roleSchema>>({
         resolver: zodResolver(roleSchema),
         defaultValues: {
             companyName: '',
-            name: '',
-            lastName: '',
             email: '',
         },
     })
 
-    function onSubmit(data: RoleFormValues) {
-
+    async function onSubmit(data: z.infer<typeof roleSchema>) {
+        try {
+            setLoading(true)
+            await createUserInvite.mutateAsync({ emailAddress: data.email, id: "", status: "pending", publicMetadata: { notificationSent: false, companyName: data.companyName, role: "customer", pricing: 1, } })
+            await fetch("/api/email/create-account-notify", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            })
+            toast.success("Din förfrågan om att skapa konto har skickats", { duration: 3000 })
+            form.reset()
+        } catch (error) {
+            console.error(error)
+            toast.error("Något gick fel med att skapa konto", { duration: 3000 })
+        } finally {
+            setLoading(false)
+        }
     }
+
 
     return (
         <div className="flex items-center justify-center py-10">
@@ -61,32 +78,6 @@ export default function CreateAccount() {
                         />
                         <FormField
                             control={form.control}
-                            name="name"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Namn*</FormLabel>
-                                    <FormControl>
-                                        <Input {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
-                            name="lastName"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Efternamn</FormLabel>
-                                    <FormControl>
-                                        <Input {...field} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        <FormField
-                            control={form.control}
                             name="email"
                             render={({ field }) => (
                                 <FormItem>
@@ -99,7 +90,11 @@ export default function CreateAccount() {
                             )}
                         />
                         <Button type="submit" variant="default" className="w-full">
-                            Nästa
+                            {
+                                loading ? <Loader2 className="h-6 w-6 animate-spin" />
+                                    :
+                                    <span>Nästa</span>
+                            }
                         </Button>
                     </form>
                 </Form>

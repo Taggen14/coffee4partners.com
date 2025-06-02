@@ -1,11 +1,39 @@
+import { EmailAddress } from "@clerk/backend";
 import { Category, Product, SubCategory } from "@prisma/client";
 
-export type Roles = 'admin' | 'customer'
+export type Role = 'admin' | 'customer'
+
+export type User = {
+  emailAddresses: [
+    {
+      emailAddress: string
+    }
+  ]
+  id: string
+  publicMetadata: {
+    role: Role
+    pricing: number
+    companyName: string
+    notificationSent: boolean
+  }
+  status: string
+}
+export type UserInvite = {
+  emailAddress: string
+  id: string
+  publicMetadata: {
+    role: Role
+    pricing: number
+    companyName: string
+    notificationSent: boolean
+  }
+  status: string
+}
 
 declare global {
   interface CustomJwtSessionClaims {
     metadata: {
-      role?: Roles
+      role?: Role
     }
   }
 }
