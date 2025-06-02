@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { Prisma } from "@prisma/client";
 import { clerkClient } from "@/lib/clerk";
 
 const updateAccountSchema = z.object({
@@ -28,25 +27,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ us
         }
 
         const validatedData = updateAccountSchema.parse(body);
-
-        console.log('userId: ', userId)
-        console.log('validatedData: ', validatedData)
-
-
-        const account = await clerkClient.users.getUser(userId)
-        console.log('account: ', account)
-
-        // const userData = { /* firstName: 'John', lastName: 'Wick' */ emailaddress:  }
-
         const response = await clerkClient.users.updateUser(userId, validatedData)
-
-
-        // const response = await clerkClient.users.updateUserMetadata(userId, {
-        //   publicMetadata: {
-        //     example: 'metadata',
-        //   },
-        // })
-
 
         return new NextResponse(JSON.stringify({ response }), {
             status: 200,

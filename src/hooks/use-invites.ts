@@ -1,6 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { UserInvite } from "@/types";
-import { clerkClient } from "@/lib/clerk";
 
 export const useInvites = () => {
     const queryClient = useQueryClient();

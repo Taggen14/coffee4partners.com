@@ -1,4 +1,3 @@
-import { EmailAddress } from "@clerk/backend";
 import { Category, Product, SubCategory } from "@prisma/client";
 
 export type Role = 'admin' | 'customer'
