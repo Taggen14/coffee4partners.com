@@ -34,7 +34,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
 
   return (
     <div className="container">
-      <Card className="group flex h-full gap-0 flex-col border-border/50 bg-card transition-colors hover:border-border">
+      <Card className="group flex h-full gap-0 flex-col border-border/20 bg-card transition-colors hover:border-border">
         <CardHeader className="p-0">
           <div className="relative">
             <Link href={`/shop/${productCategory?.categorySlug}/${subCategorySlug}/${product.id}`} className="block">

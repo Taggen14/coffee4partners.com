@@ -94,7 +94,7 @@ export default function CategoryPage() {
             <Link
               key={subCategory.id}
               href={`/shop/${currentCategory.categorySlug}/${slugify(subCategory.name)}`}
-              className="group relative overflow-hidden rounded-lg border bg-card transition-colors hover:bg-accent">
+              className="group relative overflow-hidden rounded-lg border border-border/20 bg-card transition-colors hover:bg-accent">
               <div className="p-2">
                 <h2 className="text-xl font-semibold">{subCategory.name}</h2>
                 <p className="text-sm font-medium text-primary">
