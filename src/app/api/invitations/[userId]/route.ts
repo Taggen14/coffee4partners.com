@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { clerkClient } from "@/lib/clerk";
 
+
 // DELETE
 export async function DELETE(
     req: NextRequest,
