@@ -19,6 +19,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { newsletterForm } from "@/formSchema/newsletter-form";
 import Link from "next/link";
+import { toast } from "sonner";
 
 const Footer = () => {
   const {
@@ -36,12 +37,36 @@ const Footer = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof newsletterForm>) {
-    console.log("onSubmit");
-    // läggtill values.mail till nyhetsbrev
-    console.log(values);
-    form.reset();
+  async function onSubmit(values: z.infer<typeof newsletterForm>) {
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: values.email }),
+      })
+
+      const result = await res.json()
+
+      if (!res.ok) {
+        if (res.status === 409) {
+          toast.error("Den här e-postadressen är redan registrerad")
+        } else {
+          toast.error(result.error || "Något gick fel")
+        }
+        return
+      }
+
+      toast.success("Du prenumererar nu på vårt nyhetsbrev!")
+      form.reset()
+    } catch (error) {
+      console.error("Fel vid prenumeration:", error)
+      toast.error("Kunde inte ansluta till servern")
+    }
   }
+
+
   return (
     <footer className="text-secondary-foreground">
       <div className="flex items-start justify-center gap-5 p-5 sm:p-10 flex-wrap">

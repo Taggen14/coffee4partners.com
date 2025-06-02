@@ -3339,8 +3339,6 @@ async function main() {
   // console.log("🗑️ subCategory");
   await prisma.category.deleteMany();
   // console.log("🗑️ category");
-  await prisma.feature.deleteMany();
-  // console.log("🗑️ feature");
 
   console.log("🗑️ Cleaned up ALL existing data");
 
@@ -3412,32 +3410,6 @@ async function main() {
   );
 
   console.log("📦 Created products");
-
-  // Create some features
-  const features = [
-    { name: "Color", value: "Black" },
-    { name: "Size", value: "Medium" },
-    { name: "Material", value: "Premium" },
-  ];
-
-  await Promise.all(
-    features.map((feature) =>
-      prisma.feature.create({
-        data: {
-          name: feature.name,
-          value: feature.value,
-          products: {
-            connect: [
-              { id: createdProducts[0].id },
-              { id: createdProducts[1].id },
-            ],
-          },
-        },
-      }),
-    ),
-  );
-
-  console.log("📦 Created features");
 
   // Create a sample order
   await prisma.order.create({
