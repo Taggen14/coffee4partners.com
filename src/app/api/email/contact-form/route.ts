@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
     try {
-        const { name, email, phone, message } = await request.json();
+        const { values, subject } = await request.json();
 
         const transporter = nodemailer.createTransport({
             host: process.env.SMTP_HOST,
@@ -16,18 +16,18 @@ export async function POST(request: NextRequest) {
         });
 
         const mailOptions = {
-            from: `"${name}" <${process.env.SMTP_USER}>`,
+            from: `"${values.name}" <${process.env.SMTP_USER}>`,
             to: process.env.RECIPIENT_EMAIL,
-            replyTo: email,
-            subject: `Kontakt formulär från ${name}, ${email}`,
+            replyTo: values.email,
+            subject: `${subject}formulär från ${values.name}, ${values.email}`,
             html: `
                 <div>
-                  <h2>Nytt meddelande från kontaktformuläret</h2>
-                  <span>${name}</span><br/>
-                  <span>${email}</span><br/>
-                  <span>${phone}</span><br/>
+                  <h2>Nytt meddelande från ${subject}formuläret</h2>
+                  <span>${values.name}</span><br/>
+                  <span>${values.email}</span><br/>
+                  <span>${values.phone}</span><br/>
 
-                  <p><strong>Meddelande:</strong><br/>${message}</p>
+                  <p><strong>Meddelande:</strong><br/>${values.message}</p>
                 </div>
               `,
         };
