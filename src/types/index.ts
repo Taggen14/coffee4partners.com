@@ -107,3 +107,38 @@ export type useCategoriesTypes = Category & {
     products: number;
   };
 };
+
+export interface InvoiceDataType {
+  customer: {
+    name: string;
+    email: string;
+    address: string;
+    postalCode: string;
+    city: string;
+    country: string;
+  };
+  items: Array<{
+    name: string;
+    quantity: number;
+    unitPrice: number;
+    taxAmount: number;
+  }>;
+  shipping: {
+    cost: number;
+    zone: string;
+  };
+  company: {
+    name: string;
+    address: string;
+    postalCode: string;
+    city: string;
+    country: string;
+    vatNumber: string;
+    orgNumber: string;
+    phone: string;
+    email: string;
+  };
+  date: {
+    createdAt: string;
+  }
+}
