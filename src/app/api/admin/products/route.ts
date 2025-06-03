@@ -15,7 +15,6 @@ export async function POST(req: Request) {
     stock,
     categoryId,
     subCategoryId,
-    features,
   } = await req.json();
 
   try {
@@ -33,7 +32,6 @@ export async function POST(req: Request) {
         stock: stock,
         categoryId: categoryId,
         subCategoryId: subCategoryId || null,
-        features: features,
       },
       include: {
         category: {
