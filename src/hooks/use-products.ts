@@ -4,9 +4,16 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { toast } from "sonner";
 
-export const useProducts = (searchQuery?: string, options?: { admin?: boolean }) => {
+export const useProducts = (
+  searchQuery?: string,
+  options?: { admin?: boolean },
+) => {
   const endpoint = options?.admin ? "/api/admin/products" : "/api/products";
-  const { data: products, isLoading, refetch, } = useQuery<ExtendedProduct[]>({
+  const {
+    data: products,
+    isLoading,
+    refetch,
+  } = useQuery<ExtendedProduct[]>({
     queryKey: ["products", endpoint],
     queryFn: async () => {
       const response = await fetch(endpoint);
@@ -40,7 +47,6 @@ export const useProducts = (searchQuery?: string, options?: { admin?: boolean })
 
   const createProduct = useMutation({
     mutationFn: async (data: Partial<ExtendedProduct>) => {
-      console.log('use-products.ts creatProduct data: ', data)
       const response = await fetch("/api/admin/products", {
         method: "POST",
         headers: {
@@ -67,7 +73,13 @@ export const useProducts = (searchQuery?: string, options?: { admin?: boolean })
   });
 
   const updateProduct = useMutation({
-    mutationFn: async ({ productId, data, }: { productId: string, data: Partial<ExtendedProduct> }) => {
+    mutationFn: async ({
+      productId,
+      data,
+    }: {
+      productId: string;
+      data: Partial<ExtendedProduct>;
+    }) => {
       const response = await fetch(`/api/admin/products/${productId}`, {
         method: "PATCH",
         headers: {
@@ -113,7 +125,7 @@ export const useProducts = (searchQuery?: string, options?: { admin?: boolean })
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["products", endpoint] });
-      refetch()
+      refetch();
       toast.success("Products deleted successfully");
     },
     onError: (error: Error) => {

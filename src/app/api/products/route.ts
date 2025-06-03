@@ -5,7 +5,7 @@ export async function GET() {
   try {
     const products = await prisma.product.findMany({
       where: {
-        status: "ACTIVE"
+        status: "ACTIVE",
       },
       include: {
         category: {

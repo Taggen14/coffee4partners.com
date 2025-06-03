@@ -19,6 +19,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { newsletterForm } from "@/formSchema/newsletter-form";
 import Link from "next/link";
+import { toast } from "sonner";
 
 const Footer = () => {
   const {
@@ -36,12 +37,35 @@ const Footer = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof newsletterForm>) {
-    console.log("onSubmit");
-    // läggtill values.mail till nyhetsbrev
-    console.log(values);
-    form.reset();
+  async function onSubmit(values: z.infer<typeof newsletterForm>) {
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: values.email }),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        if (res.status === 409) {
+          toast.error("Den här e-postadressen är redan registrerad");
+        } else {
+          toast.error(result.error || "Något gick fel");
+        }
+        return;
+      }
+
+      toast.success("Du prenumererar nu på vårt nyhetsbrev!");
+      form.reset();
+    } catch (error) {
+      console.error("Fel vid prenumeration:", error);
+      toast.error("Kunde inte ansluta till servern");
+    }
   }
+
   return (
     <footer className="text-secondary-foreground">
       <div className="flex items-start justify-center gap-5 p-5 sm:p-10 flex-wrap">
@@ -135,16 +159,28 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold tracking-wide">Kundservice</h3>
             <div className="flex flex-col space-y-3 text-sm">
-              <Link href="/shop/betalning" className="text-muted-foreground transition-colors hover:text-background">
+              <Link
+                href="/shop/betalning"
+                className="text-muted-foreground transition-colors hover:text-background"
+              >
                 Betalning
               </Link>
-              <Link href="/shop/leverans" className="text-muted-foreground transition-colors hover:text-background">
+              <Link
+                href="/shop/leverans"
+                className="text-muted-foreground transition-colors hover:text-background"
+              >
                 Leverans
               </Link>
-              <Link href="/shop/returer" className="text-muted-foreground transition-colors hover:text-background">
+              <Link
+                href="/shop/returer"
+                className="text-muted-foreground transition-colors hover:text-background"
+              >
                 Returer
               </Link>
-              <Link href="/shop/integritetspolicy" className="text-muted-foreground transition-colors hover:text-background">
+              <Link
+                href="/shop/integritetspolicy"
+                className="text-muted-foreground transition-colors hover:text-background"
+              >
                 Integritetspolicy
               </Link>
             </div>
@@ -152,7 +188,9 @@ const Footer = () => {
         </div>
 
         <div className="self-center text-xs">
-          <span>&copy; 2025 Coffee4partners. Alla rättigheter förbehållna.</span>
+          <span>
+            &copy; 2025 Coffee4partners. Alla rättigheter förbehållna.
+          </span>
         </div>
       </div>
     </footer>

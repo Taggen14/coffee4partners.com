@@ -22,12 +22,11 @@ model Product {
   createdAt             DateTime      @default(now())
   updatedAt             DateTime      @updatedAt
 
-  // Dynamic categorization and features
+  // Dynamic categorization
   categoryId    String
   category      Category     @relation(fields: [categoryId], references: [id])
   subCategoryId String?
   subCategory   SubCategory? @relation(fields: [subCategoryId, categoryId], references: [id, categoryId])
-  features      Feature[]    @relation("ProductFeatures")
 
   // Relations
   orderItems OrderItem[]
@@ -63,11 +62,10 @@ model SubCategory {
   @@unique([name, categoryId])
 }
 
-model Feature {
-  id       String    @id @default(cuid())
-  name     String
-  value    String
-  products Product[] @relation("ProductFeatures")
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
 }
 
 model Order {
@@ -153,56 +151,4 @@ model CartItem {
   productId String
 
   @@unique([cartId, productId])
-}
-
-enum InquiryType {
-  AI
-  HUMAN
-}
-
-enum InquiryStatus {
-  ACTIVE
-  RESOLVED
-  ARCHIVED
-}
-
-model Inquiry {
-  id               String            @id @default(cuid())
-  customerName     String
-  customerEmail    String
-  type             InquiryType
-  status           InquiryStatus
-  subject          String
-  lastMessage      String            @db.Text
-  createdAt        DateTime          @default(now())
-  updatedAt        DateTime          @updatedAt
-  messages         Message[]
-  typingIndicators TypingIndicator[]
-}
-
-enum MessageRole {
-  USER
-  ASSISTANT
-  SYSTEM
-}
-
-model Message {
-  id        String      @id @default(cuid())
-  content   String      @db.Text
-  role      MessageRole
-  createdAt DateTime    @default(now())
-  readAt    DateTime?
-  inquiry   Inquiry     @relation(fields: [inquiryId], references: [id])
-  inquiryId String
-}
-
-model TypingIndicator {
-  id        String   @id @default(cuid())
-  inquiryId String
-  role      String // "USER" or "ASSISTANT"
-  isTyping  Boolean  @default(false)
-  updatedAt DateTime @updatedAt
-  inquiry   Inquiry  @relation(fields: [inquiryId], references: [id])
-
-  @@unique([inquiryId, role])
 }

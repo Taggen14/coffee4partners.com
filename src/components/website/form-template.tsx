@@ -40,15 +40,15 @@ const FormTemplate = ({ subject }: FormTemplateProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof contactFormSchema>) {
-    console.log({ ...values, subject: subject });
     try {
       setIsLoading(true);
+      const finalValues = { values, subject };
       const response = await fetch("/api/email/contact-form", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(finalValues),
       });
 
       const data = await response.json();

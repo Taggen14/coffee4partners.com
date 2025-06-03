@@ -4,24 +4,24 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FormLabel } from "@/components/ui/form";
 
-export const ProductSpecificationsList = () => {
+export const ProductAttributesList = () => {
   const { control, register } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "productSpecifications",
+    name: "productAttributes",
   });
 
   return (
     <div>
       <FormLabel className="text-base mb-2 block">
-        Punktlista Specifikationer
+        Punktlista Attribut
       </FormLabel>
       {fields.map((field, index) => (
         <div key={field.id} className="flex items-center gap-2 mb-2">
           <Input
             placeholder={`Punkt ${index + 1}`}
             className="h-11 text-base"
-            {...register(`productSpecifications.${index}` as const)}
+            {...register(`productAttributes.${index}` as const)}
           />
           {fields.length > 1 && (
             <Button

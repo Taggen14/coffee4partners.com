@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(request: NextRequest) {
   try {
@@ -8,14 +8,15 @@ export async function POST(request: NextRequest) {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === 'true',
+      secure: process.env.SMTP_SECURE === "true",
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASSWORD,
       },
     });
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://localhost:3000';
+    const baseUrl =
+      process.env.NEXT_PUBLIC_BASE_URL || "https://localhost:3000";
     const logoUrl = `${baseUrl}/logo.png`;
 
     const mailOptions = {
@@ -45,7 +46,10 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Fel vid sändning av e-post:', error);
-    return NextResponse.json({ error: 'Kunde inte skicka e-post' }, { status: 500 });
+    console.error("Fel vid sändning av e-post:", error);
+    return NextResponse.json(
+      { error: "Kunde inte skicka e-post" },
+      { status: 500 },
+    );
   }
 }

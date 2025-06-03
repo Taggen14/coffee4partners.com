@@ -1,9 +1,4 @@
-import {
-  PrismaClient,
-  InquiryType,
-  InquiryStatus,
-  MessageRole,
-} from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -66,7 +61,9 @@ const products = [
   {
     name: "Arvid Nordquist Green Forest , Hela bönor",
     vendor: "Arvid Nordquist",
-    description: ["MELLANMÖRK - BALANSERAD & FRUKTIG Doft av karamell och mandel. Balanserad smak med ton av fikon. En fruktigt syrlig eftersmak. . Green Forest är dubbelcertifierat med UTZ och  EU Ekologiskt."],
+    description: [
+      "MELLANMÖRK - BALANSERAD & FRUKTIG Doft av karamell och mandel. Balanserad smak med ton av fikon. En fruktigt syrlig eftersmak. . Green Forest är dubbelcertifierat med UTZ och  EU Ekologiskt.",
+    ],
     productSpecifications: [
       "LEVERANTÖR Arvid Nordquist AB",
       "VARUMÄRKE Arvid Nordquist",
@@ -87,7 +84,9 @@ const products = [
   {
     name: "Arvid Nordquist Ethic Harvest , Hela bönor",
     vendor: "Arvid Nordquist",
-    description: ["MÖRKROST - KRAFTFULL & KRYDDIG Ren doft av nöt. Smaken är fyllig med livlig syrlighet. Kryddig eftersmak med ton av lakrits. Ethic Harvest är trippelcertifierat med Fairtrade, EU Ekologiskt och KRAV"],
+    description: [
+      "MÖRKROST - KRAFTFULL & KRYDDIG Ren doft av nöt. Smaken är fyllig med livlig syrlighet. Kryddig eftersmak med ton av lakrits. Ethic Harvest är trippelcertifierat med Fairtrade, EU Ekologiskt och KRAV",
+    ],
     productSpecifications: [
       "LEVERANTÖR Arvid Nordquist AB",
       "VARUMÄRKE Arvid Nordquist",
@@ -108,7 +107,9 @@ const products = [
   {
     name: "Arvid Nordquist Highland Nature , Hela bönor",
     vendor: "Arvid Nordquist",
-    description: ["MELLANROST - FRUKTIG & NÖTIG Generös doft av hasselnöt. Rund smak med viss pepprighet. En balanserad och fruktig eftersmak. Highland Nature är trippelcertifierat med Fairtrade, EU Ekologiskt och KRAV"],
+    description: [
+      "MELLANROST - FRUKTIG & NÖTIG Generös doft av hasselnöt. Rund smak med viss pepprighet. En balanserad och fruktig eftersmak. Highland Nature är trippelcertifierat med Fairtrade, EU Ekologiskt och KRAV",
+    ],
     productSpecifications: [
       "LEVERANTÖR Arvid Nordquist AB",
       "VARUMÄRKE Arvid Nordquist",
@@ -129,7 +130,9 @@ const products = [
   {
     name: "Arvid Nordquist Midnight Grown , Hela bönor",
     vendor: "Arvid Nordquist",
-    description: ["EXTRA MÖRKROST - INTENSIV & KRAFTFULL Intensiv doft. Kraftfull och fyllig smak med inslag av mörk choklad. Lång och generös eftersmak.Midnight Grown är UTZ certifierat."],
+    description: [
+      "EXTRA MÖRKROST - INTENSIV & KRAFTFULL Intensiv doft. Kraftfull och fyllig smak med inslag av mörk choklad. Lång och generös eftersmak.Midnight Grown är UTZ certifierat.",
+    ],
     productSpecifications: [
       "LEVERANTÖR Arvid Nordquist AB",
       "VARUMÄRKE Arvid Nordquist",
@@ -150,7 +153,9 @@ const products = [
   {
     name: "Arvid Nordquist Dark Mountain , Hela bönor",
     vendor: "Arvid Nordquist",
-    description: ["MÖRKROST - BÄRIG & FYLLIG Fyllig smak med inslag av björnbär och orientaliska kryddor. Elegant syra och lång eftersmak. Dark Mountain är UTZ certifierat."],
+    description: [
+      "MÖRKROST - BÄRIG & FYLLIG Fyllig smak med inslag av björnbär och orientaliska kryddor. Elegant syra och lång eftersmak. Dark Mountain är UTZ certifierat.",
+    ],
     productSpecifications: [
       "LEVERANTÖR Arvid Nordquist AB",
       "VARUMÄRKE Arvid Nordquist",
@@ -172,7 +177,9 @@ const products = [
   {
     name: "Gran Riserva Filter, hela bönor",
     vendor: "Lavazza",
-    description: ["Gran Riserva Filter, hela bönor, från Lavazza för café, hotell, restaurang och kaffebarer. 100 % Arabica-bönor och ljuvliga toner av karamell och kakao som balanseras med det intesiva kaffet. Rökiga toner från den torkade kakon och en sötare profil från karamelliserat socker. Gran Riserva Filter är optimalt för gott bryggkaffe."],
+    description: [
+      "Gran Riserva Filter, hela bönor, från Lavazza för café, hotell, restaurang och kaffebarer. 100 % Arabica-bönor och ljuvliga toner av karamell och kakao som balanseras med det intesiva kaffet. Rökiga toner från den torkade kakon och en sötare profil från karamelliserat socker. Gran Riserva Filter är optimalt för gott bryggkaffe.",
+    ],
     productSpecifications: [
       "LEVERANTÖR Lavazza Nordic AB",
       "VARUMÄRKE Lavazza",
@@ -197,7 +204,9 @@ const products = [
   {
     name: "Alteco Espresso, hela bönor",
     vendor: "Lavazza",
-    description: ["Ekologiskt kaffe med hela bönor, Alteco, från Lavazza. En söt och elegant espresso, med aromer av honung och torkad frukt. Kaffet har en rund kakaofinish och bönorna är rostade under en lång tid under låg värme, för en ultimat balans mellan arom och smak. Bönorna härstammar ifrån de finaste sluttningarna i Centralamerika och vackra berg i Afrika. Alteco är ett 100% ekologisk kaffe gjort på både Arabica och Robusta. Kaffet har både EU:s ekologiska certifiering och UTZ, för bättre villkor i landbruket. Ett hållbart och säkert val för din kaffeservering på café, restaurang, hotell, förening eller hotell!"],
+    description: [
+      "Ekologiskt kaffe med hela bönor, Alteco, från Lavazza. En söt och elegant espresso, med aromer av honung och torkad frukt. Kaffet har en rund kakaofinish och bönorna är rostade under en lång tid under låg värme, för en ultimat balans mellan arom och smak. Bönorna härstammar ifrån de finaste sluttningarna i Centralamerika och vackra berg i Afrika. Alteco är ett 100% ekologisk kaffe gjort på både Arabica och Robusta. Kaffet har både EU:s ekologiska certifiering och UTZ, för bättre villkor i landbruket. Ett hållbart och säkert val för din kaffeservering på café, restaurang, hotell, förening eller hotell!",
+    ],
     productSpecifications: [
       "LEVERANTÖR Lavazza Nordic AB",
       "VARUMÄRKE Lavazza",
@@ -224,7 +233,9 @@ const products = [
   {
     name: "Super Gusto Espresso, hela bönor",
     vendor: "Lavazza",
-    description: ["Ett välbalanserat mellanrostat kaffe med en fyllig och omfamnande smak av kryddor och torkad frukt från Lavazza. Fylligheten kommer huvudsakligen från Arabicabönor med inslag av Robustabönor. Kaffet är en UTZ certifierad blandning från odlingar i Västra Sydamerika och Sydöstra Brasilien som framkallar aromer av torkade frukter såsom dadlar samt en kryddig avslutning med en hint av kanel."],
+    description: [
+      "Ett välbalanserat mellanrostat kaffe med en fyllig och omfamnande smak av kryddor och torkad frukt från Lavazza. Fylligheten kommer huvudsakligen från Arabicabönor med inslag av Robustabönor. Kaffet är en UTZ certifierad blandning från odlingar i Västra Sydamerika och Sydöstra Brasilien som framkallar aromer av torkade frukter såsom dadlar samt en kryddig avslutning med en hint av kanel.",
+    ],
     productSpecifications: [
       "LEVERANTÖR Lavazza Nordic AB",
       "VARUMÄRKE Lavazza",
@@ -265,8 +276,7 @@ const products = [
       "ANTAL ST PER KRT 6 st",
       "ANTAL KRT PER PALL 36 st",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745915065/dark_11_360x_oetmlz.webp",
@@ -289,8 +299,7 @@ const products = [
       "ANTAL ST PER KRT 6 st",
       "ANTAL KRT PER PALL 36 st",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745915965/exclusive_360x_qxxtjj.webp",
@@ -341,8 +350,7 @@ const products = [
       "ANTAL ST PER KRT 6 st",
       "ANTAL KRT PER PALL 36 st",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745916184/dark_12_360x_xqfgpx.webp",
@@ -392,8 +400,7 @@ const products = [
       "ANTAL ST PER KRT 10 st",
       "ANTAL KRT PER PALL 60 st",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745917691/20703_primo-instant_360x_drpepb.webp",
@@ -586,11 +593,7 @@ const products = [
       "ANTAL ST PER KRT 6 st",
       "ANTAL KRT PER PALL 162 st",
     ],
-    productAttributes: [
-      "Skogs-te",
-      "Pyramidform",
-      "RA-certifierad",
-    ],
+    productAttributes: ["Skogs-te", "Pyramidform", "RA-certifierad"],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745992762/lipton_forest_fruits_p_sar_720x_qfaezx.webp",
@@ -639,7 +642,7 @@ const products = [
       "VÅRT ART. NR.60333",
       "LEV. ART. NR.F48417",
       "ANTAL ST PER KRT 12 st",
-      "ANTAL KRT PER PALL 115 st"
+      "ANTAL KRT PER PALL 115 st",
     ],
     productAttributes: [
       "12x25 (300 påsar) (tidigare 6x25 (150 påsar))",
@@ -667,9 +670,8 @@ const products = [
       "VÅRT ART. NR.60350",
       "LEV. ART. NR.F86912",
       "ANTAL ST PER KRT 6 st",
-      "ANTAL KRT PER PALL 162 st"
-    ]
-    ,
+      "ANTAL KRT PER PALL 162 st",
+    ],
     productAttributes: [
       "Svart te, Vanilj",
       "Säljes 6x25 st (150 påsar)",
@@ -696,9 +698,8 @@ const products = [
       "VÅRT ART. NR.60344",
       "LEV. ART. NR.25872001",
       "ANTAL ST PER KRT 6 st",
-      "ANTAL KRT PER PALL 162 st"
-    ]
-    ,
+      "ANTAL KRT PER PALL 162 st",
+    ],
     productAttributes: [
       "Svart te med citron-bitar",
       "RA-certifierat",
@@ -725,7 +726,7 @@ const products = [
       "VÅRT ART. NR.60339",
       "LEV. ART. NR.15898701",
       "ANTAL ST PER KRT 6 st",
-      "ANTAL KRT PER PALL 162 st"
+      "ANTAL KRT PER PALL 162 st",
     ],
     productAttributes: [
       "Grönt te",
@@ -754,7 +755,7 @@ const products = [
       "VÅRT ART. NR.60334",
       "LEV. ART. NR.15883701",
       "ANTAL ST PER KRT 6 st",
-      "ANTAL KRT PER PALL 162 st"
+      "ANTAL KRT PER PALL 162 st",
     ],
     productAttributes: [
       "Svartvinbärs-te",
@@ -781,7 +782,7 @@ const products = [
       "VÅRT ART. NR.60331",
       "LEV. ART. NR.67648810",
       "ANTAL ST PER KRT 1 st",
-      "ANTAL KRT PER PALL 143 st"
+      "ANTAL KRT PER PALL 143 st",
     ],
     productAttributes: [
       "Blandade Lipton-teer i snygg kartong",
@@ -798,7 +799,7 @@ const products = [
       "Earl Grey",
       "Fruit Infusion",
       "Green Tea Orient",
-      "Green Tea Citrus"
+      "Green Tea Citrus",
     ],
     price: 0,
     images: [
@@ -821,7 +822,7 @@ const products = [
       "VÅRT ART. NR.60347",
       "LEV. ART. NR.15890801",
       "ANTAL ST PER KRT 6 st",
-      "ANTAL KRT PER PALL 162 st"
+      "ANTAL KRT PER PALL 162 st",
     ],
     productAttributes: [
       "Svart Earl-Grey te",
@@ -849,7 +850,7 @@ const products = [
       "VÅRT ART. NR.60343",
       "LEV. ART. NR.15871501",
       "ANTAL ST PER KRT 6 st",
-      "ANTAL KRT PER PALL 162 st"
+      "ANTAL KRT PER PALL 162 st",
     ],
     productAttributes: [
       "Friskt och kryddigt",
@@ -877,7 +878,7 @@ const products = [
       "VÅRT ART. NR.60348",
       "LEV. ART. NR.25883301",
       "ANTAL ST PER KRT 6 st",
-      "ANTAL KRT PER PALL 162 st"
+      "ANTAL KRT PER PALL 162 st",
     ],
     productAttributes: [
       "Svart te, jordgubb",
@@ -905,7 +906,7 @@ const products = [
       "VÅRT ART. NR.60342",
       "LEV. ART. NR.13847601",
       "ANTAL ST PER KRT 6 st",
-      "ANTAL KRT PER PALL 162 st"
+      "ANTAL KRT PER PALL 162 st",
     ],
     productAttributes: [
       "Grönt te, mynta",
@@ -933,7 +934,7 @@ const products = [
       "VÅRT ART. NR.60337",
       "LEV. ART. NR.15898501",
       "ANTAL ST PER KRT 6 st",
-      "ANTAL KRT PER PALL 162 st"
+      "ANTAL KRT PER PALL 162 st",
     ],
     productAttributes: [
       "100% svart te",
@@ -962,7 +963,7 @@ const products = [
       "VÅRT ART. NR.60340",
       "LEV. ART. NR.15883201",
       "ANTAL ST PER KRT 6 st",
-      "ANTAL KRT PER PALL 162 st"
+      "ANTAL KRT PER PALL 162 st",
     ],
     productAttributes: [
       "Grönt te med citrusfrukter",
@@ -983,7 +984,9 @@ const products = [
   {
     name: "Esprecious 11L",
     vendor: "Bravilor Bonamat",
-    description: ["Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad."],
+    description: [
+      "Esprecious 11L har två behållare, en för kaffebönor och en för instantprodukter. Esprecious 11L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.",
+    ],
     productSpecifications: [
       "Vattentrycket 2 Bar",
       "Vatten anslutning Ja",
@@ -1016,7 +1019,9 @@ const products = [
   {
     name: "Bolero 21",
     vendor: "Bravilor Bonamat",
-    description: [" Om du väljer Bolero 21 med två behållare kan du till exempel fylla en behållare med instantkaffe och den andra med topping (mjölkpulver). På så sätt kan du servera kaffespecialiteter som cappuccino, caffè latte och latte macchiato. Du kan erbjuda upp till 3 varma drycker. Den manuella kranen ger hett vatten till te eller soppa."],
+    description: [
+      " Om du väljer Bolero 21 med två behållare kan du till exempel fylla en behållare med instantkaffe och den andra med topping (mjölkpulver). På så sätt kan du servera kaffespecialiteter som cappuccino, caffè latte och latte macchiato. Du kan erbjuda upp till 3 varma drycker. Den manuella kranen ger hett vatten till te eller soppa.",
+    ],
     productSpecifications: [
       "Snabb och användarvänlig",
       "Tillverkad av robusta högkvalitativa material som rostfritt stål och BPA-fri plast",
@@ -1029,8 +1034,7 @@ const products = [
       "Dag och totalräknare",
       "Olika programmerbara inställningar för att optimera valda drycker",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918233/10280-17711369_360x_o3pg2h.webp",
@@ -1043,9 +1047,10 @@ const products = [
   {
     name: "Bolero 32",
     vendor: "Bravilor Bonamat",
-    description: ["Bolero 32 erbjuder ett brett utbud av drycker, upp till 36 totalt. Pekskärmen erbjuder totalt fyra sidor där du kan ha upp till nio drycker per sida. Du kan till exempel kombinera instantkaffe, topping (mjölkpulver) och kakao."],
-    productSpecifications: [
+    description: [
+      "Bolero 32 erbjuder ett brett utbud av drycker, upp till 36 totalt. Pekskärmen erbjuder totalt fyra sidor där du kan ha upp till nio drycker per sida. Du kan till exempel kombinera instantkaffe, topping (mjölkpulver) och kakao.",
     ],
+    productSpecifications: [],
     productAttributes: [
       "Snabb och användarvänlig",
       "Tillverkad av robusta högkvalitativa material som rostfritt stål och BPA-fri plast",
@@ -1070,9 +1075,10 @@ const products = [
   {
     name: "THa Pumptermosbryggare med vattenanslutning",
     vendor: "Bravilor Bonamat",
-    description: ["Filterbryggare för utrymmen med vattenanslutning. Brygger kaffe direkt i en termos eller en pumptermos. Levereras med filterhållare av rostfritt stål. Levereras inklusive Furento pumptermos med stålkärna."],
-    productSpecifications: [
+    description: [
+      "Filterbryggare för utrymmen med vattenanslutning. Brygger kaffe direkt i en termos eller en pumptermos. Levereras med filterhållare av rostfritt stål. Levereras inklusive Furento pumptermos med stålkärna.",
     ],
+    productSpecifications: [],
     productAttributes: [
       "Välsmakande färskt bryggkaffe",
       "Rostfritt stål av hög kvalitet kombinerat med svarta detaljer ger maskinen ett modernt utseende.",
@@ -1094,10 +1100,8 @@ const products = [
     name: "Freshground 310",
     vendor: "Bravilor Bonamat",
     description: ["Saknar beskrivning"],
-    productSpecifications: [
-    ],
-    productAttributes: [
-    ],
+    productSpecifications: [],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745918798/21652272-origpic-56739e_360x_qttuxn.webp",
@@ -1114,8 +1118,7 @@ const products = [
       "FreshGround 310 Touch är en helautomatisk kaffebryggare med tre behållare. En behållare för kaffebönor och två för instantprodukter såsom topping (pulvermjölk) och kakao. Med hjälp av dessa instantprodukter kan du servera olika drycker såsom kaffe, Mocka, Cappuccino, Café au lait, Moccachino, Latte macchiato, och varm choklad.",
       "FreshGround 310 Touch har ett separat utlopp för hett vatten, till te eller soppa. Kunderna kan dessutom välja om de vill använda en kopp, mugg eller kanna med kaffe/hett vatten.",
     ],
-    productSpecifications: [
-    ],
+    productSpecifications: [],
     productAttributes: [
       "Val mellan 8 varma drycker",
       "Bean-to-cup!",
@@ -1141,13 +1144,9 @@ const products = [
   {
     name: "Freshmore 310",
     vendor: "Bravilor Bonamat",
-    description: [
-      "Saknar beskrivning",
-    ],
-    productSpecifications: [
-    ],
-    productAttributes: [
-    ],
+    description: ["Saknar beskrivning"],
+    productSpecifications: [],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745919057/23609795-origpic-9712c1_360x_so1m9b.webp",
@@ -1163,8 +1162,7 @@ const products = [
     description: [
       "FreshMore 310 Touch är en helautomatisk kaffebryggare med tre behållare. En behållare för malet (Fresh Brew) kaffe och två för instantprodukter såsom topping (pulvermjölk) och kakao. Med hjälp av dessa instantprodukter kan du servera olika drycker såsom kaffe, Mocka, Cappuccino, Café au lait, Moccachino, Latte macchiato, och varm choklad. FreshMore 310 Touch har ett separat utlopp för hett vatten, till te eller soppa. Kunderna kan dessutom välja om de vill använda en kopp, mugg eller kanna med kaffe/hett vatten.",
     ],
-    productSpecifications: [
-    ],
+    productSpecifications: [],
     productAttributes: [
       "Val mellan 8 varma drycker",
       "Separat utlopp för hett vatten",
@@ -1191,8 +1189,7 @@ const products = [
     description: [
       " Esprecious 21L har en delad bönbehållare för två olika sorters kaffebönor. Du kan till exempel välja espresso, koffeinfritt eller vanliga kaffebönor. Esprecious 21L är avsedd för användning med färsk mjölk. Maskinen styr mjölkskummaren så att drycker som cappuccino och café au lait bereds med färsk mjölk. Den stora instantbehållaren på drygt 3 liter kan fyllas med kakao för bl.a. varm choklad.",
     ],
-    productSpecifications: [
-    ],
+    productSpecifications: [],
     productAttributes: [
       "Användarvänlig: intuitiv pekskärm",
       "Böna-till-kopp: brygger med färska kaffebönor",
@@ -1319,8 +1316,7 @@ const products = [
     description: [
       "Sego 12 är en helautomatisk espressobryggare. Tack vare det smala formatet och den tydliga och intuitiva pekskärmen, passar Sego överallt. Bravilor Bonamat har noggrant valt ut, sammanställt och förprogrammerat de vanligaste kaffespecialiteterna åt dig. Du kan alltså snabbt och enkelt ansluta maskinen och ta den i bruk. Kaffekvaliteteten i varje kopp har högsta prioritet. Därför designar och utvecklar vi själva de huvudkomponenter som kräver underhåll. Bravilor Bonamat ser till att rengöringsarbetet begränsas till ett minimum och utförs (om möjligt) automatiskt.",
     ],
-    productSpecifications: [
-    ],
+    productSpecifications: [],
     productAttributes: [
       "Tre behållare: en för kaffebönor och två för instantprodukter såsom topping och choklad.",
       "Enkel hantering tack vare intuitiv pekskärm.",
@@ -1348,8 +1344,7 @@ const products = [
       "Den passar utmärkt som inbyggnadskran till bänk eller våra fristående skåp Titan, Orion eller Halia. Albatross kan levereras i sju olika utföranden i en mix av hög/låg, en eller två kranar samt tre olika färger och kan kopplas till Escowas alla kylare.",
       "Albatross kommer i standardutförande med höga handtag med märkning för vattenval, men kan extrautrustas med andra typer av handtag. Observera att bilderna på hemsidan kan visa kranar som extrautrustats med andra handtag.",
     ],
-    productSpecifications: [
-    ],
+    productSpecifications: [],
     productAttributes: [
       "Kromat utförande med 1 kran",
       "Kromat utförande med 2 kranar",
@@ -1373,10 +1368,8 @@ const products = [
       "Maskinen manövreras med beröringsfria knappar och har en justerbar hylla för anpassning till glas och karaffer.",
       "Vidare har Pro Juice en patenterad blandningsteknik som blandar drycken direkt innan utloppet. Detta medför minsta möjliga underhåll och bästa möjliga smak.",
     ],
-    productSpecifications: [
-    ],
-    productAttributes: [
-    ],
+    productSpecifications: [],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745920872/Untitled_design_-_2021-12-28T142337.212-removebg-preview_360x_ataj7w.webp",
@@ -1395,10 +1388,8 @@ const products = [
       "Välj om den vinklade bakbelysta ytan ska synas framåt eller bakåt. Allt för att förenkla kommunikationen av ditt varumärke. Vidare är Lom EVO utrustat med greppvänliga höga handtag i med tydlig text för stilla respektive kolsyrat vatten.",
       "Lom EVO är lätt att serva och installera. Tack vare ett genomgående monteringsstag kan den monteras på tjockare bänkskivor än standard. Kranen går också att dela i tre delar för att förenkla service.",
     ],
-    productSpecifications: [
-    ],
-    productAttributes: [
-    ],
+    productSpecifications: [],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745923141/4214000_2_360x_hn0pjf.webp",
@@ -1414,10 +1405,8 @@ const products = [
     description: [
       "Piccola Fizz är en vattenkylare som passar utmärkt på det något mindre företaget där man är ute efter ett iskallt glas med kolsyrat eller kylt vatten. Trots sin ringa storlek bjuder Piccola Fizz på flera olika vattenval. Vad sägs tex om rejält kolsyrat, lätt kolsyrat, kylt stilla eller till och med ”vanligt”, okylt vatten.",
     ],
-    productSpecifications: [
-    ],
-    productAttributes: [
-    ],
+    productSpecifications: [],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745923244/piccola-front_360x_c0phbh.avif",
@@ -1432,7 +1421,9 @@ const products = [
   {
     name: "TWIX White chokladbit",
     vendor: "Mars",
-    description: ["Kex med ett tjockt lager av krämig karamell och ett täckte av len vit choklad, hör du vilken magisk kombination för munnen det är, och det är just vad TWIX White är. Och självklart är bitarna tvådelade, så dela med dig av denna godbit."],
+    description: [
+      "Kex med ett tjockt lager av krämig karamell och ett täckte av len vit choklad, hör du vilken magisk kombination för munnen det är, och det är just vad TWIX White är. Och självklart är bitarna tvådelade, så dela med dig av denna godbit.",
+    ],
     productAttributes: [
       "Användarvänlig: intuitiv pekskärm",
       "Böna-till-kopp: brygger med färska kaffebönor",
@@ -1475,7 +1466,7 @@ const products = [
       "VÅRT ART. NR.53808",
       "LEV. ART. NR.239443",
       "ANTAL ST PER KRT 30 st",
-      "ANTAL KRT PER PALL 200 st"
+      "ANTAL KRT PER PALL 200 st",
     ],
     productAttributes: [
       "TWIX XTRA chokladbit",
@@ -1505,7 +1496,7 @@ const products = [
       "VÅRT ART. NR.53807",
       "LEV. ART. NR.278778",
       "ANTAL ST PER KRT 32 st",
-      "ANTAL KRT PER PALL 252 st"
+      "ANTAL KRT PER PALL 252 st",
     ],
     productAttributes: [
       "TWIX chokladbit",
@@ -1524,9 +1515,9 @@ const products = [
     name: "Ballerina Original",
     vendor: "Göteborgs Kex",
     description: [
-      "Sveriges mest älskade kaka \"Ballerina Orginal\" från Göteborgs Kex. Klassikern har förgyllt miljontals svenskars vardag sedan 1963 och hon fortsätter att göra lika så. På en ohotad förstaplats i VM för kakor, hittar vi \"Ballerina Orginal\". Detta för sin oerhört krämiga och lena nougat, i kombination med sitt klassiska utseende. Det här är kakan för alla tidpunkter och tillfällen. Passar perfekt för café- och föreningsverksamhet. Ingen fika utan Ballerina!",
+      'Sveriges mest älskade kaka "Ballerina Orginal" från Göteborgs Kex. Klassikern har förgyllt miljontals svenskars vardag sedan 1963 och hon fortsätter att göra lika så. På en ohotad förstaplats i VM för kakor, hittar vi "Ballerina Orginal". Detta för sin oerhört krämiga och lena nougat, i kombination med sitt klassiska utseende. Det här är kakan för alla tidpunkter och tillfällen. Passar perfekt för café- och föreningsverksamhet. Ingen fika utan Ballerina!',
       "Visste du att vart tionde paket kakor som säljs i Sverige är ett Ballerinapaket? Dessutom äter i snitt sex personer en ballerina varje sekund! ",
-      "Psst! Doppa även gärna \"Ballerina Orginal\" i mjök eller kaffe för en magisk upplevelse."
+      'Psst! Doppa även gärna "Ballerina Orginal" i mjök eller kaffe för en magisk upplevelse.',
     ],
     productSpecifications: [
       "LEVERANTÖR Orkla Confectionary & Snacks AB",
@@ -1535,7 +1526,7 @@ const products = [
       "VÅRT ART. NR.51845",
       "LEV. ART. NR.5450014004",
       "ANTAL ST PER KRT 40 st",
-      "ANTAL KRT PER PALL 45 st"
+      "ANTAL KRT PER PALL 45 st",
     ],
     productAttributes: [
       "Svensk klassiker sedan 1963",
@@ -1563,7 +1554,7 @@ const products = [
       "VÅRT ART. NR.61102",
       "LEV. ART. NR.311245",
       "ANTAL ST PER KRT 8 st",
-      "ANTAL KRT PER PALL 24 st"
+      "ANTAL KRT PER PALL 24 st",
     ],
     productAttributes: [
       "4x2 sorter á 800g",
@@ -1593,7 +1584,7 @@ const products = [
       "VÅRT ART. NR.54138",
       "LEV. ART. NR.415",
       "ANTAL ST PER KRT 1 st",
-      "ANTAL KRT PER PALL 32 st"
+      "ANTAL KRT PER PALL 32 st",
     ],
     productAttributes: [
       "Stor punschrulle från Delicato för café, kontor, kiosk och förening",
@@ -1621,7 +1612,7 @@ const products = [
       "VÅRT ART. NR.53899",
       "LEV. ART. NR.27",
       "ANTAL ST PER KRT 1 st",
-      "ANTAL KRT PER PALL 32 st"
+      "ANTAL KRT PER PALL 32 st",
     ],
     productAttributes: [
       "Klassisk delicatoboll för café, butik och kiosk",
@@ -1649,7 +1640,7 @@ const products = [
       "VÅRT ART. NR.61111",
       "LEV. ART. NR.8498",
       "ANTAL ST PER KRT 24 st",
-      "ANTAL KRT PER PALL 160 st"
+      "ANTAL KRT PER PALL 160 st",
     ],
     productAttributes: [
       "Krämig fyllning av ost och franska örter.",
@@ -1677,7 +1668,7 @@ const products = [
       "VÅRT ART. NR.61114",
       "LEV. ART. NR.8496",
       "ANTAL ST PER KRT 24 st",
-      "ANTAL KRT PER PALL 160 st"
+      "ANTAL KRT PER PALL 160 st",
     ],
     productAttributes: [
       "Vete knäckebröd",
@@ -1697,7 +1688,7 @@ const products = [
     name: "White Chocolate Almond",
     vendor: "Barebells",
     description: [
-      "Ni vet att Barebells under 2017 var Sveriges mest sålda proteinbar va? Det firar dem genom att släppa en femte smak och vi ser ingen tecken på att den kommer att sälja sämre. Eller vad sägs om \"white chocolate almond\"? Blandningen av vit choklad och mandlar gifter sig utmärkt i munnen och likt sina andra kompisar ger även denna bar dig en proteinboost som maximerar resultatet av träning och agerar ett perfekt mellanmål. Den är dessutom helt fri från tillsatt socker. Hugg in!",
+      'Ni vet att Barebells under 2017 var Sveriges mest sålda proteinbar va? Det firar dem genom att släppa en femte smak och vi ser ingen tecken på att den kommer att sälja sämre. Eller vad sägs om "white chocolate almond"? Blandningen av vit choklad och mandlar gifter sig utmärkt i munnen och likt sina andra kompisar ger även denna bar dig en proteinboost som maximerar resultatet av träning och agerar ett perfekt mellanmål. Den är dessutom helt fri från tillsatt socker. Hugg in!',
     ],
     productSpecifications: [
       "LEVERANTÖR Vitamin Well AB",
@@ -1706,7 +1697,7 @@ const products = [
       "VÅRT ART. NR.60365",
       "LEV. ART. NR.B1024",
       "ANTAL ST PER KRT 12 st",
-      "ANTAL KRT PER PALL 300 st"
+      "ANTAL KRT PER PALL 300 st",
     ],
     productAttributes: [
       "Protein bar - Vit choklad och mandel",
@@ -1739,7 +1730,8 @@ const products = [
     productAttributes: [
       "Barebells proteinbar Crunchy Fudge (föredetta Christmas Fudge)",
       "Innehåller 20g protein",
-      "Säljes i pack á 12x55g",],
+      "Säljes i pack á 12x55g",
+    ],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1747921543/se_fi_es_bb_proteinbar_crunchyfudge_l1_540x_n0msqs.webp",
@@ -1780,8 +1772,8 @@ const products = [
     name: "Cookies & Cream",
     vendor: "Barebells",
     description: [
-      "Protein Bar \"Cookies and Cream\" från Barebells. De gånger man kan förena nytta med nöje så borde man passa på. Därför kan vi starkt rekommendera denna bar som både stimulerar din kropp och dina smaklökar. Med ett proteininnehåll på 20 g, vilket motsvarar 36% så är den en proteinbomb som ger dig maximal utdelning efter ett träningspass. Kaloriinnehållet per bar är 196 kcal och den innehåller 12 gram fett. Att den utöver det är lika god som valfritt snacks på fredagsmyset gör den till en produkt man inte vill vara utan. ",
-      "Säljes i 12-pack där varje bar väger 55 gram. Enligt oss en produkt alla gym, föreningar och caféer borde ha. "
+      'Protein Bar "Cookies and Cream" från Barebells. De gånger man kan förena nytta med nöje så borde man passa på. Därför kan vi starkt rekommendera denna bar som både stimulerar din kropp och dina smaklökar. Med ett proteininnehåll på 20 g, vilket motsvarar 36% så är den en proteinbomb som ger dig maximal utdelning efter ett träningspass. Kaloriinnehållet per bar är 196 kcal och den innehåller 12 gram fett. Att den utöver det är lika god som valfritt snacks på fredagsmyset gör den till en produkt man inte vill vara utan. ',
+      "Säljes i 12-pack där varje bar väger 55 gram. Enligt oss en produkt alla gym, föreningar och caféer borde ha. ",
     ],
     productSpecifications: [
       "LEVERANTÖR Vitamin Well AB",
@@ -1808,8 +1800,8 @@ const products = [
     name: "Caramel Cashew",
     vendor: "Barebells",
     description: [
-      "Protein Bars \"Caramell Cashew\" från Barebells. \"Staying fit has never been this delicious\". Framtagen för dess goda smak men samtidigt en proteinbomb med 20 gram protein som gör skillanden efter ett hårt träningspass. En svårslagen kombo och Barebells tycker inte att man ska behöva välja mellan att äta det man älskar och att ha magrutor... Det tycker inte vi heller, därför säljer vi Barebells protein bars. ",
-      "Säljes i 12-pack där varje bar väger 55 gram. Enligt oss en produkt alla gym, föreningar och caféer borde ha. "
+      'Protein Bars "Caramell Cashew" från Barebells. "Staying fit has never been this delicious". Framtagen för dess goda smak men samtidigt en proteinbomb med 20 gram protein som gör skillanden efter ett hårt träningspass. En svårslagen kombo och Barebells tycker inte att man ska behöva välja mellan att äta det man älskar och att ha magrutor... Det tycker inte vi heller, därför säljer vi Barebells protein bars. ',
+      "Säljes i 12-pack där varje bar väger 55 gram. Enligt oss en produkt alla gym, föreningar och caféer borde ha. ",
     ],
     productSpecifications: [
       "LEVERANTÖR Vitamin Well AB",
@@ -1836,7 +1828,7 @@ const products = [
     name: "Salty Peanut",
     vendor: "Barebells",
     description: [
-      "Protein Bar \"Salty Peanut\" från Barebells. Marknadsledande Barebells släpper här sin 4:e smak i sin omåttligt populära bars-serie. Redan efter första tuggan är vi övertygade om att det här kommer bli en minst lika stor succé som sina föregångare. De salta jordnötterna i en krämig blandning med mjölkchoklad toppat med en massa protein är en \"match from heaven\". Barsen från Barebells ger er möjlighet att förena nytta med nöje och denna bar stimulerar såväl kropp som smaklökar. Varje bar innehåller hela 20 gram protein och produkten är helt utan tillsatt socker. Passar utmärkt efter träning, som mellanmål eller som mättande fredagssnack.",
+      'Protein Bar "Salty Peanut" från Barebells. Marknadsledande Barebells släpper här sin 4:e smak i sin omåttligt populära bars-serie. Redan efter första tuggan är vi övertygade om att det här kommer bli en minst lika stor succé som sina föregångare. De salta jordnötterna i en krämig blandning med mjölkchoklad toppat med en massa protein är en "match from heaven". Barsen från Barebells ger er möjlighet att förena nytta med nöje och denna bar stimulerar såväl kropp som smaklökar. Varje bar innehåller hela 20 gram protein och produkten är helt utan tillsatt socker. Passar utmärkt efter träning, som mellanmål eller som mättande fredagssnack.',
     ],
     productSpecifications: [
       "LEVERANTÖR Vitamin Well AB",
@@ -1866,7 +1858,7 @@ const products = [
     name: "Hazelnut & Nougat",
     vendor: "Barebells",
     description: [
-      "Protein Bar \"Hazelnut & Nougat\" från Barebells. De gör det igen! Den senaste proteinbaren från Barebells möts i en harmoni av len mjölkchoklad, krispiga hasselnötter och krämig nougat. En kombination som inte mycket annat kan slå. Barebells bars är kända över hela riket och stimulerar både kropp och knopp. Med ett proteininnehåll på 20 g, vilket motsvarar 36% så är den en proteinbomb utan dess like som ger dig maximal utdelning. Kaloriinnehållet per bar är 196 kcal och den innehåller 12 gram fett. Se till att köpa in den stora nyheten i sortimentet hos gym, kiosker, caféer, föreningar och andra medvetna verksamheter.",
+      'Protein Bar "Hazelnut & Nougat" från Barebells. De gör det igen! Den senaste proteinbaren från Barebells möts i en harmoni av len mjölkchoklad, krispiga hasselnötter och krämig nougat. En kombination som inte mycket annat kan slå. Barebells bars är kända över hela riket och stimulerar både kropp och knopp. Med ett proteininnehåll på 20 g, vilket motsvarar 36% så är den en proteinbomb utan dess like som ger dig maximal utdelning. Kaloriinnehållet per bar är 196 kcal och den innehåller 12 gram fett. Se till att köpa in den stora nyheten i sortimentet hos gym, kiosker, caféer, föreningar och andra medvetna verksamheter.',
     ],
     productSpecifications: [
       "LEVERANTÖR Vitamin Well AB",
@@ -1875,7 +1867,7 @@ const products = [
       "VÅRT ART. NR.60874",
       "LEV. ART. NR.B1027",
       "ANTAL ST PER KRT 12 st",
-      "ANTAL KRT PER PALL 300 st"
+      "ANTAL KRT PER PALL 300 st",
     ],
     productAttributes: [
       "Protein Bar med 20 g protein",
@@ -1904,10 +1896,9 @@ const products = [
       "VÅRT ART. NR.122627",
       "LEV. ART. NR.1004986",
       "ANTAL ST PER KRT 14 st",
-      "ANTAL KRT PER PALL 161 st"
+      "ANTAL KRT PER PALL 161 st",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1747922099/1004986_cashews_60g_540x_sipxrx.webp",
@@ -1929,7 +1920,7 @@ const products = [
       "VÅRT ART. NR.54094",
       "LEV. ART. NR.1001277",
       "ANTAL ST PER KRT 35 st",
-      "ANTAL KRT PER PALL 240 st"
+      "ANTAL KRT PER PALL 240 st",
     ],
     productAttributes: [
       "Mjölkchoklad med hasselnötter",
@@ -1957,10 +1948,10 @@ const products = [
       "VÅRT ART. NR.122638",
       "LEV. ART. NR.1001446",
       "ANTAL ST PER KRT 1 st",
-      "ANTAL KRT PER PALL 128 st"
+      "ANTAL KRT PER PALL 128 st",
     ],
     productAttributes: [
-      "Innehållsförteckning: socker, glukossirap, surhetsreglerandemedel (citronsyra), färgämnen (E171, E120, E141, E153, E160a), arom."
+      "Innehållsförteckning: socker, glukossirap, surhetsreglerandemedel (citronsyra), färgämnen (E171, E120, E141, E153, E160a), arom.",
     ],
     price: 0,
     images: [
@@ -1974,9 +1965,9 @@ const products = [
     name: "Sportlunch kaka",
     vendor: "Cloetta",
     description: [
-      "Sportlunchen är inte bara glädje och energi. Den är en kombination av ren choklad och wafers i bitar som är enkla att bryta. Sportlunchen lanserades egentligen redan 1036. Då hette den \"Mellanmål\". Det var inte förrän 1996 som namnet Sportlunch lanserades på marknaden.",
+      'Sportlunchen är inte bara glädje och energi. Den är en kombination av ren choklad och wafers i bitar som är enkla att bryta. Sportlunchen lanserades egentligen redan 1036. Då hette den "Mellanmål". Det var inte förrän 1996 som namnet Sportlunch lanserades på marknaden.',
       "Ingredienser: Socker, kakaosmör, skummjölkspulver, helmjölkspulver, vetemjöl, vegetabiliska fetter/oljor (palm*, shea, kokos), kakaomassa, vasslepulver (mjölk), fettreducerat kakaopulver, emulgeringsmedel (sojalecitin), salt, aromer (bl.a. vanillin), bakpulver (natriumvätekarbonat). Mjölkchokladen innehåller förutom kakaosmör även annat vegetabiliskt fett och minst 25 % kakao.",
-      "Näringsvärde: Basmängdeklaration: 100 Gram, Energi 2196 kJ, Energi 522 kcal, Fett 28 g, varav mättat fett 18 g, Kolhydrat 58 g, varav sockerarter 49 g, Protein 9.20 g, Salt 0.33 g"
+      "Näringsvärde: Basmängdeklaration: 100 Gram, Energi 2196 kJ, Energi 522 kcal, Fett 28 g, varav mättat fett 18 g, Kolhydrat 58 g, varav sockerarter 49 g, Protein 9.20 g, Salt 0.33 g",
     ],
     productSpecifications: [
       "LEVERANTÖR Cloetta Sverige AB",
@@ -1985,12 +1976,12 @@ const products = [
       "VÅRT ART. NR.50059",
       "LEV. ART. NR.1001161",
       "ANTAL ST PER KRT 1 st",
-      "ANTAL KRT PER PALL 187 st"
+      "ANTAL KRT PER PALL 187 st",
     ],
     productAttributes: [
       "Ren choklad och kex i brytbara bitar",
       "Perfekt som mellanmål",
-      "Energi efter gymm"
+      "Energi efter gymm",
     ],
     price: 0,
     images: [
@@ -2004,7 +1995,7 @@ const products = [
     name: "Sportlunch dubbel",
     vendor: "Cloetta",
     description: [
-      "Delad glädje är dubbel glädje! För i en Sportlunch dubbel ligger det två bitar av den goda chokladkakan på 25 gram vardera, vilket gör det enkelt att antingen dela med sig eller dela upp sitt mellanmål. De två bitarna är gjorda av samma härliga kombination, av ren choklad och wafers, som de större varianterna. Sportlunchen lanserades egentligen redan 1936. Då hette den \"Mellanmål\". Det var inte förrän 1996 som namnet Sportlunch lanserades på marknaden.",
+      'Delad glädje är dubbel glädje! För i en Sportlunch dubbel ligger det två bitar av den goda chokladkakan på 25 gram vardera, vilket gör det enkelt att antingen dela med sig eller dela upp sitt mellanmål. De två bitarna är gjorda av samma härliga kombination, av ren choklad och wafers, som de större varianterna. Sportlunchen lanserades egentligen redan 1936. Då hette den "Mellanmål". Det var inte förrän 1996 som namnet Sportlunch lanserades på marknaden.',
       "Ingredienser: Socker, kakaosmör, skummjölkspulver, helmjölkspulver, vetemjöl, vegetabiliska fetter/oljor (palm*, shea, kokos), kakaomassa, vasslepulver (mjölk), fettreducerat kakaopulver, emulgeringsmedel (sojalecitin), salt, aromer (bl.a. vanillin), bakpulver (natriumvätekarbonat). Mjölkchokladen innehåller förutom kakaosmör även annat vegetabiliskt fett och minst 25 % kakao.",
       "Näringsvärde: Basmängdeklaration: 100 Gram, Energi 2196 kJ, Energi 522 kcal, Fett 28 g, varav mättat fett 18 g, Kolhydrat 58 g, varav sockerarter 49 g, Protein 9.20 g, Salt 0.33 g",
     ],
@@ -2015,7 +2006,7 @@ const products = [
       "VÅRT ART. NR. 50293",
       "LEV. ART. NR. 1001162",
       "ANTAL ST PER KRT 1 st",
-      "ANTAL KRT PER PALL 240 st"
+      "ANTAL KRT PER PALL 240 st",
     ],
     productAttributes: [
       "Allergiinfo: Innehåller: Mjölk, sojabönor, vete, hasselnöt",
@@ -2045,12 +2036,12 @@ const products = [
       "VÅRT ART. NR. 50071",
       "LEV. ART. NR. 1001328",
       "ANTAL ST PER KRT 1 st",
-      "ANTAL KRT PER PALL 50 st"
+      "ANTAL KRT PER PALL 50 st",
     ],
     productAttributes: [
       "Polly Blå/Original är en klassiker i varje hem",
       "En förpackning innehåller 20 st. 130 grams påsar",
-      "Blandning av ljusa och mörka Polly vilka har olika smaker"
+      "Blandning av ljusa och mörka Polly vilka har olika smaker",
     ],
     price: 0,
     images: [
@@ -2073,7 +2064,7 @@ const products = [
       "VÅRT ART. NR. 50685",
       "LEV. ART. NR. 1001294",
       "ANTAL ST PER KRT 35 st",
-      "ANTAL KRT PER PALL 240 st"
+      "ANTAL KRT PER PALL 240 st",
     ],
     productAttributes: [
       "Plopp från Cloetta, för kisok, butik och förening",
@@ -2101,7 +2092,7 @@ const products = [
       "VÅRT ART. NR. 50096",
       "LEV. ART. NR. 1001714",
       "ANTAL ST PER KRT 2 st",
-      "ANTAL KRT PER PALL 18 st"
+      "ANTAL KRT PER PALL 18 st",
     ],
     productAttributes: [
       "Kexchoklad mini i tub",
@@ -2132,11 +2123,9 @@ const products = [
       "VÅRT ART. NR. 50997",
       "LEV. ART. NR. 1001291",
       "ANTAL ST PER KRT 8 st",
-      "ANTAL KRT PER PALL 176 st"
+      "ANTAL KRT PER PALL 176 st",
     ],
-    productAttributes: [
-
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1747922972/plopp-80g-2_540x_te2jk4.webp",
@@ -2150,7 +2139,7 @@ const products = [
     vendor: "Cloetta",
     description: [
       "Kexchoklad från Cloetta är ett klassiskt mellanmål som de flesta känner igen. Den ljusa mjölkchokladen döljer ett frasigt rån och läcker choklad. Kexchoklad är en unik produkt, älskad av alla och uppskattad på alla tänkbara platser. Den rutiga klassikern är svenska konfektyrmarknadens enskilt största produkt.",
-      "Redan 1921 kom de chokladöverdragna rånet ut på marknaden, då under namnet \"Fixe o' clock kex-choklad\". Sedan dess har produkten bytt både förpackning och utseende men den goda smaken är densamma. Från första början har Kexchoklad marknadsförts som en ute-produkt och det perfekta mellanmålet. Under 90-talet kom den välkända payoffen \"Go' och glad Kexchoklad\" och strax därefter stod hela det Svenska Alpina Skidlandslaget i gul rutiga dräkter inför vintersäsongen 1999.",
+      'Redan 1921 kom de chokladöverdragna rånet ut på marknaden, då under namnet "Fixe o\' clock kex-choklad". Sedan dess har produkten bytt både förpackning och utseende men den goda smaken är densamma. Från första början har Kexchoklad marknadsförts som en ute-produkt och det perfekta mellanmålet. Under 90-talet kom den välkända payoffen "Go\' och glad Kexchoklad" och strax därefter stod hela det Svenska Alpina Skidlandslaget i gul rutiga dräkter inför vintersäsongen 1999.',
       "Cloetta Kexchoklad är UTZ-certifierad. Det innebär att den uppfyller ett antal sociala och miljöbetingade kriterier.  Försäljning av kexchoklad är stor på caféer runt om i landet. Hos föreningar och föreningskiosker är kexchokladen en självklarhet i hyllan.",
       "Innehållsförteckning: socker, vetemjöl, vegetabiliska fetter/oljor (palm*, shea, kokos), skummjölkspulver, vasslepulver (mjölk), kakaosmör, helmjölkspulver, kakaomassa, fettreducerat kakaopulver, emulgeringsmedel (sojalecitin), salt, bakpulver (natriumvätekarbonat), aromer (bl.a. vanillin). Mjölkchokladen innehåller förutom kakaosmör även annat vegetabiliskt fett och minst 25 % kakao.",
     ],
@@ -2161,11 +2150,9 @@ const products = [
       "VÅRT ART. NR. 122640",
       "LEV. ART. NR. 1003086",
       "ANTAL ST PER KRT 48 st",
-      "ANTAL KRT PER PALL 110 st"
+      "ANTAL KRT PER PALL 110 st",
     ],
-    productAttributes: [
-
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1747923070/1003086_kexchoklad_displaybox_540x_slhjbj.webp",
@@ -2187,11 +2174,9 @@ const products = [
       "VÅRT ART. NR. 122660",
       "LEV. ART. NR. 1008312",
       "ANTAL ST PER KRT 1 st",
-      "ANTAL KRT PER PALL 40 st"
+      "ANTAL KRT PER PALL 40 st",
     ],
-    productAttributes: [
-      "Förpackning: 1 stor automat med 300 stycksaker"
-    ],
+    productAttributes: ["Förpackning: 1 stor automat med 300 stycksaker"],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1747923227/1002226_22660_enkla_stycksaker_1-2_540x_k6vfsa.webp",
@@ -2204,7 +2189,9 @@ const products = [
   {
     name: "Ramlösa Fläder/Lime",
     vendor: "Ramlösa",
-    description: ["Ramlösa Fläder/Lime i 33 cl-burk för café, restaurang och kiosk. Vad är egentligen godare än dryck med smak av fläder? Ramlösa har skapat en fantastisk törstsläckare bestående av lätt kolsyrat mineralvatten med naturliga mineraler och salter, smaksatt med frisk lime och somrig fläder. Vattnet från Ramlösa Hälsobrunn får sin balanserade smak på naturlig väg från dess vandring genom berggrunden och de skånska ängarna. "],
+    description: [
+      "Ramlösa Fläder/Lime i 33 cl-burk för café, restaurang och kiosk. Vad är egentligen godare än dryck med smak av fläder? Ramlösa har skapat en fantastisk törstsläckare bestående av lätt kolsyrat mineralvatten med naturliga mineraler och salter, smaksatt med frisk lime och somrig fläder. Vattnet från Ramlösa Hälsobrunn får sin balanserade smak på naturlig väg från dess vandring genom berggrunden och de skånska ängarna. ",
+    ],
     productAttributes: [
       "Ramlösa Fläder/Lime i 33 cl-burk för café, restaurang och kiosk",
       "Naturliga mineraler, salter och aromer",
@@ -2234,16 +2221,16 @@ const products = [
       "Sedan 1707 har Ramlösa mineralvatten släckt törsten för oss svenskar runt om i landet. Det är ett naturligt mineralvatten som fått sin mineral- och saltton direkt från naturen i Ramlösa hälsobrunn.",
       "För varje liter Ramlösa du köper, skänker Ramlösa Vattenfond en liter rent vatten till Röda Korsets utvecklingsprojekt i Afrika.",
     ],
-    productSpecifications: ["LEVERANTÖR Carlsberg Sverige AB",
+    productSpecifications: [
+      "LEVERANTÖR Carlsberg Sverige AB",
       "VARUMÄRKE Ramlösa",
       "FÖRSÄLJNINGSENHET 24x33cl",
       "VÅRT ART. NR. 50666",
       "LEV. ART. NR. 22068",
       "ANTAL ST PER KRT 24 st",
-      "ANTAL KRT PER PALL 81 st"
+      "ANTAL KRT PER PALL 81 st",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1747923490/22068_ramlosa_original_33cl_burk_540x_opvp4f.webp",
@@ -2259,7 +2246,8 @@ const products = [
       "Ramlösa Granatäpple är ett naturligt smaksatt mineralvatten, med samma salt- och mineralton som övriga mineralvatten från Ramlösa.",
       "För varje liter Ramlösa du köper, skänker Ramlösa Vattenfond en liter rent vatten till Röda Korsets utvecklingsprojekt i Afrika.",
     ],
-    productSpecifications: ["LEVERANTÖR Carlsberg Sverige AB",
+    productSpecifications: [
+      "LEVERANTÖR Carlsberg Sverige AB",
       "VARUMÄRKE Ramlösa",
       "FÖRSÄLJNINGSENHET 24x33cl",
       "VÅRT ART. NR.50668",
@@ -2267,8 +2255,7 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 81 st",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1747923599/22066_ramlosa_granatapple_33cl_burk_540x_ibnzbt.webp",
@@ -2284,17 +2271,16 @@ const products = [
       "Ramlösa Citrus innehåller mineralvatten, från källan i Ramlösa, kolsyra och naturliga smakämnen. Inget mer, inget mindre. Har en härligt uppfriskande smak av lime och citron. Inte en enda kalori så långt ögat kan nå.",
       "För varje liter Ramlösa du köper, skänker Ramlösa Vattenfond en liter rent vatten till Röda Korsets utvecklingsprojekt i Afrika",
     ],
-    productSpecifications: ["LEVERANTÖR Carlsberg Sverige AB",
+    productSpecifications: [
+      "LEVERANTÖR Carlsberg Sverige AB",
       "VARUMÄRKE Ramlösa",
       "FÖRSÄLJNINGSENHET 24x33cl",
       "VÅRT ART. NR.50667",
       "LEV. ART. NR.22062",
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 81 st",
-
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1747923725/22062_ramlosa_citrus_33cl_burk_540x_sbwzzx.webp",
@@ -2318,10 +2304,10 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 81 st",
     ],
-    productAttributes: ["Pepsi i 33-cl burk",
+    productAttributes: [
+      "Pepsi i 33-cl burk",
       "Stor leverantör av den världsberömda smaken",
       "Perfekt att ha i sortimentet för café, restaurang, hotell, kiosk eller krok",
-
     ],
     price: 0,
     images: [
@@ -2346,10 +2332,10 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 81 st",
     ],
-    productAttributes: ["Pepsi Max i 33 cl-burk",
+    productAttributes: [
+      "Pepsi Max i 33 cl-burk",
       "Läskedryck med colasmak utan kalorier",
       "Perfekt alternativ för caféer, restauranger, hotell, krogar och kiosker",
-
     ],
     price: 0,
     images: [
@@ -2374,7 +2360,8 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 81 st",
     ],
-    productAttributes: ["Trocadero Zero i 33 cl-burk",
+    productAttributes: [
+      "Trocadero Zero i 33 cl-burk",
       "Sockerfri läsk för restaurang och café",
       "Fruktig smak av äpple och apelsin",
       "Innehåller koffein",
@@ -2402,10 +2389,10 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 96 st",
     ],
-    productAttributes: ["Välkänd energidryck från Red Bull",
+    productAttributes: [
+      "Välkänd energidryck från Red Bull",
       "Sockerfri",
       "Populär produkt för restauranger, krogar och caféer",
-
     ],
     price: 0,
     images: [
@@ -2419,8 +2406,8 @@ const products = [
     name: "Proteinmilkshake Fudge",
     vendor: "Barebells",
     description: [
-      "Jul-bästsäljaren är här för att stanna! Den var helt enkelt för god, Barebells Fudge Milkshake blir permanent i sortimentet. Med sin sagolika smak av mjuk chokladkola får vi en milkshake med en konsistens som är som sammet för halsen. Detta är den 5e smaken i milkshake-familjen från Barebells och precis som alltid är det bara att \"shake it to wake it\" och sen avnjuta den. Dricks med fördel efter ett träningspass då varje flaska innehåller hela 24 gram protein samtidigt som den mättar trivsamt. Den är dessutom helt laktosfri och utan tillsatt socker vilket gör den till det goda men nyttiga mellanmålet.",
-      "Varje flaska innehåller 330 ml och de säljes i 8-pack. Ett givet val för gym, föreningar och caféer."
+      'Jul-bästsäljaren är här för att stanna! Den var helt enkelt för god, Barebells Fudge Milkshake blir permanent i sortimentet. Med sin sagolika smak av mjuk chokladkola får vi en milkshake med en konsistens som är som sammet för halsen. Detta är den 5e smaken i milkshake-familjen från Barebells och precis som alltid är det bara att "shake it to wake it" och sen avnjuta den. Dricks med fördel efter ett träningspass då varje flaska innehåller hela 24 gram protein samtidigt som den mättar trivsamt. Den är dessutom helt laktosfri och utan tillsatt socker vilket gör den till det goda men nyttiga mellanmålet.',
+      "Varje flaska innehåller 330 ml och de säljes i 8-pack. Ett givet val för gym, föreningar och caféer.",
     ],
     productSpecifications: [
       "LEVERANTÖR Vitamin Well AB",
@@ -2431,7 +2418,8 @@ const products = [
       "ANTAL ST PER KRT 8 st",
       "ANTAL KRT PER PALL 162 st",
     ],
-    productAttributes: ["Proteinmilkshake - Fudge",
+    productAttributes: [
+      "Proteinmilkshake - Fudge",
       "24 gram protein",
       "Laktosfri och utan tillsatt socker",
       "RTD (Ready To Drink)",
@@ -2459,10 +2447,10 @@ const products = [
       "ANTAL ST PER KRT 8 st",
       "ANTAL KRT PER PALL 162 st",
     ],
-    productAttributes: ["Barebells Milkshake Pear/ White Chocolate",
+    productAttributes: [
+      "Barebells Milkshake Pear/ White Chocolate",
       "24 gram protein, fri från laktos och socker",
       "Perfekt för gym och kiosker",
-
     ],
     price: 0,
     images: [
@@ -2478,7 +2466,7 @@ const products = [
     description: [
       "En proteinmilkshake för dig som vill att träningen ska ge resultat men inte har tid att äta mat!",
       "Krämig och fyllig proteinmilkshake med jordgubbssmak från Barebells.",
-      "RTD vilket innebär att det bara är att öppna och börja dricka (Tips \"Shake it to wake it\"). Trots sitt rika näringsinnehåll är den precis lika lockande som en vanlig milkshake. Den är dessutom laktosfri och utan tillsatt socker. Finns i 3 klassiska smaker, choklad, banan och jordgubb och varje flaska innehåller 24 gram protein vilket gör den perfekt i samband med träning när man vill unna sig ett gott men ändå nyttigt mellanmål ",
+      'RTD vilket innebär att det bara är att öppna och börja dricka (Tips "Shake it to wake it"). Trots sitt rika näringsinnehåll är den precis lika lockande som en vanlig milkshake. Den är dessutom laktosfri och utan tillsatt socker. Finns i 3 klassiska smaker, choklad, banan och jordgubb och varje flaska innehåller 24 gram protein vilket gör den perfekt i samband med träning när man vill unna sig ett gott men ändå nyttigt mellanmål ',
       "Varje flaska innehåller 330 ml och de säljes i 8-pack. Ett givet val för gym, föreningar och caféer.",
     ],
     productSpecifications: [
@@ -2490,13 +2478,13 @@ const products = [
       "ANTAL ST PER KRT 8 st",
       "ANTAL KRT PER PALL 162 st",
     ],
-    productAttributes: ["Proteinmilkshake - jordgubbssmak",
+    productAttributes: [
+      "Proteinmilkshake - jordgubbssmak",
       "24 gram protein",
       "Krämig och god",
       "Laktosfri och utan tillsatt socker",
       "RTD (Ready To Drink)",
       "3 olika smaker",
-
     ],
     price: 0,
     images: [
@@ -2521,10 +2509,10 @@ const products = [
       "ANTAL ST PER KRT 20 st",
       "ANTAL KRT PER PALL 104 st",
     ],
-    productAttributes: ["Bonaqua Naturell i 33 cl-burk",
+    productAttributes: [
+      "Bonaqua Naturell i 33 cl-burk",
       "Lätt kolsyrat källvatten från Södermanland",
       "Drycken för alla lägen hos caféer, restauranger, krogar och hotell",
-
     ],
     price: 0,
     images: [
@@ -2549,10 +2537,10 @@ const products = [
       "ANTAL ST PER KRT 20 st",
       "ANTAL KRT PER PALL 104 st",
     ],
-    productAttributes: ["Bonaqua Citron/Lime i 33 cl-burk",
+    productAttributes: [
+      "Bonaqua Citron/Lime i 33 cl-burk",
       "Lätt kolsyrat källvatten med av citron och lime",
       "Drycken för alla lägen hos caféer, restauranger, krogar och hotell",
-
     ],
     price: 0,
     images: [
@@ -2577,10 +2565,10 @@ const products = [
       "ANTAL ST PER KRT 20 st",
       "ANTAL KRT PER PALL 104 st",
     ],
-    productAttributes: ["Sprite Orginal i 33 cl-glasflaska",
+    productAttributes: [
+      "Sprite Orginal i 33 cl-glasflaska",
       "Läskedryck med smak av citron och lime",
       "Bra idé för alla lägen",
-
     ],
     price: 0,
     images: [
@@ -2605,10 +2593,10 @@ const products = [
       "ANTAL ST PER KRT 20 st",
       "ANTAL KRT PER PALL 104 st",
     ],
-    productAttributes: ["Fanta Lemon, 33cl-burk",
+    productAttributes: [
+      "Fanta Lemon, 33cl-burk",
       "Fräsch och god citron smak",
       "Säljs i storpackför restaurang, café och kiosk",
-
     ],
     price: 0,
     images: [
@@ -2633,10 +2621,10 @@ const products = [
       "ANTAL ST PER KRT 20 st",
       "ANTAL KRT PER PALL 104 st",
     ],
-    productAttributes: ["Fanta Exotic i 33 cl-burk",
+    productAttributes: [
+      "Fanta Exotic i 33 cl-burk",
       "Finns även i orginalet, Fanta Orange",
       "Ett säkert kort för café, restaurang, hotell, kiosk och krog",
-
     ],
     price: 0,
     images: [
@@ -2661,11 +2649,11 @@ const products = [
       "ANTAL ST PER KRT 20 st",
       "ANTAL KRT PER PALL 104 st",
     ],
-    productAttributes: ["Fanta Orange",
+    productAttributes: [
+      "Fanta Orange",
       "33-cl",
       "Ett självklart val för café, restaurang, hotell och krog",
       "Produktspecifikation",
-
     ],
     price: 0,
     images: [
@@ -2690,11 +2678,11 @@ const products = [
       "ANTAL ST PER KRT 20 st",
       "ANTAL KRT PER PALL 104 st",
     ],
-    productAttributes: ["Coca-Cola Zero i 33 cl burk",
+    productAttributes: [
+      "Coca-Cola Zero i 33 cl burk",
       "Socker- och kalorifri",
       "Perfekt för sortimentet hos caféer, restauranger, krogar, hotell och kiosker",
       "Produktspecifikation",
-
     ],
     price: 0,
     images: [
@@ -2720,7 +2708,8 @@ const products = [
       "ANTAL ST PER KRT 20 st",
       "ANTAL KRT PER PALL 104 st",
     ],
-    productAttributes: ["Coca-Cola 33 cl",
+    productAttributes: [
+      "Coca-Cola 33 cl",
       "Världsberömda klassikern",
       "Ett måste i sortimentet för café, restaurang, hotell och kiosk",
     ],
@@ -2749,11 +2738,7 @@ const products = [
       "ANTAL ST PER KRT 12 st",
       "ANTAL KRT PER PALL 90 st",
     ],
-    productAttributes: ["CITRUS/FLÄDER",
-      "VITAMIN C+D",
-      "ZINK",
-
-    ],
+    productAttributes: ["CITRUS/FLÄDER", "VITAMIN C+D", "ZINK"],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1747925428/vitamin_well_defence_540x_fkrvbf.webp",
@@ -2768,7 +2753,6 @@ const products = [
     description: [
       "Vitamin Well Upgrade med smak av citron/kaktus. Denna törstsläckande och goda dryck är utan kolsyra och ett nyttigt alternativ till juice och läsk. Vitamin Well-serien består av 8 olika drycker, alla med en egen smak och med en unik funktion och uppsättning vitaminer och mineraler. Upgrade sticker ut genom sitt höga innehåll av Vitamnin B6 och B12 vilka gör dig piggare och minskar risken för utmattning. Vid sidan av det är Upgrade berikad med mycket magnesium och Vitamin D vilka gör att dina muskler mår bra. Denna dryck går hand i hand med en sund och hälsosam livsstil.",
       "Varje flaska innehåller 500 ml och de säljes i 12-pack. För caféer, gym och föreningar är Vitamin Well-produkterna ett måste.",
-
     ],
     productSpecifications: [
       "LEVERANTÖR Vitamin Well AB",
@@ -2779,11 +2763,7 @@ const products = [
       "ANTAL ST PER KRT 12 st",
       "ANTAL KRT PER PALL 90 st",
     ],
-    productAttributes: ["CITRON/KAKTUS",
-      "VITAMIN B6+B12+D",
-      "MAGNESIUM+ZINK",
-
-    ],
+    productAttributes: ["CITRON/KAKTUS", "VITAMIN B6+B12+D", "MAGNESIUM+ZINK"],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1747925505/vitamin_well_upgrade_citron_kaktus_540x_nkzemq.webp",
@@ -2808,7 +2788,8 @@ const products = [
       "ANTAL ST PER KRT 12 st",
       "ANTAL KRT PER PALL 90 st",
     ],
-    productAttributes: ["CITRON/LIME",
+    productAttributes: [
+      "CITRON/LIME",
       "VITAMIN B12 +D",
       "MAGNESIUM+ZINK",
       "BIOTIN",
@@ -2836,7 +2817,8 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 70 st",
     ],
-    productAttributes: ["NOCCO Focus 4 Legend Soda",
+    productAttributes: [
+      "NOCCO Focus 4 Legend Soda",
       "När du behöver ha huvudet på skaft!",
       "Sockerfri, kolsyrad och vitaminberikad",
       "Säljes i pack om 24x33cl",
@@ -2864,7 +2846,8 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 70 st",
     ],
-    productAttributes: ["Fokus på mental prestation",
+    productAttributes: [
+      "Fokus på mental prestation",
       "Innehåller 180mg koffein",
       "Kolsyrad",
     ],
@@ -2892,7 +2875,8 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 70 st",
     ],
-    productAttributes: ["Funktions- och träningsdryck",
+    productAttributes: [
+      "Funktions- och träningsdryck",
       "Kolsyrad och sockerfri",
       "Stimulerar tillväxt och motverkar nedbrytning",
       "Innehåller BCAA",
@@ -2922,7 +2906,8 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 70 st",
     ],
-    productAttributes: ["Summer Edition - 2019",
+    productAttributes: [
+      "Summer Edition - 2019",
       "Miami - jordgubb",
       "Säljes 24x330 ml",
     ],
@@ -2949,7 +2934,8 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 70 st",
     ],
-    productAttributes: ["NOCCO Summer Edition 2020 med fräscha citrussmaker",
+    productAttributes: [
+      "NOCCO Summer Edition 2020 med fräscha citrussmaker",
       "För gym, café och kiosker",
       "Inspirerad av medelhavet",
     ],
@@ -2977,7 +2963,8 @@ const products = [
       "ANTAL ST PER KRT 8 st",
       "ANTAL KRT PER PALL 162 st",
     ],
-    productAttributes: ["Proteinmilkshake - Chokladsmak",
+    productAttributes: [
+      "Proteinmilkshake - Chokladsmak",
       "Krämig och god",
       "3 olika smaker",
       "24 gram protein",
@@ -3007,7 +2994,8 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 70 st",
     ],
-    productAttributes: ["Funktions- och träningsdryck",
+    productAttributes: [
+      "Funktions- och träningsdryck",
       "Kolsyrad och sockerfri",
       "180 mg koffein",
     ],
@@ -3060,8 +3048,7 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 54 st",
     ],
-    productAttributes: ["För alla törstiga verksamheter",
-    ],
+    productAttributes: ["För alla törstiga verksamheter"],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1747926218/coca_cola_classic_pet_540x_mkbhiq.webp",
@@ -3085,7 +3072,8 @@ const products = [
       "ANTAL ST PER KRT 24 st",
       "ANTAL KRT PER PALL 96 st",
     ],
-    productAttributes: ["Välkänd energidryck från Red Bull",
+    productAttributes: [
+      "Välkänd energidryck från Red Bull",
       "Extra bränsle inför mental eller fysisk ansträngning",
       "Passar för restaurang-, krog- och cafébranschen",
     ],
@@ -3101,9 +3089,7 @@ const products = [
   {
     name: "Filterrullar",
     vendor: "",
-    description: [
-      "Saknar beskrivning",
-    ],
+    description: ["Saknar beskrivning"],
     productSpecifications: [
       "Artikelnr: 4.011.114.101 1 kartong (5 filter rullar) 89 mm bred för färskbryggt-serien",
     ],
@@ -3132,8 +3118,7 @@ const products = [
       "Storlek diameter filter: 330 mm, Artikelnr: 7.150.505.301 B20 (HW)",
       "Storlek diameter filter: 400 mm, Artikelnr: 7.150.508.301 B40",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745991482/FilterpaperB10_frontside_jpg_720x_hgip1p.webp",
@@ -3145,9 +3130,7 @@ const products = [
   {
     name: "Korgfilter",
     vendor: "",
-    description: [
-      "Korgfilter för urnbryggare.",
-    ],
+    description: ["Korgfilter för urnbryggare."],
     productSpecifications: [
       "Storlek diameter filter: 110/360 mm, Artikelnr: 7.150.102.301 B5 (HW) och termosbryggare Aurora",
       "Storlek diameter filter: 152/437 mm, Artikelnr: 7.150.103.301 B10 (HW)",
@@ -3179,8 +3162,7 @@ const products = [
       "Artikelnr: 7.193.401.101 1 burk om 120 rengörings-tabletter för FreshMilk",
       "Artikelnr: 7.193.401.102 12 burkar à 120 rengörings-tabletter för FreshMilk",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745991845/PHO-ACCFreshMilkcleaningtablets_720x_egggt0.webp",
@@ -3199,8 +3181,7 @@ const products = [
       "Artikelnr: 7.191.101.212 1 kartong 4x15 påsar, 15 gram per påse",
       "Artikelnr: 7.191.102.201 1 kartong, 10 burkar 1 kilo/st",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745991945/PHO-ACCCleanersachetRV_720x_fxxdxo.webp",
@@ -3219,8 +3200,7 @@ const products = [
       "Artikelnr: 7.190.101.212 1 kartong 4 x 15 påsar, 50 gram per påse",
       "Artikelnr: 7.190.102.201 1 kartong, 10 burkar 1 kilo/st",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745992008/PHO-ACCRenegitesachetRV_720x_ihhb4v.webp",
@@ -3239,8 +3219,7 @@ const products = [
       "Artikelnr: 7.170.901.401 Rostfri kanna 1,7 liter",
       "Artikelnr: 7.170.902.301 Rostfri kanna 2,2 liter",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745992134/PHO-ACCstainlesssteeldecanterRV_720x_khromr.webp",
@@ -3259,8 +3238,7 @@ const products = [
       "Storlek diameter filter: 85/245 mm",
       "Artikelnr: 7.150.101.101 Filter - 1000 filter/kartong",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745992234/PHO-ACCfilterpaperquickfilterRV_720x_j1wgms.webp",
@@ -3278,8 +3256,7 @@ const products = [
     productSpecifications: [
       "Artikelnr:  7.170.602.101 1 glaskanna i en kartong",
     ],
-    productAttributes: [
-    ],
+    productAttributes: [],
     price: 0,
     images: [
       "https://res.cloudinary.com/dnte9pl8k/image/upload/v1745992346/PHO-ACCglassdecanterRV_720x_piodvp.webp",
@@ -3290,7 +3267,6 @@ const products = [
   },
 
   /* Template */
-
 
   /*   
   {
@@ -3339,8 +3315,6 @@ async function main() {
   // console.log("🗑️ subCategory");
   await prisma.category.deleteMany();
   // console.log("🗑️ category");
-  await prisma.feature.deleteMany();
-  // console.log("🗑️ feature");
 
   console.log("🗑️ Cleaned up ALL existing data");
 
@@ -3364,7 +3338,8 @@ async function main() {
       const category = createdCategories.find(
         (c) => c.name === subCategory.category,
       );
-      if (!category) throw new Error(`Category ${subCategory.category} not found`);
+      if (!category)
+        throw new Error(`Category ${subCategory.category} not found`);
 
       return prisma.subCategory.create({
         data: {
@@ -3372,9 +3347,8 @@ async function main() {
           description: subCategory.description,
           categoryId: category.id,
         },
-      })
-    }
-    ),
+      });
+    }),
   );
 
   console.log("📦 Created subCategories");
@@ -3412,32 +3386,6 @@ async function main() {
   );
 
   console.log("📦 Created products");
-
-  // Create some features
-  const features = [
-    { name: "Color", value: "Black" },
-    { name: "Size", value: "Medium" },
-    { name: "Material", value: "Premium" },
-  ];
-
-  await Promise.all(
-    features.map((feature) =>
-      prisma.feature.create({
-        data: {
-          name: feature.name,
-          value: feature.value,
-          products: {
-            connect: [
-              { id: createdProducts[0].id },
-              { id: createdProducts[1].id },
-            ],
-          },
-        },
-      }),
-    ),
-  );
-
-  console.log("📦 Created features");
 
   // Create a sample order
   await prisma.order.create({
@@ -3486,158 +3434,6 @@ async function main() {
   });
 
   console.log("📦 Created sample cart");
-
-  // Create sample inquiries
-  const inquiries = [
-    {
-      customerName: "Sarah Johnson",
-      customerEmail: "sarah.j@example.com",
-      type: InquiryType.AI,
-      status: InquiryStatus.ACTIVE,
-      subject: "Order Delivery Question",
-      lastMessage: "When can I expect my order #12345 to be delivered?",
-      messages: [
-        {
-          content:
-            "Hi, I placed order #12345 yesterday. When can I expect it to be delivered?",
-          role: MessageRole.USER,
-        },
-        {
-          content:
-            "Hello Sarah! I can help you with that. Let me check your order status.",
-          role: MessageRole.ASSISTANT,
-        },
-        {
-          content:
-            "I see that your order is being processed and will be shipped within 2-3 business days. You'll receive a tracking number via email once it's shipped.",
-          role: MessageRole.ASSISTANT,
-        },
-        {
-          content: "When can I expect my order #12345 to be delivered?",
-          role: MessageRole.USER,
-        },
-      ],
-    },
-    {
-      customerName: "Mike Brown",
-      customerEmail: "mike.b@example.com",
-      type: InquiryType.HUMAN,
-      status: InquiryStatus.RESOLVED,
-      subject: "Product Return Request",
-      lastMessage:
-        "Thanks for helping me process the return. I'll ship it tomorrow.",
-      messages: [
-        {
-          content:
-            "I need to return a product I received yesterday. It's not what I expected.",
-          role: MessageRole.USER,
-        },
-        {
-          content:
-            "I understand, Mike. I'll help you process the return. Could you provide your order number?",
-          role: MessageRole.ASSISTANT,
-        },
-        {
-          content: "Sure, it's order #54321",
-          role: MessageRole.USER,
-        },
-        {
-          content:
-            "I've processed your return request. I'm sending you a return label via email. Please use this to ship the item back to us.",
-          role: MessageRole.ASSISTANT,
-        },
-        {
-          content:
-            "Thanks for helping me process the return. I'll ship it tomorrow.",
-          role: MessageRole.USER,
-        },
-      ],
-    },
-    {
-      customerName: "Emma Wilson",
-      customerEmail: "emma.w@example.com",
-      type: InquiryType.AI,
-      status: InquiryStatus.ACTIVE,
-      subject: "Product Availability",
-      lastMessage: "Is the wireless headphone coming back in stock soon?",
-      messages: [
-        {
-          content:
-            "Hi, I'm interested in the wireless headphones but they're out of stock. Will they be available soon?",
-          role: MessageRole.USER,
-        },
-        {
-          content: "Hello Emma! Let me check our inventory system for you.",
-          role: MessageRole.ASSISTANT,
-        },
-        {
-          content: "Is the wireless headphone coming back in stock soon?",
-          role: MessageRole.USER,
-        },
-      ],
-    },
-    {
-      customerName: "David Lee",
-      customerEmail: "david.l@example.com",
-      type: InquiryType.HUMAN,
-      status: InquiryStatus.ACTIVE,
-      subject: "Custom Order Inquiry",
-      lastMessage: "I'd like to place a bulk order for corporate gifts.",
-    },
-    {
-      customerName: "Lisa Chen",
-      customerEmail: "lisa.c@example.com",
-      type: InquiryType.AI,
-      status: InquiryStatus.ARCHIVED,
-      subject: "Payment Issue",
-      lastMessage:
-        "The payment issue has been resolved. Thank you for your help!",
-    },
-    {
-      customerName: "James Wilson",
-      customerEmail: "james.w@example.com",
-      type: InquiryType.HUMAN,
-      status: InquiryStatus.RESOLVED,
-      subject: "Product Recommendation",
-      lastMessage: "Perfect, I'll go with the premium model you suggested.",
-    },
-    {
-      customerName: "Anna Smith",
-      customerEmail: "anna.s@example.com",
-      type: InquiryType.AI,
-      status: InquiryStatus.ACTIVE,
-      subject: "Shipping to Europe",
-      lastMessage: "What are the shipping costs to Germany?",
-    },
-    {
-      customerName: "Tom Harris",
-      customerEmail: "tom.h@example.com",
-      type: InquiryType.HUMAN,
-      status: InquiryStatus.ACTIVE,
-      subject: "Warranty Claim",
-      lastMessage: "I've sent the photos of the damaged product.",
-    },
-  ];
-
-  // Create inquiries with messages
-  for (const inquiry of inquiries) {
-    const { messages, ...inquiryData } = inquiry;
-    const createdInquiry = await prisma.inquiry.create({
-      data: {
-        ...inquiryData,
-        messages: {
-          create:
-            messages?.map((message) => ({
-              content: message.content,
-              role: message.role,
-            })) || [],
-        },
-      },
-    });
-    console.log(`Created inquiry: ${createdInquiry.id}`);
-  }
-
-  console.log("📦 Created sample inquiries with messages");
 }
 
 main()

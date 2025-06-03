@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    console.log('api/admin/sub-categories')
     const subCategories = await prisma.subCategory.findMany({
       orderBy: {
         name: "asc",
@@ -12,8 +11,7 @@ export async function GET() {
         _count: {
           select: { products: true },
         },
-      }
-
+      },
     });
 
     return NextResponse.json(subCategories);
@@ -36,9 +34,14 @@ export async function POST(request: Request) {
     }
 
     if (!categoryId) {
-      return NextResponse.json({ error: "Du måste välja kategori först, för att skapa en underkategori" }, { status: 400 });
+      return NextResponse.json(
+        {
+          error:
+            "Du måste välja kategori först, för att skapa en underkategori",
+        },
+        { status: 400 },
+      );
     }
-
 
     const subCategory = await prisma.subCategory.create({
       data: {

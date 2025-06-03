@@ -11,7 +11,7 @@ import Link from "next/link";
 import { CartSheet } from "../shop/cart-sheet";
 import { Button } from "../ui/button";
 import { SearchSheet } from "../shop/search-sheet";
-import ProfilDropdown from "@/components/customer-profile";
+import ProfilDropdown from "@/components/website/customer-profile";
 
 const Header = () => {
   const [commandOpen, setCommandOpen] = useState(false);

@@ -1,39 +1,39 @@
 import { Category, Product, SubCategory } from "@prisma/client";
 
-export type Role = 'admin' | 'customer'
+export type Role = "admin" | "customer";
 
 export type User = {
   emailAddresses: [
     {
-      emailAddress: string
-    }
-  ]
-  id: string
+      emailAddress: string;
+    },
+  ];
+  id: string;
   publicMetadata: {
-    role: Role
-    pricing: number
-    companyName: string
-    notificationSent: boolean
-  }
-  status: string
-}
+    role: Role;
+    pricing: number;
+    companyName: string;
+    notificationSent: boolean;
+  };
+  status: string;
+};
 export type UserInvite = {
-  emailAddress: string
-  id: string
+  emailAddress: string;
+  id: string;
   publicMetadata: {
-    role: Role
-    pricing: number
-    companyName: string
-    notificationSent: boolean
-  }
-  status: string
-}
+    role: Role;
+    pricing: number;
+    companyName: string;
+    notificationSent: boolean;
+  };
+  status: string;
+};
 
 declare global {
   interface CustomJwtSessionClaims {
     metadata: {
-      role?: Role
-    }
+      role?: Role;
+    };
   }
 }
 
@@ -100,6 +100,14 @@ export interface Order {
 
 export type ExtendedOrder = Order;
 
+export type useCategoriesTypes = Category & {
+  categorySlug: string;
+  subCategories: SubCategory[];
+  _count: {
+    products: number;
+  };
+};
+
 export interface InvoiceDataType {
   customer: {
     name: string;
@@ -134,11 +142,3 @@ export interface InvoiceDataType {
     createdAt: string;
   }
 }
-
-export type useCategoriesTypes = Category & {
-  categorySlug: string,
-  subCategories: SubCategory[],
-  _count: {
-    products: number;
-  };
-};

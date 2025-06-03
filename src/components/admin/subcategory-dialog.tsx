@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -37,18 +36,29 @@ const subCategoryFormSchema = z.object({
   name: z.string().min(1, "Namn är obligatoriskt"),
   description: z.string().optional(),
   images: z.array(z.string()),
-  categoryId: z.string().min(1, "du behöver välja vilken kategori din underkategori ska tillhöra"),
+  categoryId: z
+    .string()
+    .min(1, "du behöver välja vilken kategori din underkategori ska tillhöra"),
 });
 
 interface CategoryDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  category?: SubCategory & { _count: { products: number } } | null;
+  category?: (SubCategory & { _count: { products: number } }) | null;
 }
 
-export function SubCategoryDialog({ open, onOpenChange, category }: CategoryDialogProps) {
+export function SubCategoryDialog({
+  open,
+  onOpenChange,
+  category,
+}: CategoryDialogProps) {
   const [loading, setLoading] = useState(false);
-  const { deleteSubCategory, updateSubCategory, createSubCategory, subCategories } = useSubCategories()
+  const {
+    deleteSubCategory,
+    updateSubCategory,
+    createSubCategory,
+    subCategories,
+  } = useSubCategories();
 
   useEffect(() => {
     if (category) {
@@ -73,13 +83,17 @@ export function SubCategoryDialog({ open, onOpenChange, category }: CategoryDial
     },
   });
 
-  async function handleDeleteCategory(category: SubCategory & { _count: { products: number } }) {
+  async function handleDeleteCategory(
+    category: SubCategory & { _count: { products: number } },
+  ) {
     try {
       if (category._count.products) {
-        toast.error(`"${category.name}" går inte att tabort. För att "${category.name}" har ${category._count.products} produkter. Navigera till produkter och tabort dem först!`);
-        return
+        toast.error(
+          `"${category.name}" går inte att tabort. För att "${category.name}" har ${category._count.products} produkter. Navigera till produkter och tabort dem först!`,
+        );
+        return;
       }
-      await deleteSubCategory.mutateAsync(category.id)
+      await deleteSubCategory.mutateAsync(category.id);
       toast.success(`${category.name} raderades`);
       form.reset();
       onOpenChange(false);
@@ -98,13 +112,19 @@ export function SubCategoryDialog({ open, onOpenChange, category }: CategoryDial
         description: capitalizeFirstLetter(data.description),
       };
       if (category) {
-        await updateSubCategory.mutateAsync({ categoryId: category.id, data: finalData });
+        await updateSubCategory.mutateAsync({
+          categoryId: category.id,
+          data: finalData,
+        });
       } else {
-        console.log('finalData ', finalData)
-        const existingSubCategory = subCategories?.find((c) => c.name === finalData.name);
+        const existingSubCategory = subCategories?.find(
+          (c) => c.name === finalData.name,
+        );
         if (existingSubCategory) {
-          toast.error(`underkategorien "${data.name}" finns redan, en underkategori måste ha en unikt namn`);
-          return
+          toast.error(
+            `underkategorien "${data.name}" finns redan, en underkategori måste ha en unikt namn`,
+          );
+          return;
         }
         await createSubCategory.mutateAsync(finalData);
       }
@@ -112,7 +132,9 @@ export function SubCategoryDialog({ open, onOpenChange, category }: CategoryDial
       onOpenChange(false);
     } catch (error) {
       console.error(error);
-      toast.error(`Misslyckades att ${category ? "uppdatera" : "skapa"} kategori`);
+      toast.error(
+        `Misslyckades att ${category ? "uppdatera" : "skapa"} kategori`,
+      );
     } finally {
       setLoading(false);
     }
@@ -122,11 +144,13 @@ export function SubCategoryDialog({ open, onOpenChange, category }: CategoryDial
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[600px] overflow-y-auto">
         <DialogHeader className="space-y-1">
-          <DialogTitle className="text-2xl font-bold">{category ? "Uppdatera" : "Ny"} Underkategori</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">
+            {category ? "Uppdatera" : "Ny"} Underkategori
+          </DialogTitle>
           <DialogDescription className="text-base">
-            {category ? "Uppdatera de fält du önskar"
-              :
-              "Lägg till en ny underkategori. Fyll i alla obligatoriska fält nedan."}
+            {category
+              ? "Uppdatera de fält du önskar"
+              : "Lägg till en ny underkategori. Fyll i alla obligatoriska fält nedan."}
           </DialogDescription>
         </DialogHeader>
         <ScrollArea className="h-[calc(70dvh-32px)] pr-4">
@@ -163,7 +187,9 @@ export function SubCategoryDialog({ open, onOpenChange, category }: CategoryDial
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-base">Underkategorinamn*</FormLabel>
+                      <FormLabel className="text-base">
+                        Underkategorinamn*
+                      </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Ange kategoriens namn"
@@ -207,7 +233,11 @@ export function SubCategoryDialog({ open, onOpenChange, category }: CategoryDial
                           value={field.value}
                           disabled={loading}
                           onChange={(urls) => field.onChange(urls)}
-                          onRemove={(url) => field.onChange(field.value?.filter((current) => current !== url))}
+                          onRemove={(url) =>
+                            field.onChange(
+                              field.value?.filter((current) => current !== url),
+                            )
+                          }
                           maxFiles={1}
                         />
                       </FormControl>
@@ -222,31 +252,30 @@ export function SubCategoryDialog({ open, onOpenChange, category }: CategoryDial
 
         <DialogFooter className="pt-4">
           <div className="flex justify-between w-full">
-            {
-              category &&
+            {category && (
               <Button
                 className="h-11 px-8 text-base flex gap-1"
                 variant={"destructive"}
-                onClick={() => handleDeleteCategory(category)}>
+                onClick={() => handleDeleteCategory(category)}
+              >
                 <Trash2 />
                 Radera
               </Button>
-            }
+            )}
             {/* onSubmit */}
             <Button
               type="submit"
               form="create-product-form"
               disabled={loading}
-              className="h-11 px-8 text-base">
+              className="h-11 px-8 text-base"
+            >
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   {category ? "Uppdaterar" : "Skapar"} kategori...
                 </>
               ) : (
-                <>
-                  {category ? "Uppdaterar" : "Skapar"} kategori
-                </>
+                <>{category ? "Uppdaterar" : "Skapar"} kategori</>
               )}
             </Button>
           </div>

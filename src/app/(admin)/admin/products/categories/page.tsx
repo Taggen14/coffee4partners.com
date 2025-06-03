@@ -1,7 +1,15 @@
 "use client";
 
 import { useCategories } from "@/hooks/use-categories";
-import { Loader2, ArrowUpDown, Plus, RefreshCw, Search, X, Pencil } from "lucide-react";
+import {
+  Loader2,
+  ArrowUpDown,
+  Plus,
+  RefreshCw,
+  Search,
+  X,
+  Pencil,
+} from "lucide-react";
 import { useState, useMemo } from "react";
 import { toast } from "sonner";
 import {
@@ -26,7 +34,8 @@ export default function CategoriesPage() {
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [globalFilter, setGlobalFilter] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<useCategoriesTypes | null>(null);
+  const [selectedCategory, setSelectedCategory] =
+    useState<useCategoriesTypes | null>(null);
   const [open, setOpen] = useState(false);
 
   const handleRefresh = () => {
@@ -37,107 +46,112 @@ export default function CategoriesPage() {
     }, 1000);
   };
 
-  const columns = useMemo<ColumnDef<useCategoriesTypes>[]>(() => [
-    {
-      accessorKey: "name",
-      header: ({ column }) => (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Namn
-          <ArrowUpDown className="ml-2 h-4 w-4 hover:underline hover:cursor-pointer" />
-        </Button>
-      ),
-      cell: ({ row }) => {
-        const image = row.original.images;
-        return (
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 relative rounded-lg overflow-hidden bg-muted">
-              {image[0] ? (
-                <CldImage
-                  src={image[0]}
-                  alt={row.getValue("name")}
-                  fill
-                  className="object-cover"
-                />
-              ) : (
-                <CldImage
-                  src={"https://res.cloudinary.com/CLOUD_NAME/image/upload/v1745920679/placeholder-image_o2sfbh.jpg"}
-                  alt={row.getValue("name")}
-                  fill
-                  className="object-cover"
-                />
-              )}
+  const columns = useMemo<ColumnDef<useCategoriesTypes>[]>(
+    () => [
+      {
+        accessorKey: "name",
+        header: ({ column }) => (
+          <Button
+            variant="ghost"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Namn
+            <ArrowUpDown className="ml-2 h-4 w-4 hover:underline hover:cursor-pointer" />
+          </Button>
+        ),
+        cell: ({ row }) => {
+          const image = row.original.images;
+          return (
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 relative rounded-lg overflow-hidden bg-muted">
+                {image[0] ? (
+                  <CldImage
+                    src={image[0]}
+                    alt={row.getValue("name")}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <CldImage
+                    src={
+                      "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1745920679/placeholder-image_o2sfbh.jpg"
+                    }
+                    alt={row.getValue("name")}
+                    fill
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              <span className="font-medium">{row.getValue("name")}</span>
             </div>
-            <span className="font-medium">{row.getValue("name")}</span>
-          </div>
-        );
+          );
+        },
       },
-    },
-    {
-      accessorKey: "description",
-      header: "Beskrivning",
-      cell: ({ row }) => (
-        <span className="text-muted-foreground text-sm">
-          {row.original.description || "—"}
-        </span>
-      ),
-    },
-    {
-      accessorKey: "amountOfSubCategories",
-      header: () => (
-        <Link href={"/admin/products/sub-categories"}>
+      {
+        accessorKey: "description",
+        header: "Beskrivning",
+        cell: ({ row }) => (
+          <span className="text-muted-foreground text-sm">
+            {row.original.description || "—"}
+          </span>
+        ),
+      },
+      {
+        accessorKey: "amountOfSubCategories",
+        header: () => (
+          <Link href={"/admin/products/sub-categories"}>
+            <Button
+              className="hover:underline hover:cursor-pointer p-0"
+              variant="ghost"
+            >
+              Underkatergorier
+            </Button>
+          </Link>
+        ),
+        cell: ({ row }) => (
+          <span className="text-muted-foreground text-sm">
+            {row.original.subCategories.length || "—"}
+          </span>
+        ),
+      },
+      {
+        accessorKey: "amountOfProducts",
+        header: () => (
+          <Link href={"/admin/products"}>
+            <Button
+              className="hover:underline hover:cursor-pointer p-0"
+              variant="ghost"
+            >
+              Produkter
+            </Button>
+          </Link>
+        ),
+        cell: ({ row }) => (
+          <span className="text-muted-foreground text-sm">
+            {row.original._count.products || "—"}
+          </span>
+        ),
+      },
+      {
+        accessorKey: "editCategory",
+        header: "Redigera",
+        cell: ({ row }) => (
           <Button
-            className="hover:underline hover:cursor-pointer p-0"
             variant="ghost"
+            size="icon"
+            className="h-7 w-7 hover:cursor-pointer hover:text-ring transision-colors duration-300"
+            onClick={() => {
+              setSelectedCategory(row.original);
+              setOpen(true);
+            }}
           >
-            Underkatergorier
+            <Pencil className="h-4 w-4" />
           </Button>
-        </Link>
-      ),
-      cell: ({ row }) => (
-        <span className="text-muted-foreground text-sm">
-          {row.original.subCategories.length || "—"}
-        </span>
-      ),
-    },
-    {
-      accessorKey: "amountOfProducts",
-      header: () => (
-        <Link href={"/admin/products"}>
-          <Button
-            className="hover:underline hover:cursor-pointer p-0"
-            variant="ghost"
-          >
-            Produkter
-          </Button>
-        </Link>
-      ),
-      cell: ({ row }) => (
-        <span className="text-muted-foreground text-sm">
-          {row.original._count.products || "—"}
-        </span>
-      ),
-    },
-    {
-      accessorKey: "editCategory",
-      header: "Redigera",
-      cell: ({ row }) => (
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-7 w-7 hover:cursor-pointer hover:text-ring transision-colors duration-300"
-          onClick={() => {
-            setSelectedCategory(row.original);
-            setOpen(true);
-          }}
-        >
-          <Pencil className="h-4 w-4" />
-        </Button>
-      )
-    },
-  ], []);
+        ),
+      },
+    ],
+    [],
+  );
 
   /*   const table = useReactTable({
       data: categories || [],
@@ -172,13 +186,16 @@ export default function CategoriesPage() {
         <h2 className="text-2xl font-bold">Kategorier</h2>
         <div className="flex gap-2">
           <Button variant="outline" onClick={handleRefresh}>
-            <RefreshCw className={cn("h-4 w-4 mr-2", isRefreshing && "animate-spin")} />
+            <RefreshCw
+              className={cn("h-4 w-4 mr-2", isRefreshing && "animate-spin")}
+            />
             Uppdatera
           </Button>
-          <Button onClick={() => {
-            setSelectedCategory(null);
-            setOpen(true)
-          }}
+          <Button
+            onClick={() => {
+              setSelectedCategory(null);
+              setOpen(true);
+            }}
           >
             <Plus className="mr-2 h-4 w-4" />
             Lägg till kategori
@@ -221,7 +238,11 @@ export default function CategoriesPage() {
         />
       </div>
 
-      <CategoryDialog open={open} onOpenChange={setOpen} category={selectedCategory} />
+      <CategoryDialog
+        open={open}
+        onOpenChange={setOpen}
+        category={selectedCategory}
+      />
     </div>
   );
 }

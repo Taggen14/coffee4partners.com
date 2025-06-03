@@ -26,7 +26,6 @@ export function withRouteAuth<Args extends unknown[]>(
     if (!admin) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-
     return handler(req, ...args);
   };
 }
@@ -47,12 +46,11 @@ export function withPageAuth<P extends Record<string, unknown>>(
         },
       };
     }
-
     return await gssp(context);
   };
 }
 
 export const checkRole = async (role: Role) => {
-  const { sessionClaims } = await auth()
-  return sessionClaims?.metadata.role === role
-}
+  const { sessionClaims } = await auth();
+  return sessionClaims?.metadata.role === role;
+};

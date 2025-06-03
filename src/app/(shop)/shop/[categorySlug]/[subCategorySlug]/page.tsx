@@ -11,23 +11,29 @@ import Link from "next/link";
 import { slugify } from "@/lib/utils";
 
 export default function CategoryPage() {
-  const params = useParams<{ categorySlug: string, subCategorySlug: string }>();
+  const params = useParams<{ categorySlug: string; subCategorySlug: string }>();
   const { products, isLoading: productsLoading } = useProducts();
   const { categories, isLoading: categoriesLoading } = useCategories();
   const { addItem } = useCart();
 
   // Get current category
-  const currentCategory = categories?.find((c) => c.categorySlug === params.categorySlug);
-  const currentSubCategory = currentCategory?.subCategories.find((subC) => slugify(subC.name) === params.subCategorySlug);
-  console.log('currentSubCategory: ', currentSubCategory)
-  console.log('params: ', params)
+  const currentCategory = categories?.find(
+    (c) => c.categorySlug === params.categorySlug,
+  );
+  const currentSubCategory = currentCategory?.subCategories.find(
+    (subC) => slugify(subC.name) === params.subCategorySlug,
+  );
   const subCategoryProducts = currentCategory?.subCategories
-    .map((subCategory) => (products?.filter((product) => product.subCategoryId === subCategory.id)))
+    .map((subCategory) =>
+      products?.filter((product) => product.subCategoryId === subCategory.id),
+    )
     .flat()
     .filter((product): product is ExtendedProduct => product !== undefined);
 
   // Filter products by category
-  const filteredSubCategoryProducts = products?.filter((product) => product.subCategoryId === currentSubCategory?.id);
+  const filteredSubCategoryProducts = products?.filter(
+    (product) => product.subCategoryId === currentSubCategory?.id,
+  );
 
   const handleAddToCart = async (product: ExtendedProduct) => {
     // Simulate a small delay to show loading state
@@ -69,7 +75,8 @@ export default function CategoryPage() {
       {/* Back Button */}
       <Link
         href={`/shop/${currentCategory.categorySlug}`}
-        className="absolute top-5 left-0 inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground">
+        className="absolute top-5 left-0 inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
+      >
         <ArrowLeft className="mr-2 h-4 w-4" />
         Tillbaka till {currentCategory.name}
       </Link>
@@ -77,7 +84,9 @@ export default function CategoryPage() {
       {/* Category Header */}
       <div className="space-y-4">
         <h1 className="text-3xl font-bold">{currentSubCategory?.name}</h1>
-        <p className="text-muted-foreground">{currentSubCategory?.description}</p>
+        <p className="text-muted-foreground">
+          {currentSubCategory?.description}
+        </p>
       </div>
 
       {/* Products Grid */}

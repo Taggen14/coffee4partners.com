@@ -32,16 +32,20 @@ export default function CategoriesPage() {
 
         <div className="grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {categories?.map((category) => {
-            const categoryProducts = products?.filter((product) => product.categoryId === category.id);
+            const categoryProducts = products?.filter(
+              (product) => product.categoryId === category.id,
+            );
             const productCount = categoryProducts?.length || 0;
             const firstProduct = categoryProducts?.[0];
-            const coverImage = firstProduct?.images?.[0] || "/product-placeholder.png";
+            const coverImage =
+              firstProduct?.images?.[0] || "/product-placeholder.png";
 
             return (
               <Link
                 key={category.id}
                 href={`/shop/${category.categorySlug}`}
-                className="group relative overflow-hidden rounded-lg border bg-card transition-colors hover:bg-accent py-4">
+                className="group relative overflow-hidden rounded-lg border border-border/20 bg-card transition-colors hover:bg-accent py-4"
+              >
                 <div className="aspect-[4/3] relative overflow-hidden">
                   <Image
                     src={coverImage}
