@@ -70,10 +70,7 @@ export default function CheckoutPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
   const [orderNumber, setOrderNumber] = useState<string | null>(null);
-  // const [isCalculatingShipping, setIsCalculatingShipping] = useState(false);
-  const [shippingCost/* , setShippingCost */] = useState<number | null>(null);
-  // const [shippingZone, setShippingZone] = useState<string | null>(null);
-  // const [shippingError, setShippingError] = useState<string | null>(null);
+  const [shippingCost /* , setShippingCost */] = useState<number | null>(null);
   const [orderError, setOrderError] = useState<string | null>(null);
   const [isDownloading, setIsDownloading] = useState(false);
   const [pdfBuffer, setPdfBuffer] = useState<string | null>(null);
@@ -86,38 +83,6 @@ export default function CheckoutPage() {
       router.push("/shop");
     }
   }, [items, router, orderComplete]);
-
-  // const handleShippingCalculation = async (postalCode: string) => {
-  //   if (postalCode.length === 5) {
-  //     setIsCalculatingShipping(true);
-  //     setShippingError(null);
-  //     try {
-  //       // Simulate network delay for better UX
-  //       await new Promise((resolve) => setTimeout(resolve, 300));
-  //       const result = calculateShippingCost(postalCode);
-
-  //       if (result.error) {
-  //         setShippingError(result.error);
-  //         setShippingCost(null);
-  //         setShippingZone(null);
-  //       } else {
-  //         setShippingCost(result.cost);
-  //         setShippingZone(result.zoneName);
-  //       }
-  //     } catch (error: unknown) {
-  //       console.error((error as Error).message);
-  //       setShippingError("Could not calculate shipping cost");
-  //       setShippingCost(null);
-  //       setShippingZone(null);
-  //     } finally {
-  //       setIsCalculatingShipping(false);
-  //     }
-  //   } else {
-  //     setShippingCost(null);
-  //     setShippingZone(null);
-  //     setShippingError(null);
-  //   }
-  // };
 
   const handleAddressSubmit = async (data: AddressFormData) => {
     try {
@@ -167,8 +132,8 @@ export default function CheckoutPage() {
           email: "info@coffee4partner.se",
         },
         date: {
-          createdAt: new Date().toLocaleDateString("sv-SE")
-        }
+          createdAt: new Date().toLocaleDateString("sv-SE"),
+        },
       };
 
       // Generate and send invoice
@@ -451,7 +416,10 @@ export default function CheckoutPage() {
               <CardContent className="p-4 sm:p-6">
                 <AddressForm
                   onSubmit={handleAddressSubmit}
-                  cartTotal={items.reduce((acc, item) => acc + item.price * item.quantity, 0,)}
+                  cartTotal={items.reduce(
+                    (acc, item) => acc + item.price * item.quantity,
+                    0,
+                  )}
                   // onPostalCodeChange={handleShippingCalculation}
                   // isCalculatingShipping={isCalculatingShipping}
                   shippingCost={shippingCost}
@@ -564,15 +532,17 @@ export default function CheckoutPage() {
                       Totalt
                     </span>
                     <span className="text-lg sm:text-xl font-bold text-primary">
-                      {/* shippingCost ? */
+                      {
+                        /* shippingCost ? */
                         formatPrice(
                           items.reduce(
                             (acc, item) => acc + item.price * item.quantity,
                             0,
-                          )/*  +
+                          ) /*  +
                           shippingCost / 100 */,
                         )
-                        /* : "-" */}
+                        /* : "-" */
+                      }
                     </span>
                   </div>
 

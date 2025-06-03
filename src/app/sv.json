@@ -1,11 +1,7 @@
 {
   "layout": {
     "header": {
-      "usps": [
-        "SMAKGARANTI",
-        "DRIFTGARANTI",
-        "FOKUS PÅ HÅLLBARHET"
-      ],
+      "usps": ["SMAKGARANTI", "DRIFTGARANTI", "FOKUS PÅ HÅLLBARHET"],
       "links": [
         {
           "title": "Hem",

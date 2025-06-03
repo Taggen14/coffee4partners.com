@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { Check, ChevronsUpDown, Plus, Loader2 } from "lucide-react";
-
 import { capitalizeFirstLetter, cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -80,7 +79,9 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
       } catch (error) {
         console.error("Misslyckade att skapa kategori:", error);
         toast.error(
-          error instanceof Error ? error.message : "Misslyckade att skapa kategori",
+          error instanceof Error
+            ? error.message
+            : "Misslyckade att skapa kategori",
         );
       } finally {
         setLoading(false);
@@ -112,7 +113,8 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
             "w-full justify-between",
             !value && "text-muted-foreground",
           )}
-          disabled={loading}>
+          disabled={loading}
+        >
           {isInitialLoading ? (
             <div className="flex items-center gap-2">
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -128,7 +130,8 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
       </PopoverTrigger>
       <PopoverContent
         className="w-[--radix-popover-trigger-width] p-0 popover-content-width-full"
-        align="start">
+        align="start"
+      >
         <Command className="w-full bg-background text-foreground">
           <CommandInput
             placeholder="Sök eller skapa kategori..."
@@ -139,7 +142,9 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
           <CommandList>
             <CommandEmpty className="p-4 text-sm">
               {search.trim() ? (
-                <p className="text-muted-foreground">Ingen kategori hittades.</p>
+                <p className="text-muted-foreground">
+                  Ingen kategori hittades.
+                </p>
               ) : (
                 <p className="text-muted-foreground">
                   Skriv för att söka eller skapa...
@@ -157,7 +162,8 @@ export function CategoryCombobox({ value, onChange }: CategoryComboboxProps) {
                         onChange(category.id);
                         setOpen(false);
                       }}
-                      className="flex items-center justify-between hover:font-bold cursor-pointer transition-all ease-in-out duration-200">
+                      className="flex items-center justify-between hover:font-bold cursor-pointer transition-all ease-in-out duration-200"
+                    >
                       {category.name}
                       {value === category.id && (
                         <Check className="h-4 w-4 text-green-500" />

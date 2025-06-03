@@ -1,6 +1,14 @@
 "use client";
 
-import { Loader2, ArrowUpDown, Plus, RefreshCw, Search, X, Pencil } from "lucide-react";
+import {
+  Loader2,
+  ArrowUpDown,
+  Plus,
+  RefreshCw,
+  Search,
+  X,
+  Pencil,
+} from "lucide-react";
 import { useState, useMemo } from "react";
 import { toast } from "sonner";
 import {
@@ -26,7 +34,9 @@ export default function SubCategoriesPage() {
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [globalFilter, setGlobalFilter] = useState("");
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [selectedSubCategory, setSelectedSubCategory] = useState<SubCategory & { _count: { products: number } } | null>(null);
+  const [selectedSubCategory, setSelectedSubCategory] = useState<
+    (SubCategory & { _count: { products: number } }) | null
+  >(null);
   const [open, setOpen] = useState(false);
 
   const handleRefresh = () => {
@@ -37,90 +47,97 @@ export default function SubCategoriesPage() {
     }, 1000);
   };
 
-  const columns = useMemo<ColumnDef<SubCategory & { _count: { products: number } }>[]>(() => [
-    {
-      accessorKey: "name",
-      header: ({ column }) => (
-        <Button
-          variant="ghost"
-          className="hover:underline hover:cursor-pointer"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Namn
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      ),
-      cell: ({ row }) => {
-        const image = row.original.images;
-        return (
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 relative rounded-lg overflow-hidden bg-muted">
-              {image[0] ? (
-                <CldImage
-                  src={image[0]}
-                  alt={row.getValue("name")}
-                  fill
-                  className="object-cover"
-                />
-              ) : (
-                <CldImage
-                  src={"https://res.cloudinary.com/CLOUD_NAME/image/upload/v1745920679/placeholder-image_o2sfbh.jpg"}
-                  alt={row.getValue("name")}
-                  fill
-                  className="object-cover"
-                />
-              )}
-            </div>
-            <span className="font-medium">{row.getValue("name")}</span>
-          </div>
-        );
-      },
-    },
-    {
-      accessorKey: "description",
-      header: "Beskrivning",
-      cell: ({ row }) => (
-        <span className="text-muted-foreground text-sm">
-          {row.original.description || "—"}
-        </span>
-      ),
-    },
-    {
-      accessorKey: "amountOfProducts",
-      header: () => (
-        <Link href={"/admin/products"}>
+  const columns = useMemo<
+    ColumnDef<SubCategory & { _count: { products: number } }>[]
+  >(
+    () => [
+      {
+        accessorKey: "name",
+        header: ({ column }) => (
           <Button
-            className="hover:underline hover:cursor-pointer p-0"
             variant="ghost"
+            className="hover:underline hover:cursor-pointer"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Produkter
+            Namn
+            <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
-        </Link>
-      ),
-      cell: ({ row }) => (
-        <span className="text-muted-foreground text-sm">
-          {row.original._count.products || "—"}
-        </span>
-      ),
-    },
-    {
-      accessorKey: "editCategory",
-      header: "Redigera",
-      cell: ({ row }) => (
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-7 w-7 hover:cursor-pointer hover:text-ring transision-colors duration-300"
-          onClick={() => {
-            setSelectedSubCategory(row.original);
-            setOpen(true);
-          }}
-        >
-          <Pencil className="h-4 w-4" />
-        </Button>
-      )
-    },
-  ], []);
+        ),
+        cell: ({ row }) => {
+          const image = row.original.images;
+          return (
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 relative rounded-lg overflow-hidden bg-muted">
+                {image[0] ? (
+                  <CldImage
+                    src={image[0]}
+                    alt={row.getValue("name")}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <CldImage
+                    src={
+                      "https://res.cloudinary.com/CLOUD_NAME/image/upload/v1745920679/placeholder-image_o2sfbh.jpg"
+                    }
+                    alt={row.getValue("name")}
+                    fill
+                    className="object-cover"
+                  />
+                )}
+              </div>
+              <span className="font-medium">{row.getValue("name")}</span>
+            </div>
+          );
+        },
+      },
+      {
+        accessorKey: "description",
+        header: "Beskrivning",
+        cell: ({ row }) => (
+          <span className="text-muted-foreground text-sm">
+            {row.original.description || "—"}
+          </span>
+        ),
+      },
+      {
+        accessorKey: "amountOfProducts",
+        header: () => (
+          <Link href={"/admin/products"}>
+            <Button
+              className="hover:underline hover:cursor-pointer p-0"
+              variant="ghost"
+            >
+              Produkter
+            </Button>
+          </Link>
+        ),
+        cell: ({ row }) => (
+          <span className="text-muted-foreground text-sm">
+            {row.original._count.products || "—"}
+          </span>
+        ),
+      },
+      {
+        accessorKey: "editCategory",
+        header: "Redigera",
+        cell: ({ row }) => (
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-7 w-7 hover:cursor-pointer hover:text-ring transision-colors duration-300"
+            onClick={() => {
+              setSelectedSubCategory(row.original);
+              setOpen(true);
+            }}
+          >
+            <Pencil className="h-4 w-4" />
+          </Button>
+        ),
+      },
+    ],
+    [],
+  );
 
   /*   const table = useReactTable({
       data: subCategories || [],
@@ -155,13 +172,16 @@ export default function SubCategoriesPage() {
         <h2 className="text-2xl font-bold">Underkategorier</h2>
         <div className="flex gap-2">
           <Button variant="outline" onClick={handleRefresh}>
-            <RefreshCw className={cn("h-4 w-4 mr-2", isRefreshing && "animate-spin")} />
+            <RefreshCw
+              className={cn("h-4 w-4 mr-2", isRefreshing && "animate-spin")}
+            />
             Uppdatera
           </Button>
-          <Button onClick={() => {
-            setSelectedSubCategory(null);
-            setOpen(true)
-          }}
+          <Button
+            onClick={() => {
+              setSelectedSubCategory(null);
+              setOpen(true);
+            }}
           >
             <Plus className="mr-2 h-4 w-4" />
             Lägg till underkategori
@@ -204,7 +224,11 @@ export default function SubCategoriesPage() {
         />
       </div>
 
-      <SubCategoryDialog open={open} onOpenChange={setOpen} category={selectedSubCategory} />
+      <SubCategoryDialog
+        open={open}
+        onOpenChange={setOpen}
+        category={selectedSubCategory}
+      />
     </div>
   );
 }

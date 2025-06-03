@@ -17,10 +17,7 @@ function NavigationMenu({
     <NavigationMenuPrimitive.Root
       data-slot="navigation-menu"
       data-viewport={viewport}
-      className={cn(
-        "group/navigation-menu relative",
-        className,
-      )}
+      className={cn("group/navigation-menu relative", className)}
       {...props}
     >
       {children}

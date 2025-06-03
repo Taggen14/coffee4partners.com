@@ -27,7 +27,7 @@ export default function ProductPage() {
   const { product, isLoading } = useProduct(productId as string);
   const { addItem } = useCart();
   const [isPageLoaded, setIsPageLoaded] = useState(false);
-  const [open, setOpen] = useState<Record<string, boolean>>({})
+  const [open, setOpen] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     setIsPageLoaded(true);
@@ -63,26 +63,29 @@ export default function ProductPage() {
     setOpen((prev) => ({
       ...prev,
       [key]: !prev[key],
-    }))
-  }
+    }));
+  };
 
   return (
     <div
       className={cn(
         "container max-w-7xl py-8 sm:py-12 px-4 sm:px-6 transition-all duration-700 ease-in-out",
         isPageLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
-      )}>
+      )}
+    >
       {/* Breadcrumb */}
       <div className="mb-6 sm:mb-8 flex items-center gap-2 text-sm text-muted-foreground overflow-x-auto pb-1 scrollbar-hide">
         <Link
           href="/shop"
-          className="hover:text-foreground transition-colors whitespace-nowrap">
+          className="hover:text-foreground transition-colors whitespace-nowrap"
+        >
           Butik
         </Link>
         <span>/</span>
         <Link
           href={`/shop/${product.category?.id}`}
-          className="hover:text-foreground transition-colors whitespace-nowrap">
+          className="hover:text-foreground transition-colors whitespace-nowrap"
+        >
           {product.category?.name}
         </Link>
         <span>/</span>
@@ -96,7 +99,8 @@ export default function ProductPage() {
           variant="outline"
           size="sm"
           asChild
-          className="w-fit group rounded-full border-border/80 shadow-sm hover:shadow-md hover:bg-muted/60 transition-all duration-200">
+          className="w-fit group rounded-full border-border/80 shadow-sm hover:shadow-md hover:bg-muted/60 transition-all duration-200"
+        >
           <Link href="/shop">
             <ChevronLeft className="h-4 w-4 mr-1 group-hover:-translate-x-0.5 transition-transform" />
             <span>Tillbaka</span>
@@ -108,7 +112,8 @@ export default function ProductPage() {
         {/* Left column - Product Gallery */}
         <div
           className="lg:sticky lg:top-24 h-fit rounded-xl shadow-sm overflow-hidden 
-          bg-gradient-to-b from-background to-muted/20 p-1">
+          bg-gradient-to-b from-background to-muted/20 p-1"
+        >
           <div className="overflow-hidden rounded-lg">
             <ProductGallery
               images={product.images}
@@ -120,9 +125,7 @@ export default function ProductPage() {
         {/* Right column - Product Details */}
         <div className="space-y-8 sm:space-y-10">
           <div>
-            <h1 className="text-start px-0">
-              {product.name}
-            </h1>
+            <h1 className="text-start px-0">{product.name}</h1>
             <h2 className="font-normal text-muted-foreground py-0">
               {product.vendor}
             </h2>
@@ -208,78 +211,92 @@ export default function ProductPage() {
             {/* Description */}
             <div>
               <div
-                onClick={() => toggleSection('description')}
-                className="flex justify-between cursor-pointer">
+                onClick={() => toggleSection("description")}
+                className="flex justify-between cursor-pointer"
+              >
                 <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-1.5 sm:gap-2">
                   <Tag className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                   Beskrivning
                 </h3>
                 <ChevronRight
-                  className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-600 ${!open['description'] ? "rotate-90" : ""}`} />
+                  className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-600 ${!open["description"] ? "rotate-90" : ""}`}
+                />
               </div>
-              <div className={`overflow-hidden transition-all duration-500 flex flex-col gap-4 ${!open['description'] ? 'max-h-[600px]' : 'max-h-0'}`}>
+              <div
+                className={`overflow-hidden transition-all duration-500 flex flex-col gap-4 ${!open["description"] ? "max-h-[600px]" : "max-h-0"}`}
+              >
                 <div className="px-4 flex flex-col gap-6">
                   {product.description.map((description, i) => (
-                    <p key={i} className="text-sm sm:text-base leading-relaxed">{description}</p>
+                    <p key={i} className="text-sm sm:text-base leading-relaxed">
+                      {description}
+                    </p>
                   ))}
                 </div>
                 {/* ProductAttributes */}
-                {product.productAttributes && product.productAttributes.length !== 0 && (
-                  <div className="px-4 text-xs sm:text-sm">
-                    <ul className="text-muted-foreground space-y-0.5">
-                      {product.productAttributes.map((attribute, i) => (
-                        <li key={i}
-                          className="list-disc">
-                          {attribute}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                {product.productAttributes &&
+                  product.productAttributes.length !== 0 && (
+                    <div className="px-4 text-xs sm:text-sm">
+                      <ul className="text-muted-foreground space-y-0.5">
+                        {product.productAttributes.map((attribute, i) => (
+                          <li key={i} className="list-disc">
+                            {attribute}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
               </div>
             </div>
 
-
             {/* productSpecifications */}
-            {product.productSpecifications && product.productSpecifications.length !== 0 && (
-              <div className="text-xs sm:text-sm space-y-1">
-                <div
-                  onClick={() => toggleSection('productSpec')}
-                  className="flex justify-between cursor-pointer">
-                  <h3 className="text-md sm:text-lg font-semibold flex items-center gap-1.5 sm:gap-2">
-                    <ClipboardList className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                    Produktspecifikationer
-                  </h3>
-                  <ChevronRight
-                    className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-600 ${!open['productSpec'] ? "rotate-90" : ""}`} />
+            {product.productSpecifications &&
+              product.productSpecifications.length !== 0 && (
+                <div className="text-xs sm:text-sm space-y-1">
+                  <div
+                    onClick={() => toggleSection("productSpec")}
+                    className="flex justify-between cursor-pointer"
+                  >
+                    <h3 className="text-md sm:text-lg font-semibold flex items-center gap-1.5 sm:gap-2">
+                      <ClipboardList className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                      Produktspecifikationer
+                    </h3>
+                    <ChevronRight
+                      className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-600 ${!open["productSpec"] ? "rotate-90" : ""}`}
+                    />
+                  </div>
+                  <div
+                    className={`overflow-hidden transition-all duration-500 ${
+                      !open["productSpec"] ? "max-h-[600px]" : "max-h-0"
+                    }`}
+                  >
+                    <ul className="text-muted-foreground space-y-0.5 list-disc pl-4">
+                      {product.productSpecifications.map((specification, i) => (
+                        <li key={i}>{specification}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                <div
-                  className={`overflow-hidden transition-all duration-500 ${!open['productSpec'] ? 'max-h-[600px]' : 'max-h-0'
-                    }`}>
-                  <ul className="text-muted-foreground space-y-0.5 list-disc pl-4">
-                    {product.productSpecifications.map((specification, i) => (
-                      <li key={i}>{specification}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
+              )}
 
             {/* Productetails */}
             <div>
               <div
-                onClick={() => toggleSection('productDetails')}
-                className="flex justify-between cursor-pointer">
+                onClick={() => toggleSection("productDetails")}
+                className="flex justify-between cursor-pointer"
+              >
                 <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-1.5 sm:gap-2">
                   <Package className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                   Produktdetaljer
                 </h3>
                 <ChevronRight
-                  className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-600 ${!open['productDetails'] ? "rotate-90" : ""}`} />
+                  className={`h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-600 ${!open["productDetails"] ? "rotate-90" : ""}`}
+                />
               </div>
               <div
-                className={`overflow-hidden transition-all duration-500 ${!open['productDetails'] ? 'max-h-[600px]' : 'max-h-0'
-                  }`}>
+                className={`overflow-hidden transition-all duration-500 ${
+                  !open["productDetails"] ? "max-h-[600px]" : "max-h-0"
+                }`}
+              >
                 <ul className="divide-y divide-border/50">
                   <li className="flex items-center justify-between p-3 hover:bg-muted/50 transition-colors">
                     <span className="text-sm text-muted-foreground">

@@ -67,10 +67,7 @@ export function CartSheet() {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <Button
-          variant="outlineNavIcons"
-          size="icon"
-        >
+        <Button variant="outlineNavIcons" size="icon">
           <ShoppingCart style={{ width: 24, height: 24 }} />
           <AnimatePresence>
             {itemCount > 0 && (

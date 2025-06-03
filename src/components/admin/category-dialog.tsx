@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -44,9 +43,13 @@ interface CategoryDialogProps {
   category?: useCategoriesTypes | null;
 }
 
-export function CategoryDialog({ open, onOpenChange, category }: CategoryDialogProps) {
+export function CategoryDialog({
+  open,
+  onOpenChange,
+  category,
+}: CategoryDialogProps) {
   const [loading, setLoading] = useState(false);
-  const { createCategory, updateCategory, deleteCategory } = useCategories()
+  const { createCategory, updateCategory, deleteCategory } = useCategories();
 
   useEffect(() => {
     if (category) {
@@ -76,14 +79,18 @@ export function CategoryDialog({ open, onOpenChange, category }: CategoryDialogP
   async function handleDeleteCategory(category: useCategoriesTypes) {
     try {
       if (category.subCategories.length) {
-        toast.error(`"${category.name}" går inte att tabort. För att "${category.name}" har ${category.subCategories.length} underkategorier. Navigera till underkategorier och tabort dem först!`);
-        return
+        toast.error(
+          `"${category.name}" går inte att tabort. För att "${category.name}" har ${category.subCategories.length} underkategorier. Navigera till underkategorier och tabort dem först!`,
+        );
+        return;
       }
       if (category._count.products) {
-        toast.error(`"${category.name}" går inte att tabort. För att "${category.name}" har ${category._count.products} produkter. Navigera till produkter och tabort dem först!`);
-        return
+        toast.error(
+          `"${category.name}" går inte att tabort. För att "${category.name}" har ${category._count.products} produkter. Navigera till produkter och tabort dem först!`,
+        );
+        return;
       }
-      await deleteCategory.mutateAsync(category.id)
+      await deleteCategory.mutateAsync(category.id);
       toast.success(`${category.name} raderades`);
       form.reset();
       onOpenChange(false);
@@ -102,7 +109,10 @@ export function CategoryDialog({ open, onOpenChange, category }: CategoryDialogP
         description: capitalizeFirstLetter(data.description),
       };
       if (category) {
-        await updateCategory.mutateAsync({ categoryId: category.id, data: finalData });
+        await updateCategory.mutateAsync({
+          categoryId: category.id,
+          data: finalData,
+        });
       } else {
         await createCategory.mutateAsync(finalData);
       }
@@ -110,7 +120,9 @@ export function CategoryDialog({ open, onOpenChange, category }: CategoryDialogP
       onOpenChange(false);
     } catch (error) {
       console.error(error);
-      toast.error(`Misslyckades att ${category ? "uppdatera" : "skapa"} kategori`);
+      toast.error(
+        `Misslyckades att ${category ? "uppdatera" : "skapa"} kategori`,
+      );
     } finally {
       setLoading(false);
     }
@@ -120,11 +132,13 @@ export function CategoryDialog({ open, onOpenChange, category }: CategoryDialogP
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[600px] overflow-y-auto">
         <DialogHeader className="space-y-1">
-          <DialogTitle className="text-2xl font-bold">{category ? "Uppdatera" : "Ny"} Kategori</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">
+            {category ? "Uppdatera" : "Ny"} Kategori
+          </DialogTitle>
           <DialogDescription className="text-base">
-            {category ? "Uppdatera de fält du önskar"
-              :
-              "Lägg till en ny kategori. Fyll i alla obligatoriska fält nedan."}
+            {category
+              ? "Uppdatera de fält du önskar"
+              : "Lägg till en ny kategori. Fyll i alla obligatoriska fält nedan."}
           </DialogDescription>
         </DialogHeader>
         <ScrollArea className="h-[calc(70dvh-32px)] pr-4">
@@ -135,11 +149,10 @@ export function CategoryDialog({ open, onOpenChange, category }: CategoryDialogP
               className="space-y-6 px-1"
             >
               <div className="grid gap-6">
-
                 {/* name */}
                 <FormField
-                  control={form.control}
                   name="name"
+                  control={form.control}
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-base">Kategorinamn*</FormLabel>
@@ -157,8 +170,8 @@ export function CategoryDialog({ open, onOpenChange, category }: CategoryDialogP
 
                 {/* description */}
                 <FormField
-                  control={form.control}
                   name="description"
+                  control={form.control}
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-base">Beskrivning</FormLabel>
@@ -176,8 +189,8 @@ export function CategoryDialog({ open, onOpenChange, category }: CategoryDialogP
 
                 {/* images */}
                 <FormField
-                  control={form.control}
                   name="images"
+                  control={form.control}
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-base">Kategoribild</FormLabel>
@@ -186,7 +199,11 @@ export function CategoryDialog({ open, onOpenChange, category }: CategoryDialogP
                           value={field.value}
                           disabled={loading}
                           onChange={(urls) => field.onChange(urls)}
-                          onRemove={(url) => field.onChange(field.value?.filter((current) => current !== url))}
+                          onRemove={(url) =>
+                            field.onChange(
+                              field.value?.filter((current) => current !== url),
+                            )
+                          }
                           maxFiles={1}
                         />
                       </FormControl>
@@ -201,31 +218,30 @@ export function CategoryDialog({ open, onOpenChange, category }: CategoryDialogP
 
         <DialogFooter className="pt-4">
           <div className="flex justify-between w-full">
-            {
-              category &&
+            {category && (
               <Button
                 className="h-11 px-8 text-base flex gap-1"
                 variant={"destructive"}
-                onClick={() => handleDeleteCategory(category)}>
+                onClick={() => handleDeleteCategory(category)}
+              >
                 <Trash2 />
                 Radera
               </Button>
-            }
+            )}
             {/* onSubmit */}
             <Button
               type="submit"
               form="create-product-form"
               disabled={loading}
-              className="h-11 px-8 text-base">
+              className="h-11 px-8 text-base"
+            >
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   {category ? "Uppdaterar" : "Skapar"} kategori...
                 </>
               ) : (
-                <>
-                  {category ? "Uppdaterar" : "Skapar"} kategori
-                </>
+                <>{category ? "Uppdaterar" : "Skapar"} kategori</>
               )}
             </Button>
           </div>

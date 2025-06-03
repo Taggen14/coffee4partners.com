@@ -3,11 +3,10 @@ import jsPDF from "jspdf";
 import fs from "fs";
 import path from "path";
 
-
 // Generate PDF invoice using jsPDF
 export async function generateInvoicePDF(
   invoiceData: InvoiceDataType,
-  orderNumber: string
+  orderNumber: string,
 ): Promise<Buffer> {
   const logoPath = path.resolve("public/logo.png");
   const logoData = fs.readFileSync(logoPath).toString("base64");
@@ -29,7 +28,9 @@ export async function generateInvoicePDF(
 
     // Add company details
     doc.setFontSize(12);
-    doc.text(`Orderdatum: ${invoiceData.date.createdAt}`, rightMargin, yPos, { align: "right" });
+    doc.text(`Orderdatum: ${invoiceData.date.createdAt}`, rightMargin, yPos, {
+      align: "right",
+    });
 
     // add logo
     yPos -= 10;
@@ -41,7 +42,6 @@ export async function generateInvoicePDF(
     doc.setFont("helvetica", "bold");
     doc.text("Orderbekräftelse", leftMargin, yPos);
     yPos += 35;
-
 
     // Column 1: "Vår referens" and "Er referens"
     doc.setFontSize(10);
@@ -60,7 +60,11 @@ export async function generateInvoicePDF(
     doc.setFont("helvetica", "normal");
     doc.text(invoiceData.customer.name, leftMargin + colWidth2, yPos + 5);
     doc.text(invoiceData.customer.address, leftMargin + colWidth2, yPos + 10);
-    doc.text(`${invoiceData.customer.postalCode} ${invoiceData.customer.city}`, leftMargin + colWidth2, yPos + 15);
+    doc.text(
+      `${invoiceData.customer.postalCode} ${invoiceData.customer.city}`,
+      leftMargin + colWidth2,
+      yPos + 15,
+    );
     doc.text(invoiceData.customer.country, leftMargin + colWidth2, yPos + 20);
     yPos += 35;
 
@@ -112,7 +116,6 @@ export async function generateInvoicePDF(
       yPos += 6;
     });
 
-
     // Add shipping
     // yPos += 2;
     // doc.text(`Frakt:`, leftMargin, yPos);
@@ -129,7 +132,13 @@ export async function generateInvoicePDF(
     yPos += 5;
     doc.setFontSize(12);
     doc.text("Total:", leftMargin, yPos);
-    doc.text(`${(total/*  + invoiceData.shipping.cost */).toFixed(2)} SEK`, rightMargin, yPos, { align: "right" });
+    doc.text(
+      `${total /*  + invoiceData.shipping.cost */
+        .toFixed(2)} SEK`,
+      rightMargin,
+      yPos,
+      { align: "right" },
+    );
 
     // ******************* FOOTER (fixed to bottom) *******************
     const footerY = 270; // Y-position near bottom of A4
@@ -146,23 +155,46 @@ export async function generateInvoicePDF(
     doc.setFont("helvetica", "bold");
     doc.text(invoiceData.company.name, leftMargin, footerY);
     doc.setFont("helvetica", "normal");
-    doc.text(`Org.nr: ${invoiceData.company.orgNumber}`, leftMargin, footerY + 5);
-    doc.text(`VAT-nr: ${invoiceData.company.vatNumber}`, leftMargin, footerY + 10);
+    doc.text(
+      `Org.nr: ${invoiceData.company.orgNumber}`,
+      leftMargin,
+      footerY + 5,
+    );
+    doc.text(
+      `VAT-nr: ${invoiceData.company.vatNumber}`,
+      leftMargin,
+      footerY + 10,
+    );
 
     // Column 2: Address
     doc.setFont("helvetica", "bold");
     doc.text("Adress", 4 + leftMargin + colWidth3, footerY);
     doc.setFont("helvetica", "normal");
-    doc.text(invoiceData.company.address, 4 + leftMargin + colWidth3, footerY + 5);
-    doc.text(`${invoiceData.company.postalCode} ${invoiceData.company.city}`, 4 + leftMargin + colWidth3, footerY + 10);
+    doc.text(
+      invoiceData.company.address,
+      4 + leftMargin + colWidth3,
+      footerY + 5,
+    );
+    doc.text(
+      `${invoiceData.company.postalCode} ${invoiceData.company.city}`,
+      4 + leftMargin + colWidth3,
+      footerY + 10,
+    );
 
     // Column 3: Contact
     doc.setFont("helvetica", "bold");
     doc.text("Kontakt", leftMargin + colWidth3 * 2, footerY);
     doc.setFont("helvetica", "normal");
-    doc.text(invoiceData.company.phone, leftMargin + colWidth3 * 2, footerY + 5);
-    doc.text(invoiceData.company.email, leftMargin + colWidth3 * 2, footerY + 10);
-
+    doc.text(
+      invoiceData.company.phone,
+      leftMargin + colWidth3 * 2,
+      footerY + 5,
+    );
+    doc.text(
+      invoiceData.company.email,
+      leftMargin + colWidth3 * 2,
+      footerY + 10,
+    );
 
     // Convert to buffer and return
     return Buffer.from(doc.output("arraybuffer"));

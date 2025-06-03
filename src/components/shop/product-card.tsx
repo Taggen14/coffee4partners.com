@@ -1,4 +1,3 @@
-// src/components/shop/product-card.tsx
 "use client";
 
 import { useState } from "react";
@@ -27,17 +26,25 @@ interface ProductCardProps {
 
 export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const [quickViewOpen, setQuickViewOpen] = useState(false);
-  const { categories } = useCategories()
-  const productCategory = categories?.find((category) => category.id === product.categoryId)
-  const productSubCategory = productCategory?.subCategories.find((sub) => sub.id === product.subCategoryId);
-  const subCategorySlug = productSubCategory && slugify(productSubCategory.name)
+  const { categories } = useCategories();
+  const productCategory = categories?.find(
+    (category) => category.id === product.categoryId,
+  );
+  const productSubCategory = productCategory?.subCategories.find(
+    (sub) => sub.id === product.subCategoryId,
+  );
+  const subCategorySlug =
+    productSubCategory && slugify(productSubCategory.name);
 
   return (
     <div className="container">
       <Card className="group flex h-full gap-0 flex-col border-border/20 bg-card transition-colors hover:border-border">
         <CardHeader className="p-0">
           <div className="relative">
-            <Link href={`/shop/${productCategory?.categorySlug}/${subCategorySlug}/${product.id}`} className="block">
+            <Link
+              href={`/shop/${productCategory?.categorySlug}/${subCategorySlug}/${product.id}`}
+              className="block"
+            >
               <div className="relative aspect-square overflow-hidden">
                 <Image
                   src={product.images[0] || "/product-placeholder.png"}
@@ -56,7 +63,8 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
               onClick={(e) => {
                 e.preventDefault();
                 setQuickViewOpen(true);
-              }}>
+              }}
+            >
               <Eye className="h-4 w-4" />
             </Button>
           </div>
@@ -65,7 +73,8 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
           <div className="space-y-2">
             <Link
               href={`/shop/${productCategory?.categorySlug}/${subCategorySlug}/${product.id}`}
-              className="block transition-colors hover:text-primary">
+              className="block transition-colors hover:text-primary"
+            >
               <CardTitle className="text-xs sm:text-lg">
                 {product.name}
               </CardTitle>

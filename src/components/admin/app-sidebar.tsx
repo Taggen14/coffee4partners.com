@@ -3,11 +3,7 @@
 import type * as React from "react";
 import {
   GalleryVerticalEnd,
-  // Inbox,
-  // LayoutDashboard,s
   Package,
-  // Settings2,
-  ShoppingCart,
   UserRoundPlus,
 } from "lucide-react";
 
@@ -33,21 +29,6 @@ const data = {
     },
   ],
   navMain: [
-    // {
-    //   title: "Dashboard",
-    //   url: "/admin",
-    //   icon: LayoutDashboard,
-    //   items: [
-    //     {
-    //       title: "Overview",
-    //       url: "/admin",
-    //     },
-    //     {
-    //       title: "Analytics",
-    //       url: "/admin/analytics",
-    //     },
-    //   ],
-    // },
     {
       title: "Produkter",
       url: "/admin/products",
@@ -65,31 +46,27 @@ const data = {
           title: "Underkategorier",
           url: "/admin/products/sub-categories",
         },
-        // {
-        //   title: "Features",
-        //   url: "/admin/products/features",
-        // },
       ],
     },
-    {
-      title: "Ordrar",
-      url: "/admin/orders",
-      icon: ShoppingCart,
-      items: [
-        {
-          title: "Alla Ordrar",
-          url: "/admin/orders",
-        },
-        {
-          title: "Pågående",
-          url: "/admin/orders/pending",
-        },
-        {
-          title: "Levererade",
-          url: "/admin/orders/shipped",
-        },
-      ],
-    },
+    // {
+    //   title: "Ordrar",
+    //   url: "/admin/orders",
+    //   icon: ShoppingCart,
+    //   items: [
+    //     {
+    //       title: "Alla Ordrar",
+    //       url: "/admin/orders",
+    //     },
+    //     {
+    //       title: "Pågående",
+    //       url: "/admin/orders/pending",
+    //     },
+    //     {
+    //       title: "Levererade",
+    //       url: "/admin/orders/shipped",
+    //     },
+    //   ],
+    // },
     {
       title: "Konton",
       url: "/admin/",
@@ -101,44 +78,6 @@ const data = {
         },
       ],
     },
-    // {
-    //   title: "Förfrågningar",
-    //   url: "/admin/inquiries",
-    //   icon: Inbox,
-    //   items: [
-    //     {
-    //       title: "Alla Förfrågningar",
-    //       url: "/admin/inquiries",
-    //     },
-    //     {
-    //       title: "Olästa",
-    //       url: "/admin/inquiries/unread",
-    //     },
-    //     {
-    //       title: "Arkiverade",
-    //       url: "/admin/inquiries/archived",
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: "Settings",
-    //   url: "/admin/settings",
-    //   icon: Settings2,
-    //   items: [
-    //     {
-    //       title: "General",
-    //       url: "/admin/settings",
-    //     },
-    //     {
-    //       title: "Store",
-    //       url: "/admin/settings/store",
-    //     },
-    //     {
-    //       title: "Shipping",
-    //       url: "/admin/settings/shipping",
-    //     },
-    //   ],
-    // },
   ],
 };
 

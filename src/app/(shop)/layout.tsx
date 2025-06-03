@@ -16,7 +16,9 @@ export default function ShopLayout({
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex flex-1 px-4 sm:px-8 py-2 items-center justify-center">{children}</main>
+      <main className="flex flex-1 px-4 sm:px-8 py-2 items-center justify-center">
+        {children}
+      </main>
       <Footer />
     </div>
   );

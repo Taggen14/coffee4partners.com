@@ -45,10 +45,14 @@ export default function ShopPage() {
 
   return (
     <div className="container space-y-8">
-
       <CategoriesPage />
 
-      <FilteringProducts selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={categories} categoryTextType={"kategorier"} />
+      <FilteringProducts
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        categories={categories}
+        categoryTextType={"kategorier"}
+      />
 
       <div className="gap-2 sm:gap-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {filteredProducts?.map((product) => (

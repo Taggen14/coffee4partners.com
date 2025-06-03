@@ -49,7 +49,6 @@ export const InvoiceEmail = ({
   orderNumber,
 }: InvoiceEmailProps) => {
   const { customer, items, company } = invoiceData;
-
   const subtotal = items.reduce(
     (sum, item) => sum + item.quantity * item.unitPrice,
     0,

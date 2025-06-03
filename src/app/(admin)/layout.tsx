@@ -3,7 +3,11 @@ import { PageContainer } from "@/components/admin/page-container";
 import { SidebarBreadcrumbs } from "@/components/admin/sidebar-breadcrumbs";
 import { SidebarHeader } from "@/components/admin/sidebar-header";
 import { Separator } from "@/components/ui/separator";
-import { SidebarInset, SidebarProvider, SidebarTrigger, } from "@/components/ui/sidebar";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 
 export default function AdminLayout({
   children,

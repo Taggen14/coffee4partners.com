@@ -7,7 +7,11 @@ export const useCategories = () => {
   const queryClient = useQueryClient();
 
   // GET
-  const { data: categories, isLoading, refetch } = useQuery<useCategoriesTypes[]>({
+  const {
+    data: categories,
+    isLoading,
+    refetch,
+  } = useQuery<useCategoriesTypes[]>({
     queryKey: ["categories"],
     queryFn: async () => {
       const response = await fetch("/api/admin/categories");
@@ -15,7 +19,7 @@ export const useCategories = () => {
         throw new Error("Failed to fetch categories");
       }
       const data: (Category & {
-        subCategories: SubCategory[],
+        subCategories: SubCategory[];
         _count: {
           products: number;
         };
@@ -46,8 +50,12 @@ export const useCategories = () => {
 
   // PATCH
   const updateCategory = useMutation({
-    mutationFn: async ({ categoryId, data }: {
-      categoryId: string, data: Partial<useCategoriesTypes>
+    mutationFn: async ({
+      categoryId,
+      data,
+    }: {
+      categoryId: string;
+      data: Partial<useCategoriesTypes>;
     }) => {
       const res = await fetch(`/api/admin/categories/${categoryId}`, {
         method: "PATCH",

@@ -86,7 +86,7 @@ export interface ExtendedProduct extends Omit<Product, "price"> {
   subCategory?: {
     id: string;
     name: string;
-  }
+  };
 }
 
 interface ProductsDataTableProps {
@@ -146,36 +146,36 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
     }, 1000);
   };
 
-  const handleExport = () => {
-    const selectedRows = table.getSelectedRowModel().rows;
-    const dataToExport =
-      selectedRows.length > 0 ? selectedRows.map((row) => row.original) : data;
+  // const handleExport = () => {
+  //   const selectedRows = table.getSelectedRowModel().rows;
+  //   const dataToExport =
+  //     selectedRows.length > 0 ? selectedRows.map((row) => row.original) : data;
 
-    // Create CSV content
-    const headers = ["Name", "Category", "Price", "Stock", "Created"];
-    const csvContent = [
-      headers.join(","),
-      ...dataToExport.map((product) =>
-        [
-          product.name,
-          product.category.name,
-          product.price,
-          product.stock,
-          new Date(product.createdAt).toLocaleDateString(),
-        ].join(","),
-      ),
-    ].join("\n");
+  //   // Create CSV content
+  //   const headers = ["Name", "Category", "Price", "Stock", "Created"];
+  //   const csvContent = [
+  //     headers.join(","),
+  //     ...dataToExport.map((product) =>
+  //       [
+  //         product.name,
+  //         product.category.name,
+  //         product.price,
+  //         product.stock,
+  //         new Date(product.createdAt).toLocaleDateString(),
+  //       ].join(","),
+  //     ),
+  //   ].join("\n");
 
-    // Create and download file
-    const blob = new Blob([csvContent], { type: "text/csv" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "products.csv";
-    a.click();
-    window.URL.revokeObjectURL(url);
-    toast.success("Export completed successfully");
-  };
+  //   // Create and download file
+  //   const blob = new Blob([csvContent], { type: "text/csv" });
+  //   const url = window.URL.createObjectURL(blob);
+  //   const a = document.createElement("a");
+  //   a.href = url;
+  //   a.download = "products.csv";
+  //   a.click();
+  //   window.URL.revokeObjectURL(url);
+  //   toast.success("Export completed successfully");
+  // };
 
   const handlePrint = () => {
     window.print();
@@ -196,6 +196,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
     [deleteProducts],
   );
 
+  // buggig?
   const handleBulkDelete = async () => {
     const selectedRows = table.getSelectedRowModel().rows;
     if (selectedRows.length === 0) {
@@ -309,9 +310,10 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
           return (
             <Badge
               variant="default"
-              className={cn("",
+              className={cn(
+                "",
                 row.original.status === "DRAFT" && "bg-amber-500",
-                row.original.status === "ACTIVE" && "bg-ring"
+                row.original.status === "ACTIVE" && "bg-ring",
               )}
             >
               {row.original.status}
@@ -327,7 +329,8 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
           return (
             <Badge variant="secondary" className="whitespace-nowrap">
               {row.original.category.name}
-              {row.original.subCategory?.name && `/${row.original.subCategory.name}`}
+              {row.original.subCategory?.name &&
+                `/${row.original.subCategory.name}`}
             </Badge>
           );
         },
@@ -456,8 +459,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                   Kopiera ID
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  onClick={() => setEditProduct(product)}>
+                <DropdownMenuItem onClick={() => setEditProduct(product)}>
                   <Pencil className="mr-2 h-4 w-4" />
                   Redigera
                 </DropdownMenuItem>
@@ -521,7 +523,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
         className={cn(
           "hover:bg-primary hover:text-primary-foreground",
           columnFilters.some((f) => f.id === "stock" && f.value === 0) &&
-          "bg-primary text-primary-foreground",
+            "bg-primary text-primary-foreground",
         )}
         onClick={() => setColumnFilters([{ id: "stock", value: 0 }])}
       >
@@ -778,7 +780,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                       Anpassa hur tabellen ser ut och beter sig
                     </SheetDescription>
                   </SheetHeader>
-                  <div className="py-4">
+                  <div className="p-4">
                     <div className="space-y-4">
                       <div>
                         <h4 className="text-sm font-medium mb-2">Filtrera</h4>
@@ -798,7 +800,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                   </div>
                 </SheetContent>
               </Sheet>
-              <Button variant="outline" size="sm" onClick={handleExport}>
+              <Button variant="outline" size="sm" /* onClick={handleExport} */>
                 <Download className="h-4 w-4 mr-2" />
                 Exportera
               </Button>
@@ -986,7 +988,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
                     columnKey === "category"
                       ? "Category"
                       : columnKey.charAt(0).toUpperCase() +
-                      columnKey.slice(1).replace(/([A-Z])/g, " $1");
+                        columnKey.slice(1).replace(/([A-Z])/g, " $1");
 
                   return (
                     <DropdownMenuCheckboxItem
@@ -1019,7 +1021,7 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={handleExport}
+                /* onClick={handleExport} */
                 className="hidden sm:flex"
               >
                 <ArrowUpFromLine className="h-4 w-4 mr-2" />
@@ -1131,7 +1133,6 @@ export function ProductsDataTable({ data }: ProductsDataTableProps) {
           product={editProduct}
         />
       )}
-
     </div>
   );
 }

@@ -20,12 +20,12 @@ export function Providers({ children }: { children: ReactNode }) {
   );
 
   return (
-    <ClerkProvider signInUrl={process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL || "/sign-in"}>
+    <ClerkProvider
+      signInUrl={process.env.NEXT_PUBLIC_CLERK_SIGN_IN_URL || "/sign-in"}
+    >
       <QueryClientProvider client={queryClient}>
         <CartProvider>
-          {/* CartProvider reads from localstorage */}
-          {" "}
-          {children}
+          {/* CartProvider reads from localstorage */} {children}
           <Toaster />
         </CartProvider>
       </QueryClientProvider>

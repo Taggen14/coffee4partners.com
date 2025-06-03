@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -31,7 +30,7 @@ import { useProducts } from "@/hooks/use-products";
 import { Loader2 } from "lucide-react";
 import { ScrollArea } from "../ui/scroll-area";
 import { CreateProductSubCategoryDrowpdown } from "./create-product-subcategory-dropdown";
-import { ProductAttributesList } from "./product-attributes-list ";
+import { ProductAttributesList } from "./product-attributes-list";
 import { ProductSpecificationsList } from "./product-specifications-list";
 import { useCategories } from "@/hooks/use-categories";
 import { capitalizeFirstLetter } from "@/lib/utils";
@@ -52,22 +51,29 @@ const productFormSchema = z.object({
     .min(0, "Priset måste vara större än 0")
     .transform((val) => Number(val.toFixed(2))),
   images: z.array(z.string()).min(1, "Minst en bild krävs"),
-  stock: z.coerce.number().int().min(0, "Lager måste vara större än eller lika med 0"),
+  stock: z.coerce
+    .number()
+    .int()
+    .min(0, "Lager måste vara större än eller lika med 0"),
   categoryId: z.string().min(1, "Kategori krävs"),
   subCategoryId: z.string(),
 });
 
-type ProductFormValues = z.infer<typeof productFormSchema>;
-
 interface ProductDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  product?: ExtendedProduct
+  product?: ExtendedProduct;
 }
 
-export function ProductDialog({ open, onOpenChange, product }: ProductDialogProps) {
+export function ProductDialog({
+  open,
+  onOpenChange,
+  product,
+}: ProductDialogProps) {
   const [loading, setLoading] = useState(false);
-  const { createProduct, updateProduct } = useProducts(undefined, { admin: true });
+  const { createProduct, updateProduct } = useProducts(undefined, {
+    admin: true,
+  });
   const { categories } = useCategories();
 
   useEffect(() => {
@@ -97,8 +103,7 @@ export function ProductDialog({ open, onOpenChange, product }: ProductDialogProp
     }
   }, [product]);
 
-
-  const form = useForm<ProductFormValues>({
+  const form = useForm<z.infer<typeof productFormSchema>>({
     resolver: zodResolver(productFormSchema),
     defaultValues: {
       name: "",
@@ -116,17 +121,26 @@ export function ProductDialog({ open, onOpenChange, product }: ProductDialogProp
     },
   });
 
-  async function onSubmit(data: ProductFormValues) {
+  async function onSubmit(data: z.infer<typeof productFormSchema>) {
     setLoading(true);
     try {
-      const currentCategory = categories?.find((c) => (c.id === data.categoryId));
-      if (currentCategory?.subCategories.length && data.subCategoryId === '') {
-        toast.error("Denna kategori har redan underkategorier, då behöver du tilldela din nya produkt en underkategori!")
-        return
+      const currentCategory = categories?.find((c) => c.id === data.categoryId);
+      if (currentCategory?.subCategories.length && data.subCategoryId === "") {
+        toast.error(
+          "Denna kategori har redan underkategorier, då behöver du tilldela din nya produkt en underkategori!",
+        );
+        return;
       }
-      const filteredAttributes = data.productAttributes.filter(attr => attr.trim() !== "").map(capitalizeFirstLetter);
-      const filteredSpecifications = data.productSpecifications.filter(spec => spec.trim() !== "").map(capitalizeFirstLetter);
-      const descriptions = data.description.split('\n').filter(line => line.trim() !== "").map(capitalizeFirstLetter)
+      const filteredAttributes = data.productAttributes
+        .filter((attr) => attr.trim() !== "")
+        .map(capitalizeFirstLetter);
+      const filteredSpecifications = data.productSpecifications
+        .filter((spec) => spec.trim() !== "")
+        .map(capitalizeFirstLetter);
+      const descriptions = data.description
+        .split("\n")
+        .filter((line) => line.trim() !== "")
+        .map(capitalizeFirstLetter);
 
       const finalData = {
         ...data,
@@ -137,11 +151,14 @@ export function ProductDialog({ open, onOpenChange, product }: ProductDialogProp
         productAttributes: filteredAttributes,
         productSpecifications: filteredSpecifications,
         price: Number(data.price),
-        subCategoryId: form.watch('subCategoryId'),
+        subCategoryId: form.watch("subCategoryId"),
       };
 
       if (product) {
-        await updateProduct.mutateAsync({ productId: product.id, data: finalData });
+        await updateProduct.mutateAsync({
+          productId: product.id,
+          data: finalData,
+        });
       } else {
         await createProduct.mutateAsync(finalData);
       }
@@ -173,7 +190,6 @@ export function ProductDialog({ open, onOpenChange, product }: ProductDialogProp
               className="space-y-6 px-1"
             >
               <div className="grid gap-6">
-
                 {/* name */}
                 <FormField
                   control={form.control}
@@ -218,7 +234,9 @@ export function ProductDialog({ open, onOpenChange, product }: ProductDialogProp
                   name="tagline"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-base">Säljande text / Underrubrik</FormLabel>
+                      <FormLabel className="text-base">
+                        Säljande text / Underrubrik
+                      </FormLabel>
                       <FormControl>
                         <Input
                           placeholder="Valfri text"
@@ -288,7 +306,6 @@ export function ProductDialog({ open, onOpenChange, product }: ProductDialogProp
                 {/* productSpecifications Punktlista */}
                 <ProductSpecificationsList />
 
-
                 <div className="grid grid-cols-2 gap-6">
                   {/* price */}
                   <FormField
@@ -337,8 +354,8 @@ export function ProductDialog({ open, onOpenChange, product }: ProductDialogProp
 
                 {/* categoryId */}
                 <FormField
-                  control={form.control}
                   name="categoryId"
+                  control={form.control}
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-base">Kategori*</FormLabel>
@@ -358,8 +375,8 @@ export function ProductDialog({ open, onOpenChange, product }: ProductDialogProp
 
                 {/* subCategoryId */}
                 <FormField
-                  control={form.control}
                   name="subCategoryId"
+                  control={form.control}
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-base">Underkategori</FormLabel>
@@ -367,7 +384,7 @@ export function ProductDialog({ open, onOpenChange, product }: ProductDialogProp
                         <CreateProductSubCategoryDrowpdown
                           value={field.value}
                           onChange={field.onChange}
-                          selectedCategoryId={form.watch('categoryId')}
+                          selectedCategoryId={form.watch("categoryId")}
                         />
                       </FormControl>
                       <FormMessage />
@@ -387,7 +404,11 @@ export function ProductDialog({ open, onOpenChange, product }: ProductDialogProp
                           value={field.value || []}
                           disabled={loading}
                           onChange={(urls) => field.onChange(urls)}
-                          onRemove={(url) => field.onChange(field.value?.filter((current) => current !== url))}
+                          onRemove={(url) =>
+                            field.onChange(
+                              field.value?.filter((current) => current !== url),
+                            )
+                          }
                         />
                       </FormControl>
                       <FormMessage />
@@ -405,16 +426,15 @@ export function ProductDialog({ open, onOpenChange, product }: ProductDialogProp
             type="submit"
             form="create-product-form"
             disabled={loading}
-            className="h-11 px-8 text-base">
+            className="h-11 px-8 text-base"
+          >
             {loading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 {product ? "Uppdaterar" : "Skapar"} produkt...
               </>
             ) : (
-              <>
-                {product ? "Uppdaterar" : "Skapar"} produkt
-              </>
+              <>{product ? "Uppdaterar" : "Skapar"} produkt</>
             )}
           </Button>
         </DialogFooter>
