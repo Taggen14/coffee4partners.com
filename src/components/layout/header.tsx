@@ -54,14 +54,16 @@ const Header = () => {
             <Button
               variant="outlineNavIcons"
               size="icon"
+              aria-label="Öppna sök"
               onClick={() => setCommandOpen(true)}
             >
               <Search style={{ width: 24, height: 24 }} />
-
-              <span className="sr-only">Sök</span>
             </Button>
             <ProfilDropdown />
-            <CartSheet />
+
+            <div className="min-w-[40px] flex justify-center items-center">
+              <CartSheet />
+            </div>
             <div className="md:hidden">
               <NavbarMobile />
             </div>

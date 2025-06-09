@@ -60,6 +60,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
               variant="secondary"
               size="icon"
               className="absolute right-2 top-2 z-10 h-8 w-8 rounded-full bg-background/80 backdrop-blur-sm opacity-0 transition-all hover:bg-background hover:scale-105 group-hover:opacity-100 sm:opacity-100"
+              aria-label="Öppna snabb översikt"
               onClick={(e) => {
                 e.preventDefault();
                 setQuickViewOpen(true);

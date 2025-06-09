@@ -7,7 +7,6 @@ import {
   X,
   Plus,
   Minus,
-  Loader2,
   ArrowRight,
   CreditCard,
   Package,
@@ -20,6 +19,7 @@ import { useCart } from "@/store/use-cart";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -31,15 +31,8 @@ import Link from "next/link";
 
 export function CartSheet() {
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
-  const [isCheckingOut] = useState(false);
   const { items, removeItem, updateQuantity } = useCart();
   const [mounted, setMounted] = useState(false);
-
-  const handleCheckout = () => {
-    setIsOpen(false); // Close the cart sheet
-    router.push("/shop/checkout"); // Redirect to checkout page
-  };
 
   // Calculate cart totals using useMemo to prevent unnecessary recalculations
   const cartTotals = useMemo(() => {
@@ -65,9 +58,9 @@ export function CartSheet() {
   if (!mounted) return null;
 
   return (
-    <Sheet open={isOpen} onOpenChange={setIsOpen}>
+    <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outlineNavIcons" size="icon">
+        <Button variant="outlineNavIcons" size="icon" aria-label="Öppna varukorgen">
           <ShoppingCart style={{ width: 24, height: 24 }} />
           <AnimatePresence>
             {itemCount > 0 && (
@@ -107,15 +100,16 @@ export function CartSheet() {
               <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
               <span>Din varukorg</span>
             </SheetTitle>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 rounded-full hover:bg-muted/80"
-              onClick={() => setIsOpen(false)}
-            >
-              <X className="h-4 w-4" />
-              <span className="sr-only">Stäng</span>
-            </Button>
+            <SheetClose>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 rounded-full hover:bg-muted/80"
+                aria-label="Stänger varukorgen"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </SheetClose>
           </div>
           {items.length > 0 && (
             <p className="text-xs sm:text-sm text-muted-foreground">
@@ -280,20 +274,12 @@ export function CartSheet() {
                 <Button
                   variant="outline"
                   className="w-full h-9 sm:h-10 text-xs sm:text-sm border-border/40 bg-foreground text-background hover:bg-foreground/90 hover:text-background transition-all duration-200"
-                  onClick={handleCheckout}
-                  disabled={isCheckingOut || items.length === 0}
+                  aria-label="Gå till kassan"
+                  onClick={() => router.push("/shop/checkout")}
+                  disabled={items.length === 0}
                 >
-                  {isCheckingOut ? (
-                    <>
-                      <Loader2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 animate-spin" />
-                      Bearbetar...
-                    </>
-                  ) : (
-                    <>
-                      Till kassan
-                      <ArrowRight className="ml-1.5 sm:ml-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                    </>
-                  )}
+                  Till kassan
+                  <ArrowRight className="ml-1.5 sm:ml-2 h-3.5 w-3.5 sm:h-4 sm:w-4" />
                 </Button>
               </div>
             </div>
@@ -310,13 +296,15 @@ export function CartSheet() {
               Det verkar som att du inte har lagt till några produkter i din
               varukorg än.
             </p>
-            <Button
-              variant="outline"
-              className="mt-4 sm:mt-6 rounded-full px-4 sm:px-6 h-9 sm:h-10 text-xs sm:text-sm border-primary/30 hover:bg-primary/10 hover:text-primary transition-all duration-200"
-              onClick={() => setIsOpen(false)}
-            >
-              Fortsätt handla
-            </Button>
+            <SheetClose>
+              <Button
+                variant="outline"
+                className="mt-4 sm:mt-6 rounded-full px-4 sm:px-6 h-9 sm:h-10 text-xs sm:text-sm border-primary/30 hover:bg-primary/10 hover:text-primary transition-all duration-200"
+                aria-label="Stänger varukorgen"
+              >
+                Fortsätt handla
+              </Button>
+            </SheetClose>
 
             {/* Shopping benefits */}
             <div className="w-full max-w-xs mt-6 sm:mt-8">

@@ -119,6 +119,7 @@ const Footer = () => {
                   <Button
                     className="bg-secondary p-0 cursor-pointer w-24 justify-end hover:bg-secondary hover:text-secondary-foreground/80 transition-colors duration-300"
                     type="submit"
+                    aria-label="Klicka för att prenumerera på nyhetsbrev"
                   >
                     {form.watch("email") ? (
                       <span className="text-sm">
@@ -150,6 +151,7 @@ const Footer = () => {
               className="hover:text-secondary-foreground/80 transition-colors duration-300 mt-2"
               href="https://www.instagram.com/coffee4partners/"
               target="_blank"
+              aria-label="Gå till Cooffee4partners Instagram"
             >
               <Instagram />
             </a>

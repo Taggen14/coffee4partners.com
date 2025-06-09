@@ -20,7 +20,7 @@ export const ProfilDropdown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outlineNavIcons" size="icon">
+        <Button variant="outlineNavIcons" size="icon" aria-label="Öppna användarmeny">
           <User style={{ width: 24, height: 24 }} />
         </Button>
       </DropdownMenuTrigger>
