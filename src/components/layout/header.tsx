@@ -42,6 +42,7 @@ const Header = () => {
               alt="coffee4partners logo"
               width={300}
               height={300}
+              priority
               preserveTransformations
             />
           </Link>
