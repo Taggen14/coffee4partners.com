@@ -4,16 +4,9 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { toast } from "sonner";
 
-export const useProducts = (
-  searchQuery?: string,
-  options?: { admin?: boolean },
-) => {
+export const useProducts = (searchQuery?: string, options?: { admin?: boolean },) => {
   const endpoint = options?.admin ? "/api/admin/products" : "/api/products";
-  const {
-    data: products,
-    isLoading,
-    refetch,
-  } = useQuery<ExtendedProduct[]>({
+  const { data: products, isLoading, refetch, } = useQuery<ExtendedProduct[]>({
     queryKey: ["products", endpoint],
     queryFn: async () => {
       const response = await fetch(endpoint);
