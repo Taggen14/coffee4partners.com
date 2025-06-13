@@ -28,6 +28,7 @@ const Home = () => {
               src={machine.image.url}
               alt={machine.image.alt}
               fill
+              priority
               className="object-cover"
             />
             <div className="absolute inset-0 bg-black opacity-20"></div>
