@@ -2,6 +2,16 @@
 
 Detta är en fullstack e-handelswebbplats med tillhörande admin-gränssnitt för produkthantering och kundadministration. Projektet är byggt med moderna webbutvecklingstekniker och hanterar fullt flöde för beställning av produkter med fakturering som betalinings metod.
 
+## Funktioner
+
+- Produktkatalog med kategorier och underkategorier
+- Kundvagn och checkout-process
+- Fakturering som betalningsmetod
+- PDF-generering för beställningar
+- Admin-panel för produkthantering
+- Användarhantering med roller
+- E-postnotifikationer
+
 ## Deploment
 
 https://coffee4partners.vercel.app/
